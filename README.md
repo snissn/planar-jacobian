@@ -10,15 +10,11 @@ This repository is a durable, dependency-tracked research workspace for the plan
 
 **No file in this repository claims an unconditional proof of the planar Jacobian conjecture.** The repository is a research program and provenance archive.
 
-## Baseline and current branch
+## Baseline and active work
 
-The intended rich baseline is PR [#15](https://github.com/snissn/planar-jacobian/pull/15), branch `agent/bootstrap-proof-graph`. The filtered-equivariance synchronization is developed on
+The intended rich baseline is PR [#15](https://github.com/snissn/planar-jacobian/pull/15), branch `agent/bootstrap-proof-graph`.
 
-```text
-issue-1/filtered-equivariance-on-bootstrap
-```
-
-and tracked in issue [#17](https://github.com/snissn/planar-jacobian/issues/17).
+The active filtered-equivariance audit is issue [#17](https://github.com/snissn/planar-jacobian/issues/17), developed on `issue-17/defect-4-staircase`. Repository-validator CI engineering is tracked in issue [#20](https://github.com/snissn/planar-jacobian/issues/20).
 
 ## Start here
 
@@ -50,15 +46,26 @@ See [`L13-defect-4-staircase.md`](research/leaf-packets/L13-defect-4-staircase.m
 
 ## Scientific workflow
 
-Work follows the [`scientific-mainline-workflow`](https://github.com/snissn/skills/tree/main/scientific-mainline-workflow) maintained in [`snissn/skills`](https://github.com/snissn/skills). The pinned version used for this branch is recorded in [`governance/SCIENTIFIC-WORKFLOW.md`](governance/SCIENTIFIC-WORKFLOW.md).
+Work follows the [`scientific-mainline-workflow`](https://github.com/snissn/skills/tree/main/scientific-mainline-workflow) maintained in [`snissn/skills`](https://github.com/snissn/skills). The pinned version and repository-specific CI fallback are recorded in [`governance/SCIENTIFIC-WORKFLOW.md`](governance/SCIENTIFIC-WORKFLOW.md).
 
 A pushed mutable-branch commit is development provenance, not theorem authority. Exact candidate bytes require independent scientific review before promotion.
 
 ## Validation
 
+Preferred local commands:
+
 ```bash
+python3 -m compileall -q scripts
 python3 scripts/validate_repository.py
 python3 scripts/frontier.py
 ```
 
-These checks validate repository structure, identifiers, graph closure, leaf references, and archive hashes. They do **not** validate mathematical truth.
+If local Python execution is unavailable or blocked, push the exact commit and use [`.github/workflows/repository-python-validators.yml`](.github/workflows/repository-python-validators.yml). The workflow runs on pushes and pull requests; after it exists on the default branch it can also be dispatched with `gh workflow run`.
+
+```bash
+gh run list --workflow repository-python-validators.yml --branch "$(git branch --show-current)"
+gh run watch <run-id> --exit-status
+gh run view <run-id> --log-failed
+```
+
+The workflow records the tested SHA and Python version, runs compilation plus both repository validators, and retains logs. These checks validate repository structure, identifiers, graph closure, leaf references, and archive hashes. They do **not** validate mathematical truth, promote a theorem candidate, or create a scientific verdict.
