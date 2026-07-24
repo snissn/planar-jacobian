@@ -8,7 +8,17 @@
 
 This repository is a durable, dependency-tracked research workspace for the planar Jacobian conjecture. It imports two long July 2026 conversations, preserves them byte-for-byte in compressed form, separates usable lemmas from speculative bridges and withdrawn claims, and exposes the surviving work as a proof graph with agent-sized leaves.
 
-**No file in this repository claims an unconditional proof of the planar Jacobian conjecture.** The current mainline is a research program and provenance archive.
+**No file in this repository claims an unconditional proof of the planar Jacobian conjecture.** The repository is a research program and provenance archive.
+
+## Baseline and current branch
+
+The intended rich baseline is PR [#15](https://github.com/snissn/planar-jacobian/pull/15), branch `agent/bootstrap-proof-graph`. The filtered-equivariance synchronization is developed on
+
+```text
+issue-1/filtered-equivariance-on-bootstrap
+```
+
+and tracked in issue [#17](https://github.com/snissn/planar-jacobian/issues/17).
 
 ## Start here
 
@@ -18,7 +28,8 @@ This repository is a durable, dependency-tracked research workspace for the plan
 4. [`research/WORK_QUEUE.md`](research/WORK_QUEUE.md) — prioritized leaves.
 5. [`research/CLAIM_LEDGER.md`](research/CLAIM_LEDGER.md) — exact claim status.
 6. [`AGENTS.md`](AGENTS.md) — how to resume work without rediscovering the history.
-7. [`archive/MANIFEST.md`](archive/MANIFEST.md) — lossless conversation archive.
+7. [`AGENT_PROMPT.md`](AGENT_PROMPT.md) — the current defect-4 handoff prompt.
+8. [`archive/MANIFEST.md`](archive/MANIFEST.md) — lossless conversation archive.
 
 ## Repository layers
 
@@ -26,12 +37,22 @@ This repository is a durable, dependency-tracked research workspace for the plan
 - `synthesis/`: narrative reconciliation and correction register.
 - `research/tracks/`: parallel formal proof programs.
 - `research/leaf-packets/`: bounded next tasks with stop rules and handoff contracts.
-- `governance/`: status, review, source-audit, and freeze rules.
+- `governance/`: status, review, source-audit, freeze, handoff, and scientific-workflow rules.
 - `scripts/`: deterministic structural validation and frontier rendering.
 
-## Current load-bearing question
+## Current filtered lane
 
-A hypothetical planar Keller map is étale on the affine source but may lose sheets at infinity after finite normalization. Can the boundary data be shown to force one global object—such as a primitive element, a finite differential lattice, a regular canonical flow, a finite quasi-Albanese map, or a trivial puncture connection—that makes the normalization finite étale and therefore trivial?
+Exact nontrivial `G_m`-equivariance in dimension two is source-bound to T. Shaska, *Graded Keller maps and the Jacobian Conjecture*, arXiv:2607.20210.
+
+Track [`m-filtered-equivariance.md`](research/tracks/m-filtered-equivariance.md) develops a weighted Rees staircase around that exact theorem. The claimed low-defect reduction through `kappa<=3` remains a candidate awaiting adversarial audit. The first blocked case is defect `4`, where a middle Wronskian appears.
+
+See [`L13-defect-4-staircase.md`](research/leaf-packets/L13-defect-4-staircase.md).
+
+## Scientific workflow
+
+Work follows the [`scientific-mainline-workflow`](https://github.com/snissn/skills/tree/main/scientific-mainline-workflow) maintained in [`snissn/skills`](https://github.com/snissn/skills). The pinned version used for this branch is recorded in [`governance/SCIENTIFIC-WORKFLOW.md`](governance/SCIENTIFIC-WORKFLOW.md).
+
+A pushed mutable-branch commit is development provenance, not theorem authority. Exact candidate bytes require independent scientific review before promotion.
 
 ## Validation
 
