@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "note": "Full messages are losslessly reconstructed from the base64 gzip chunks in archive/manifest.json. Topic summaries provide navigation without duplicating the archive.",
+  "conversations": [
+    {
+      "id": "conversation-a",
+      "messages": 226,
+      "original_filename": "chatgpt-export-2026-07-24.md",
+      "topic_summary": "archive/conversation-a-topic-summary.md"
+    },
+    {
+      "id": "conversation-b",
+      "messages": 78,
+      "original_filename": "chatgpt-export-2026-07-24(2).md",
+      "topic_summary": "archive/conversation-b-topic-summary.md"
+    }
+  ]
+}
