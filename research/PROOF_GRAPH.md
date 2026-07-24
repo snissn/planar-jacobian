@@ -27,7 +27,7 @@
 | `BR-DEGENERATION` | Equivariant degeneration and closed-orbit route | `branch` | `open` | tracks/j-equivariant-degeneration.md |
 | `OPEN-CLOSED-ORBIT` | Prove a minimal counterexample has a closed torus orbit in a fixed boundary stratum | `leaf` | `open` | leaf-packets/L08-equivariant-closed-orbit.md |
 | `BR-FILTERED-EQUIVARIANCE` | Weighted Rees staircase toward exact graded rigidity | `branch` | `open` | tracks/m-filtered-equivariance.md |
-| `OPEN-DEFECT-4` | Audit the staircase and resolve grading defect 4 | `leaf` | `open` | leaf-packets/L13-defect-4-staircase.md |
+| `OPEN-DEFECT-4` | Audit the staircase and resolve grading defect 4 | `leaf` | `candidate_proved` | leaf-packets/L13-defect-4-staircase.md |
 | `BR-CHAR-P` | Characteristic-p and p-curvature route | `branch` | `speculative` | tracks/k-characteristic-p.md |
 | `OPEN-PCURVATURE` | Turn reductions mod p into a finite-monodromy contradiction | `leaf` | `open` | leaf-packets/L09-characteristic-p.md |
 | `CTL-LITERATURE` | Primary-source and low-degree audit | `control` | `active` | tracks/l-literature-low-degree.md |
@@ -98,4 +98,4 @@
 
 An edge marked `sufficient-if-closed` means the leaf is intended to provide a complete route to degree one. It does not mean the leaf is close to solved. Context and control nodes cannot by themselves establish the goal.
 
-The defect-4 leaf is a scoped subproblem supporting the full graded-reduction leaf. Closing defect 4 alone is not represented as sufficient for `JC_2`.
+`OPEN-DEFECT-4` has a complete scoped theorem candidate, not frozen authority. It proves only the positive-weight `kappa<=4` reduction and remains a support node for the full graded-reduction leaf. Independent exact-byte review is still required, and the node is not sufficient for `JC_2`.
