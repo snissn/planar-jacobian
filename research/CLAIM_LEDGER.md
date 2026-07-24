@@ -26,7 +26,7 @@ The JSON file is authoritative for machine validation. Status definitions are in
 | `CLM-020` | `candidate_proved` | `gauss-manin` | For N=C[x,y]/D_Q(C[x,y]), D_P acts bijectively. | CLM-010 |
 | `CLM-021` | `literature_bound` | `gauss-manin` | Vanishing of the puncture/Gauss–Manin module would force a surjective divergence-free derivation and then invertibility. | CLM-020 |
 | `CLM-022` | `verified_internal` | `exact-symplectic` | The exact symplectic identity dP wedge dQ=dx wedge dy implies P dQ + y dx is polynomially exact. | CLM-001 |
-| `CLM-023` | `open_bridge` | `exact-symplectic` | Boundary residues of the induced exact one-form vanish under an appropriate regular compactification. | CLM-022, CLM-003 |
+| `CLM-023` | `candidate_proved` | `exact-symplectic` | For every boundary divisorial Laurent expansion of the polynomial primitive P dQ + y dx = dH, the logarithmic residue vanishes, but the exact coefficient equations permit nonzero higher principal parts. | CLM-022, CLM-003 |
 | `CLM-024` | `candidate_proved` | `wright-graded` | The basic smooth one-boundary Wright ring admits no homogeneous constant-bracket pair in the natural grading. | — |
 | `CLM-025` | `open_bridge` | `wright-graded` | A simultaneous graded-reduction theorem would close the smooth one-boundary route. | CLM-024 |
 | `CLM-026` | `candidate` | `monodromy` | Every branch meridian in the nonproperness complement has at least one fixed affine sheet. | CLM-003 |
@@ -55,3 +55,13 @@ The JSON file is authoritative for machine validation. Status definitions are in
 | `CLM-049` | `candidate` | `filtered-equivariance` | A resonant pair touching a top weighted layer forces the full Keller map to be an automorphism. | CLM-048 |
 | `CLM-050` | `candidate` | `filtered-equivariance` | Every positive-weight Keller pair with grading defect kappa at most 3 reduces to the exact graded case and is an automorphism. | CLM-047, CLM-048, CLM-049 |
 | `CLM-051` | `open_bridge` | `filtered-equivariance` | At grading defect 4, eliminate or geometrically obstruct the middle Wronskian in every resonance pattern. | CLM-050 |
+| `CLM-052` | `candidate_proved` | `canonical-derivations` | At a monogenic height-one normalization S=R[s] with minimal polynomial f, the lift of a target derivation V satisfies V~(s)=-V_B(f)(s)/f'(s); its complete principal part vanishes exactly when the numerator is divisible by the different. | CLM-003, CLM-007, CLM-014 |
+| `CLM-053` | `candidate_proved` | `canonical-derivations` | In characteristic zero, a target polynomial vector field lifts regularly to the normal finite surface Y iff it is logarithmic along every reduced ramified branch component; height-one regularity then extends across all codimension-two singular points of Y. | CLM-003, CLM-007, CLM-052 |
+| `CLM-054` | `candidate_proved` | `canonical-derivations` | The standard radial lift E=P D_P+Q D_Q is regular across every ramified divisor iff every irreducible reduced ramified branch component is a line through the target origin. | CLM-014, CLM-053 |
+| `CLM-055` | `candidate_proved` | `canonical-derivations` | The globally regular-lifting canonical combinations are exactly target logarithmic derivations along the reduced ramified branch divisor; a branch Hamiltonian always supplies one, while a nonzero affine-linear logarithmic field need not exist simultaneously at all components. | CLM-053 |
+| `CLM-056` | `candidate_proved` | `canonical-derivations` | Regular extension of a canonical or logarithmic derivation does not by itself imply local finiteness, completeness, or algebraic G_a/G_m integration. | CLM-053, CLM-055 |
+| `CLM-057` | `open_bridge` | `canonical-derivations` | Produce from the Keller boundary data a nonzero locally finite logarithmic target field whose regular lift preserves the source open U, or prove the radial tangency conditions directly; then bind the resulting algebraic action to the exact equivariant Keller theorem. | CLM-003, CLM-014, CLM-015, CLM-053, CLM-054, CLM-055, CLM-056 |
+
+## Issue #5 synchronization note
+
+`CLM-023` is narrowed to the exact residue statement and explicitly denies control of higher principal parts. `CLM-052`–`CLM-056` record the candidate local algebra, logarithmic lifting, radial obstruction, global compatibility, and integration countercontrol. `CLM-057` is the remaining open bridge. None of these issue #5 entries has independent review.

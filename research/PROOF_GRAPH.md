@@ -14,8 +14,8 @@
 | `OPEN-UNRAMIFIED-INDEX` | Eliminate the moving index divisor in the unramified locus | `leaf` | `open` | leaf-packets/L01-unramified-index-elimination.md |
 | `BR-STABLE-LATTICE` | Finite differential order route | `branch` | `open` | tracks/d-stable-differential-lattice.md |
 | `OPEN-STABLE-ORDER` | Construct a finite B-order stable under D_P,D_Q | `leaf` | `open` | leaf-packets/L02-stable-order.md |
-| `BR-RADIAL` | Canonical radial-field pole elimination | `branch` | `open` | tracks/b-canonical-derivations.md |
-| `OPEN-BOUNDARY-POLE` | Remove poles of one lifted radial field on Y | `leaf` | `open` | leaf-packets/L03-radial-pole-elimination.md |
+| `BR-RADIAL` | Canonical radial/logarithmic field completion | `branch` | `blocked` | tracks/b-canonical-derivations.md |
+| `OPEN-BOUNDARY-POLE` | Force an integrable logarithmic lift after radial pole classification | `leaf` | `blocked` | leaf-packets/L03-radial-pole-elimination.md |
 | `BR-QUASI-ALBANESE` | Intrinsic torus-complement route | `branch` | `open` | tracks/e-quasi-albanese-log-geometry.md |
 | `OPEN-QA-FINITE` | Prove the intrinsic quasi-Albanese map is finite | `leaf` | `open` | leaf-packets/L04-quasi-albanese-finiteness.md |
 | `BR-GAUSS-MANIN` | Generic-fiber puncture and connection route | `branch` | `open` | tracks/f-gauss-manin-generic-fibers.md |
@@ -64,6 +64,7 @@
 | `RED-SYMPLECTIC` | `OPEN-SYMPLECTIC` | `requires` |
 | `BR-MONOGENIC` | `OPEN-UNRAMIFIED-INDEX` | `requires` |
 | `BR-STABLE-LATTICE` | `OPEN-STABLE-ORDER` | `requires` |
+| `OPEN-SYMPLECTIC` | `OPEN-BOUNDARY-POLE` | `supports` |
 | `BR-RADIAL` | `OPEN-BOUNDARY-POLE` | `requires` |
 | `BR-QUASI-ALBANESE` | `OPEN-QA-FINITE` | `requires` |
 | `BR-GAUSS-MANIN` | `OPEN-PUNCTURE` | `requires` |
@@ -78,7 +79,7 @@
 | `CTL-LITERATURE` | `BR-FILTERED-EQUIVARIANCE` | `supports` |
 | `OPEN-UNRAMIFIED-INDEX` | `TERM-DEGREE-ONE` | `sufficient-if-closed` |
 | `OPEN-STABLE-ORDER` | `TERM-DEGREE-ONE` | `sufficient-if-closed` |
-| `OPEN-BOUNDARY-POLE` | `TERM-DEGREE-ONE` | `sufficient-if-closed` |
+| `OPEN-BOUNDARY-POLE` | `TERM-DEGREE-ONE` | `supports` |
 | `OPEN-QA-FINITE` | `TERM-DEGREE-ONE` | `sufficient-if-closed` |
 | `OPEN-PUNCTURE` | `TERM-DEGREE-ONE` | `sufficient-if-closed` |
 | `OPEN-GRADED-REDUCTION` | `TERM-DEGREE-ONE` | `sufficient-if-closed` |
@@ -99,3 +100,9 @@
 An edge marked `sufficient-if-closed` means the leaf is intended to provide a complete route to degree one. It does not mean the leaf is close to solved. Context and control nodes cannot by themselves establish the goal.
 
 The defect-4 leaf is a scoped subproblem supporting the full graded-reduction leaf. Closing defect 4 alone is not represented as sufficient for `JC_2`.
+
+## Issue #5 synchronization
+
+Issue #5 proves at candidate scope that height-one regularity is exactly logarithmic tangency and that normality removes a separate codimension-two pole obstruction. For the standard radial field, regularity is equivalent to every reduced ramified branch component being a line through the target origin. The exact-symplectic leaf now supports this classification.
+
+The radial leaf and branch are marked `blocked` because the actual branch tangency, local finiteness, algebraic integration, and invariance of the source open remain unproved. The former direct `sufficient-if-closed` edge to degree one is therefore weakened to `supports`; regularity alone is not terminal.
