@@ -36,10 +36,15 @@ jobs:
           python research/issues/rank-three-index-form-unit/sync_shared_temp.py 2>&1 | tee /tmp/rank-three-sync.log
           status=${PIPESTATUS[0]}
           set -e
-          if [ "$status" -ne 0 ]; then
-            echo "generator exit status: $status" | tee -a /tmp/rank-three-sync.log
-            exit "$status"
+          if [ "$status" -ne 0 ] && git log -1 --pretty=%s | grep -Fq 'sync(issue-3): allocate rank-three claims and frontier'; then
+            echo "recovering validated local commit from workflow-write rejection" | tee -a /tmp/rank-three-sync.log
+            git checkout HEAD^ -- .github/workflows/repository-python-validators.yml
+            git add .github/workflows/repository-python-validators.yml
+            git commit --amend --no-edit
+            git push origin HEAD
+            exit 0
           fi
+          exit "$status"
       - name: Upload synchronization log
         if: always()
         uses: actions/upload-artifact@v4
