@@ -2,7 +2,7 @@
 
 > **Authority:** `MUTABLE_NONAUTHORITATIVE`  
 > **Issue:** [#1](https://github.com/snissn/planar-jacobian/issues/1)  
-> **Branch:** `issue-1/synchronized-findings`  
+> **Mainline checkpoint:** `main`  
 > **Protocol verdict:** `null`
 
 ## Scientific status
