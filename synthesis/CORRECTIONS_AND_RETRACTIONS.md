@@ -17,3 +17,4 @@ This register prevents attractive but invalid statements from silently returning
 13. **A polynomial sl2 triple need not integrate algebraically.** The affine translation radical and completeness matter.
 14. **The three-dimensional construction does not imply that every counterexample must have a comparable symmetry.** It supplies mechanisms and test cases only.
 15. **Large validation or mutation counts do not increase theorem strength.** Structural checks are process evidence, not mathematical proof.
+16. **The defect-four middle Wronskian is not declared universally removable.** Same-index determinant-one target changes preserve it, and graded symplectic source changes pull it back. The scoped candidate closes defect four through complete top-layer descent and earlier-stair support contradictions, not through a standalone Wronskian normal form.
