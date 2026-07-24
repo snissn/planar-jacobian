@@ -1,0 +1,55 @@
+name: Materialize reconciliation snapshots
+
+on:
+  push:
+    branches:
+      - maintenance/reconcile-rich-baseline-gpt56
+
+permissions:
+  contents: read
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out current main snapshot
+        uses: actions/checkout@v4
+        with:
+          ref: d132adc131533776509075ee70829ab34aa60f53
+          path: snapshots/main
+          fetch-depth: 1
+
+      - name: Check out PR 15 rich baseline
+        uses: actions/checkout@v4
+        with:
+          ref: 296867d82d09d51ef2386de2a62067408b7f949c
+          path: snapshots/rich
+          fetch-depth: 1
+
+      - name: Check out defect-4 candidate
+        uses: actions/checkout@v4
+        with:
+          ref: 96fc7ec34bd3b685a0edeae7ecd4404abab7e2f1
+          path: snapshots/defect4
+          fetch-depth: 1
+
+      - name: Record pinned revisions
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            echo "main=d132adc131533776509075ee70829ab34aa60f53"
+            echo "rich=296867d82d09d51ef2386de2a62067408b7f949c"
+            echo "defect4=96fc7ec34bd3b685a0edeae7ecd4404abab7e2f1"
+          } > snapshots/PINNED_REFS.txt
+          find snapshots -name .git -type d -prune -exec rm -rf {} +
+
+      - name: Upload source snapshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: reconciliation-source-snapshots
+          path: snapshots
+          if-no-files-found: error
+          retention-days: 1
+          include-hidden-files: true
