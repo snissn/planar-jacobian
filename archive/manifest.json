@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "exports": [
+    {
+      "id": "conversation-a",
+      "original_filename": "chatgpt-export-2026-07-24.md",
+      "messages": 226,
+      "raw_bytes": 485597,
+      "raw_sha256": "57027fa47200934f1ebe5c2444695207bb07d4aca26e6c42d4e80c6d080695af",
+      "gzip_bytes": 148542,
+      "gzip_sha256": "0a2f4e210df054d22c1dabf7347225d0668247421c4b2acbbb82c61fd5719a7d",
+      "base64_chunk_paths": [
+        "archive/conversations/a-part-000.b64",
+        "archive/conversations/a-part-001.b64",
+        "archive/conversations/a-part-002.b64",
+        "archive/conversations/a-part-003.b64",
+        "archive/conversations/a-part-004.b64",
+        "archive/conversations/a-part-005.b64",
+        "archive/conversations/a-part-006.b64",
+        "archive/conversations/a-part-007.b64",
+        "archive/conversations/a-part-008.b64",
+        "archive/conversations/a-part-009.b64",
+        "archive/conversations/a-part-010.b64",
+        "archive/conversations/a-part-011.b64",
+        "archive/conversations/a-part-012.b64",
+        "archive/conversations/a-part-013.b64"
+      ]
+    },
+    {
+      "id": "conversation-b",
+      "original_filename": "chatgpt-export-2026-07-24(2).md",
+      "messages": 78,
+      "raw_bytes": 184647,
+      "raw_sha256": "170c7fdbfb9234ebc9c1e3c31f7f6f1e2ad261f2622403e49c08adec2db692aa",
+      "gzip_bytes": 57907,
+      "gzip_sha256": "c6819f53aab7e6427859968a237ba863ddf20c169be040f712cc786b57696996",
+      "base64_chunk_paths": [
+        "archive/conversations/b-part-000.b64",
+        "archive/conversations/b-part-001.b64",
+        "archive/conversations/b-part-002.b64",
+        "archive/conversations/b-part-003.b64",
+        "archive/conversations/b-part-004.b64",
+        "archive/conversations/b-part-005.b64"
+      ]
+    }
+  ]
+}
