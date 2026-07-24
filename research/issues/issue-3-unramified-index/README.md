@@ -118,8 +118,8 @@ that etaleness input.
 - [`verify_index_models.py`](verify_index_models.py): optional exact SymPy
   recomputation of multiplication, index, discriminant, Vandermonde, and
   open-plane Jacobian identities.
-- [`ARTIFACT-MANIFEST.sha256`](ARTIFACT-MANIFEST.sha256): SHA-256 manifest of
-  the issue-scoped candidate bytes, excluding the manifest itself.
+- [`PROVENANCE-MANIFEST.md`](PROVENANCE-MANIFEST.md): exact Git blob IDs for
+  the issue-scoped candidate files, excluding the manifest itself.
 
 ## Scientific boundary
 
