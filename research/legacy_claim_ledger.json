@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "source_repository": "snissn/planar-jacobian",
+  "source_ref": "main@7dada3a5d0c6c0bf0f40208b30215c495e17ee28",
+  "source_path": "research/CLAIM_LEDGER.md",
+  "authority_note": "Historical coarse-status ledger retained during reconciliation. It is not a second authoritative claim ledger and must not be used as a dependency surface.",
+  "legacy_status_vocabulary": ["LITERATURE", "CANDIDATE", "CONDITIONAL", "BLOCKED", "RETIRED", "FROZEN_ACCEPTED"],
+  "status_migration": [
+    {
+      "legacy_status": "LITERATURE",
+      "canonical_treatment": "literature_bound",
+      "rule": "Retain exact source binding and hypotheses; the migration itself supplies no theorem authority."
+    },
+    {
+      "legacy_status": "CANDIDATE",
+      "canonical_treatment": "candidate or candidate_proved",
+      "rule": "Choose only from the proof packet already present; migration does not strengthen the claim."
+    },
+    {
+      "legacy_status": "CONDITIONAL",
+      "canonical_treatment": "candidate, candidate_proved, or literature_bound with hypotheses recorded",
+      "rule": "There is no automatic one-to-one conversion. Preserve every additional hypothesis."
+    },
+    {
+      "legacy_status": "BLOCKED",
+      "canonical_treatment": "open_bridge",
+      "rule": "The missing implication remains explicitly unproved."
+    },
+    {
+      "legacy_status": "RETIRED",
+      "canonical_treatment": "retired",
+      "rule": "Retirement is preserved without reuse as a positive dependency."
+    },
+    {
+      "legacy_status": "FROZEN_ACCEPTED",
+      "canonical_treatment": "separate reviewed/frozen metadata plus an appropriate canonical claim status",
+      "rule": "Acceptance and freeze are evidence/authority axes, not replacements for the canonical claim-status taxonomy. No reconciled legacy claim carried this status."
+    }
+  ],
+  "claims": [
+    {
+      "id": "LIT-GRADED-01",
+      "statement": "Every nontrivially G_m-equivariant planar Keller map is an automorphism for every sign pattern of the weights.",
+      "legacy_status": "LITERATURE",
+      "notes": "T. Shaska, arXiv:2607.20210.",
+      "canonical_links": [{"claim_id": "CLM-016", "relation": "equivalent_scope"}]
+    },
+    {
+      "id": "LIT-LIE-01",
+      "statement": "Algebraicity/conjugacy of the canonical Keller-induced affine Lie algebra would imply the planar Jacobian conjecture.",
+      "legacy_status": "LITERATURE",
+      "notes": "Regeta lane; verify exact theorem statement before reuse.",
+      "canonical_links": [{"claim_id": "CLM-015", "relation": "overlaps"}]
+    },
+    {
+      "id": "C-REES-01",
+      "statement": "For positive weight w=(p,q), the Rees deformation satisfies J(Pcal,Qcal)=t^kappa, where kappa=deg_w P+deg_w Q-p-q.",
+      "legacy_status": "CANDIDATE",
+      "notes": "Direct chain-rule identity; requires adversarial sign/normalization audit.",
+      "canonical_links": [{"claim_id": "CLM-047", "relation": "component_of"}]
+    },
+    {
+      "id": "C-STAIR-01",
+      "statement": "Weighted layers satisfy sum_{i+j=n}J(P_i,Q_j)=0 for n<kappa and =1 for n=kappa.",
+      "legacy_status": "CANDIDATE",
+      "notes": "Formal coefficient comparison from C-REES-01.",
+      "canonical_links": [{"claim_id": "CLM-047", "relation": "component_of"}]
+    },
+    {
+      "id": "C-RESONANCE-01",
+      "statement": "Some resonant pair (P_i,Q_j), i+j=kappa, has nonzero constant Jacobian and hence is an exactly graded automorphism.",
+      "legacy_status": "CANDIDATE",
+      "notes": "Uses positivity of source weights so weight-zero polynomials are constants, then LIT-GRADED-01.",
+      "canonical_links": [{"claim_id": "CLM-048", "relation": "equivalent_scope"}]
+    },
+    {
+      "id": "C-TOP-RESONANCE-01",
+      "statement": "If a resonant constant-Jacobian pair uses a top layer (i=0 or j=0), the original map is an automorphism.",
+      "legacy_status": "CANDIDATE",
+      "notes": "Lower-weight monomial classification after graded normalization must be audited.",
+      "canonical_links": [{"claim_id": "CLM-049", "relation": "equivalent_scope"}]
+    },
+    {
+      "id": "C-DEFECT-LE3",
+      "statement": "If kappa_w<=3 for some positive primitive weight, then the Keller map is an automorphism.",
+      "legacy_status": "CANDIDATE",
+      "notes": "Conversation-derived case analysis; highest-priority adversarial audit.",
+      "canonical_links": [{"claim_id": "CLM-050", "relation": "equivalent_scope"}]
+    },
+    {
+      "id": "B-DEFECT-4",
+      "statement": "Defect 4 contains a middle Wronskian such as J(P_1,Q_1) that defeats the lower-defect line-pencil reduction.",
+      "legacy_status": "BLOCKED",
+      "notes": "Legacy active leaf description.",
+      "canonical_links": [{"claim_id": "CLM-051", "relation": "coordination_overlap"}]
+    },
+    {
+      "id": "C-PRINCIPAL-DIFFERENT",
+      "statement": "A principal Kähler different for the finite normalization forces the original Keller map to be an automorphism.",
+      "legacy_status": "CANDIDATE",
+      "notes": "Short localization/unit argument; audit Fitting-base-change and finite-etale steps.",
+      "canonical_links": [
+        {"claim_id": "CLM-008", "relation": "related_to"},
+        {"claim_id": "CLM-009", "relation": "related_to"}
+      ]
+    },
+    {
+      "id": "C-CI-NORMALIZATION",
+      "statement": "A globally monogenic or relative complete-intersection normalization forces invertibility.",
+      "legacy_status": "CANDIDATE",
+      "notes": "Consequence of C-PRINCIPAL-DIFFERENT.",
+      "canonical_links": [
+        {"claim_id": "CLM-008", "relation": "overlaps"},
+        {"claim_id": "CLM-009", "relation": "overlaps"}
+      ]
+    },
+    {
+      "id": "C-LOCAL-FINITE-EULER",
+      "statement": "Local finiteness of the canonical pulled-back Euler/hyperbolic derivation forces invertibility.",
+      "legacy_status": "CANDIDATE",
+      "notes": "Uses algebraic torus linearization and weight analysis.",
+      "canonical_links": [{"claim_id": "CLM-015", "relation": "overlaps"}]
+    },
+    {
+      "id": "C-BRIESKORN-FINITE",
+      "statement": "Finiteness of one relative Brieskorn module over its pencil coordinate forces invertibility.",
+      "legacy_status": "CANDIDATE",
+      "notes": "Gauss--Manin regularity step needs careful source binding and audit.",
+      "canonical_links": [
+        {"claim_id": "CLM-020", "relation": "related_to"},
+        {"claim_id": "CLM-021", "relation": "overlaps"}
+      ]
+    },
+    {
+      "id": "B-BOUNDARY-GLUING",
+      "statement": "Local primitive elements/differents at boundary divisors need not glue globally; proving principalization is a missing bridge.",
+      "legacy_status": "BLOCKED",
+      "notes": "Common endpoint of normalization, puncture, and symmetry lanes.",
+      "canonical_links": [
+        {"claim_id": "CLM-023", "relation": "related_to"},
+        {"claim_id": "CLM-031", "relation": "related_to"}
+      ]
+    },
+    {
+      "id": "R-EULER-EXCESS",
+      "statement": "d=1+sum e_i+C_boundary for a finite normalization.",
+      "legacy_status": "RETIRED",
+      "notes": "Contradicted by the cusp model and based on an invalid Euler decomposition.",
+      "canonical_links": [{"claim_id": "CLM-040", "relation": "related_retirement"}]
+    },
+    {
+      "id": "R-GENERIC-KUMMER",
+      "statement": "A finite Kummer cover on a generic PQ fiber makes L/K cyclic Galois.",
+      "legacy_status": "RETIRED",
+      "notes": "Fiberwise cyclicity does not imply the full two-dimensional extension is Galois.",
+      "canonical_links": []
+    },
+    {
+      "id": "R-EXACT-FORM-PRINCIPAL",
+      "statement": "Exactness of the canonical two-form forces its zero divisor/canonical class to vanish.",
+      "legacy_status": "RETIRED",
+      "notes": "Explicit Wright-type examples can have an exact canonical form with nonzero boundary divisor.",
+      "canonical_links": [{"claim_id": "CLM-041", "relation": "equivalent_retirement"}]
+    },
+    {
+      "id": "R-NUMERICAL-FRAMEWORK",
+      "statement": "Picard/intersection framework data alone force simplicity or realizability.",
+      "legacy_status": "RETIRED",
+      "notes": "Numerical data do not determine puncture/braid monodromy or global polynomial gluing.",
+      "canonical_links": []
+    }
+  ]
+}

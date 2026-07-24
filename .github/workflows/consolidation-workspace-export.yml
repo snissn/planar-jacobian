@@ -1,0 +1,23 @@
+name: Consolidation Workspace Export
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Package candidate tree
+        run: tar --exclude=.git -czf /tmp/consolidation-workspace.tar.gz .
+      - name: Upload candidate tree
+        uses: actions/upload-artifact@v4
+        with:
+          name: consolidation-workspace-${{ github.event.pull_request.head.sha }}
+          path: /tmp/consolidation-workspace.tar.gz
+          if-no-files-found: error
+          retention-days: 2

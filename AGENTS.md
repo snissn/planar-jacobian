@@ -1,52 +1,64 @@
-# Agent Instructions
+# Agent Operating Protocol
 
-This repository uses the [`scientific-mainline-workflow`](https://github.com/snissn/skills/tree/main/scientific-mainline-workflow) from [`snissn/skills`](https://github.com/snissn/skills), with repository-specific review and tool rules in [`governance/SCIENTIFIC-WORKFLOW.md`](governance/SCIENTIFIC-WORKFLOW.md).
+This repository follows the pinned upstream scientific workflow together with repository-specific governance. Read [`governance/AUTHORITY-HIERARCHY.md`](governance/AUTHORITY-HIERARCHY.md) before resolving any conflict between documents.
 
-Before scientific work:
+## Resume order
 
-1. Read the upstream skill at [`scientific-mainline-workflow/SKILL.md`](https://github.com/snissn/skills/blob/main/scientific-mainline-workflow/SKILL.md).
-2. Read [`governance/SCIENTIFIC-WORKFLOW.md`](governance/SCIENTIFIC-WORKFLOW.md) and the upstream scientific review checklist.
-3. Read [`STATUS.md`](STATUS.md), [`research/PROGRAM.md`](research/PROGRAM.md), and [`research/CLAIM_LEDGER.md`](research/CLAIM_LEDGER.md).
-4. Use the connected GitHub adapter for repository operations whenever it is available and supports the required action.
-5. Work from the active issue and an issue-scoped feature branch.
-6. Treat feature-branch scientific prose as `MUTABLE_NONAUTHORITATIVE` unless a documented review records `ACCEPT` for the claim at a pinned repository revision.
+1. Read [`STATUS.md`](STATUS.md) and [`governance/REPOSITORY-MAP.md`](governance/REPOSITORY-MAP.md).
+2. Read [`research/PROGRAM.md`](research/PROGRAM.md).
+3. Select exactly one open leaf from [`research/WORK_QUEUE.md`](research/WORK_QUEUE.md).
+4. Read its canonical leaf packet, graph node, claim dependencies, track, and relevant corrections.
+5. Read the governing GitHub issue for coordination changes after the pinned base.
+6. Audit every load-bearing external theorem against primary sources before reuse.
+7. Follow [`governance/PARALLEL-AGENT-POLICY.md`](governance/PARALLEL-AGENT-POLICY.md) before creating or updating a branch.
 
-## Claim discipline
+## Authority and status discipline
 
-Every maintained mathematical statement must have one status:
+The machine-readable claim ledger, proof graph, and work queue are canonical for their respective fields. Generated Markdown views must be regenerated rather than edited directly.
 
-- `LITERATURE`: source-bound statement attributed to a primary source;
-- `CANDIDATE`: self-contained derivation awaiting documented adversarial review;
-- `CONDITIONAL`: proved only under named additional hypotheses;
-- `BLOCKED`: load-bearing implication not proved;
-- `RETIRED`: false, circular, or dependent on an invalid step;
-- `FROZEN_ACCEPTED`: reviewed scientific content accepted at a pinned revision and integrated under the scientific workflow.
+Do not conflate:
 
-Do not upgrade a claim because symbolic experiments agree with it. Do not cite conversation prose as theorem authority. Recompute load-bearing algebra independently and record all hidden hypotheses.
+- mutable research prose;
+- a `literature_bound` claim;
+- a theorem candidate;
+- an accepted review record;
+- frozen scientific content;
+- engineering validation; or
+- provenance-only material.
+
+A review disposition does not by itself rewrite the claim ledger. A freeze does not change a claim’s mathematical statement. A green validator does not review mathematics.
 
 ## Review discipline
 
-A distinct human reviewer, agent, or subagent is preferred when available, but it is not mandatory. If the environment cannot provide a distinct reviewer or does not support subagents, the constructing assistant may perform a separate local adversarial review pass.
+A distinct reviewer is preferred, but a declared `local-adversarial-review` is permitted when the environment cannot provide another reviewer or subagent. Shared constructor/reviewer identity is not, by itself, a reason to return `BLOCK`.
 
-Do not return `BLOCK` solely because the same assistant performed construction and review. A local review must declare `local-adversarial-review`, identify the reviewed claim and pinned commit or revision, recompute the load-bearing steps, test edge cases and countermodels, record validations and unresolved risks, and return an explicit `ACCEPT` or `BLOCK` for the stated scope.
-
-Exact-byte manifests and artifact hashes are optional. Any material change to an accepted statement, proof, computation, transformation, dependency, or counterexample requires review of the affected scope; purely editorial or metadata changes do not automatically invalidate acceptance.
+Every review must identify the claim and pinned revision, declare its mode, recompute load-bearing steps, test edge cases and countermodels, record unresolved risks, and return an explicit scoped `ACCEPT` or `BLOCK`. Exact-byte manifests and hashes are optional provenance. Material scientific changes require renewed review of the affected scope; editorial or metadata-only changes do not automatically invalidate a review.
 
 ## Repository operations
 
-- Prefer the connected GitHub adapter for reads and writes, branch creation, commits, issues, pull requests, and review metadata.
-- Fall back to local `git`, `gh`, or another repository mechanism only when the adapter is unavailable or does not support the operation.
-- Record the branch and resulting commit or pull request in the handoff. Repository transport does not by itself change scientific authority.
+- Prefer the connected GitHub adapter whenever it supports the required operation.
+- Confirm the repository, permissions, base SHA, branch head, and changed-path scope before writing.
+- Use non-forced updates. Never overwrite another agent’s branch, rewrite published history, or delete source branches as a synchronization shortcut.
+- Keep issue-scoped scientific work separate from final shared-ledger synchronization.
+- Treat a pushed branch and pull request as development provenance, not theorem authority.
 
-## Current lane
+## Validation
 
-The active technical lane is [`research/tracks/filtered-equivariance.md`](research/tracks/filtered-equivariance.md). Its load-bearing task is the defect-4 staircase packet in [`research/leaf-packets/defect-4-staircase.md`](research/leaf-packets/defect-4-staircase.md).
+Run:
 
-The preferred next artifact is an adversarial audit of the claimed `kappa_w <= 3` argument followed by a complete classification of the defect-4 resonance patterns. A valid outcome may be a theorem, a scoped obstruction, a counterexample to the candidate reduction, or a precise blocked implication.
+```bash
+python3 -m compileall -q scripts
+python3 scripts/render_views.py --check
+python3 scripts/validate_repository.py
+python3 scripts/frontier.py
+```
 
-## Commit and push policy
+Use the repository GitHub Actions validator at the exact proposed integration SHA. Record its run ID and conclusion. These checks validate JSON, generated views, graph closure, artifact paths, leaf contracts, archive declarations, and internal Markdown paths. They do not validate mathematical truth.
 
-- Commit and push coherent non-decisive work to the issue branch.
-- Keep theorem candidates visibly mutable and non-authoritative until accepted review and promotion.
-- Do not merge scientific promotion changes to `main` without a documented review at a pinned revision and the validations required by the local workflow.
-- Do not use a pull request merely as a substitute for theorem review unless repository policy or the user separately requests one.
+## Required handoff
+
+Record the pinned starting revision, issue and branch, unique artifact directory, claim IDs touched, exact formulas or source statements used, countercontrols tested, validation commands, review state, final synchronization commit, remaining conflict risks, and the smallest next action.
+
+## Nonclaims
+
+Do not describe this repository as a proof of the planar Jacobian conjecture. Do not use the three-dimensional marked-root construction as authority for a planar necessity statement. Do not infer global symmetry from multiple sheets. Do not promote a candidate merely because a review proposal, symbolic check, or CI run exists.

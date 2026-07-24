@@ -1,13 +1,13 @@
 # Scientific Workflow Reference
 
-This repository uses the scientific repository workflow maintained at:
+This repository uses the scientific-mainline workflow maintained at:
 
 - repository: <https://github.com/snissn/skills>
 - skill directory: <https://github.com/snissn/skills/tree/main/scientific-mainline-workflow>
 - skill file: <https://github.com/snissn/skills/blob/main/scientific-mainline-workflow/SKILL.md>
-- scientific review checklist: <https://github.com/snissn/skills/blob/main/scientific-mainline-workflow/references/scientific-review-checklist.md>
+- review checklist: <https://github.com/snissn/skills/blob/main/scientific-mainline-workflow/references/scientific-review-checklist.md>
 
-The workflow version consulted for the current branch is pinned to:
+The repository-specific workflow was reconciled against:
 
 ```text
 snissn/skills@0a6876bc72be73295a3772733d87293fcf4d3b35
@@ -15,57 +15,48 @@ snissn/skills@0a6876bc72be73295a3772733d87293fcf4d3b35
 
 ## Repository-specific authority
 
-The upstream skill supplies the default process. This file is authoritative for repository-specific tool use and review mechanics. Where this file explicitly differs from the pinned upstream workflow, this file governs work in `snissn/planar-jacobian`.
+The upstream workflow supplies general process. [`AUTHORITY-HIERARCHY.md`](AUTHORITY-HIERARCHY.md) and this file govern explicit repository-specific mechanics.
 
 ## GitHub operations
 
-- Use the connected GitHub adapter for repository reads and writes, branch creation, commits, issues, pull requests, and review metadata whenever it is available and supports the required operation.
-- Fall back to local `git`, `gh`, or another repository mechanism only when the adapter is unavailable or does not support the operation.
-- Tool choice does not confer scientific authority. A pushed commit or pull request remains development provenance until the relevant scientific review and promotion gates are satisfied.
+- Use the connected GitHub adapter for repository reads and writes, branches, commits, issues, pull requests, comments, and review metadata whenever it supports the operation.
+- Fall back to local `git`, `gh`, or another mechanism only for a capability gap.
+- Confirm repository permissions, pinned base, current head, and changed-path scope before writing.
+- Use non-forced ref updates. Do not rewrite published history, delete source branches, or overwrite another agent’s branch.
+- Tool choice and transport success carry no scientific authority.
 
-## Applied rules
+## Applied workflow
 
-- Use an issue-scoped feature branch as the durable mutable surface.
-- Commit and push coherent non-decisive scientific iterations.
-- Mark mutable work `MUTABLE_NONAUTHORITATIVE` with `protocol_verdict: null`.
-- Keep theorem candidates distinct from literature results, blocked implications, and retired claims.
-- Bind scientific review to an identified claim and a pinned repository revision.
-- Do not use a pull request as a substitute for adversarial theorem review.
-- Integrate to `main` only after the review, validation, synchronization, and freeze gates below are satisfied.
+1. Select one canonical leaf and governing issue.
+2. Pin the starting revision and create an issue-scoped branch.
+3. Use a unique artifact directory and avoid shared-ledger edits during construction.
+4. Commit coherent `MUTABLE_NONAUTHORITATIVE` work.
+5. Bind review to identified claims at a pinned revision.
+6. Prefer a distinct reviewer; permit declared `local-adversarial-review` when necessary.
+7. Apply accepted scientific deltas only in a final synchronization commit against the latest canonical baseline.
+8. Regenerate machine-derived views and run local structural validation.
+9. Run the repository GitHub Actions validator at the exact proposed integration SHA.
+10. Integrate without material unreviewed scientific changes.
 
-## Review modes
+The detailed concurrency rules are in [`PARALLEL-AGENT-POLICY.md`](PARALLEL-AGENT-POLICY.md).
 
-A distinct human reviewer, agent, or subagent is preferred when one is available. It is not an absolute requirement.
+## Review binding and revisions
 
-If the execution environment does not support subagents or a distinct reviewer, the constructing assistant may perform a separate local adversarial review pass. That review must not be marked `BLOCK` solely because the same assistant performed construction and review.
+Review records must identify their mode, claims, files, dependencies, and pinned revision; recompute load-bearing steps; test countercontrols; record risks; and return `ACCEPT` or `BLOCK` for the declared scope.
 
-Every review record must:
+Shared constructor/reviewer identity alone is not a blocker. Exact-byte manifests and hashes are optional provenance rather than universal acceptance gates. Material scientific changes require renewed review; editorial or metadata-only changes do not automatically invalidate a review.
 
-1. declare its mode as `independent-review` or `local-adversarial-review`;
-2. identify the claim IDs, statements, proof files, and dependencies in scope;
-3. identify the reviewed commit SHA or other unambiguous repository revision;
-4. recompute load-bearing identities rather than merely restating the construction;
-5. test stated edge cases and plausible countermodels;
-6. record validation commands and results;
-7. list unresolved risks; and
-8. issue an explicit `ACCEPT` or `BLOCK` disposition for the declared scope.
+## Validation and CI
 
-A local adversarial review may support promotion when no distinct reviewer is available, unless an issue, maintainer decision, or claim-specific policy imposes a stricter gate. A claim presented as a proof of `JC_2` additionally requires explicit maintainer approval and accepted reviews of every load-bearing dependency.
+Run locally:
 
-## Revision binding
+```bash
+python3 -m compileall -q scripts
+python3 scripts/render_views.py --check
+python3 scripts/validate_repository.py
+python3 scripts/frontier.py
+```
 
-Exact-byte manifests and artifact hashes are optional evidence, not mandatory workflow gates. Review acceptance is bound to the identified claim at the pinned repository revision.
+The exact-commit fallback is [`.github/workflows/repository-python-validators.yml`](../.github/workflows/repository-python-validators.yml). Preserve the tested commit SHA, run ID, conclusion, and logs in the pull-request or issue handoff.
 
-Editorial, formatting, link, or metadata changes do not automatically invalidate an accepted review when they do not alter the reviewed mathematical content. Any material change to a reviewed statement, hypothesis, proof step, computation, transformation, dependency, or counterexample requires a new review of the affected scope.
-
-## Promotion and merge
-
-A `CANDIDATE` may become `FROZEN_ACCEPTED` when:
-
-- the reviewed statement and proof scope are explicit;
-- a review record meeting the requirements above returns `ACCEPT`;
-- required validations pass;
-- the claim ledger, proof graph, work queue, status files, and active leaf packet are synchronized as applicable; and
-- the accepted revision is integrated to `main` without unreviewed material changes to the accepted scientific content.
-
-The upstream skill remains the source of general process guidance; this file records the repository-specific adoption and overrides for adapter use, local-review fallback, and revision-level review binding.
+Structural validation checks repository consistency, identifiers, dependencies, artifact paths, generated views, archive declarations, and internal Markdown paths. It is not mathematical review, does not promote a claim, and does not issue a scientific verdict.

@@ -1,90 +1,69 @@
-# Follow-up Agent Prompt
-
-Use this prompt verbatim or adapt only the task-specific scope.
+# Reusable Scientific Agent Prompt
 
 ```text
-You are continuing a rigorous research program on the two-dimensional Jacobian conjecture.
-
-Repository:
+You are continuing a rigorous research program in:
   https://github.com/snissn/planar-jacobian
 
-Scientific workflow:
-  https://github.com/snissn/skills/tree/main/scientific-mainline-workflow
-  Read scientific-mainline-workflow/SKILL.md, its scientific review checklist,
-  and governance/SCIENTIFIC-WORKFLOW.md before changing any claim status.
-
-Repository operations:
-  - Use the connected GitHub adapter for repository reads and writes, branches,
-    commits, issues, pull requests, and review metadata whenever it is available
-    and supports the required operation.
-  - Fall back to local git or gh only when the adapter is unavailable or does not
-    support the operation.
-
-Operating context:
-  - Active issue: https://github.com/snissn/planar-jacobian/issues/1
-  - Mutable research branch: issue-1/synchronized-findings
-  - This branch is MUTABLE_NONAUTHORITATIVE.
-  - Do not claim that JC_2 is proved unless every load-bearing step has a
-    documented accepted review and the maintainer explicitly approves promotion.
-
-Review mode:
-  - A distinct reviewer or subagent is preferred when available.
-  - If the environment does not support subagents or another reviewer, perform a
-    separate local adversarial review pass and label it local-adversarial-review.
-  - Do not return BLOCK solely because the same assistant constructed and reviewed
-    the candidate.
-  - Bind the review to the claim and a pinned commit or repository revision.
-    Exact-byte manifests and artifact hashes are optional, not mandatory.
-  - Re-review any material change to a statement, proof, computation,
-    transformation, dependency, or counterexample.
+Resolve and record before acting:
+  - current default-branch SHA;
+  - governing issue number;
+  - canonical leaf ID and graph node;
+  - issue-scoped branch name;
+  - pinned starting revision;
+  - claim IDs and artifact paths in scope.
 
 Read in order:
-  1. README.md
-  2. STATUS.md
-  3. AGENTS.md
+  1. STATUS.md
+  2. governance/REPOSITORY-MAP.md
+  3. governance/AUTHORITY-HIERARCHY.md
   4. governance/SCIENTIFIC-WORKFLOW.md
-  5. research/PROGRAM.md
-  6. research/CLAIM_LEDGER.md
-  7. research/tracks/filtered-equivariance.md
-  8. research/leaf-packets/defect-4-staircase.md
-  9. research/SOURCES.md
+  5. governance/PARALLEL-AGENT-POLICY.md
+  6. AGENTS.md
+  7. research/PROGRAM.md
+  8. research/WORK_QUEUE.md
+  9. the selected leaf packet and track
+  10. research/CLAIM_LEDGER.md
+  11. research/PROOF_GRAPH.md
+  12. synthesis/CORRECTIONS_AND_RETRACTIONS.md
+  13. research/SOURCE_INVENTORY.md
 
-Primary task:
-  Adversarially audit the weighted Rees staircase and then resolve the first unproved filtered case, grading defect kappa=4.
+Authority and scope:
+  - MUTABLE_NONAUTHORITATIVE unless a narrower artifact says otherwise;
+  - protocol_verdict: null unless performing a declared scientific protocol;
+  - no repository file proves JC_2;
+  - conversation material is provenance and idea input, not theorem authority;
+  - structural validation is not mathematical review.
 
-Load-bearing equation in the central resonance pattern:
-  J(P_0,Q_2) + J(P_1,Q_1) + J(P_2,Q_0) = 0.
+Repository operations:
+  - prefer the connected GitHub adapter when supported;
+  - branch from the pinned start using issue-<number>/<bounded-description>;
+  - never overwrite or force-update another agent's branch;
+  - write issue-specific work in a unique artifact directory;
+  - do not edit shared ledgers or proof graphs until a final synchronization commit;
+  - before synchronization, fetch the latest canonical baseline and resolve shared
+    files manually.
 
-The middle Wronskian J(P_1,Q_1) is the first term absent from the lower-defect line-pencil argument. Determine whether it can always be:
-  (a) removed by a filtration-compatible target automorphism;
-  (b) removed by a filtered polynomial symplectic/source transformation;
-  (c) shown to force a forbidden Newton/Puiseux or boundary-monodromy configuration; or
-  (d) realized by a formal layer system that disproves the staircase-reduction ansatz.
+Scientific discipline:
+  - preserve exact hypotheses, quantifiers, fields, and degree conventions;
+  - distinguish literature-bound statements, candidates, open bridges, accepted
+    reviews, frozen content, engineering evidence, and provenance;
+  - try to falsify every proposed lemma;
+  - bind review to identified claims at a pinned revision;
+  - prefer an independent reviewer, but permit declared local-adversarial-review;
+  - do not return BLOCK solely because constructor and reviewer identities coincide;
+  - treat exact-byte hashes as optional provenance, not a universal review gate;
+  - obtain renewed review for material scientific changes only.
 
-Required scientific discipline:
-  - Independently recompute the Rees exponent and every staircase equation.
-  - Audit the candidate kappa<=3 proof before depending on it.
-  - Enumerate all defect-4 resonance positions: (1,3), (2,2), and (3,1), including missing layers and unequal positive weights.
-  - State exactly which source and target transformations are allowed and prove that they preserve J=1 and lower the declared defect.
-  - Treat conversation exports as provenance, not theorem authority.
-  - Do not use the retired boundary-excess identity, the retired generic-fiber-to-global-Kummer inference, or exact-form principalization.
-  - Search primary literature for weighted Keller maps, Newton inner polynomials, symplectic normal forms, and filtered/graded automorphism reductions.
-  - Try to falsify each candidate lemma before strengthening it.
+Required output:
+  - bounded issue-specific artifacts;
+  - primary-source bindings and hidden hypotheses;
+  - counterexamples and mutations tested;
+  - explicit claim-ledger/proof-graph delta proposal, if any;
+  - declared review mode and disposition, if review is performed;
+  - local validation results and exact GitHub Actions SHA/run when applicable;
+  - a final synchronization commit limited to shared metadata surfaces;
+  - a handoff naming what remains open.
 
-Expected output on an issue-scoped feature branch:
-  - a theorem candidate or scoped obstruction with explicit hypotheses;
-  - a complete case table for defect 4;
-  - exact derivations or symbolic identities for every load-bearing equation;
-  - an adversarial review note with ACCEPT/BLOCK disposition, declared review mode,
-    and a pinned commit or repository revision;
-  - updates to the claim ledger and active leaf packet;
-  - a pushed branch commit after every coherent non-decisive step.
-
-Acceptable outcomes:
-  1. prove all defect-4 cases reduce to smaller defect;
-  2. prove a substantial declared subclass reduces;
-  3. find a formal counterexample to the reduction ansatz;
-  4. isolate a strictly smaller invariant obstruction and prove the reduction to it.
-
-Do not broaden to arbitrary higher defects until defect 4 has an exact disposition. Do not rename the missing implication and present it as a theorem.
+Stop when the selected leaf's stop rule is met. Do not widen to another leaf or
+promote a stronger claim without a new issue, explicit scope, and required review.
 ```
