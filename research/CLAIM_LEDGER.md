@@ -50,8 +50,9 @@ The JSON file is authoritative for machine validation. Status definitions are in
 | `CLM-044` | `source_audit_required` | `low-degree-literature` | Several numerical low-degree frontiers stated in the logs conflict and must not be used until a primary-source audit is complete. | — |
 | `CLM-045` | `speculative` | `characteristic-p` | A characteristic-p/p-curvature route may convert the commuting frame into a finite-monodromy obstruction. | CLM-010 |
 | `CLM-046` | `open_bridge` | `equivariant-degeneration` | An equivariant degeneration route would need a no-escape theorem preserving degree and boundary type. | CLM-016 |
-| `CLM-047` | `candidate_proved` | `filtered-equivariance` | The positive-weight Rees deformation satisfies J(Pcal,Qcal)=t^kappa and yields the weighted staircase equations. | CLM-001 |
-| `CLM-048` | `candidate_proved` | `filtered-equivariance` | At least one resonant weighted layer pair has nonzero constant Jacobian and is an exact graded automorphism, subject to the hypotheses of CLM-016. | CLM-016, CLM-047 |
-| `CLM-049` | `candidate` | `filtered-equivariance` | A resonant pair touching a top weighted layer forces the full Keller map to be an automorphism. | CLM-048 |
-| `CLM-050` | `candidate` | `filtered-equivariance` | Every positive-weight Keller pair with grading defect kappa at most 3 reduces to the exact graded case and is an automorphism. | CLM-047, CLM-048, CLM-049 |
-| `CLM-051` | `open_bridge` | `filtered-equivariance` | At grading defect 4, eliminate or geometrically obstruct the middle Wronskian in every resonance pattern. | CLM-050 |
+| `CLM-047` | `candidate_proved` | `filtered-equivariance` | The positive-weight Rees deformation satisfies J(Pcal,Qcal)=t^kappa, yields every staircase equation, and has no nonzero bracket terms above the resonant stair. | CLM-001 |
+| `CLM-048` | `candidate_proved` | `filtered-equivariance` | Every nonzero resonant layer pair is an explicit weighted graded polynomial automorphism; one such pair exists because the resonant brackets sum to one. | CLM-047 |
+| `CLM-049` | `candidate_proved` | `filtered-equivariance` | A nonzero resonant pair touching a top weighted layer forces the full Keller map to be an automorphism. | CLM-048 |
+| `CLM-050` | `candidate_proved` | `filtered-equivariance` | Every positive-weight Keller pair with grading defect kappa at most 3 reduces by exact target descent or direct contradiction and is an automorphism. | CLM-047, CLM-048, CLM-049 |
+| `CLM-051` | `candidate_proved` | `filtered-equivariance` | At grading defect 4, each interior resonance (1,3), (2,2), and (3,1) either admits exact strict target descent or contradicts weighted support and the earlier staircase equations. | CLM-047, CLM-048, CLM-050 |
+| `CLM-052` | `candidate_proved` | `filtered-equivariance` | For any primitive positive weight w, a planar Keller pair with kappa_w at most 4 is a polynomial automorphism. | CLM-049, CLM-050, CLM-051 |
