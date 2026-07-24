@@ -25,6 +25,15 @@ A useful derivation can be committed as `MUTABLE_NONAUTHORITATIVE`. A decision-b
 - Do not use a pull request as a substitute for scientific review.
 - Do not merge a theorem candidate merely because repository validators pass; they validate structure, not mathematical truth.
 
+## GitHub adapter
+
+Before concluding that remote GitHub writes are unavailable, inspect the installed GitHub adapter and follow [`governance/GITHUB-ADAPTER.md`](governance/GITHUB-ADAPTER.md).
+
+- The adapter can create or inspect branches, write files and Git trees, create commits, move refs without force, and update issues or pull requests. A local `gh` binary is not required for those operations.
+- Confirm repository permissions and the exact branch/base before writing. Compare the branch with its pinned base and preserve pre-existing issue-scoped work.
+- For exact-byte scientific candidates, keep scientific bytes separate from later transport or governance notes. A transport edit must not be presented as independent mathematical acceptance.
+- Use the governing issue as the durable coordination surface. Do not open a PR merely because the adapter supports one when the scientific workflow does not require it.
+
 ## Leaf contract
 
 Each leaf has one load-bearing question, explicit dependencies and forbidden assumptions, accepted evidence, known failed approaches, required artifacts, a stop rule, and a handoff section. Do not widen a leaf silently. Open a new node when the proof burden changes.
