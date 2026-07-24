@@ -1,9 +1,13 @@
 name: Materialize canonical reconciliation
 
 on:
-  push:
+  pull_request:
     branches:
-      - maintenance/reconcile-rich-baseline-gpt56
+      - main
+    types:
+      - opened
+      - synchronize
+      - reopened
     paths:
       - .github/workflows/materialize-reconciliation-snapshots.yml
       - .github/reconciliation-payload/**
@@ -12,7 +16,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: materialize-reconciliation-${{ github.ref }}
+  group: materialize-reconciliation-${{ github.event.pull_request.head.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -20,15 +24,17 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
+      STAGING_SHA: ${{ github.event.pull_request.head.sha }}
+      BRANCH_NAME: ${{ github.event.pull_request.head.ref }}
       MAIN_SHA: 7dada3a5d0c6c0bf0f40208b30215c495e17ee28
       RICH_SHA: 296867d82d09d51ef2386de2a62067408b7f949c
       DEFECT4_SHA: 96fc7ec34bd3b685a0edeae7ecd4404abab7e2f1
       PAYLOAD_SHA256: 76b7bf7019a0a1f79789cf7739753306bad18b4ecbc9029a5bbafe5cdc1fba27
     steps:
-      - name: Check out staging revision
+      - name: Check out exact pull-request head
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.sha }}
+          ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
 
       - name: Assemble, validate, and publish the resolved tree
@@ -37,9 +43,9 @@ jobs:
         run: |
           set -euo pipefail
 
-          branch_ref="refs/heads/${GITHUB_REF_NAME}"
+          branch_ref="refs/heads/${BRANCH_NAME}"
           remote_head="$(git ls-remote origin "$branch_ref" | awk '{print $1}')"
-          test "$remote_head" = "$GITHUB_SHA"
+          test "$remote_head" = "$STAGING_SHA"
 
           git fetch --no-tags origin \
             "refs/heads/main:refs/remotes/origin/main" \
@@ -87,13 +93,13 @@ jobs:
             echo
             echo 'Resolved tree assembled from pinned current main and PR #15 rich baseline.'
             echo 'No mathematical statement or substantive claim status is changed.'
-          } | git commit-tree "$tree_sha" -p "$GITHUB_SHA" -p "$MAIN_SHA" -p "$RICH_SHA")"
+          } | git commit-tree "$tree_sha" -p "$STAGING_SHA" -p "$MAIN_SHA" -p "$RICH_SHA")"
 
           test "$(git rev-parse "$new_commit^{tree}")" = "$tree_sha"
-          test "$(git rev-list --parents -n 1 "$new_commit")" = "$new_commit $GITHUB_SHA $MAIN_SHA $RICH_SHA"
+          test "$(git rev-list --parents -n 1 "$new_commit")" = "$new_commit $STAGING_SHA $MAIN_SHA $RICH_SHA"
 
           remote_head="$(git ls-remote origin "$branch_ref" | awk '{print $1}')"
-          test "$remote_head" = "$GITHUB_SHA"
+          test "$remote_head" = "$STAGING_SHA"
           git push origin "$new_commit:$branch_ref"
 
           printf '%s\n' "$new_commit" > "$RUNNER_TEMP/integration-sha.txt"
