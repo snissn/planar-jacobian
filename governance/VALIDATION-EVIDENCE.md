@@ -1,95 +1,29 @@
-# Structural Validation Evidence
+# Validation Evidence Contract
 
-> **Scope:** repository consistency only  
-> **Mathematical truth:** not evaluated
+Validation is bound to an exact candidate SHA and records engineering/process evidence only.
 
-## Local environment
+## Required checks
 
-- Date: 2026-07-24
-- Python: `3.13.5`
-- Reconciled source tree: branch `maintenance/reconcile-rich-baseline-gpt56`
-- Pinned source refs: see [`RECONCILIATION-REPORT.md`](RECONCILIATION-REPORT.md)
+1. Python byte-compilation for all repository scripts and the issue #3 validator.
+2. JSON parsing for every JSON file.
+3. Prose/JSON generated-view consistency.
+4. Claim-ID uniqueness, dependency existence, and acyclic closure.
+5. Proof-graph node, edge, relation, review, and artifact-path checks.
+6. Active queue and disposition consistency, including exact coverage of every canonical `L##` packet.
+7. Internal Markdown link checks.
+8. Archive metadata and no-fabrication checks.
+9. Frontier rendering.
+10. Defect-four candidate symbolic regression.
+11. Independent defect-four review validator.
+12. Issue #3 symbolic countermodel validator.
+13. Issue #4 stable-order formula regression.
+14. Issue #5 principal-part/tangency regression.
+15. GitHub Actions on the exact integration candidate and final main SHA.
 
-## Commands and results
+## Recording
 
-```bash
-python3 -m compileall -q scripts
-```
+The Actions workflow prints the tested SHA, writes separate logs for each check, and uploads an artifact named with the SHA and run ID. The PR or issue #2 handoff records the run ID, conclusion, and artifact digest. The repository file cannot contain its own final commit SHA without becoming self-referential.
 
-Result: `PASS`.
+## Limits
 
-```bash
-python3 scripts/render_views.py --check
-```
-
-Result: `generated views: PASS (6 files)`.
-
-```bash
-python3 scripts/validate_repository.py
-```
-
-Result:
-
-```text
-claims: 51
-graph nodes: 34
-graph edges: 50
-queue leaves: 13
-errors: 0
-warnings: 2
-repository structure: PASS
-mathematical truth: NOT EVALUATED
-```
-
-The two warnings are intentional and accurate: both conversation exports are `metadata_only`, so their declared raw/gzip hashes cannot be reproduced from the current Git tree.
-
-```bash
-python3 scripts/frontier.py
-```
-
-Result: 51 claims, 34 graph nodes, 50 graph edges, 13 open leaves (`P0=7`, `P1=4`, `P2=1`, `P3=1`), two `metadata_only` exports, and `ROOT-JC2:blocked`.
-
-All repository JSON files also parsed successfully with `python3 -m json.tool`.
-
-## Reconciliation-preservation checks
-
-The canonical claim projection over `id`, `status`, `track`, `statement`, and `depends_on` has the same SHA-256 in the rich source and reconciled tree:
-
-```text
-0f63e0f2ee5ee2375735c58aa4704fdf81004e14dc584b2c85d65270e5f7d1db
-```
-
-The proof graph is byte-identical to the pinned rich source:
-
-```text
-39ccadb5da1479a4103c24ef4fc7d0d7b2f93183420c540a7f952c31d62e0425
-```
-
-The archive manifest is byte-identical to the pinned rich source:
-
-```text
-a2711cd291e4e522be0216c6a7201ba08f4aee7310885faed89e32f6402684db
-```
-
-The five current-main independent-review files and `scripts/review_validate_defect4_independent.py` are checked against their pinned current-main SHA-256 values by the structural validator.
-
-## Validator coverage
-
-The structural validator checks:
-
-- every JSON file parses;
-- claim IDs, status vocabulary, dependency closure, and dependency acyclicity;
-- proof-graph node IDs, endpoint closure, edge uniqueness, relations, and artifact paths;
-- one-to-one consistency among 13 canonical leaf packets, graph leaf nodes, queue entries, issues, tracks, and claim dependencies;
-- required leaf-contract sections;
-- legacy claim migration links and preserved coarse statuses;
-- generated prose/JSON exact consistency;
-- archive storage modes, issue #22, historical partial paths, and embedded hashes when applicable;
-- conversation-index/manifest consistency and prohibition on false lossless-reconstruction claims;
-- internal Markdown path links;
-- removal of closed issue #1 and superseded issue-1 branches from active navigation; and
-- pinned rich semantic hashes plus retained current-main review-file hashes.
-
-## GitHub Actions binding
-
-The canonical workflow is [`.github/workflows/repository-python-validators.yml`](../.github/workflows/repository-python-validators.yml). The final exact branch-head SHA, workflow run ID, conclusion, and retained log artifact are recorded on draft PR #24 after publication, because the commit containing this file cannot contain its own SHA.
+Structural checks can establish parseability, consistency, dependency closure, preserved paths, and exact symbolic identities at the tested scope. They do not evaluate unbounded mathematical truth, reviewer independence, source theorem applicability, or `JC_2`.

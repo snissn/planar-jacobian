@@ -1,40 +1,44 @@
 # Repository Status
 
-> Generated from the maintained JSON ledgers by [`scripts/render_views.py`](scripts/render_views.py).
+> Generated from maintained JSON ledgers by [`scripts/render_views.py`](scripts/render_views.py).
 
 ## Authority and scientific boundary
 
-- **Repository authority:** `MUTABLE_NONAUTHORITATIVE` research baseline unless a file identifies a narrower reviewed or frozen scope.
-- **Main theorem:** open in this repository; `ROOT-JC2` remains `blocked`.
-- **Structural validation:** engineering evidence only; it is not mathematical review.
-- **Claim promotion in this reconciliation:** none.
+- **Canonical integration surface:** latest `main`; branches are short-lived transport surfaces.
+- **Main theorem:** open; `ROOT-JC2` remains `blocked`.
+- **Merge meaning:** preservation and transport, not scientific acceptance.
+- **Reviewed scope:** the primitive-positive-weight defect-at-most-four theorem is `reviewed_scoped` at candidate `96fc7ec34bd3b685a0edeae7ecd4404abab7e2f1` under an independent `ACCEPT` and freeze record.
+- **Explicit nonclaims:** no defect-five theorem, no theorem producing a qualifying weight for every Keller pair, and no proof of `JC_2`.
 
 ## Machine-derived inventory
 
-- Claims: **51** across **9** statuses.
-- Proof graph: **34** nodes and **50** directed edges.
-- Graph node statuses: `active` 5, `blocked` 4, `literature_bound` 1, `open` 23, `speculative` 1.
-- Open canonical leaf packets: **13**.
+- Claims: **61** across **10** statuses.
+- Reviewed-scoped claims: **6**.
+- Proof graph: **35** nodes and **53** directed edges.
+- Graph node statuses: `active` 5, `blocked` 4, `disposed` 1, `literature_bound` 1, `open` 22, `reviewed` 1, `speculative` 1.
+- Open canonical leaves: **12**; recorded dispositions: **2**.
 - Metadata-only conversation exports: **2**; completion remains issue [#22](https://github.com/snissn/planar-jacobian/issues/22).
 
-## Review and coordination state
+## Integrated scientific packets
 
-Current-main review artifacts record an independent `ACCEPT` for the defect-four candidate at `96fc7ec34bd3b685a0edeae7ecd4404abab7e2f1`. The accompanying claim/graph delta is explicitly proposal-only and was not applied during this structural reconciliation. Issue [#17](https://github.com/snissn/planar-jacobian/issues/17) therefore remains a coordination surface until maintainers apply any reviewed scientific delta under the repository workflow.
+- **Issue #3:** ramified-prime adaptation and conditional globalization are banked; a smooth rational countermodel disposes the generic unramified-index bridge. The open successor is `L14`, which must use étaleness of the specified Keller source.
+- **Issue #4:** the stable-order-to-degree-one implication is recorded at mutable candidate scope, together with a ramified-DVR no-lattice obstruction. No finite stable order is constructed; issue #4 remains open.
+- **Issue #5:** regular lifting is classified by logarithmic tangency, and regularity is separated from algebraic integration. The Keller branch divisor is not proved radial; issue #5 remains open.
+- **Issue #17:** the exact positive-weight defect-at-most-four theorem is reviewed only at the pinned revision. It creates no terminal edge to `JC_2`.
 
-Issue [#2](https://github.com/snissn/planar-jacobian/issues/2), the machine-readable queue, and the canonical leaf packets are the active program navigation surfaces. Closed issue #1 and its branches are historical provenance only.
+## P0 resume order
 
-## P0 queue
-
-- `L01`: [Unramified Index Elimination](research/leaf-packets/L01-unramified-index-elimination.md) — issue [#3](https://github.com/snissn/planar-jacobian/issues/3).
+- `L14`: [Keller Index-Form Unit](research/leaf-packets/L14-keller-index-form-unit.md) — issue [#3](https://github.com/snissn/planar-jacobian/issues/3).
 - `L02`: [Finite Stable Differential Order](research/leaf-packets/L02-stable-order.md) — issue [#4](https://github.com/snissn/planar-jacobian/issues/4).
-- `L03`: [Radial Pole Elimination](research/leaf-packets/L03-radial-pole-elimination.md) — issue [#5](https://github.com/snissn/planar-jacobian/issues/5).
-- `L13`: [Filtered Rees Defect-4 Staircase](research/leaf-packets/L13-defect-4-staircase.md) — issue [#17](https://github.com/snissn/planar-jacobian/issues/17).
+- `L03`: [Integrable Logarithmic Lift after Radial Classification](research/leaf-packets/L03-radial-pole-elimination.md) — issue [#5](https://github.com/snissn/planar-jacobian/issues/5).
 - `L06`: [Wright Graded Reduction](research/leaf-packets/L06-graded-reduction.md) — issue [#8](https://github.com/snissn/planar-jacobian/issues/8).
 - `L10`: [Primary-Source Audit](research/leaf-packets/L10-literature-audit.md) — issue [#12](https://github.com/snissn/planar-jacobian/issues/12).
 - `L12`: [Normalization Baseline Audit](research/leaf-packets/L12-normalization-baseline.md) — issue [#14](https://github.com/snissn/planar-jacobian/issues/14).
 
-Run `python3 scripts/frontier.py` for the complete generated frontier and status counts.
+Issue [#2](https://github.com/snissn/planar-jacobian/issues/2) is the durable coordination surface. Start from latest `main`, reserve an issue-specific path, and update shared ledgers only during final synchronization.
+
+Run `python3 scripts/frontier.py` for the full generated frontier. Structural and symbolic validators are engineering evidence and do not evaluate mathematical truth.
 
 ## Provenance warning
 
-The conversation summaries and declared hashes are retained as provenance and idea input. The unavailable complete exports were not reconstructed or fabricated; their storage mode remains `metadata_only`.
+Unavailable complete conversation exports were not reconstructed or fabricated. Their declared identities remain `metadata_only`; exact-byte manifests are optional provenance unless a claim-specific review requires them.

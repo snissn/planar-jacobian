@@ -1,251 +1,46 @@
 {
-  "schema_version": 1,
-  "repository": "snissn/planar-jacobian",
-  "observed_utc": "2026-07-24T16:49:15Z",
-  "observation_method": "GitHub Actions snapshot plus connected GitHub adapter verification",
-  "source_refs": {
-    "expected_main_at_task_start": "d132adc131533776509075ee70829ab34aa60f53",
-    "observed_main": "7dada3a5d0c6c0bf0f40208b30215c495e17ee28",
-    "main_change_since_expected": "one non-destructive review-artifact commit",
-    "rich_baseline_pr": 15,
-    "rich_baseline_branch": "agent/bootstrap-proof-graph",
-    "rich_baseline_sha": "296867d82d09d51ef2386de2a62067408b7f949c",
-    "defect4_candidate_branch": "issue-17/defect-4-staircase",
-    "defect4_candidate_sha": "96fc7ec34bd3b685a0edeae7ecd4404abab7e2f1",
-    "integration_branch": "maintenance/reconcile-rich-baseline-gpt56",
-    "integration_branch_pre_reconciliation_sha": "8dad5eab3b95cd86a3484d6545e7ce2b99a336bf"
+  "schema_version": 2,
+  "integration_branch": "maintenance/mainline-consolidation-gpt56",
+  "initial_main_sha": "e542948a6d645569518437c6c0634a059415cfc4",
+  "history_policy": {
+    "single_parent_from_live_main": true,
+    "force_push": false,
+    "published_history_rewritten": false,
+    "unrelated_branch_history_imported": false,
+    "shared_files_reconciled_manually": true
   },
-  "branches": [
-    {
-      "name": "main",
-      "sha": "7dada3a5d0c6c0bf0f40208b30215c495e17ee28",
-      "role": "default_authority",
-      "maintenance_state": "maintained"
-    },
-    {
-      "name": "maintenance/reconcile-rich-baseline-gpt56",
-      "sha": "8dad5eab3b95cd86a3484d6545e7ce2b99a336bf",
-      "role": "replacement_integration",
-      "maintenance_state": "maintained"
-    },
-    {
-      "name": "agent/bootstrap-proof-graph",
-      "sha": "296867d82d09d51ef2386de2a62067408b7f949c",
-      "role": "rich_source_baseline",
-      "maintenance_state": "maintained_until_replacement_integrates"
-    },
-    {
-      "name": "issue-3/unramified-index-gpt56",
-      "sha": "105ffeff1a3d1e445916ed2c553f034b592d85d2",
-      "role": "parallel_research",
-      "maintenance_state": "maintained"
-    },
-    {
-      "name": "issue-4/stable-differential-order-gpt56",
-      "sha": "265a7867687ce20377e3978e8f80c5cb4d187caf",
-      "role": "parallel_research_pr_26",
-      "maintenance_state": "maintained"
-    },
-    {
-      "name": "issue-5/radial-pole-elimination-gpt56",
-      "sha": "bbd125907b05538e33202ef706b404bb3ed9fcd5",
-      "role": "parallel_research_pr_25",
-      "maintenance_state": "maintained"
-    },
-    {
-      "name": "issue-17/defect-4-staircase",
-      "sha": "96fc7ec34bd3b685a0edeae7ecd4404abab7e2f1",
-      "role": "reviewed_candidate_source",
-      "maintenance_state": "maintained"
-    },
-    {
-      "name": "review/issue-17-defect4-independent-gpt56",
-      "sha": "ad768dfd577fdad595e3a160ab0675401d1eb16a",
-      "role": "independent_review_provenance",
-      "maintenance_state": "maintained"
-    },
-    {
-      "name": "agent/workflow-github-adapter-local-review",
-      "sha": "e79b3229c9478181e8c72fca6f5e1e160b338405",
-      "role": "merged_governance_source",
-      "maintenance_state": "historical_retained"
-    },
-    {
-      "name": "issue-1/filtered-equivariance-on-bootstrap",
-      "sha": "556e30c4e0fa2f4062004263200c131bc1527369",
-      "role": "superseded_issue_1_source",
-      "maintenance_state": "historical_retained"
-    },
-    {
-      "name": "issue-1/synchronized-findings",
-      "sha": "4457e80560bddeb6a7b3bb11c685672d70de8720",
-      "role": "closed_issue_1_source",
-      "maintenance_state": "historical_retained"
-    },
-    {
-      "name": "issue-20/python-validator-ci",
-      "sha": "b673a9452ead99050a20bebd893dc78d4a7171b0",
-      "role": "merged_ci_source",
-      "maintenance_state": "historical_retained"
-    }
+  "source_revisions": [
+    {"role": "rich_tree_source", "sha": "588d662f7289fe3ffcee76d26b730e95be5ba537"},
+    {"role": "issue_3_mainline_packet", "sha": "e542948a6d645569518437c6c0634a059415cfc4"},
+    {"role": "issue_4_packet", "sha": "265a7867687ce20377e3978e8f80c5cb4d187caf"},
+    {"role": "issue_5_packet", "sha": "bbd125907b05538e33202ef706b404bb3ed9fcd5"},
+    {"role": "defect_4_reviewed_candidate", "sha": "96fc7ec34bd3b685a0edeae7ecd4404abab7e2f1"}
   ],
-  "open_issues": [
-    {
-      "number": 2,
-      "title": "[Program] Planar Jacobian proof graph and research frontier",
-      "role": "program_coordination"
-    },
-    {
-      "number": 3,
-      "title": "[P0] Eliminate the unramified moving index divisor",
-      "role": "leaf"
-    },
-    {
-      "number": 4,
-      "title": "[P0] Construct a finite stable differential order",
-      "role": "leaf"
-    },
-    {
-      "number": 5,
-      "title": "[P0] Eliminate boundary poles of a canonical radial field",
-      "role": "leaf"
-    },
-    {
-      "number": 6,
-      "title": "[P1] Prove intrinsic quasi-Albanese finiteness",
-      "role": "leaf"
-    },
-    {
-      "number": 7,
-      "title": "[P1] Force the Gauss–Manin puncture module to vanish",
-      "role": "leaf"
-    },
-    {
-      "number": 8,
-      "title": "[P0] Prove Wright graded reduction",
-      "role": "leaf"
-    },
-    {
-      "number": 9,
-      "title": "[P1] Eliminate cusp/tangency braid monodromy",
-      "role": "leaf"
-    },
-    {
-      "number": 10,
-      "title": "[P2] Establish a no-escape equivariant closed orbit",
-      "role": "leaf"
-    },
-    {
-      "number": 11,
-      "title": "[P3] Develop a characteristic-p / p-curvature obstruction",
-      "role": "leaf"
-    },
-    {
-      "number": 12,
-      "title": "[P0] Complete the primary-source and low-degree audit",
-      "role": "leaf"
-    },
-    {
-      "number": 13,
-      "title": "[P1] Derive an exact symplectic boundary theorem",
-      "role": "leaf"
-    },
-    {
-      "number": 14,
-      "title": "[P0] Audit the finite-normalization baseline",
-      "role": "leaf"
-    },
-    {
-      "number": 17,
-      "title": "[P0] Audit the filtered Rees staircase and resolve defect 4",
-      "role": "leaf_and_review_coordination"
-    },
-    {
-      "number": 22,
-      "title": "[Provenance] Complete the source-conversation archive embedding",
-      "role": "provenance_only"
-    }
+  "owned_packet_roots": [
+    "research/issues/issue-3-unramified-index",
+    "research/issue-4/stable-differential-order",
+    "research/issue-5",
+    "research/audits",
+    "governance/reviews"
   ],
-  "open_pull_requests": [
-    {
-      "number": 15,
-      "title": "research: bootstrap planar Jacobian proof graph and filtered-equivariance lane",
-      "head": "agent/bootstrap-proof-graph",
-      "base": "main",
-      "draft": false,
-      "mergeable_at_observation": false,
-      "role": "rich_source_nonmergeable"
-    },
-    {
-      "number": 24,
-      "title": "maintenance: reconcile rich proof baseline with current governance",
-      "head": "maintenance/reconcile-rich-baseline-gpt56",
-      "base": "main",
-      "draft": true,
-      "mergeable_at_observation": true,
-      "role": "replacement_integration"
-    },
-    {
-      "number": 25,
-      "title": "Issue #5: classify radial boundary poles and isolate the integration bridge",
-      "head": "issue-5/radial-pole-elimination-gpt56",
-      "base": "agent/bootstrap-proof-graph",
-      "draft": true,
-      "mergeable_at_observation": true,
-      "role": "parallel_scientific_draft_out_of_scope"
-    },
-    {
-      "number": 26,
-      "title": "research: audit finite stable differential order route",
-      "head": "issue-4/stable-differential-order-gpt56",
-      "base": "agent/bootstrap-proof-graph",
-      "draft": true,
-      "mergeable_at_observation": true,
-      "role": "parallel_scientific_draft_out_of_scope"
-    }
+  "shared_reconciliation_paths": [
+    "README.md",
+    "STATUS.md",
+    "AGENTS.md",
+    "AGENT_PROMPT.md",
+    "governance/SCIENTIFIC-WORKFLOW.md",
+    "governance/CLAIM-STATUS.md",
+    "governance/REVIEW-AND-FREEZE.md",
+    "research/PROGRAM.md",
+    "research/claim_ledger.json",
+    "research/proof_graph.json",
+    "research/work_queue.json"
   ],
-  "workflows_observed": [
-    {
-      "name": "Repository Python Validators",
-      "path": ".github/workflows/repository-python-validators.yml",
-      "role": "canonical_structural_validation"
-    },
-    {
-      "name": "Materialize reconciliation snapshots",
-      "path": ".github/workflows/materialize-reconciliation-snapshots.yml",
-      "role": "temporary_branch_only_removed_from_canonical_tree"
-    }
-  ],
-  "scope_exclusions": [
-    "archive byte completion",
-    "new mathematical proof work",
-    "scientific claim promotion",
-    "parallel scientific drafts in PRs 25 and 26",
-    "unreviewed issue-3 branch work"
-  ],
-  "pinned_rich_source_hashes": {
-    "research/claim_ledger.json": "f365a6c305067a219d595e0dbdc524072b2041b3360ecf213ebb1b5e2eb364d3",
-    "research/proof_graph.json": "39ccadb5da1479a4103c24ef4fc7d0d7b2f93183420c540a7f952c31d62e0425",
-    "archive/manifest.json": "a2711cd291e4e522be0216c6a7201ba08f4aee7310885faed89e32f6402684db"
-  },
-  "pinned_rich_semantic_hashes": {
-    "claim_projection_sha256": "0f63e0f2ee5ee2375735c58aa4704fdf81004e14dc584b2c85d65270e5f7d1db",
-    "claim_projection_fields": [
-      "id",
-      "status",
-      "track",
-      "statement",
-      "depends_on"
-    ],
-    "proof_graph_file_sha256": "39ccadb5da1479a4103c24ef4fc7d0d7b2f93183420c540a7f952c31d62e0425",
-    "archive_manifest_file_sha256": "a2711cd291e4e522be0216c6a7201ba08f4aee7310885faed89e32f6402684db"
-  },
-  "retained_current_main_file_hashes": {
-    "governance/reviews/issue-17-defect4-independent-case-table.md": "4fdd5c7ce29dfc4a1eb2306488db48dc10939b86fdabdb388d0b1aff7b3f4969",
-    "governance/reviews/issue-17-defect4-independent-claim-graph-delta.md": "319a80abd8bec769c8000147262768d7ded52075839cfc7e6bc0e459ae9236a3",
-    "governance/reviews/issue-17-defect4-independent-gpt56.md": "7e7382eeff3a5b572a6b41e33fb45411e1e8dc10822e57c954875cda186b7359",
-    "governance/reviews/issue-17-defect4-independent-reconstruction-a.md": "1aeb7a1c9c42162c77607076ab63defe63bfedf032c386c68957e26bd77635b7",
-    "governance/reviews/issue-17-defect4-independent-reconstruction-b.md": "5f0ec97a5990ef0ea0e1aa224c77062e080d8db063cb8da0b3db1383cba49e48",
-    "scripts/review_validate_defect4_independent.py": "4e0eb011dd2459c1099cd241d62cccb4c44e55efb7ba296f27e7d243da9df844"
-  }
+  "scientific_nonclaims": [
+    "No theorem for defect five is integrated.",
+    "No existence theorem for a qualifying positive weight is integrated.",
+    "No finite stable differential order is constructed.",
+    "The actual Keller branch divisor is not proved radial.",
+    "The repository does not claim JC_2."
+  ]
 }

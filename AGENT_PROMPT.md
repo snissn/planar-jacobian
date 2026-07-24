@@ -1,69 +1,36 @@
-# Reusable Scientific Agent Prompt
+# Reusable Issue-Scoped Agent Prompt
 
-```text
-You are continuing a rigorous research program in:
-  https://github.com/snissn/planar-jacobian
+Work on exactly one active leaf from [`research/WORK_QUEUE.md`](research/WORK_QUEUE.md).
 
-Resolve and record before acting:
-  - current default-branch SHA;
-  - governing issue number;
-  - canonical leaf ID and graph node;
-  - issue-scoped branch name;
-  - pinned starting revision;
-  - claim IDs and artifact paths in scope.
+## Start
 
-Read in order:
-  1. STATUS.md
-  2. governance/REPOSITORY-MAP.md
-  3. governance/AUTHORITY-HIERARCHY.md
-  4. governance/SCIENTIFIC-WORKFLOW.md
-  5. governance/PARALLEL-AGENT-POLICY.md
-  6. AGENTS.md
-  7. research/PROGRAM.md
-  8. research/WORK_QUEUE.md
-  9. the selected leaf packet and track
-  10. research/CLAIM_LEDGER.md
-  11. research/PROOF_GRAPH.md
-  12. synthesis/CORRECTIONS_AND_RETRACTIONS.md
-  13. research/SOURCE_INVENTORY.md
+1. Resolve the latest live `main` and record its full SHA.
+2. Read `STATUS.md`, `governance/REPOSITORY-MAP.md`, `research/PROGRAM.md`, the selected leaf, its graph node, claim dependencies, track, issue, corrections, and source inventory.
+3. Reserve a unique path under `research/issue-<number>/` or another explicitly issue-owned directory.
+4. Create a short-lived branch from the recorded `main` SHA.
 
-Authority and scope:
-  - MUTABLE_NONAUTHORITATIVE unless a narrower artifact says otherwise;
-  - protocol_verdict: null unless performing a declared scientific protocol;
-  - no repository file proves JC_2;
-  - conversation material is provenance and idea input, not theorem authority;
-  - structural validation is not mathematical review.
+Do not use a pull request or historical branch as the operating baseline.
 
-Repository operations:
-  - prefer the connected GitHub adapter when supported;
-  - branch from the pinned start using issue-<number>/<bounded-description>;
-  - never overwrite or force-update another agent's branch;
-  - write issue-specific work in a unique artifact directory;
-  - do not edit shared ledgers or proof graphs until a final synchronization commit;
-  - before synchronization, fetch the latest canonical baseline and resolve shared
-    files manually.
+## Construct
 
-Scientific discipline:
-  - preserve exact hypotheses, quantifiers, fields, and degree conventions;
-  - distinguish literature-bound statements, candidates, open bridges, accepted
-    reviews, frozen content, engineering evidence, and provenance;
-  - try to falsify every proposed lemma;
-  - bind review to identified claims at a pinned revision;
-  - prefer an independent reviewer, but permit declared local-adversarial-review;
-  - do not return BLOCK solely because constructor and reviewer identities coincide;
-  - treat exact-byte hashes as optional provenance, not a universal review gate;
-  - obtain renewed review for material scientific changes only.
+Use issue-local labels for new claims. Keep proofs, calculations, source bindings, countermodels, mutations, review notes, and proposed shared deltas in the issue-owned path. Do not allocate global `CLM-*` IDs or edit shared ledgers, graphs, README, STATUS, or generated views during construction.
 
-Required output:
-  - bounded issue-specific artifacts;
-  - primary-source bindings and hidden hypotheses;
-  - counterexamples and mutations tested;
-  - explicit claim-ledger/proof-graph delta proposal, if any;
-  - declared review mode and disposition, if review is performed;
-  - local validation results and exact GitHub Actions SHA/run when applicable;
-  - a final synchronization commit limited to shared metadata surfaces;
-  - a handoff naming what remains open.
+State exact hypotheses, quantifiers, dependencies, permitted inference, and forbidden stronger inference. A conditional theorem, obstruction, failed construction, or countermodel is a valid durable result.
 
-Stop when the selected leaf's stop rule is met. Do not widen to another leaf or
-promote a stronger claim without a new issue, explicit scope, and required review.
-```
+## Review
+
+Prefer a distinct reviewer. When none is available, run a separately declared `local-adversarial-review`. Bind the review to the pinned revision and exact scope. Recompute the load-bearing argument, test edge cases and mutations, record commands and limitations, and return `ACCEPT` or `BLOCK`.
+
+Do not treat a pull request, merge, manifest, or green CI run as mathematical review.
+
+## Synchronize
+
+Immediately before integration, resolve `main` again. If it moved, create a fresh branch from the new head, transplant only owned files, and recompute every shared delta. Never merge an unrelated branch history to recover the packet.
+
+Allocate global claim IDs only now. Reconcile the claim ledger, proof graph, work queue, issue index, README, STATUS, and generated views field by field. Preserve unrelated entries. Material changes to previously accepted scope require renewed review.
+
+## Validate and integrate
+
+Run structural, generated-view, JSON, dependency, artifact-path, Markdown-link, and issue-specific checks against the exact candidate. Run GitHub Actions on that SHA. When a PR is useful, make it non-draft and merge it in the same run after checks pass; otherwise use a safe non-forced direct update when repository policy permits.
+
+After integration, verify live `main`, comment on the governing issue and issue #2 with the canonical SHA and resume order, and close only superseded transport PRs or leaves whose scientific stop rule was actually met.

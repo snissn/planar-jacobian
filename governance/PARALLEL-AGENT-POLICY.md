@@ -1,34 +1,27 @@
-# Parallel-Agent Work Policy
+# Parallel-Agent and Short-Lived Branch Policy
 
-## Branch and start state
+## Start and ownership
 
-- Use `issue-<number>/<bounded-description>` for scientific work and a dedicated `maintenance/<description>` branch for repository-only integration.
-- Record the full starting commit SHA in the first artifact and issue comment.
-- Never infer the start from a moving branch name after work begins.
+- Resolve the latest `main`; do not use a historical PR or branch as a baseline.
+- Use `issue-<number>/<bounded-description>` for research and `maintenance/<description>` for repository integration.
+- Reserve one unique issue-owned directory or file and record the starting SHA.
+- Never reset, overwrite, or force-push another agent’s branch.
 
-## Artifact isolation
+## Claim IDs and shared files
 
-- Put new issue-specific work in a unique directory such as `research/issue-<number>/` or in the issue’s canonical leaf packet when the change is strictly local.
-- Do not reuse another agent’s temporary directory, manifest, review path, or branch.
-- Never force-push, reset, or overwrite another agent’s branch. Create a new branch when ownership or scope is ambiguous.
+- Use issue-local labels during construction.
+- Allocate new global IDs only during final integration against the latest ledger.
+- Record proposed shared deltas in the issue packet.
+- Do not edit shared ledgers, graphs, README, STATUS, or generated views until final synchronization.
 
-## Claim IDs
+## Rebase-by-transplant
 
-- Reuse an existing claim ID only when editing that exact claim’s scope under the required review rules.
-- Reserve proposed new IDs in the governing issue before parallel work begins.
-- Treat branch-local IDs as provisional until final synchronization against the latest canonical ledger.
-- Resolve collisions manually; never renumber another agent’s published branch in place.
+Before integration, resolve `main` again. If it moved, create a fresh branch from the new head and transplant only owned files. Recompute shared deltas and generated views. Do not merge unrelated branch history or use blanket `ours`/`theirs` resolution on scientific or governance surfaces.
 
-## Shared files and final synchronization
+## Integration lifetime
 
-- During construction, avoid `research/claim_ledger.json`, `research/proof_graph.json`, `research/work_queue.json`, and their generated Markdown views.
-- Record proposed deltas in issue-specific artifacts.
-- After review, fetch the latest canonical baseline and make one final synchronization commit limited to shared ledgers, graph, queue, generated views, and necessary navigation metadata.
-- Name the pinned pre-synchronization revision and the final synchronization commit in the handoff.
+Coherent speculative or blocked work should be integrated promptly with explicit status. A PR, when useful, is non-draft, bounded, validated, and merged in the same run. Direct non-forced integration is allowed when policy permits. Delete or close obsolete transport surfaces only after useful bytes and provenance are verified on `main`.
 
-## Conflict handling
+## Collision handling
 
-- Resolve shared-ledger and proof-graph conflicts field by field, preserving all unrelated claims, nodes, edges, and queue entries.
-- Do not use blanket “ours” or “theirs” resolution on governance, ledgers, proof graphs, status files, or root orientation documents.
-- When two branches allocate the same ID or edit the same dependency, stop the synchronization, compare their pinned scopes, and record the chosen migration explicitly.
-- Structural validation must pass after synchronization, but CI does not replace scientific review.
+When two packets propose the same global ID or shared dependency, compare their pinned scopes and allocate final IDs in one synchronization commit. Preserve published issue-local labels in provenance; never rewrite another branch solely to remove a collision.

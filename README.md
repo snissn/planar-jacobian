@@ -1,71 +1,73 @@
 # Planar Jacobian Research Mainline
 
-> **Authority:** `MUTABLE_NONAUTHORITATIVE`  
-> **Engineering status:** `DEVELOPMENT`  
-> **Execution validity:** `NOT_A_SCIENTIFIC_EXECUTION`  
-> **Protocol verdict:** `null`  
-> **Scientific inference:** `none`
+> **Repository authority:** `MUTABLE_NONAUTHORITATIVE` except for explicitly reviewed scopes  
+> **Canonical integration surface:** latest `main`  
+> **Main theorem:** open; this repository does not claim `JC_2`
 
-This repository is a durable, dependency-tracked research workspace for the planar Jacobian conjecture. It preserves the rich proof graph, machine-readable claim ledger, parallel tracks, 13 bounded leaf packets, maintained syntheses, correction register, source inventory, structural validators, and provenance metadata assembled in the original bootstrap line.
-
-**The repository does not claim an unconditional proof of the planar Jacobian conjecture.** A claim’s status, an accepted review, a frozen artifact, a green CI run, and complete provenance are separate facts.
+This repository is the durable integration surface for a dependency-tracked research program on the planar Jacobian conjecture. Coherent proofs, conditional implications, countermodels, falsification results, blocked leaves, source audits, and speculative tracks may all be preserved on `main`. Their scientific authority is determined by the claim ledger and review records, never by branch location, pull-request state, or a successful merge.
 
 ## Canonical authority
 
-The authority hierarchy is defined in [`governance/AUTHORITY-HIERARCHY.md`](governance/AUTHORITY-HIERARCHY.md). In brief:
+The machine-readable surfaces are authoritative for their declared fields:
 
-1. the pinned upstream scientific workflow supplies general process;
-2. repository-specific governance supplies explicit local overrides;
-3. [`research/claim_ledger.json`](research/claim_ledger.json), [`research/proof_graph.json`](research/proof_graph.json), and [`research/work_queue.json`](research/work_queue.json) are the canonical machine-readable status and queue surfaces;
-4. generated Markdown views mirror those JSON files; and
-5. issues, branches, and pull requests coordinate work but do not change scientific status.
+- [`research/claim_ledger.json`](research/claim_ledger.json) — claim statements, dependencies, and epistemic status;
+- [`research/proof_graph.json`](research/proof_graph.json) — maintained dependency graph and leaf disposition;
+- [`research/work_queue.json`](research/work_queue.json) — active leaves and completed/disposed packets;
+- [`governance/reviews/`](governance/reviews/) — review and freeze records bound to pinned revisions.
 
-The reconciliation source refs, branch inventory, and conflict decisions are recorded in [`governance/RECONCILIATION-REPORT.md`](governance/RECONCILIATION-REPORT.md). PR #15 remains preserved as the rich source branch until the replacement integration path is accepted; it is not the active coordination surface for new work.
+The generated prose views are [`research/CLAIM_LEDGER.md`](research/CLAIM_LEDGER.md), [`research/PROOF_GRAPH.md`](research/PROOF_GRAPH.md), [`research/WORK_QUEUE.md`](research/WORK_QUEUE.md), [`research/ISSUE_INDEX.md`](research/ISSUE_INDEX.md), and [`STATUS.md`](STATUS.md). Do not edit generated views by hand.
+
+A merge to `main` is transport and preservation. It does not promote a candidate, accept a proof, close a scientific leaf, or broaden a reviewed theorem.
+
+## Current synchronized scientific boundary
+
+- **Defect at most four:** `CLM-047–051` and `CLM-060` are `reviewed_scoped`, bound to independent `ACCEPT` at candidate revision `96fc7ec34bd3b685a0edeae7ecd4404abab7e2f1`. The theorem applies only to primitive positive weights with grading defect at most four. It does not cover defect five, prove that an arbitrary Keller pair has such a weight, or establish `JC_2`.
+- **Issue #3 / moving index:** the generic unramified-index bridge is disposed by the scoped countermodel `CLM-058`. The active successor is [`L14-keller-index-form-unit.md`](research/leaf-packets/L14-keller-index-form-unit.md), which must use the specified étale Keller source.
+- **Issue #4 / stable order:** the stable-order-to-degree-one implication is a mutable conditional candidate, and the packet records a ramified-DVR no-lattice obstruction. Existence of a finite stable order remains open as `CLM-061`.
+- **Issue #5 / radial field:** the packet records the logarithmic tangency criterion, full principal-part obstruction, and failure of regularity to imply algebraic integration. The actual Keller branch is not proved radial, and the leaf remains open.
 
 ## Start here
 
-1. [`STATUS.md`](STATUS.md) — generated repository status and P0 frontier.
-2. [`governance/REPOSITORY-MAP.md`](governance/REPOSITORY-MAP.md) — canonical paths and resume order.
-3. [`research/PROGRAM.md`](research/PROGRAM.md) — common problem spine.
-4. [`research/PROOF_GRAPH.md`](research/PROOF_GRAPH.md) — generated dependency graph.
-5. [`research/WORK_QUEUE.md`](research/WORK_QUEUE.md) — generated leaf queue.
-6. [`research/CLAIM_LEDGER.md`](research/CLAIM_LEDGER.md) — generated claim-status view.
-7. [`AGENTS.md`](AGENTS.md) and [`governance/PARALLEL-AGENT-POLICY.md`](governance/PARALLEL-AGENT-POLICY.md) — operating rules.
-8. [`archive/MANIFEST.md`](archive/MANIFEST.md) — provenance state and issue #22.
+1. [`STATUS.md`](STATUS.md) — generated inventory, reviewed scopes, and active frontier.
+2. [`governance/REPOSITORY-MAP.md`](governance/REPOSITORY-MAP.md) — canonical navigation and resume order.
+3. [`research/PROGRAM.md`](research/PROGRAM.md) — common problem spine and cross-track interfaces.
+4. [`research/WORK_QUEUE.md`](research/WORK_QUEUE.md) — active leaves and dispositions.
+5. [`AGENTS.md`](AGENTS.md) — short-lived integration and review rules.
+6. [`governance/SCIENTIFIC-WORKFLOW.md`](governance/SCIENTIFIC-WORKFLOW.md) — construction, review, synchronization, and freeze policy.
+7. [`archive/MANIFEST.md`](archive/MANIFEST.md) — provenance availability and metadata-only declarations.
 
-Issue [#2](https://github.com/snissn/planar-jacobian/issues/2) is the durable program coordination surface. Each canonical leaf also has its own issue, listed in [`research/ISSUE_INDEX.md`](research/ISSUE_INDEX.md). Closed issue #1 and its branches are historical provenance only.
+Issue [#2](https://github.com/snissn/planar-jacobian/issues/2) is the durable coordination surface. Leaf issues coordinate bounded research but do not override the canonical JSON surfaces. Closed issue #1 and historical bootstrap/reconciliation branches are provenance only.
 
 ## Repository layers
 
-- `archive/`: declared source identities, historical partial chunks, topic summaries, and explicit `metadata_only` storage declarations.
-- `synthesis/`: narrative reconciliation and corrections/retractions.
-- `research/tracks/`: parallel formal research programs.
-- `research/leaf-packets/`: bounded tasks with evidence requirements and stop rules.
-- `research/*.json`: canonical claim, graph, queue, and legacy-migration data.
-- `governance/`: authority, review, source-audit, concurrency, handoff, and reconciliation records.
-- `scripts/`: deterministic rendering, structural validation, archive handling, and frontier reporting.
+- `archive/` — declared source identities, historical partial chunks, and explicit metadata-only records;
+- `synthesis/` — cross-conversation synthesis and corrections/retractions;
+- `research/tracks/` — maintained research programs;
+- `research/leaf-packets/` — bounded tasks with evidence requirements, forbidden shortcuts, stop rules, and handoffs;
+- `research/issues/` and `research/issue-*` — issue-owned proof, obstruction, countermodel, and review packets;
+- `governance/` — authority, source, review, concurrency, reconciliation, and validation records;
+- `scripts/` — deterministic rendering, structural checks, frontier reporting, and scoped symbolic regressions.
 
-## Review and scientific status
+## Mainline integration rule
 
-A distinct reviewer is preferred. A declared `local-adversarial-review` is permitted when necessary, and shared constructor/reviewer identity is not by itself a reason to return `BLOCK`. Review acceptance is bound to an identified claim at a pinned repository revision. Exact-byte manifests and hashes may strengthen provenance, but they are not universal acceptance gates.
+Every new task starts from the latest `main`, reserves an issue-specific artifact path, uses issue-local claim labels during construction, and defers global IDs and shared ledger edits to final synchronization. Before integration, resolve `main` again; if it moved, transplant only owned files and recompute shared deltas. Do not merge an unrelated branch history merely to recover a small packet.
 
-Material scientific changes require renewed review of the affected scope. Editorial, link, formatting, transport, or metadata-only changes do not automatically invalidate an accepted review. Structural validation and GitHub Actions remain engineering evidence, not mathematical review.
-
-Current-main review artifacts for the defect-four candidate are retained under [`governance/reviews/`](governance/reviews/). Their proposed claim/graph delta remains proposal-only in this reconciliation; no machine-ledger claim status was promoted.
-
-## Provenance boundary
-
-The repository records declared filenames, message counts, byte counts, and hashes for two source conversations. The complete source-export bytes are unavailable in the Git tree. Both exports remain `metadata_only`; historical partial chunks cannot reconstruct either export. Archive completion remains issue [#22](https://github.com/snissn/planar-jacobian/issues/22).
+Branches are short-lived transport surfaces. When a pull request is useful, it should be non-draft, bounded, validated, and merged in the same run. Direct non-forced integration is permitted when repository policy allows it. Exact-byte manifests are optional provenance unless a claim-specific review requires them.
 
 ## Validation
 
-Run:
+Run against the exact candidate tree:
 
 ```bash
-python3 -m compileall -q scripts
+python3 -m compileall -q scripts research/issues/issue-3-unramified-index
 python3 scripts/render_views.py --check
 python3 scripts/validate_repository.py
 python3 scripts/frontier.py
+python3 scripts/validate_defect4_staircase.py
+python3 scripts/review_validate_defect4_independent.py
+python3 research/issues/issue-3-unramified-index/verify_index_models.py
+python3 scripts/validate_issue4_stable_order.py
+python3 scripts/validate_issue5_principal_parts.py
 ```
 
-The canonical GitHub Actions workflow is [`.github/workflows/repository-python-validators.yml`](.github/workflows/repository-python-validators.yml). It binds validation to the tested commit SHA and retains logs. Passing checks establish repository consistency only; they do not establish mathematical truth or promote a claim.
+The GitHub Actions workflow is [`.github/workflows/repository-python-validators.yml`](.github/workflows/repository-python-validators.yml). It records the tested SHA and uploads logs. Passing checks establish repository and regression consistency only; they do not review mathematics.

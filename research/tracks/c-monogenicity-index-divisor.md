@@ -1,24 +1,17 @@
-# Track C — Global Monogenicity and the Moving Index Divisor
+# Track C — Monogenicity, Collision Divisors, and the Keller Index Form
 
-> Status: `MUTABLE_NONAUTHORITATIVE`
+> **Status:** `MUTABLE_NONAUTHORITATIVE`
 
-A global power basis `C=B[theta]` would force degree one through the relative derivative of the minimal polynomial. Local monogenicity is much easier and appears away from finitely many bad values.
+A global power basis for the finite normalization would force degree one, but local monogenicity and generic field primitivity are much weaker.
 
-### Strongest reduction
+## Banked issue #3 results
 
-Construct `theta` that generates every ramified height-one localization. Its remaining index divisor lies in the unramified locus and records accidental collisions of otherwise distinct étale sheets.
+At mutable candidate scope, one integral primitive element can generate the whole semilocal normalization algebra over any prescribed finite set of height-one base primes, including all ramified primes. If one element generates at every height-one base prime, `R1/S2` globalization gives the full normalization, and global monogenicity then forces degree one.
 
-### Load-bearing question
+The issue #3 countermodel `CLM-058` shows that local monogenicity, tame squarefree branch, a fixed unramified sheet, rationality, smoothness, and an open affine plane do not eliminate a moving unramified index divisor in a general finite-flat model.
 
-Can one choose a single integral primitive element whose values never collide divisorially on the finite étale locus?
+## Disposition and successor
 
-### Controls
+The old generic leaf [`L01-unramified-index-elimination.md`](../leaf-packets/L01-unramified-index-elimination.md) is disposed. The active successor is [`L14-keller-index-form-unit.md`](../leaf-packets/L14-keller-index-form-unit.md), which must use the specified étale Keller source and its open immersion in the normalization.
 
-- height-one power-basis purity (`R1+S2`);
-- Hartogs globalization of affine-linear transition functions;
-- conductor/canonical duality in the Gorenstein case;
-- explicit countermodels such as finite flat algebras with embedding-dimension-two special fibers.
-
-### Exit
-
-Eliminate the unramified index divisor and invoke the monogenic-normalization theorem.
+The complete maintained issue packet is [`monogenicity-index-divisor.md`](monogenicity-index-divisor.md) together with [`../issues/issue-3-unramified-index/`](../issues/issue-3-unramified-index/README.md).

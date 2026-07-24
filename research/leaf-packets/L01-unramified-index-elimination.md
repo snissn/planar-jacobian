@@ -1,30 +1,32 @@
-# Unramified Index Elimination
+# Generic Unramified Index Elimination
 
-- **Priority:** `P0`
-- **Status:** `OPEN`
-- **Dependencies:** CLM-029, CLM-030, CLM-031
+- **Priority:** historical `P0`
+- **Status:** `DISPOSED — SCOPED_ALGEBRAIC_OBSTRUCTION`
+- **Dependencies:** `CLM-029`, `CLM-030`, `CLM-031`, `CLM-058`
 - **Authority:** `MUTABLE_NONAUTHORITATIVE`
+- **Issue:** [#3](https://github.com/snissn/planar-jacobian/issues/3)
+- **Successor:** [`L14-keller-index-form-unit.md`](L14-keller-index-form-unit.md)
 
 ## Load-bearing question
 
-Construct a ramification-adapted integral primitive element and prove its index module has no height-one support in the finite étale locus.
+Could ramified-prime adaptation plus generic algebraic arguments eliminate every accidental index divisor in the finite étale locus?
 
 ## Accepted evidence
 
-A proof that one element generates every height-one localization, followed by the R1/S2 purity argument.
+The issue #3 packet establishes, at mutable candidate scope, simultaneous generation at any prescribed finite set of height-one base primes, the `R1/S2` globalization implication, and the noncircular degree-one implication after global monogenicity. It also supplies an explicit smooth rational finite-flat rank-three countermodel showing that local monogenicity, tame squarefree branch, a fixed unramified sheet, and an open affine plane do not force a global power basis.
 
 ## Forbidden shortcuts
 
-Do not assume that local monogenicity, generic separability, or pairwise distinct values at one fiber prevent a moving collision divisor.
+Do not replace integral generation by field primitivity, test primes of the normalization separately instead of the whole semilocal algebra over one base prime, rely on generic fiber separation or parameter counts, or use class-group triviality as if a principal index divisor were empty.
 
 ## Required artifacts
 
-An exact index determinant, collision-divisor analysis, mutation examples, and a final disposition.
+The theorem, collision, countermodel, source-audit, adversarial-review, provenance, and handoff files are preserved under [`../issues/issue-3-unramified-index/`](../issues/issue-3-unramified-index/README.md). The detailed maintained track is [`../tracks/monogenicity-index-divisor.md`](../tracks/monogenicity-index-divisor.md).
 
 ## Stop rule
 
-Stop when the declared implication is proved at exact scope, or when a minimal counterexample to the proposed bridge is constructed. Bank useful restricted lemmas separately; do not widen the leaf to the entire conjecture without a graph update.
+Reached. `CLM-058` disposes the generic algebraic bridge at exact scope. No further work should repeat that bridge without a strictly stronger Keller-specific hypothesis.
 
 ## Handoff
 
-Record exact formulas, source bindings, tested countermodels, open sublemmas, and the smallest next action.
+Continue only through `L14`: use étaleness of the specified Keller source and its open immersion in the normalization to force the universal index form to represent a nonzero constant.

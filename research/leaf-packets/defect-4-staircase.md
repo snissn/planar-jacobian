@@ -3,3 +3,5 @@
 The canonical leaf packet is [`L13-defect-4-staircase.md`](L13-defect-4-staircase.md), coordinated through issue [#17](https://github.com/snissn/planar-jacobian/issues/17).
 
 This path is not a second leaf packet and is excluded from the canonical work queue.
+
+The canonical packet is reviewed only at the exact positive-weight defect-at-most-four scope recorded there; this pointer carries no independent scientific authority.

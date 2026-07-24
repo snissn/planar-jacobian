@@ -38,4 +38,4 @@ Source: `main@7dada3a5d0c6c0bf0f40208b30215c495e17ee28`, path `research/CLAIM_LE
 | `R-EXACT-FORM-PRINCIPAL` | `RETIRED` | Exactness of the canonical two-form forces its zero divisor/canonical class to vanish. | `CLM-041` (equivalent_retirement) | Explicit Wright-type examples can have an exact canonical form with nonzero boundary divisor. |
 | `R-NUMERICAL-FRAMEWORK` | `RETIRED` | Picard/intersection framework data alone force simplicity or realizability. | unmapped; retained here only | Numerical data do not determine puncture/braid monodromy or global polynomial gluing. |
 
-No migration row promotes a scientific claim. Canonical claim statements and statuses remain those in [`claim_ledger.json`](claim_ledger.json).
+No migration row promotes a scientific claim. Canonical statements and statuses remain those in [`claim_ledger.json`](claim_ledger.json).

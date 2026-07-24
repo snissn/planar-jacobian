@@ -1,17 +1,23 @@
-# Track B — Canonical Derivations and Flow Completion
+# Track B — Canonical Derivations, Logarithmic Tangency, and Integration
 
-> Status: `MUTABLE_NONAUTHORITATIVE`
+> **Status:** `MUTABLE_NONAUTHORITATIVE`
 
-The Keller identity supplies commuting polynomial fields `D_P,D_Q` lifting target translations. Their combinations produce Euler, hyperbolic, and affine Lie-algebra actions.
+The Keller identity supplies commuting polynomial fields `D_P,D_Q` lifting target translations. Polynomial target fields lift rationally as combinations of these canonical derivations.
 
-### Key sufficient theorem
+## Exact issue #5 disposition
 
-If one appropriate canonical field is locally finite/complete or extends regularly to the finite normalization in a way that forces target branch curves to be invariant, then the map should reduce to an algebraic group action and degree one.
+At a monogenic height-one normalization `S=R[s]` with minimal polynomial `f`, the lift of a target derivation `V` satisfies
 
-### Current obstruction
+```text
+V~(s) = -V_B(f)(s) / f'(s).
+```
 
-On the source the fields are polynomial. On the normalization they can acquire poles of order `e-1` or worse along boundary divisors. Exact residue cancellation does not remove higher principal parts.
+Regularity is equivalent to divisibility by the different, and globally to logarithmic tangency along every reduced ramified branch component. For the standard radial field `P∂_P+Q∂_Q`, this criterion would force every irreducible reduced ramified branch component to be a line through the origin. The Keller identities do not prove that condition.
 
-### Leaf
+A branch Hamiltonian gives a regular logarithmic lift, but regularity does not imply local finiteness, completeness, or algebraic integration. An equivariant terminal theorem may be used only after proving an actual algebraic action and preservation of the original source open.
 
-Prove a pole-elimination theorem for one radial field without assuming the branch curve is already radial.
+## Active leaf
+
+[`L03-radial-pole-elimination.md`](../leaf-packets/L03-radial-pole-elimination.md) remains open under the narrower goal in `CLM-057`: produce a nonzero locally finite logarithmic target field preserving the source open, or prove radial tangency directly.
+
+The complete candidate packet is [`../issue-5/PRINCIPAL_PARTS.md`](../issue-5/PRINCIPAL_PARTS.md), with source audit and adversarial self-review in the same directory.
