@@ -1,76 +1,116 @@
-name: Materialize reconciliation snapshots
+name: Materialize canonical reconciliation
 
 on:
   push:
     branches:
       - maintenance/reconcile-rich-baseline-gpt56
-  pull_request:
-    branches:
-      - main
+    paths:
+      - .github/workflows/materialize-reconciliation-snapshots.yml
+      - .github/reconciliation-payload/**
 
 permissions:
-  contents: read
-  issues: read
-  pull-requests: read
-  actions: read
+  contents: write
 
 concurrency:
-  group: reconciliation-snapshot-${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  group: materialize-reconciliation-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
-  snapshot:
+  materialize:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
-      GH_TOKEN: ${{ github.token }}
+      MAIN_SHA: 7dada3a5d0c6c0bf0f40208b30215c495e17ee28
+      RICH_SHA: 296867d82d09d51ef2386de2a62067408b7f949c
+      DEFECT4_SHA: 96fc7ec34bd3b685a0edeae7ecd4404abab7e2f1
+      PAYLOAD_SHA256: 76b7bf7019a0a1f79789cf7739753306bad18b4ecbc9029a5bbafe5cdc1fba27
     steps:
-      - name: Check out current main snapshot
+      - name: Check out staging revision
         uses: actions/checkout@v4
         with:
-          ref: 7dada3a5d0c6c0bf0f40208b30215c495e17ee28
-          path: snapshots/main
-          fetch-depth: 1
+          ref: ${{ github.sha }}
+          fetch-depth: 0
 
-      - name: Check out PR 15 rich baseline
-        uses: actions/checkout@v4
-        with:
-          ref: 296867d82d09d51ef2386de2a62067408b7f949c
-          path: snapshots/rich
-          fetch-depth: 1
-
-      - name: Check out defect-4 candidate
-        uses: actions/checkout@v4
-        with:
-          ref: 96fc7ec34bd3b685a0edeae7ecd4404abab7e2f1
-          path: snapshots/defect4
-          fetch-depth: 1
-
-      - name: Record pinned revisions and live repository inventory
+      - name: Assemble, validate, and publish the resolved tree
+        id: materialize
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p snapshots/metadata
-          {
-            echo "main=7dada3a5d0c6c0bf0f40208b30215c495e17ee28"
-            echo "rich=296867d82d09d51ef2386de2a62067408b7f949c"
-            echo "defect4=96fc7ec34bd3b685a0edeae7ecd4404abab7e2f1"
-            echo "snapshot_workflow_commit=${GITHUB_SHA}"
-          } > snapshots/PINNED_REFS.txt
 
-          gh api "repos/${GITHUB_REPOSITORY}" > snapshots/metadata/repository.json
-          gh api --paginate --slurp "repos/${GITHUB_REPOSITORY}/branches?per_page=100" > snapshots/metadata/branches-pages.json
-          gh api --paginate --slurp "repos/${GITHUB_REPOSITORY}/issues?state=all&per_page=100" > snapshots/metadata/issues-pages.json
-          gh api --paginate --slurp "repos/${GITHUB_REPOSITORY}/pulls?state=all&per_page=100" > snapshots/metadata/pulls-pages.json
-          gh api --paginate --slurp "repos/${GITHUB_REPOSITORY}/actions/workflows?per_page=100" > snapshots/metadata/workflows-pages.json
+          branch_ref="refs/heads/${GITHUB_REF_NAME}"
+          remote_head="$(git ls-remote origin "$branch_ref" | awk '{print $1}')"
+          test "$remote_head" = "$GITHUB_SHA"
 
-          find snapshots -name .git -type d -prune -exec rm -rf {} +
+          git fetch --no-tags origin \
+            "refs/heads/main:refs/remotes/origin/main" \
+            "refs/heads/agent/bootstrap-proof-graph:refs/remotes/origin/agent/bootstrap-proof-graph" \
+            "refs/heads/issue-17/defect-4-staircase:refs/remotes/origin/issue-17/defect-4-staircase"
 
-      - name: Upload source snapshots
+          test "$(git rev-parse refs/remotes/origin/main)" = "$MAIN_SHA"
+          test "$(git rev-parse refs/remotes/origin/agent/bootstrap-proof-graph)" = "$RICH_SHA"
+          test "$(git rev-parse refs/remotes/origin/issue-17/defect-4-staircase)" = "$DEFECT4_SHA"
+
+          payload="$RUNNER_TEMP/reconciliation-payload.tar.gz"
+          cat .github/reconciliation-payload/payload-*.b64 | tr -d '\r\n' | base64 --decode > "$payload"
+          echo "$PAYLOAD_SHA256  $payload" | sha256sum --check --status
+
+          git read-tree --reset -u "$RICH_SHA"
+          tar -xzf "$payload" -C .
+
+          current_main_paths=(
+            governance/reviews/issue-17-defect4-independent-case-table.md
+            governance/reviews/issue-17-defect4-independent-claim-graph-delta.md
+            governance/reviews/issue-17-defect4-independent-gpt56.md
+            governance/reviews/issue-17-defect4-independent-reconstruction-a.md
+            governance/reviews/issue-17-defect4-independent-reconstruction-b.md
+            scripts/review_validate_defect4_independent.py
+          )
+          for path in "${current_main_paths[@]}"; do
+            mkdir -p "$(dirname "$path")"
+            git show "$MAIN_SHA:$path" > "$path"
+          done
+
+          python3 scripts/render_views.py --write
+          python3 -m compileall -q scripts
+          python3 scripts/render_views.py --check | tee "$RUNNER_TEMP/render-views.log"
+          python3 scripts/validate_repository.py | tee "$RUNNER_TEMP/validation.log"
+          python3 scripts/frontier.py | tee "$RUNNER_TEMP/frontier.log"
+
+          git add --all
+          git diff --cached --check
+          tree_sha="$(git write-tree)"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          new_commit="$({
+            echo 'maintenance: reconcile rich proof baseline with current governance'
+            echo
+            echo 'Resolved tree assembled from pinned current main and PR #15 rich baseline.'
+            echo 'No mathematical statement or substantive claim status is changed.'
+          } | git commit-tree "$tree_sha" -p "$GITHUB_SHA" -p "$MAIN_SHA" -p "$RICH_SHA")"
+
+          test "$(git rev-parse "$new_commit^{tree}")" = "$tree_sha"
+          test "$(git rev-list --parents -n 1 "$new_commit")" = "$new_commit $GITHUB_SHA $MAIN_SHA $RICH_SHA"
+
+          remote_head="$(git ls-remote origin "$branch_ref" | awk '{print $1}')"
+          test "$remote_head" = "$GITHUB_SHA"
+          git push origin "$new_commit:$branch_ref"
+
+          printf '%s\n' "$new_commit" > "$RUNNER_TEMP/integration-sha.txt"
+          printf '%s\n' "$tree_sha" > "$RUNNER_TEMP/integration-tree-sha.txt"
+          printf '%s\n' "$new_commit" >> "$GITHUB_STEP_SUMMARY"
+          echo "integration_sha=$new_commit" >> "$GITHUB_OUTPUT"
+
+      - name: Record materialization evidence
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: reconciliation-source-snapshots
-          path: snapshots
-          if-no-files-found: error
-          retention-days: 1
-          include-hidden-files: true
+          name: reconciliation-materialization-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/render-views.log
+            ${{ runner.temp }}/validation.log
+            ${{ runner.temp }}/frontier.log
+            ${{ runner.temp }}/integration-sha.txt
+            ${{ runner.temp }}/integration-tree-sha.txt
+          if-no-files-found: warn
+          retention-days: 14
