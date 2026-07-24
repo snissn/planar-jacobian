@@ -1,0 +1,36 @@
+name: Defect-five workspace export
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  export-and-validate:
+    if: github.event_name == 'workflow_dispatch' || github.head_ref == 'agent/defect-5-rees-gpt56'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check sympy
+      - run: python -m py_compile research/issues/defect-5-rees/validate_defect5.py research/issues/defect-5-rees/review_validate_defect5_adversarial.py
+      - run: python research/issues/defect-5-rees/validate_defect5.py
+      - run: python research/issues/defect-5-rees/review_validate_defect5_adversarial.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: defect-five-workspace
+          include-hidden-files: true
+          retention-days: 1
+          path: |
+            research
+            scripts
+            governance
+            .github/workflows
+            archive/manifest.json
+            README.md
+            STATUS.md
