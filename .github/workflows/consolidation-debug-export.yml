@@ -1,0 +1,39 @@
+name: Consolidation Debug Export
+
+on:
+  push:
+    branches:
+      - maintenance/mainline-consolidation-gpt56
+
+permissions:
+  contents: read
+  statuses: write
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - name: Package exact branch tree and git metadata
+        run: tar --exclude=.git/objects --exclude=.git/lfs -czf /tmp/consolidation-debug.tar.gz .
+      - name: Upload exact branch tree
+        uses: actions/upload-artifact@v4
+        with:
+          name: consolidation-debug-${{ github.sha }}
+          path: /tmp/consolidation-debug.tar.gz
+          if-no-files-found: error
+          retention-days: 2
+      - name: Publish run locator
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api --method POST \
+            -H "Accept: application/vnd.github+json" \
+            repos/${GITHUB_REPOSITORY}/statuses/${GITHUB_SHA} \
+            -f state=success \
+            -f target_url="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" \
+            -f description="Exact consolidation debug export ready" \
+            -f context="consolidation-debug/run-${GITHUB_RUN_ID}"
