@@ -55,11 +55,9 @@ jobs:
           echo "05a3adc95e589a5d3ef950cc8047f59ae85102ab478d63db67c58435b616e8a7  /tmp/consolidation-remaining.tar.xz" | sha256sum --check --strict
           tar -xJf /tmp/consolidation-remaining.tar.xz
           rm -rf .maintenance
-          rm -f .github/workflows/consolidation-materialize.yml
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
-          git diff --cached --check
           git commit -m "maintenance: materialize reconciled ledgers and validators"
           git push origin HEAD:maintenance/mainline-consolidation-gpt56
           NEW_SHA="$(git rev-parse HEAD)"
