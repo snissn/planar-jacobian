@@ -304,7 +304,7 @@ def render_status(
         "",
         "## Integrated scientific packets",
         "",
-        "- **Issue #3:** ramified-prime adaptation and conditional globalization are banked; a smooth rational countermodel disposes the generic unramified-index bridge. The open successor is `L14`, which must use étaleness of the specified Keller source.",
+        "- **Issue #3:** rank-three trace/index foundations, a finite source/boundary gcd-one certificate, and an exact cubic differential congruence are banked at candidate scope. The universal-content shortcut is false; `L14` remains open at the boundary-cube/unit-value bridge.",
         "- **Issue #4:** the stable-order-to-degree-one implication is recorded at mutable candidate scope, together with a ramified-DVR no-lattice obstruction. No finite stable order is constructed; issue #4 remains open.",
         "- **Issue #5:** regular lifting is classified by logarithmic tangency, and regularity is separated from algebraic integration. The Keller branch divisor is not proved radial; issue #5 remains open.",
         "- **Issue #17:** the exact positive-weight defect-at-most-four theorem is reviewed only at the pinned revision. It creates no terminal edge to `JC_2`.",

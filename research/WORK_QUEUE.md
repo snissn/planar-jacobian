@@ -7,7 +7,7 @@
 
 | Priority | Leaf | Graph node | Issue | Claim dependencies | Track |
 |---|---|---|---|---|---|
-| `P0` | [Keller Index-Form Unit](leaf-packets/L14-keller-index-form-unit.md) | `OPEN-KELLER-INDEX-UNIT` | [#3](https://github.com/snissn/planar-jacobian/issues/3) | `CLM-029`, `CLM-030`, `CLM-031`, `CLM-034`, `CLM-058`, `CLM-059` | [monogenicity-index-divisor.md](tracks/monogenicity-index-divisor.md) |
+| `P0` | [Rank-Three Keller Boundary-Cube Unit](leaf-packets/L14-keller-index-form-unit.md) | `OPEN-KELLER-INDEX-UNIT` | [#3](https://github.com/snissn/planar-jacobian/issues/3) | `CLM-029`, `CLM-030`, `CLM-031`, `CLM-034`, `CLM-058`, `CLM-059`, `CLM-062`, `CLM-063`, `CLM-064`, `CLM-065`, `CLM-066` | [monogenicity-index-divisor.md](tracks/monogenicity-index-divisor.md) |
 | `P0` | [Finite Stable Differential Order](leaf-packets/L02-stable-order.md) | `OPEN-STABLE-ORDER` | [#4](https://github.com/snissn/planar-jacobian/issues/4) | `CLM-010`, `CLM-011`, `CLM-012`, `CLM-013`, `CLM-061` | [d-stable-differential-lattice.md](tracks/d-stable-differential-lattice.md) |
 | `P0` | [Integrable Logarithmic Lift after Radial Classification](leaf-packets/L03-radial-pole-elimination.md) | `OPEN-BOUNDARY-POLE` | [#5](https://github.com/snissn/planar-jacobian/issues/5) | `CLM-014`, `CLM-015`, `CLM-023`, `CLM-052`, `CLM-053`, `CLM-054`, `CLM-055`, `CLM-056`, `CLM-057` | [b-canonical-derivations.md](tracks/b-canonical-derivations.md) |
 | `P0` | [Wright Graded Reduction](leaf-packets/L06-graded-reduction.md) | `OPEN-GRADED-REDUCTION` | [#8](https://github.com/snissn/planar-jacobian/issues/8) | `CLM-024`, `CLM-025` | [g-wright-graded-single-tree.md](tracks/g-wright-graded-single-tree.md) |

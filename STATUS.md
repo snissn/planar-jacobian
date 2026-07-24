@@ -12,7 +12,7 @@
 
 ## Machine-derived inventory
 
-- Claims: **61** across **10** statuses.
+- Claims: **66** across **10** statuses.
 - Reviewed-scoped claims: **6**.
 - Proof graph: **35** nodes and **53** directed edges.
 - Graph node statuses: `active` 5, `blocked` 4, `disposed` 1, `literature_bound` 1, `open` 22, `reviewed` 1, `speculative` 1.
@@ -21,14 +21,14 @@
 
 ## Integrated scientific packets
 
-- **Issue #3:** ramified-prime adaptation and conditional globalization are banked; a smooth rational countermodel disposes the generic unramified-index bridge. The open successor is `L14`, which must use étaleness of the specified Keller source.
+- **Issue #3:** rank-three trace/index foundations, a finite source/boundary gcd-one certificate, and an exact cubic differential congruence are banked at candidate scope. The universal-content shortcut is false; `L14` remains open at the boundary-cube/unit-value bridge.
 - **Issue #4:** the stable-order-to-degree-one implication is recorded at mutable candidate scope, together with a ramified-DVR no-lattice obstruction. No finite stable order is constructed; issue #4 remains open.
 - **Issue #5:** regular lifting is classified by logarithmic tangency, and regularity is separated from algebraic integration. The Keller branch divisor is not proved radial; issue #5 remains open.
 - **Issue #17:** the exact positive-weight defect-at-most-four theorem is reviewed only at the pinned revision. It creates no terminal edge to `JC_2`.
 
 ## P0 resume order
 
-- `L14`: [Keller Index-Form Unit](research/leaf-packets/L14-keller-index-form-unit.md) — issue [#3](https://github.com/snissn/planar-jacobian/issues/3).
+- `L14`: [Rank-Three Keller Boundary-Cube Unit](research/leaf-packets/L14-keller-index-form-unit.md) — issue [#3](https://github.com/snissn/planar-jacobian/issues/3).
 - `L02`: [Finite Stable Differential Order](research/leaf-packets/L02-stable-order.md) — issue [#4](https://github.com/snissn/planar-jacobian/issues/4).
 - `L03`: [Integrable Logarithmic Lift after Radial Classification](research/leaf-packets/L03-radial-pole-elimination.md) — issue [#5](https://github.com/snissn/planar-jacobian/issues/5).
 - `L06`: [Wright Graded Reduction](research/leaf-packets/L06-graded-reduction.md) — issue [#8](https://github.com/snissn/planar-jacobian/issues/8).

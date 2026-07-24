@@ -60,11 +60,11 @@
     },
     {
       "id": "OPEN-KELLER-INDEX-UNIT",
-      "title": "Force the Keller universal index form to represent a unit",
+      "title": "Eliminate the rank-three Keller boundary-cube index obstruction",
       "type": "leaf",
       "status": "open",
       "artifact": "leaf-packets/L14-keller-index-form-unit.md",
-      "note": "Successor to the disposed generic bridge; must use étaleness of the specified Keller source."
+      "note": "The rank-three issue #3 successor proves trace/index foundations, a finite source/boundary gcd-one certificate, and an exact cubic differential congruence. One unit index value remains open; universal content one is insufficient. Packet: research/issues/rank-three-index-form-unit/README.md."
     },
     {
       "id": "BR-STABLE-LATTICE",
