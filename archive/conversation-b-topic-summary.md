@@ -16,4 +16,4 @@
 | `three-dimensional-counterexample` | 18 |
 | `wright-graded` | 11 |
 
-The complete text is preserved in the compressed export referenced by `archive/manifest.json`.
+The summary and declared source identity are maintained in the repository. The complete source-export bytes are not currently reconstructible from the Git tree; see `archive/manifest.json` and issue #22.

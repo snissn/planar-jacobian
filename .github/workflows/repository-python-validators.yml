@@ -1,0 +1,67 @@
+name: Repository Python Validators
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: repository-python-validators-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate research repository structure
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Record runtime
+        run: |
+          python --version
+          git rev-parse HEAD
+
+      - name: Compile validator scripts
+        run: python -m compileall -q scripts
+
+      - name: Run structural validator
+        shell: bash
+        run: |
+          set -o pipefail
+          python scripts/validate_repository.py | tee validation.log
+
+      - name: Render proof frontier
+        if: always()
+        shell: bash
+        run: |
+          set -o pipefail
+          python scripts/frontier.py | tee frontier.log
+          {
+            echo "## Open proof frontier"
+            echo
+            echo '```text'
+            cat frontier.log
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload validator logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: repository-python-validator-logs-${{ github.run_id }}
+          path: |
+            validation.log
+            frontier.log
+          if-no-files-found: warn
+          retention-days: 14

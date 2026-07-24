@@ -25,6 +25,20 @@ A useful derivation can be committed as `MUTABLE_NONAUTHORITATIVE`. A decision-b
 - Do not use a pull request as a substitute for scientific review.
 - Do not merge a theorem candidate merely because repository validators pass; they validate structure, not mathematical truth.
 
+## Validation execution
+
+Run the repository Python validators locally when possible:
+
+```bash
+python3 -m compileall -q scripts
+python3 scripts/validate_repository.py
+python3 scripts/frontier.py
+```
+
+If the local Python runtime or process environment is blocked, push the exact branch commit and use `.github/workflows/repository-python-validators.yml` as the fallback runner. Follow [`governance/SCIENTIFIC-WORKFLOW.md`](governance/SCIENTIFIC-WORKFLOW.md), bind the result to the exact tested SHA, and preserve the GitHub Actions run ID and logs.
+
+A CI pass is process evidence only. It does not review mathematics, promote a claim, authorize freeze, or produce a scientific verdict. A checkout, runner, permission, dependency, or Actions outage is an engineering failure with no scientific inference.
+
 ## Leaf contract
 
 Each leaf has one load-bearing question, explicit dependencies and forbidden assumptions, accepted evidence, known failed approaches, required artifacts, a stop rule, and a handoff section. Do not widen a leaf silently. Open a new node when the proof burden changes.

@@ -6,15 +6,16 @@
 - **Main theorem:** open in this repository.
 - **Scientific verdict:** none.
 - **Intended rich baseline:** PR [#15](https://github.com/snissn/planar-jacobian/pull/15), branch `agent/bootstrap-proof-graph`.
-- **Current issue branch:** `issue-1/filtered-equivariance-on-bootstrap`.
-- **Imported conversations:** 304 messages preserved losslessly in the bootstrap baseline.
+- **Active scientific branch:** `issue-17/defect-4-staircase`.
+- **Validator engineering branch:** `issue-20/python-validator-ci`.
+- **Conversation provenance:** 304 messages represented in maintained synthesis and source metadata; the complete export bytes are not yet embedded in the Git tree and are tracked in issue [#22](https://github.com/snissn/planar-jacobian/issues/22).
 - **Claim ledger:** 51 claims across 9 statuses.
 - **Proof graph:** 34 nodes and 49 directed edges.
 - **Open leaf packets:** 13.
 
 ## New synchronized lane
 
-Shaska's arXiv:2607.20210 is recorded as a primary source for exact `G_m`-equivariant planar Keller rigidity. The new Track M studies a weighted Rees filtration of an arbitrary Keller pair.
+Shaska's arXiv:2607.20210 is recorded as a primary source for exact `G_m`-equivariant planar Keller rigidity. Track M studies a weighted Rees filtration of an arbitrary Keller pair.
 
 The following are **candidate**, not accepted theorem statements:
 
@@ -30,6 +31,10 @@ J(P_1,Q_1)
 
 appears in the central resonance equation. Issue [#17](https://github.com/snissn/planar-jacobian/issues/17) is the active bounded audit.
 
+## Validation infrastructure
+
+Issue [#20](https://github.com/snissn/planar-jacobian/issues/20) adds GitHub Actions execution of the deterministic Python validators. Local execution remains preferred; Actions is the exact-commit fallback when the local runtime is blocked. CI checks repository structure and declared provenance state, not mathematical truth.
+
 ## Highest-priority frontier
 
 1. **Unramified index elimination.** Construct one ramification-adapted primitive element with no accidental collision divisor in the finite étale locus.
@@ -41,6 +46,6 @@ appears in the central resonance equation. Issue [#17](https://github.com/snissn
 
 ## Provenance warning
 
-The conversations contain productive derivations, but also changing low-degree frontiers, overstrong purity statements, and candidate theorems later withdrawn. Treat the raw archive as idea input. The maintained claim ledger is the only status surface.
+The conversations contain productive derivations, but also changing low-degree frontiers, overstrong purity statements, and candidate theorems later withdrawn. Treat conversation exports and summaries as idea input. The maintained claim ledger is the only claim-status surface.
 
 Repository structural validation does not constitute mathematical validation. No candidate filtered result may be promoted without independent exact-byte review under the pinned scientific workflow.
