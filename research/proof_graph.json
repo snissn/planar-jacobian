@@ -10,7 +10,7 @@
     {"id":"BR-MONOGENIC","title":"Global primitive element route","type":"branch","status":"open","artifact":"tracks/c-monogenicity-index-divisor.md"},
     {"id":"OPEN-UNRAMIFIED-INDEX","title":"Eliminate the moving index divisor in the unramified locus","type":"leaf","status":"open","artifact":"leaf-packets/L01-unramified-index-elimination.md"},
     {"id":"BR-STABLE-LATTICE","title":"Finite differential order route","type":"branch","status":"open","artifact":"tracks/d-stable-differential-lattice.md"},
-    {"id":"OPEN-STABLE-ORDER","title":"Construct a finite B-order stable under D_P,D_Q","type":"leaf","status":"open","artifact":"leaf-packets/L02-stable-order.md"},
+    {"id":"OPEN-STABLE-ORDER","title":"Construct a finite B-order stable under D_P,D_Q","type":"leaf","status":"open","artifact":"leaf-packets/L02-stable-order.md","note":"Conditional implication to degree one is candidate-proved in CLM-011--CLM-013. Existence remains open; a ramified height-one valuation admits no full finite lattice stable under a transverse exact translation."},
     {"id":"BR-RADIAL","title":"Canonical radial-field pole elimination","type":"branch","status":"open","artifact":"tracks/b-canonical-derivations.md"},
     {"id":"OPEN-BOUNDARY-POLE","title":"Remove poles of one lifted radial field on Y","type":"leaf","status":"open","artifact":"leaf-packets/L03-radial-pole-elimination.md"},
     {"id":"BR-QUASI-ALBANESE","title":"Intrinsic torus-complement route","type":"branch","status":"open","artifact":"tracks/e-quasi-albanese-log-geometry.md"},

@@ -94,6 +94,13 @@
 | `CTL-3D` | `BR-DEGENERATION` | `idea-input` |
 | `OPEN-LITERATURE` | `CTL-LITERATURE` | `updates` |
 
+## Issue #4 synchronization
+
+- `OPEN-STABLE-ORDER` remains `open`; no finite stable order is constructed.
+- Its outgoing `sufficient-if-closed` edge is now backed conditionally by CLM-011–CLM-013: existence of the declared order would force degree one.
+- The issue packet records a ramified-DVR obstruction to every full finite local lattice under a transverse exact translation. This narrows the existence problem but does not close it.
+- `TERM-DEGREE-ONE`, `TERM-AUTOMORPHISM`, and `ROOT-JC2` remain blocked.
+
 ## Reading rule
 
 An edge marked `sufficient-if-closed` means the leaf is intended to provide a complete route to degree one. It does not mean the leaf is close to solved. Context and control nodes cannot by themselves establish the goal.

@@ -14,9 +14,9 @@ The JSON file is authoritative for machine validation. Status definitions are in
 | `CLM-008` | `candidate_proved` | `monogenicity` | A global monogenic normalization C=B[theta] forces the field degree to be one. | CLM-003 |
 | `CLM-009` | `candidate_proved` | `monogenicity` | A global finite relative complete-intersection presentation of the normalization forces finite étaleness and degree one. | CLM-003 |
 | `CLM-010` | `verified_internal` | `canonical-derivations` | There are canonical commuting derivations D_P and D_Q dual to dP,dQ. | CLM-001 |
-| `CLM-011` | `candidate_proved` | `differential-lattice` | If a finite locally free B-order in the function field is stable under D_P and D_Q, its discriminant ideal is stable under partial_P and partial_Q. | CLM-010 |
+| `CLM-011` | `candidate_proved` | `differential-lattice` | If a finite locally free B-order M in the function field is stable under D_P and D_Q, then locally delta(G)=A^T G+GA and delta(det G)=2 Tr(A)det G; hence its discriminant ideal is stable under partial_P and partial_Q. | CLM-010 |
 | `CLM-012` | `verified_internal` | `differential-lattice` | A nonzero ideal of C[P,Q] stable under both partial derivatives is the unit ideal. | — |
-| `CLM-013` | `open_bridge` | `differential-lattice` | The stable-order criterion in CLM-011 would imply degree one. | CLM-011, CLM-012, CLM-005 |
+| `CLM-013` | `candidate_proved` | `differential-lattice` | A finite locally free B-order in L stable under D_P and D_Q has unit discriminant, is finite étale and connected over A2_C, and therefore has degree one. | CLM-011, CLM-012, CLM-005 |
 | `CLM-014` | `verified_internal` | `canonical-derivations` | The canonical Euler, hyperbolic, and affine Lie-algebra fields encode infinitesimal target symmetries on the source. | CLM-010 |
 | `CLM-015` | `literature_bound` | `canonical-derivations` | Local finiteness or algebraic integration of an appropriate canonical affine action would force invertibility. | CLM-014 |
 | `CLM-016` | `literature_bound` | `equivariant-degeneration` | Every nontrivially G_m-equivariant planar Keller map is an automorphism for every sign pattern of the weights. | CLM-001 |
@@ -55,3 +55,7 @@ The JSON file is authoritative for machine validation. Status definitions are in
 | `CLM-049` | `candidate` | `filtered-equivariance` | A resonant pair touching a top weighted layer forces the full Keller map to be an automorphism. | CLM-048 |
 | `CLM-050` | `candidate` | `filtered-equivariance` | Every positive-weight Keller pair with grading defect kappa at most 3 reduces to the exact graded case and is an automorphism. | CLM-047, CLM-048, CLM-049 |
 | `CLM-051` | `open_bridge` | `filtered-equivariance` | At grading defect 4, eliminate or geometrically obstruct the middle Wronskian in every resonance pattern. | CLM-050 |
+
+## Issue #4 synchronization
+
+CLM-013 records only the conditional implication from existence of a stable order to degree one. The existence question remains the open node `OPEN-STABLE-ORDER`. The ramified-DVR no-lattice result is recorded in Track D and L02 at mutable candidate scope; it does not unblock `TERM-DEGREE-ONE`.
