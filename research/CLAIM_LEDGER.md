@@ -2,13 +2,13 @@
 
 > **Authority:** `MUTABLE_NONAUTHORITATIVE`
 
-Statuses follow [`AGENTS.md`](../AGENTS.md). `CANDIDATE` means the argument appears self-contained in the research notes but has not passed independent exact-byte scientific review.
+Statuses follow [`AGENTS.md`](../AGENTS.md). `CANDIDATE` means the argument appears self-contained in the research notes but has not passed a documented adversarial review for the claim at a pinned repository revision. A distinct reviewer is preferred; a declared local adversarial review is permitted when the environment does not support subagents or another reviewer.
 
 | ID | Statement | Status | Notes / dependency |
 |---|---|---|---|
 | LIT-GRADED-01 | Every nontrivially `G_m`-equivariant planar Keller map is an automorphism for every sign pattern of the weights. | `LITERATURE` | T. Shaska, arXiv:2607.20210. |
 | LIT-LIE-01 | Algebraicity/conjugacy of the canonical Keller-induced affine Lie algebra would imply the planar Jacobian conjecture. | `LITERATURE` | Regeta lane; verify exact theorem statement before reuse. |
-| C-REES-01 | For positive weight `w=(p,q)`, the Rees deformation satisfies `J(Pcal,Qcal)=t^kappa`, where `kappa=deg_w P+deg_w Q-p-q`. | `CANDIDATE` | Direct chain-rule identity; requires independent sign/normalization audit. |
+| C-REES-01 | For positive weight `w=(p,q)`, the Rees deformation satisfies `J(Pcal,Qcal)=t^kappa`, where `kappa=deg_w P+deg_w Q-p-q`. | `CANDIDATE` | Direct chain-rule identity; requires adversarial sign/normalization audit. |
 | C-STAIR-01 | Weighted layers satisfy `sum_{i+j=n}J(P_i,Q_j)=0` for `n<kappa` and `=1` for `n=kappa`. | `CANDIDATE` | Formal coefficient comparison from C-REES-01. |
 | C-RESONANCE-01 | Some resonant pair `(P_i,Q_j)`, `i+j=kappa`, has nonzero constant Jacobian and hence is an exactly graded automorphism. | `CANDIDATE` | Uses positivity of source weights so weight-zero polynomials are constants, then LIT-GRADED-01. |
 | C-TOP-RESONANCE-01 | If a resonant constant-Jacobian pair uses a top layer (`i=0` or `j=0`), the original map is an automorphism. | `CANDIDATE` | Lower-weight monomial classification after graded normalization must be audited. |
@@ -28,8 +28,12 @@ Statuses follow [`AGENTS.md`](../AGENTS.md). `CANDIDATE` means the argument appe
 
 A `CANDIDATE` may become `FROZEN_ACCEPTED` only after:
 
-1. the exact statement and proof bytes are pinned;
+1. the exact statement, proof scope, claim IDs, and dependencies are identified;
 2. all domains, degree conventions, and coordinate changes are explicit;
-3. an independent reviewer recomputes every load-bearing identity;
-4. known counterexamples and edge cases are tested;
-5. the review disposition is bound to the exact commit and artifact hashes.
+3. a documented adversarial review recomputes every load-bearing identity and returns `ACCEPT` for a pinned commit or repository revision;
+4. the review declares whether it was an `independent-review` or a `local-adversarial-review`, with the local mode permitted when no distinct reviewer or subagent is available;
+5. known counterexamples and edge cases are tested;
+6. required validations pass and their results are recorded; and
+7. any later material change to the accepted statement, proof, computation, transformation, or dependency is reviewed again.
+
+Exact-byte manifests and artifact hashes may be retained as optional provenance, but they are not required for promotion. Editorial, formatting, link, and metadata-only changes do not automatically invalidate an accepted review.
