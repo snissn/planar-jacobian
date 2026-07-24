@@ -12,13 +12,13 @@ This repository is a durable, dependency-tracked research workspace for the plan
 
 ## Baseline and current branch
 
-The intended rich baseline is PR [#15](https://github.com/snissn/planar-jacobian/pull/15), branch `agent/bootstrap-proof-graph`. The filtered-equivariance synchronization is developed on
+The intended rich baseline is PR [#15](https://github.com/snissn/planar-jacobian/pull/15), branch `agent/bootstrap-proof-graph`, at commit `86d1b78cedd788b7335be692f9bb92921142c7d3`. The active issue branch is
 
 ```text
-issue-1/filtered-equivariance-on-bootstrap
+issue-17/defect-4-staircase
 ```
 
-and tracked in issue [#17](https://github.com/snissn/planar-jacobian/issues/17).
+and is tracked in issue [#17](https://github.com/snissn/planar-jacobian/issues/17).
 
 ## Start here
 
@@ -37,16 +37,24 @@ and tracked in issue [#17](https://github.com/snissn/planar-jacobian/issues/17).
 - `synthesis/`: narrative reconciliation and correction register.
 - `research/tracks/`: parallel formal proof programs.
 - `research/leaf-packets/`: bounded next tasks with stop rules and handoff contracts.
+- `research/audits/`: exact derivations, case tables, source audits, and scoped candidate dispositions.
 - `governance/`: status, review, source-audit, freeze, handoff, and scientific-workflow rules.
-- `scripts/`: deterministic structural validation and frontier rendering.
+- `scripts/`: deterministic structural and symbolic validation.
 
 ## Current filtered lane
 
 Exact nontrivial `G_m`-equivariance in dimension two is source-bound to T. Shaska, *Graded Keller maps and the Jacobian Conjecture*, arXiv:2607.20210.
 
-Track [`m-filtered-equivariance.md`](research/tracks/m-filtered-equivariance.md) develops a weighted Rees staircase around that exact theorem. The claimed low-defect reduction through `kappa<=3` remains a candidate awaiting adversarial audit. The first blocked case is defect `4`, where a middle Wronskian appears.
+Track [`m-filtered-equivariance.md`](research/tracks/m-filtered-equivariance.md) develops a weighted Rees staircase around the exact graded case. Issue #17 now contains a self-contained theorem candidate that every positive-weight Keller pair with grading defect `kappa<=4` is an automorphism. The result is `candidate_proved`, not frozen or authoritative, because an independent exact-byte review has not yet returned `ACCEPT`.
 
-See [`L13-defect-4-staircase.md`](research/leaf-packets/L13-defect-4-staircase.md).
+See:
+
+- [`L13-defect-4-staircase.md`](research/leaf-packets/L13-defect-4-staircase.md);
+- [`defect-4-staircase-audit.md`](research/audits/defect-4-staircase-audit.md);
+- [`defect-4-case-table.md`](research/audits/defect-4-case-table.md);
+- [`filtered-transformation-catalogue.md`](research/audits/filtered-transformation-catalogue.md).
+
+This scoped candidate does not show that every Keller map has such a positive weight and does not prove `JC_2`.
 
 ## Scientific workflow
 
@@ -58,7 +66,8 @@ A pushed mutable-branch commit is development provenance, not theorem authority.
 
 ```bash
 python3 scripts/validate_repository.py
+python3 scripts/validate_defect4_staircase.py
 python3 scripts/frontier.py
 ```
 
-These checks validate repository structure, identifiers, graph closure, leaf references, and archive hashes. They do **not** validate mathematical truth.
+These checks validate repository structure, identifiers, graph closure, archive hashes, and exact symbolic regression identities. They do **not** by themselves validate mathematical truth.
