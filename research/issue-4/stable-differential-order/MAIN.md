@@ -51,8 +51,8 @@ D_Q(Q) = -P_y Q_x+P_x Q_y = J(P,Q) = 1.
 Thus `D_P|_B=partial_P` and `D_Q|_B=partial_Q`. The commutator kills both generators:
 
 ```text
-[D_P,D_Q](P)=0,
-[D_P,D_Q](Q)=0.
+D_P(D_Q(P))-D_Q(D_P(P))=0,
+D_P(D_Q(Q))-D_Q(D_P(Q))=0.
 ```
 
 Because `P,Q` are algebraically independent and `L/K` is finite separable in characteristic zero, every `K`-derivation of `L` vanishes. Hence

@@ -1,14 +1,15 @@
 # Track M — Filtered Equivariance and the Weighted Rees Staircase
 
-> **Authority:** `MUTABLE_NONAUTHORITATIVE`  
-> **Active issue:** [#17](https://github.com/snissn/planar-jacobian/issues/17)  
-> **Scientific inference:** scoped theorem candidate through positive-weight defect `4`
+> **Authority:** `REVIEWED_SCOPED` only for the pinned positive-weight defect-at-most-four theorem  
+> **Reviewed issue:** [#17](https://github.com/snissn/planar-jacobian/issues/17)  
+> **Reviewed revision:** `96fc7ec34bd3b685a0edeae7ecd4404abab7e2f1`  
+> **Scientific inference:** primitive positive weight and `kappa_w<=4` imply automorphism; no broader inference
 
 ## Purpose
 
 Exact nontrivial `G_m`-equivariance is a literature-backed rigidity class for planar Keller maps: T. Shaska states that a `G_m`-equivariant planar Keller map is an automorphism for every sign pattern of the weights (arXiv:2607.20210v1, submitted 2026-07-22).
 
-This track studies whether a general Keller pair can be reduced toward that exact graded case through a weighted Rees filtration. Issue #17 has produced a self-contained candidate proof through positive-weight grading defect `4`. It is not frozen authority and does not show that an arbitrary Keller pair has such a small-defect weight.
+This track studies whether a general Keller pair can be reduced toward that exact graded case through a weighted Rees filtration. Issue #17 produced a self-contained proof through positive-weight grading defect `4`. An independent review returned `ACCEPT` at the pinned candidate revision, and the mainline freeze record preserves exactly that scope. It does not show that an arbitrary Keller pair has such a small-defect weight.
 
 ## 1. Exact weighted Rees staircase
 
@@ -86,7 +87,7 @@ kappa_w<=3  =>  F is an automorphism.
 
 The interior defect-2 equation reduces to a common-power divisibility contradiction unless a top shear lowers defect. For defect `3`, both positions `(1,2)` and `(2,1)` are treated for equal weights, `p=1<q`, and `1<p<q`, including absent layers. The exact equations are in [`../audits/defect-4-staircase-audit.md`](../audits/defect-4-staircase-audit.md).
 
-This statement remains `candidate_proved` pending independent exact-byte acceptance.
+This statement is included in the independently reviewed scope bound to `96fc7ec34bd3b685a0edeae7ecd4404abab7e2f1`.
 
 ## 5. Defect four
 
@@ -117,9 +118,9 @@ Instead, the full staircase shows that a nonzero middle Wronskian cannot survive
 
 The primary-source audit is [`../audits/defect-4-primary-source-audit.md`](../audits/defect-4-primary-source-audit.md). Shaska, Lee--Li, Karaś, and Pan are recorded at their exact scoped relevance. None supplies a hidden missing implication in the candidate proof.
 
-## 8. Current theorem candidate and nonclaims
+## 8. Reviewed theorem and nonclaims
 
-The candidate conclusion is
+The reviewed conclusion is
 
 ```text
 primitive positive w and kappa_w<=4  =>  F is an automorphism.
@@ -134,4 +135,4 @@ It does not imply:
 
 ## Exit
 
-The mathematical stop rule for defect `4` has been reached by a full scoped reduction. The leaf remains review-blocked until a distinct reviewer binds an `ACCEPT` or mathematical `BLOCK` to the exact candidate manifest. Do not begin higher-defect promotion first.
+The mathematical stop rule for defect `4` has been reached by a full scoped reduction, and an independent reviewer bound `ACCEPT` to the exact candidate revision. The branch and review are preserved as provenance; current-main synchronization is editorial except for the explicit reviewed-status delta. Defect `5`, a theorem producing a qualifying weight, and `JC_2` remain outside this track's reviewed scope.

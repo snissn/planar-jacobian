@@ -1,11 +1,12 @@
 # Radial Pole Elimination
 
 - **Priority:** `P0`
-- **Status:** `BLOCKED_BY_EXACT_TANGENCY`
+- **Status:** `OPEN — BLOCKED_BY_TANGENCY_AND_INTEGRATION`
 - **Dependencies:** CLM-003, CLM-007, CLM-014, CLM-015, CLM-022, CLM-023, CLM-052–CLM-057
 - **Authority:** `MUTABLE_NONAUTHORITATIVE`
-- **Baseline:** `agent/bootstrap-proof-graph@296867d82d09d51ef2386de2a62067408b7f949c`
-- **Issue branch:** `issue-5/radial-pole-elimination-gpt56`
+- **Historical construction baseline:** `agent/bootstrap-proof-graph@296867d82d09d51ef2386de2a62067408b7f949c`
+- **Historical source branch:** `issue-5/radial-pole-elimination-gpt56`
+- **Canonical coordination:** issue [#5](https://github.com/snissn/planar-jacobian/issues/5) from latest `main`
 
 ## Load-bearing question
 
@@ -73,9 +74,9 @@ does extend regularly, but a regular derivation need not be locally finite,
 complete, or algebraically integrable. The terminal implication to degree one
 therefore remains blocked.
 
-## Accepted evidence
+## Candidate evidence
 
-The following issue-scoped artifacts provide the accepted mutable evidence:
+The following issue-scoped artifacts provide mutable, non-authoritative evidence:
 
 - [`../issue-5/PRINCIPAL_PARTS.md`](../issue-5/PRINCIPAL_PARTS.md): canonical
   formulas, different, full Laurent principal parts, geometric compatibility,
@@ -86,8 +87,7 @@ The following issue-scoped artifacts provide the accepted mutable evidence:
 - [`../issue-5/ADVERSARIAL_REVIEW.md`](../issue-5/ADVERSARIAL_REVIEW.md):
   separate adversarial self-review bound to file hashes.
 
-This is candidate evidence only. It has not received independent scientific
-review.
+This evidence remains candidate-scoped. The packet review is a declared adversarial review with `BLOCK` disposition; integration into `main` does not promote it.
 
 ## Forbidden shortcuts
 
@@ -136,10 +136,7 @@ Stop at the exact scoped obstruction:
 \]
 
 The Keller and exact-symplectic identities do not presently prove the right-hand
-side. Regularity by itself also does not prove algebraic integration. This is the
-first exact scientific disposition of the proposed radial-pole bridge, so the
-leaf must not silently broaden into a classification of all boundary divisors or
-all algebraic actions.
+side. Regularity by itself also does not prove algebraic integration. This is the first exact scientific disposition of the proposed radial-pole bridge. The leaf remains open for the tangency and integration steps and must not silently broaden into a classification of all boundary divisors or all algebraic actions.
 
 ## Handoff
 

@@ -1,17 +1,24 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "authority_note": "This file is the machine-readable queue. Claim status remains authoritative in research/claim_ledger.json and proof-node status remains authoritative in research/proof_graph.json.",
   "leaves": [
     {
-      "id": "L01",
-      "graph_node": "OPEN-UNRAMIFIED-INDEX",
-      "title": "Unramified Index Elimination",
+      "id": "L14",
+      "graph_node": "OPEN-KELLER-INDEX-UNIT",
+      "title": "Keller Index-Form Unit",
       "priority": "P0",
       "status": "open",
-      "artifact": "research/leaf-packets/L01-unramified-index-elimination.md",
-      "track_artifact": "research/tracks/c-monogenicity-index-divisor.md",
+      "artifact": "research/leaf-packets/L14-keller-index-form-unit.md",
+      "track_artifact": "research/tracks/monogenicity-index-divisor.md",
       "issue_number": 3,
-      "claim_dependencies": ["CLM-029", "CLM-030", "CLM-031"]
+      "claim_dependencies": [
+        "CLM-029",
+        "CLM-030",
+        "CLM-031",
+        "CLM-034",
+        "CLM-058",
+        "CLM-059"
+      ]
     },
     {
       "id": "L02",
@@ -22,29 +29,34 @@
       "artifact": "research/leaf-packets/L02-stable-order.md",
       "track_artifact": "research/tracks/d-stable-differential-lattice.md",
       "issue_number": 4,
-      "claim_dependencies": ["CLM-010", "CLM-011", "CLM-012", "CLM-013"]
+      "claim_dependencies": [
+        "CLM-010",
+        "CLM-011",
+        "CLM-012",
+        "CLM-013",
+        "CLM-061"
+      ]
     },
     {
       "id": "L03",
       "graph_node": "OPEN-BOUNDARY-POLE",
-      "title": "Radial Pole Elimination",
+      "title": "Integrable Logarithmic Lift after Radial Classification",
       "priority": "P0",
       "status": "open",
       "artifact": "research/leaf-packets/L03-radial-pole-elimination.md",
       "track_artifact": "research/tracks/b-canonical-derivations.md",
       "issue_number": 5,
-      "claim_dependencies": ["CLM-014", "CLM-015", "CLM-023"]
-    },
-    {
-      "id": "L13",
-      "graph_node": "OPEN-DEFECT-4",
-      "title": "Filtered Rees Defect-4 Staircase",
-      "priority": "P0",
-      "status": "open",
-      "artifact": "research/leaf-packets/L13-defect-4-staircase.md",
-      "track_artifact": "research/tracks/m-filtered-equivariance.md",
-      "issue_number": 17,
-      "claim_dependencies": ["CLM-016", "CLM-047", "CLM-048", "CLM-049", "CLM-050", "CLM-051"]
+      "claim_dependencies": [
+        "CLM-014",
+        "CLM-015",
+        "CLM-023",
+        "CLM-052",
+        "CLM-053",
+        "CLM-054",
+        "CLM-055",
+        "CLM-056",
+        "CLM-057"
+      ]
     },
     {
       "id": "L06",
@@ -55,7 +67,10 @@
       "artifact": "research/leaf-packets/L06-graded-reduction.md",
       "track_artifact": "research/tracks/g-wright-graded-single-tree.md",
       "issue_number": 8,
-      "claim_dependencies": ["CLM-024", "CLM-025"]
+      "claim_dependencies": [
+        "CLM-024",
+        "CLM-025"
+      ]
     },
     {
       "id": "L10",
@@ -66,7 +81,17 @@
       "artifact": "research/leaf-packets/L10-literature-audit.md",
       "track_artifact": "research/tracks/l-literature-low-degree.md",
       "issue_number": 12,
-      "claim_dependencies": ["CLM-003", "CLM-004", "CLM-005", "CLM-015", "CLM-016", "CLM-017", "CLM-021", "CLM-044", "CLM-048"]
+      "claim_dependencies": [
+        "CLM-003",
+        "CLM-004",
+        "CLM-005",
+        "CLM-015",
+        "CLM-016",
+        "CLM-017",
+        "CLM-021",
+        "CLM-044",
+        "CLM-048"
+      ]
     },
     {
       "id": "L12",
@@ -77,7 +102,13 @@
       "artifact": "research/leaf-packets/L12-normalization-baseline.md",
       "track_artifact": "research/tracks/a-normalization-boundary.md",
       "issue_number": 14,
-      "claim_dependencies": ["CLM-003", "CLM-004", "CLM-005", "CLM-006", "CLM-007"]
+      "claim_dependencies": [
+        "CLM-003",
+        "CLM-004",
+        "CLM-005",
+        "CLM-006",
+        "CLM-007"
+      ]
     },
     {
       "id": "L04",
@@ -88,7 +119,10 @@
       "artifact": "research/leaf-packets/L04-quasi-albanese-finiteness.md",
       "track_artifact": "research/tracks/e-quasi-albanese-log-geometry.md",
       "issue_number": 6,
-      "claim_dependencies": ["CLM-018", "CLM-019"]
+      "claim_dependencies": [
+        "CLM-018",
+        "CLM-019"
+      ]
     },
     {
       "id": "L05",
@@ -99,7 +133,11 @@
       "artifact": "research/leaf-packets/L05-gauss-manin-punctures.md",
       "track_artifact": "research/tracks/f-gauss-manin-generic-fibers.md",
       "issue_number": 7,
-      "claim_dependencies": ["CLM-020", "CLM-021", "CLM-035"]
+      "claim_dependencies": [
+        "CLM-020",
+        "CLM-021",
+        "CLM-035"
+      ]
     },
     {
       "id": "L07",
@@ -110,7 +148,11 @@
       "artifact": "research/leaf-packets/L07-cusp-braid.md",
       "track_artifact": "research/tracks/h-monodromy-galois-braid.md",
       "issue_number": 9,
-      "claim_dependencies": ["CLM-026", "CLM-027", "CLM-028"]
+      "claim_dependencies": [
+        "CLM-026",
+        "CLM-027",
+        "CLM-028"
+      ]
     },
     {
       "id": "L11",
@@ -121,7 +163,10 @@
       "artifact": "research/leaf-packets/L11-exact-symplectic-boundary.md",
       "track_artifact": "research/tracks/i-exact-symplectic.md",
       "issue_number": 13,
-      "claim_dependencies": ["CLM-022", "CLM-023"]
+      "claim_dependencies": [
+        "CLM-022",
+        "CLM-023"
+      ]
     },
     {
       "id": "L08",
@@ -132,7 +177,10 @@
       "artifact": "research/leaf-packets/L08-equivariant-closed-orbit.md",
       "track_artifact": "research/tracks/j-equivariant-degeneration.md",
       "issue_number": 10,
-      "claim_dependencies": ["CLM-016", "CLM-046"]
+      "claim_dependencies": [
+        "CLM-016",
+        "CLM-046"
+      ]
     },
     {
       "id": "L09",
@@ -143,7 +191,49 @@
       "artifact": "research/leaf-packets/L09-characteristic-p.md",
       "track_artifact": "research/tracks/k-characteristic-p.md",
       "issue_number": 11,
-      "claim_dependencies": ["CLM-045"]
+      "claim_dependencies": [
+        "CLM-045"
+      ]
+    }
+  ],
+  "dispositions": [
+    {
+      "id": "L01",
+      "graph_node": "OPEN-UNRAMIFIED-INDEX",
+      "title": "Generic Unramified Index Elimination",
+      "status": "disposed",
+      "disposition": "SCOPED_ALGEBRAIC_OBSTRUCTION",
+      "artifact": "research/leaf-packets/L01-unramified-index-elimination.md",
+      "track_artifact": "research/tracks/c-monogenicity-index-divisor.md",
+      "issue_number": 3,
+      "claim_dependencies": [
+        "CLM-029",
+        "CLM-030",
+        "CLM-031",
+        "CLM-058"
+      ],
+      "successor_graph_node": "OPEN-KELLER-INDEX-UNIT",
+      "note": "The generic bridge is false; issue #3 continues through L14 using Keller-source étaleness."
+    },
+    {
+      "id": "L13",
+      "graph_node": "OPEN-DEFECT-4",
+      "title": "Filtered Rees Defect-4 Staircase",
+      "status": "reviewed",
+      "disposition": "REVIEWED_SCOPED",
+      "artifact": "research/leaf-packets/L13-defect-4-staircase.md",
+      "track_artifact": "research/tracks/m-filtered-equivariance.md",
+      "issue_number": 17,
+      "claim_dependencies": [
+        "CLM-047",
+        "CLM-048",
+        "CLM-049",
+        "CLM-050",
+        "CLM-051",
+        "CLM-060"
+      ],
+      "review_artifact": "governance/reviews/issue-17-defect4-independent-gpt56.md",
+      "note": "Accepted only for primitive positive weights with kappa_w <= 4; no defect-five or JC_2 inference."
     }
   ]
 }

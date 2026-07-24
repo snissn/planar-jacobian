@@ -196,10 +196,14 @@ graph_path = ROOT / "research" / "proof_graph.json"
 if claims_path.exists() and graph_path.exists():
     claims = json.loads(claims_path.read_text())
     claim_by_id = {item["id"]: item for item in claims["claims"]}
-    require(claim_by_id["CLM-049"]["status"] == "candidate_proved", "CLM-049 status")
-    require(claim_by_id["CLM-050"]["status"] == "candidate_proved", "CLM-050 status")
-    require(claim_by_id["CLM-051"]["status"] == "candidate_proved", "CLM-051 status")
-    require(claim_by_id["CLM-052"]["status"] == "candidate_proved", "CLM-052 status")
+    for claim_id in ["CLM-047", "CLM-048", "CLM-049", "CLM-050", "CLM-051", "CLM-060"]:
+        require(claim_by_id[claim_id]["status"] == "reviewed_scoped", f"{claim_id} status")
+        review = claim_by_id[claim_id].get("review", {})
+        require(review.get("disposition") == "ACCEPT", f"{claim_id} review disposition")
+        require(
+            review.get("reviewed_revision") == "96fc7ec34bd3b685a0edeae7ecd4404abab7e2f1",
+            f"{claim_id} reviewed revision",
+        )
 
     all_claim_ids = set(claim_by_id)
     for item in claims["claims"]:
@@ -209,14 +213,20 @@ if claims_path.exists() and graph_path.exists():
 
     graph = json.loads(graph_path.read_text())
     node_by_id = {item["id"]: item for item in graph["nodes"]}
-    require(node_by_id["OPEN-DEFECT-4"]["status"] == "candidate_proved",
+    require(node_by_id["OPEN-DEFECT-4"]["status"] == "reviewed",
             "OPEN-DEFECT-4 graph status")
     all_node_ids = set(node_by_id)
     for edge in graph["edges"]:
         require(edge["from"] in all_node_ids, f"missing graph source {edge['from']}")
         require(edge["to"] in all_node_ids, f"missing graph target {edge['to']}")
-    require(len(graph["nodes"]) == 34, "proof graph node count")
-    require(len(graph["edges"]) == 50, "proof graph edge count")
+    require(len(graph["nodes"]) == 35, "proof graph node count")
+    require(len(graph["edges"]) == 53, "proof graph edge count")
+    terminal_nodes = {"ROOT-JC2", "TERM-FINITE-ETALE", "TERM-DEGREE-ONE", "TERM-AUTOMORPHISM"}
+    for edge in graph["edges"]:
+        require(
+            not (edge["from"] == "OPEN-DEFECT-4" and edge["to"] in terminal_nodes),
+            "reviewed defect-four node must not acquire terminal scope",
+        )
 
     required_paths = [
         ROOT / "research" / "audits" / "defect-4-staircase-audit.md",
