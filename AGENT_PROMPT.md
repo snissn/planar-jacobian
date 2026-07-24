@@ -10,10 +10,11 @@ Repository:
 
 Intended scientific baseline:
   PR #15 / branch agent/bootstrap-proof-graph
+  baseline commit 86d1b78cedd788b7335be692f9bb92921142c7d3
   https://github.com/snissn/planar-jacobian/pull/15
 
-Active filtered-equivariance branch:
-  issue-1/filtered-equivariance-on-bootstrap
+Active issue-scoped branch:
+  issue-17/defect-4-staircase
 
 Active task:
   issue #17
