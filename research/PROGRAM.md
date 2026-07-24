@@ -25,13 +25,14 @@ with an open immersion followed by a finite map. A counterexample would require 
 The main proof lanes are different descriptions of the same obstruction:
 
 - **finite normalization:** principalize the Kähler different or reduced branch divisor;
+- **monogenicity/index form:** construct one integral primitive element whose index ideal is a unit;
 - **canonical symmetry:** prove a pulled-back translation or Euler field is complete/locally finite;
 - **generic fibers:** eliminate finite asymptotic punctures and puncture monodromy;
 - **Brieskorn/Gauss--Manin:** produce one bounded coherent lattice in the target pencil;
 - **weighted degeneration:** reduce an arbitrary map to an exactly graded Keller map without losing the constant-Jacobian term;
 - **monodromy/Galois closure:** show fixed-sheet inertia and nonabelian gluing are incompatible with the affine-plane source.
 
-None of the bridge theorems is currently maintained as proved.
+None of the full bridge theorems is currently maintained as proved. Issue #3 does, however, close several conditional monogenicity steps and refute the purely algebraic genericity bridge at exact scope.
 
 ## Exact graded leverage
 
@@ -74,12 +75,47 @@ J(P_0,Q_2) + J(P_1,Q_1) + J(P_2,Q_0) = 0.
 
 The term `J(P_1,Q_1)` can bend the line-pencil argument that works at lower defect. It is the active load-bearing obstruction.
 
+## Moving-index disposition
+
+Issue [#3](https://github.com/snissn/planar-jacobian/issues/3) audits the global primitive-element route in [`tracks/monogenicity-index-divisor.md`](tracks/monogenicity-index-divisor.md).
+
+The correct height-one object is the entire semilocal algebra
+
+```text
+Cbar_p=Cbar tensor_B B_p,
+```
+
+not the separate DVR factors above `p`. For integral primitive `theta`, the index module and index ideal are
+
+```text
+M_theta=Cbar/B[theta],
+I_theta=Fitt^B_0(M_theta),
+```
+
+with
+
+```text
+ord_p(I_theta)=length_{B_p}(Cbar_p/B_p[theta]),
+Disc(B[theta]/B)=I_theta^2 Disc(Cbar/B).
+```
+
+The issue packet supplies candidate proofs that one element can generate every prescribed finite set of height-one semilocalizations, that generation at all height-one primes globalizes by `R1/S2`, and that a globally monogenic Keller normalization has degree one without circularity.
+
+The generic algebraic elimination step is false. A smooth rational rank-three cover can be locally monogenic everywhere, have squarefree tame fixed-sheet branching and an open affine plane, yet have a universal index form that never represents a nonzero constant. The exact missing property in that model is etaleness of the specified open plane over the base.
+
+The surviving bridge is therefore Keller-specific:
+
+> Convert source etaleness on `A2 -> Y` into a unit-value theorem for the universal index form.
+
+The first exact successor is the rank-three binary cubic index-form problem. Generic primitivity, distinct values on one fiber, parameter counts, class-group triviality, and local monogenicity are forbidden substitutes for the unit equation.
+
 ## Parallel sufficient criteria
 
 The following are maintained only at the status assigned in [`CLAIM_LEDGER.md`](CLAIM_LEDGER.md):
 
 - principal Kähler different of the finite normalization;
-- global relative complete-intersection or monogenic normalization;
+- a unit-valued universal index form, hence a global monogenic normalization;
+- global relative complete-intersection normalization;
 - local finiteness of the canonical hyperbolic Euler field;
 - local nilpotence/surjectivity of one canonical translation derivation;
 - finiteness of one Brieskorn lattice in the affine target pencil;
