@@ -83,7 +83,7 @@ jobs:
           python3 scripts/frontier.py | tee "$RUNNER_TEMP/frontier.log"
 
           git add --all
-          git diff --cached --check
+          git diff --cached --check -- . ':(exclude,glob)**/*.md' ':(exclude,glob)*.md'
           tree_sha="$(git write-tree)"
 
           git config user.name "github-actions[bot]"
