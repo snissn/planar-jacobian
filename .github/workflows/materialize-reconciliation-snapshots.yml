@@ -10,11 +10,16 @@ on:
 
 permissions:
   contents: read
+  issues: read
+  pull-requests: read
+  actions: read
 
 jobs:
   snapshot:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    env:
+      GH_TOKEN: ${{ github.token }}
     steps:
       - name: Check out current main snapshot
         uses: actions/checkout@v4
@@ -37,15 +42,24 @@ jobs:
           path: snapshots/defect4
           fetch-depth: 1
 
-      - name: Record pinned revisions
+      - name: Record pinned revisions and live repository inventory
         shell: bash
         run: |
           set -euo pipefail
+          mkdir -p snapshots/metadata
           {
             echo "main=d132adc131533776509075ee70829ab34aa60f53"
             echo "rich=296867d82d09d51ef2386de2a62067408b7f949c"
             echo "defect4=96fc7ec34bd3b685a0edeae7ecd4404abab7e2f1"
+            echo "snapshot_workflow_commit=${GITHUB_SHA}"
           } > snapshots/PINNED_REFS.txt
+
+          gh api "repos/${GITHUB_REPOSITORY}" > snapshots/metadata/repository.json
+          gh api --paginate --slurp "repos/${GITHUB_REPOSITORY}/branches?per_page=100" > snapshots/metadata/branches-pages.json
+          gh api --paginate --slurp "repos/${GITHUB_REPOSITORY}/issues?state=all&per_page=100" > snapshots/metadata/issues-pages.json
+          gh api --paginate --slurp "repos/${GITHUB_REPOSITORY}/pulls?state=all&per_page=100" > snapshots/metadata/pulls-pages.json
+          gh api --paginate --slurp "repos/${GITHUB_REPOSITORY}/actions/workflows?per_page=100" > snapshots/metadata/workflows-pages.json
+
           find snapshots -name .git -type d -prune -exec rm -rf {} +
 
       - name: Upload source snapshots
