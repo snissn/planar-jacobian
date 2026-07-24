@@ -1,9 +1,10 @@
 # Follow-up Agent Prompt
 
-Use this prompt verbatim or adapt only the task-specific scope.
+Use this prompt verbatim for the independent scientific review of issue #17.
 
 ```text
-You are continuing a rigorous research program on the two-dimensional Jacobian conjecture.
+You are independently reviewing a theorem candidate in a rigorous research
+program on the two-dimensional Jacobian conjecture.
 
 Repository:
   https://github.com/snissn/planar-jacobian
@@ -13,17 +14,17 @@ Intended scientific baseline:
   baseline commit 86d1b78cedd788b7335be692f9bb92921142c7d3
   https://github.com/snissn/planar-jacobian/pull/15
 
-Active issue-scoped branch:
+Candidate branch:
   issue-17/defect-4-staircase
 
 Active task:
-  issue #17
+  independent exact-byte review of issue #17
   https://github.com/snissn/planar-jacobian/issues/17
 
 Scientific workflow:
   https://github.com/snissn/skills/tree/main/scientific-mainline-workflow
 
-Before changing any scientific claim, read:
+Before reviewing any scientific claim, read:
   scientific-mainline-workflow/SKILL.md
   scientific-mainline-workflow/references/scientific-review-checklist.md
 
@@ -31,7 +32,8 @@ Authority and scope:
   - MUTABLE_NONAUTHORITATIVE
   - protocol_verdict: null
   - no file in the repository proves JC_2
-  - conversation exports are provenance and idea input, not theorem authority
+  - conversation exports are provenance, not theorem authority
+  - do not accept a manifest whose bytes differ from the review record
 
 Read in order:
   1. README.md
@@ -44,81 +46,57 @@ Read in order:
   8. synthesis/CORRECTIONS_AND_RETRACTIONS.md
   9. research/tracks/m-filtered-equivariance.md
   10. research/leaf-packets/L13-defect-4-staircase.md
-  11. research/tracks/g-wright-graded-single-tree.md
-  12. research/tracks/j-equivariant-degeneration.md
-  13. research/SOURCE_INVENTORY.md
+  11. research/audits/defect-4-staircase-audit.md
+  12. research/audits/defect-4-case-table.md
+  13. research/audits/filtered-transformation-catalogue.md
+  14. research/audits/defect-4-primary-source-audit.md
+  15. governance/reviews/issue-17-defect-4-exact-byte-review.md
+  16. governance/reviews/issue-17-defect-4-candidate-manifest.json
 
-Primary task:
-  Adversarially audit the weighted Rees staircase and resolve the first
-  unproved filtered case, kappa_w=4.
+Candidate theorem:
+  For a primitive positive weight w=(p,q), every planar Keller pair with
 
-Setup:
-  For a primitive positive weight w=(p,q), write
+    kappa_w=deg_w(P)+deg_w(Q)-p-q <= 4
 
-    d_P = deg_w P,
-    d_Q = deg_w Q,
-    kappa_w = d_P+d_Q-p-q,
+  is a polynomial automorphism.
 
-  and decompose
+Primary review burden:
+  - Recompute the Rees chain-rule exponent and every staircase sign.
+  - Prove the homogeneous common-power lemma without importing algebraic
+    dependence as polynomial dependence.
+  - Verify the compensated source/target normalization retains the nonzero
+    resonant scalar and preserves J=1.
+  - Verify endpoint resonance makes a full component a coordinate.
+  - Recompute both interior orientations at kappa=3.
+  - Recompute defect-4 positions (1,3), (2,2), and (3,1), including reversed
+    resonant degree orientation, unequal weights, and missing layers.
+  - In the central exceptional weight (1,2), independently derive
 
-    P = sum_i P_i,
-    Q = sum_j Q_j,
+      3af=4bv,
+      J(P_1,Q_1)=(2uf-3ve)x^2-vfy,
+      (3ac+2uf-3ve)x^2-vfy=0.
 
-  with deg_w P_i=d_P-i and deg_w Q_j=d_Q-j.
-
-  Independently verify the Rees identity
-
-    J(Pcal,Qcal)=t^(kappa_w)
-
-  and all resulting staircase equations.
-
-Load-bearing defect-4 equation in the central resonance pattern:
-
-  J(P_0,Q_2)+J(P_1,Q_1)+J(P_2,Q_0)=0.
-
-The middle Wronskian J(P_1,Q_1) is the first term absent from the
-lower-defect line-pencil argument. Determine whether it can always be:
-
-  (a) removed by a filtration-compatible target automorphism;
-  (b) removed by a filtered polynomial symplectic/source transformation;
-  (c) shown to force forbidden Newton--Puiseux or boundary-monodromy data;
-  (d) or realized by a formal layer system disproving the staircase ansatz.
-
-Required audit:
-  - Recompute every sign, weight, and exponent independently.
-  - Treat the conversation-derived kappa_w<=3 proof as a candidate.
-  - Enumerate resonance positions (1,3), (2,2), and (3,1).
-  - Include unequal positive weights and missing intermediate layers.
-  - State every permitted source or target transformation exactly.
-  - Prove each transformation preserves J=1.
-  - Prove the declared descent measure strictly decreases.
-  - Search primary literature on graded Keller maps, Newton inner
-    polynomials, filtered symplectic normal forms, and weighted
-    automorphism reduction.
-  - Try to falsify every proposed lemma before strengthening it.
+  - In the (3,1) exceptional weight (1,2), independently derive the nonzero
+    cv*y coefficient in S_2.
+  - Verify every target descent cancels a complete top layer and strictly
+    lowers kappa_w.
+  - Try to build a formal polynomial layer countermodel before accepting the
+    support exhaustion.
+  - Run both repository and defect-four validators, but do not treat them as
+    mathematical authority.
 
 Do not use:
   - the retired Euler boundary-excess identity;
   - a generic-fiber Kummer model as a global Galois conclusion;
   - exactness of a form as a principalization theorem;
   - multiple sheets as evidence of a global deck symmetry;
-  - unreviewed conversation prose as theorem authority.
+  - the constructor's prose as authority.
 
-Expected pushed artifacts:
-  - a complete defect-4 case table;
-  - exact derivations for every load-bearing equation;
-  - a catalogue of allowed filtration-preserving transformations;
-  - formal countermodels or obstruction calculations;
-  - a theorem candidate, scoped obstruction, or smaller blocked invariant;
-  - synchronized claim-ledger, proof-graph, work-queue, and leaf updates;
-  - an adversarial review bound to exact candidate bytes.
-
-Acceptable dispositions:
-  1. full defect-4 reduction;
-  2. a substantial declared subclass theorem;
-  3. a formal counterexample to staircase reduction;
-  4. a strictly smaller invariant obstruction with a proved reduction.
-
-Do not broaden to higher defects until defect 4 has an exact disposition.
-Do not rename the missing implication and present it as a proof of JC_2.
+Required disposition:
+  Return exactly ACCEPT or BLOCK, bound to the exact candidate manifest and
+  the scoped kappa_w<=4 theorem. On BLOCK, identify the smallest false equation,
+  omitted case, circular premise, or manifest/provenance defect. On ACCEPT,
+  promote only the scoped theorem; do not claim JC_2 or begin defect 5 in the
+  same review. Use FAIL SELECTED REALIZATION or CLASS-LEVEL OBSTRUCTION only if
+  the scientific-review checklist genuinely requires one of those dispositions.
 ```
