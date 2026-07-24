@@ -42,7 +42,7 @@ jobs:
           python -c 'import sympy; print("sympy", sympy.__version__)' | tee -a runtime.txt
 
       - name: Byte-compile all maintained Python
-        run: python -m compileall -q scripts research/issues/issue-3-unramified-index
+        run: python -m compileall -q scripts research/issues/issue-3-unramified-index research/issues/rank-three-index-form-unit
 
       - name: Verify generated Markdown views
         shell: bash
@@ -79,6 +79,12 @@ jobs:
         run: |
           set -o pipefail
           python research/issues/issue-3-unramified-index/verify_index_models.py | tee issue3-models.log
+
+      - name: "Validate rank-three issue #3 successor"
+        shell: bash
+        run: |
+          set -o pipefail
+          python research/issues/rank-three-index-form-unit/verify_all.py | tee issue3-rank-three.log
 
       - name: "Validate issue #4 stable-order identities"
         shell: bash
@@ -124,6 +130,7 @@ jobs:
             defect4-candidate.log
             defect4-independent.log
             issue3-models.log
+            issue3-rank-three.log
             issue4-stable-order.log
             issue5-principal-parts.log
           if-no-files-found: warn

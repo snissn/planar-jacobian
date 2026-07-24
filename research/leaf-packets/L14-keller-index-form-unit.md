@@ -2,13 +2,17 @@
 
 - **Priority:** `P0`
 - **Status:** `OPEN`
-- **Dependencies:** `CLM-029`, `CLM-030`, `CLM-031`, `CLM-034`, `CLM-058`, `CLM-059`
+- **Dependencies:** `CLM-029`, `CLM-030`, `CLM-031`, `CLM-034`, `CLM-058`, `CLM-059`, `CLM-062`–`CLM-066`
 - **Authority:** `MUTABLE_NONAUTHORITATIVE`
 - **Issue:** [#3](https://github.com/snissn/planar-jacobian/issues/3)
 
+## Current rank-three packet
+
+The packet [`../issues/rank-three-index-form-unit/`](../issues/rank-three-index-form-unit/README.md) is integrated at `BLOCKED_WITH_EXACT_REDUCTION` scope. It banks `CLM-062`–`CLM-066`, records a separate local adversarial review, and leaves `CLM-059` open at the one-section boundary-cube/unit-value identity. Merge location does not confer scientific authority.
+
 ## Load-bearing question
 
-For the actual Keller normalization, prove that the universal index form represents a nonzero constant, equivalently construct an integral primitive element whose index ideal is the unit ideal.
+For the actual Keller normalization, construct one integral trace-free section `s` with fixed-section index `Fitt_0(O/B[s])=B`, equivalently `Phi(s) in C*`. Proving only that the universal coefficient/content ideal is `B` is insufficient.
 
 ## Accepted evidence
 
@@ -28,4 +32,4 @@ Stop when the Keller-specific unit-index statement is proved at exact scope, or 
 
 ## Handoff
 
-Begin with rank three. After trace splitting, study the intrinsic binary cubic `s -> det(1,s,s^2)` on the trace-zero rank-two bundle and determine whether Keller-source étaleness forces a global section on which it is a unit.
+Continue from the [rank-three successor packet](../issues/rank-three-index-form-unit/README.md). Use the exact primitive-coordinate differential congruence, boundary-only different support, and the four-direction finite certificate to prove the boundary-cube divisor identity for one source-derived section, or construct a genuine Keller-compatible rank-three countermodel.
