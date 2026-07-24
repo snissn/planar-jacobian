@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - issue-3/rank-three-sync-temp-gpt56
+  pull_request:
 
 permissions:
   contents: write
@@ -16,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.ref }}
+          ref: ${{ github.event.pull_request.head.ref || github.ref }}
           fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
