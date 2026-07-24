@@ -2,161 +2,136 @@
 
 > **Authority:** `MUTABLE_NONAUTHORITATIVE`  
 > **Active issue:** [#17](https://github.com/snissn/planar-jacobian/issues/17)  
-> **Scientific inference:** none
+> **Scientific inference:** scoped theorem candidate through positive-weight defect `4`
 
 ## Purpose
 
-Exact nontrivial `G_m`-equivariance is a literature-backed rigidity class for planar Keller maps: T. Shaska proves that a `G_m`-equivariant planar Keller map is an automorphism for every sign pattern of the weights (arXiv:2607.20210, submitted 2026-07-22).
+Exact nontrivial `G_m`-equivariance is a literature-backed rigidity class for planar Keller maps: T. Shaska states that a `G_m`-equivariant planar Keller map is an automorphism for every sign pattern of the weights (arXiv:2607.20210v1, submitted 2026-07-22).
 
-This track asks whether an arbitrary Keller pair can be reduced to that exact graded case through its weighted Rees filtration. The conversation-derived low-defect calculations are retained as theorem candidates, not as accepted results.
+This track studies whether a general Keller pair can be reduced toward that exact graded case through a weighted Rees filtration. Issue #17 has produced a self-contained candidate proof through positive-weight grading defect `4`. It is not frozen authority and does not show that an arbitrary Keller pair has such a small-defect weight.
 
-## 1. Weighted layers
+## 1. Exact weighted Rees staircase
 
-Fix a primitive positive weight
-
-```text
-w=(p,q),  p,q>0.
-```
-
-For a polynomial `H`, let `deg_w H` be its weighted degree. Put
+Fix a primitive positive weight `w=(p,q)`. Put
 
 ```text
-d_P = deg_w P,
-d_Q = deg_w Q,
-kappa_w = d_P+d_Q-p-q.
+d_P=deg_w P,
+d_Q=deg_w Q,
+kappa_w=d_P+d_Q-p-q,
+P=sum_i P_i,  deg_w P_i=d_P-i,
+Q=sum_j Q_j,  deg_w Q_j=d_Q-j.
 ```
 
-Write the weighted layer expansions
+Define
 
 ```text
-P = P_0+P_1+...,
-Q = Q_0+Q_1+...,
+Pcal=t^(d_P)P(t^(-p)x,t^(-q)y)=sum_i t^iP_i,
+Qcal=t^(d_Q)Q(t^(-p)x,t^(-q)y)=sum_j t^jQ_j.
 ```
 
-where
+The chain rule gives exactly
 
 ```text
-deg_w P_i = d_P-i,
-deg_w Q_j = d_Q-j.
+J(Pcal,Qcal)=t^(d_P+d_Q-p-q)J(P,Q)=t^kappa_w.
 ```
 
-Define the weighted Rees deformation
+Hence
 
 ```text
-Pcal(t,x,y) = t^(d_P) P(t^(-p)x,t^(-q)y)
-            = sum_i t^i P_i,
-Qcal(t,x,y) = t^(d_Q) Q(t^(-p)x,t^(-q)y)
-            = sum_j t^j Q_j.
+sum_(i+j=n)J(P_i,Q_j)=0     for n<kappa_w,
+sum_(i+j=kappa_w)J(P_i,Q_j)=1.
 ```
 
-A chain-rule computation gives the candidate identity
+Each individual bracket lies in the homogeneous piece of degree `kappa_w-i-j` (and has that degree when nonzero); therefore every bracket with `i+j>kappa_w` is zero. This sharper no-tail statement is part of CLM-047.
+
+## 2. Resonant normalization
+
+At least one term on the resonant stair has nonzero constant bracket. If
 
 ```text
-J_x,y(Pcal,Qcal) = t^(kappa_w) J(P,Q) = t^(kappa_w).
+J(P_a,Q_b)=c in C*,
+a+b=kappa_w,
 ```
 
-Consequently the layer equations are
+then the weighted degrees of `P_a,Q_b` are exactly `{p,q}`. In two variables this gives an explicit graded triangular or linear automorphism. Pair its inverse source change with a compensating target determinant so that `J=1` is preserved and the selected layers become
 
 ```text
-sum_(i+j=n) J(P_i,Q_j) = 0,  n<kappa_w,
-sum_(i+j=kappa_w) J(P_i,Q_j) = 1.
+P_a=x,
+Q_b=c y.
 ```
 
-This algebra is elementary but remains subject to exact-byte independent audit before promotion.
+The scalar `c` is retained. The complete transformation proof is in [`../audits/filtered-transformation-catalogue.md`](../audits/filtered-transformation-catalogue.md).
 
-## 2. Resonant layers
+## 3. Exact descent
 
-For `i+j=kappa_w`, the bracket `J(P_i,Q_j)` has weighted degree zero. Positive source weights imply that every such bracket is a scalar. Since their sum is `1`, at least one resonant pair has nonzero constant bracket.
-
-Conditional on the exact graded theorem, such a pair is a weighted-homogeneous coordinate pair. This gives a graded automorphism hidden among the layers of every Keller pair, but it does not by itself imply that the full filtered map is invertible.
-
-## 3. Top-layer cancellation criterion
-
-A useful candidate lemma is:
-
-> If a nonzero resonant pair uses a top layer, for example
-> `J(P_0,Q_j) in C*` or `J(P_i,Q_0) in C*`, then a graded source change makes the top component a coordinate. Weight positivity then forces the lower layers of that component to be triangular, so the full Keller map is an automorphism.
-
-This needs an audit of every allowed source change and of the claim that the lower layers cannot contain a mixed monomial of smaller weight.
-
-## 4. Candidate low-defect reduction
-
-The conversation contains a proposed case analysis yielding
+The top equation `J(P_0,Q_0)=0` gives
 
 ```text
-kappa_w <= 3  =>  F is an automorphism.
+P_0=aH^m,
+Q_0=bH^n,
+gcd(m,n)=1.
 ```
 
-The proposed mechanisms are:
+If `m=1` or `n=1`, an exact triangular target shear cancels one full top layer and strictly lowers the nonnegative integer `kappa_w`. Equal top degrees use a determinant-one linear shear. This is the only descent mechanism used through defect `4`.
 
-- `kappa=0`: exact graded rigidity;
-- `kappa=1`: every resonant position touches a top layer;
-- `kappa=2`: after excluding top-layer resonance, the middle pair is a graded coordinate pair and the preceding staircase equation forces a parallel-line/common-factor reduction;
-- `kappa=3`: an arithmetic exhaustion of the interior resonance positions and weights is claimed to force either a contradiction or a defect-lowering target operation.
+A resonant position touching `P_0` or `Q_0` makes that full component a polynomial coordinate and therefore makes the Keller map triangular after a source coordinate change.
 
-This result is recorded as `CANDIDATE`, not `FROZEN_ACCEPTED`. It has not yet received an independent complete case audit, and no downstream claim may use it as theorem authority.
+## 4. Independently audited defects zero through three
 
-## 5. Defect 4
-
-Defect `4` is the first level at which the central resonance can contain a genuine middle Wronskian. In the `(2,2)` pattern, after normalizing the resonant pair, the earlier equation has the form
+The earlier conversation claim has been rederived without using conversation prose:
 
 ```text
-J(P_0,Q_2) + J(P_1,Q_1) + J(P_2,Q_0) = 0.
+kappa_w<=3  =>  F is an automorphism.
 ```
 
-The term
+The interior defect-2 equation reduces to a common-power divisibility contradiction unless a top shear lowers defect. For defect `3`, both positions `(1,2)` and `(2,1)` are treated for equal weights, `p=1<q`, and `1<p<q`, including absent layers. The exact equations are in [`../audits/defect-4-staircase-audit.md`](../audits/defect-4-staircase-audit.md).
+
+This statement remains `candidate_proved` pending independent exact-byte acceptance.
+
+## 5. Defect four
+
+The exact stairs are
 
 ```text
-J(P_1,Q_1)
+S_0=J(P_0,Q_0)=0,
+S_1=J(P_0,Q_1)+J(P_1,Q_0)=0,
+S_2=J(P_0,Q_2)+J(P_1,Q_1)+J(P_2,Q_0)=0,
+S_3=J(P_0,Q_3)+J(P_1,Q_2)+J(P_2,Q_1)+J(P_3,Q_0)=0.
 ```
 
-is absent from the defect-2 line-pencil calculation and may bend the leading common-factor fibers. It is the first explicit filtered term capable of carrying the cusp/monodromy correction seen in the normalization tracks.
+Endpoint resonance is already triangular. The three interior positions have the following disposition:
 
-The other resonance positions are `(1,3)` and `(3,1)`. All three must be treated with unequal positive weights, vanishing intermediate layers, and the full class of filtration-compatible transformations.
+* `(1,3)`: after top-power descent is removed, weighted support forces `p=1`; `S_1,S_2` make the relevant `y` derivatives vanish, while `S_3=2acx`, impossible.
+* `(2,2)`: in a no-descent case a zero middle Wronskian would force `H|H_x`. A nonzero Wronskian requires both middle layers. For `p>1` support forces `(p,q)=(2,3)`, contradicting `S_0`. For `p=1,q>2`, `S_1` forces the Wronskian to vanish. For `(1,2)`, exact coefficients give `3af=4bv` and `vf=0`, followed by `3ac=0`, impossible.
+* `(3,1)`: the transpose arithmetic forces top descent or an `S_1` support contradiction; the exceptional `(1,2)` row gives a nonzero `cv y` coefficient in `S_2`.
 
-## 6. Allowed transformations
+Thus every defect-four case either lowers to a proven smaller defect or is impossible. The complete table is [`../audits/defect-4-case-table.md`](../audits/defect-4-case-table.md).
 
-Any proposed reduction must state exactly which operations are used and prove both properties below:
+## 6. Middle-Wronskian conclusion
 
-1. the operation preserves the Keller equation `J(P,Q)=1`;
-2. the operation strictly lowers the declared weighted defect or a separately declared well-founded refinement.
+The term `J(P_1,Q_1)` is not removed by a claimed universal target or source normal form. In fact, same-index `SL_2` target changes preserve it, and graded symplectic source changes pull it back and preserve nonvanishing.
 
-Relevant operations may include:
+Instead, the full staircase shows that a nonzero middle Wronskian cannot survive all support and preceding-stair constraints in a no-descent defect-four pair. No boundary-monodromy or Newton--Puiseux theorem is needed at this defect.
 
-- determinant-one affine target changes;
-- triangular target automorphisms `(P,Q)->(P,Q-h(P))` and their transpose;
-- polynomial source automorphisms whose action on the filtration is controlled;
-- filtered Hamiltonian/source changes, only after proving polynomiality and termination.
+## 7. Literature boundary
 
-A formal cancellation of one layer that creates a larger layer elsewhere is not a reduction.
+The primary-source audit is [`../audits/defect-4-primary-source-audit.md`](../audits/defect-4-primary-source-audit.md). Shaska, Lee--Li, Karaś, and Pan are recorded at their exact scoped relevance. None supplies a hidden missing implication in the candidate proof.
 
-## 7. Falsification program
+## 8. Current theorem candidate and nonclaims
 
-Before strengthening the staircase theorem, construct the most general finite layer systems satisfying the equations through defect `4` and test whether:
+The candidate conclusion is
 
-- a nonzero middle Wronskian survives all permitted normalizations;
-- formal solutions fail to lift to actual polynomials;
-- the claimed low-defect proof omitted a resonance or weight case;
-- the obstruction is equivalent to a known Newton inner-polynomial condition;
-- a boundary valuation or Puiseux invariant supplies a monotone termination measure.
+```text
+primitive positive w and kappa_w<=4  =>  F is an automorphism.
+```
 
-A formal counterexample to staircase reduction is a useful scientific disposition even though it is not a Keller counterexample.
+It does not imply:
 
-## 8. Relation to other tracks
-
-- **Track G:** exact grading in the Wright one-boundary ring; this track supplies a filtered neighborhood of that problem.
-- **Track J:** closed-orbit/no-escape degeneration; the Rees parameter is an explicit degeneration, but it may lose function-field degree or boundary valuations.
-- **Track H:** the middle Wronskian may encode cusp braid monodromy.
-- **Track A:** any successful defect reduction should have an interpretation on the finite-normalization boundary.
-- **Track L:** all external theorem statements and exact hypotheses require primary-source audit.
+* that every Keller map has a positive weight with `kappa_w<=4`;
+* that the Rees family preserves generic degree or boundary valuations;
+* a reduction at defect `5`;
+* or `JC_2`.
 
 ## Exit
 
-This track advances only through an exact disposition of the defect-4 packet:
-
-1. complete reduction to smaller defect;
-2. a declared subclass theorem;
-3. a formal counterexample to the reduction ansatz;
-4. or a strictly smaller invariant obstruction with a proved reduction to it.
-
-Do not generalize to arbitrary defect merely by naming the unresolved middle-Wronskian problem.
+The mathematical stop rule for defect `4` has been reached by a full scoped reduction. The leaf remains review-blocked until a distinct reviewer binds an `ACCEPT` or mathematical `BLOCK` to the exact candidate manifest. Do not begin higher-defect promotion first.
