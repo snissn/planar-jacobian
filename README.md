@@ -1,58 +1,73 @@
 # Planar Jacobian Research Mainline
 
-> **Authority:** `MUTABLE_NONAUTHORITATIVE`  
-> **Engineering status:** `DEVELOPMENT`  
-> **Execution validity:** `NOT_A_SCIENTIFIC_EXECUTION`  
-> **Protocol verdict:** `null`  
-> **Scientific inference:** `none`
+> **Repository authority:** `MUTABLE_NONAUTHORITATIVE` except for explicitly reviewed scopes  
+> **Canonical integration surface:** latest `main`  
+> **Main theorem:** open; this repository does not claim `JC_2`
 
-This repository is a durable research workspace for the two-dimensional Jacobian conjecture after the July 2026 three-dimensional counterexample. It preserves promising reductions without presenting an exploratory argument as a theorem.
+This repository is the durable integration surface for a dependency-tracked research program on the planar Jacobian conjecture. Coherent proofs, conditional implications, countermodels, falsification results, blocked leaves, source audits, and speculative tracks may all be preserved on `main`. Their scientific authority is determined by the claim ledger and review records, never by branch location, pull-request state, or a successful merge.
 
-The repository does **not** claim a proof of the planar conjecture. The active scientific tracker is [issue #1](https://github.com/snissn/planar-jacobian/issues/1).
+## Canonical authority
+
+The machine-readable surfaces are authoritative for their declared fields:
+
+- [`research/claim_ledger.json`](research/claim_ledger.json) — claim statements, dependencies, and epistemic status;
+- [`research/proof_graph.json`](research/proof_graph.json) — maintained dependency graph and leaf disposition;
+- [`research/work_queue.json`](research/work_queue.json) — active leaves and completed/disposed packets;
+- [`governance/reviews/`](governance/reviews/) — review and freeze records bound to pinned revisions.
+
+The generated prose views are [`research/CLAIM_LEDGER.md`](research/CLAIM_LEDGER.md), [`research/PROOF_GRAPH.md`](research/PROOF_GRAPH.md), [`research/WORK_QUEUE.md`](research/WORK_QUEUE.md), [`research/ISSUE_INDEX.md`](research/ISSUE_INDEX.md), and [`STATUS.md`](STATUS.md). Do not edit generated views by hand.
+
+A merge to `main` is transport and preservation. It does not promote a candidate, accept a proof, close a scientific leaf, or broaden a reviewed theorem.
+
+## Current synchronized scientific boundary
+
+- **Defect at most four:** `CLM-047–051` and `CLM-060` are `reviewed_scoped`, bound to independent `ACCEPT` at candidate revision `96fc7ec34bd3b685a0edeae7ecd4404abab7e2f1`. The theorem applies only to primitive positive weights with grading defect at most four. It does not cover defect five, prove that an arbitrary Keller pair has such a weight, or establish `JC_2`.
+- **Issue #3 / moving index:** the generic unramified-index bridge is disposed by the scoped countermodel `CLM-058`. The active successor is [`L14-keller-index-form-unit.md`](research/leaf-packets/L14-keller-index-form-unit.md), which must use the specified étale Keller source.
+- **Issue #4 / stable order:** the stable-order-to-degree-one implication is a mutable conditional candidate, and the packet records a ramified-DVR no-lattice obstruction. Existence of a finite stable order remains open as `CLM-061`.
+- **Issue #5 / radial field:** the packet records the logarithmic tangency criterion, full principal-part obstruction, and failure of regularity to imply algebraic integration. The actual Keller branch is not proved radial, and the leaf remains open.
 
 ## Start here
 
-1. Read [`STATUS.md`](STATUS.md).
-2. Read [`research/PROGRAM.md`](research/PROGRAM.md).
-3. Inspect the claim classifications in [`research/CLAIM_LEDGER.md`](research/CLAIM_LEDGER.md).
-4. Read the current technical frontier in [`research/tracks/filtered-equivariance.md`](research/tracks/filtered-equivariance.md).
-5. Read the moving-index disposition in [`research/tracks/monogenicity-index-divisor.md`](research/tracks/monogenicity-index-divisor.md) and its complete [issue #3 packet](research/issues/issue-3-unramified-index/README.md).
-6. Pick up the bounded filtered task in [`research/leaf-packets/defect-4-staircase.md`](research/leaf-packets/defect-4-staircase.md), or the Keller-specific index successor in [`research/leaf-packets/unramified-index-elimination.md`](research/leaf-packets/unramified-index-elimination.md).
-7. Follow [`AGENTS.md`](AGENTS.md) and [`governance/SCIENTIFIC-WORKFLOW.md`](governance/SCIENTIFIC-WORKFLOW.md) before changing claim status.
+1. [`STATUS.md`](STATUS.md) — generated inventory, reviewed scopes, and active frontier.
+2. [`governance/REPOSITORY-MAP.md`](governance/REPOSITORY-MAP.md) — canonical navigation and resume order.
+3. [`research/PROGRAM.md`](research/PROGRAM.md) — common problem spine and cross-track interfaces.
+4. [`research/WORK_QUEUE.md`](research/WORK_QUEUE.md) — active leaves and dispositions.
+5. [`AGENTS.md`](AGENTS.md) — short-lived integration and review rules.
+6. [`governance/SCIENTIFIC-WORKFLOW.md`](governance/SCIENTIFIC-WORKFLOW.md) — construction, review, synchronization, and freeze policy.
+7. [`archive/MANIFEST.md`](archive/MANIFEST.md) — provenance availability and metadata-only declarations.
 
-## Scientific workflow
+Issue [#2](https://github.com/snissn/planar-jacobian/issues/2) is the durable coordination surface. Leaf issues coordinate bounded research but do not override the canonical JSON surfaces. Closed issue #1 and historical bootstrap/reconciliation branches are provenance only.
 
-Work follows the [`scientific-mainline-workflow`](https://github.com/snissn/skills/tree/main/scientific-mainline-workflow) maintained in [`snissn/skills`](https://github.com/snissn/skills), with repository-specific rules recorded in [`governance/SCIENTIFIC-WORKFLOW.md`](governance/SCIENTIFIC-WORKFLOW.md).
+## Repository layers
 
-The governing rules are:
+- `archive/` — declared source identities, historical partial chunks, and explicit metadata-only records;
+- `synthesis/` — cross-conversation synthesis and corrections/retractions;
+- `research/tracks/` — maintained research programs;
+- `research/leaf-packets/` — bounded tasks with evidence requirements, forbidden shortcuts, stop rules, and handoffs;
+- `research/issues/` and `research/issue-*` — issue-owned proof, obstruction, countermodel, and review packets;
+- `governance/` — authority, source, review, concurrency, reconciliation, and validation records;
+- `scripts/` — deterministic rendering, structural checks, frontier reporting, and scoped symbolic regressions.
 
-- construct mutable, non-decisive scientific work on an issue-scoped feature branch;
-- use the connected GitHub adapter for repository operations whenever it is available and supports the action;
-- bind review to identified claims at a pinned commit or repository revision;
-- prefer a distinct reviewer, while permitting a declared local adversarial review when the environment does not support subagents or another reviewer;
-- keep candidate lemmas, literature results, blocked implications, and retractions distinct; and
-- promote only reviewed and validated artifacts to `main`.
+## Mainline integration rule
 
-Exact-byte manifests and artifact hashes are optional. Material scientific changes after acceptance require review of the affected scope, while editorial or metadata-only changes do not automatically invalidate a review.
+Every new task starts from the latest `main`, reserves an issue-specific artifact path, uses issue-local claim labels during construction, and defers global IDs and shared ledger edits to final synchronization. Before integration, resolve `main` again; if it moved, transplant only owned files and recompute shared deltas. Do not merge an unrelated branch history merely to recover a small packet.
 
-A pushed feature-branch commit or pull request is development provenance, not theorem authority.
+Branches are short-lived transport surfaces. When a pull request is useful, it should be non-draft, bounded, validated, and merged in the same run. Direct non-forced integration is permitted when repository policy allows it. Exact-byte manifests are optional provenance unless a claim-specific review requires them.
 
-## Current load-bearing questions
+## Validation
 
-### Filtered-equivariance lane
+Run against the exact candidate tree:
 
-Exact `G_m`-equivariance is known to force a planar Keller map to be an automorphism. The current lane studies a weighted Rees deformation of an arbitrary Keller pair. Candidate calculations eliminate grading defects through `3`; defect `4` is the first level containing a genuinely new middle Wronskian term.
+```bash
+python3 -m compileall -q scripts research/issues/issue-3-unramified-index
+python3 scripts/render_views.py --check
+python3 scripts/validate_repository.py
+python3 scripts/frontier.py
+python3 scripts/validate_defect4_staircase.py
+python3 scripts/review_validate_defect4_independent.py
+python3 research/issues/issue-3-unramified-index/verify_index_models.py
+python3 scripts/validate_issue4_stable_order.py
+python3 scripts/validate_issue5_principal_parts.py
+```
 
-> Can the defect-4 middle Wronskian be absorbed by a filtration-compatible source or target transformation, or shown to force a forbidden boundary/monodromy configuration?
-
-### Moving-index lane
-
-Issue #3 proves at candidate scope that ramified height-one generation can be patched and that full codimension-one generation globalizes. It also gives smooth rational countermodels to every purely algebraic genericity argument for eliminating the remaining collision divisor.
-
-> Can etaleness on the specified open Keller source force the universal index form to represent a nonzero constant?
-
-Neither open bridge is claimed proved.
-
-## Sources
-
-See [`research/SOURCES.md`](research/SOURCES.md), including T. Shaska, *Graded Keller maps and the Jacobian Conjecture*, arXiv:2607.20210. Issue #3's source audit is [`research/issues/issue-3-unramified-index/SOURCE-AUDIT.md`](research/issues/issue-3-unramified-index/SOURCE-AUDIT.md).
+The GitHub Actions workflow is [`.github/workflows/repository-python-validators.yml`](.github/workflows/repository-python-validators.yml). It records the tested SHA and uploads logs. Passing checks establish repository and regression consistency only; they do not review mathematics.

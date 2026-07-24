@@ -1,0 +1,151 @@
+name: Repository Python Validators
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  statuses: write
+
+concurrency:
+  group: repository-python-validators-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate exact research revision
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out exact event revision
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install symbolic dependency
+        run: python -m pip install --disable-pip-version-check sympy==1.14.0
+
+      - name: Record exact revision and runtime
+        shell: bash
+        run: |
+          set -euo pipefail
+          git rev-parse HEAD | tee exact-sha.txt
+          python --version | tee runtime.txt
+          python -c 'import sympy; print("sympy", sympy.__version__)' | tee -a runtime.txt
+
+      - name: Byte-compile all maintained Python
+        run: python -m compileall -q scripts research/issues/issue-3-unramified-index
+
+      - name: Verify generated Markdown views
+        shell: bash
+        run: |
+          set -o pipefail
+          python scripts/render_views.py --check | tee generated-views.log
+
+      - name: Run structural and consistency validation
+        shell: bash
+        run: |
+          set -o pipefail
+          python scripts/validate_repository.py | tee repository-validation.log
+
+      - name: Render proof frontier
+        shell: bash
+        run: |
+          set -o pipefail
+          python scripts/frontier.py | tee frontier.log
+
+      - name: Validate reviewed defect-four candidate identities
+        shell: bash
+        run: |
+          set -o pipefail
+          python scripts/validate_defect4_staircase.py | tee defect4-candidate.log
+
+      - name: Validate independent defect-four review checker
+        shell: bash
+        run: |
+          set -o pipefail
+          python scripts/review_validate_defect4_independent.py | tee defect4-independent.log
+
+      - name: "Validate issue #3 symbolic countermodels"
+        shell: bash
+        run: |
+          set -o pipefail
+          python research/issues/issue-3-unramified-index/verify_index_models.py | tee issue3-models.log
+
+      - name: "Validate issue #4 stable-order identities"
+        shell: bash
+        run: |
+          set -o pipefail
+          python scripts/validate_issue4_stable_order.py | tee issue4-stable-order.log
+
+      - name: "Validate issue #5 principal-part examples"
+        shell: bash
+        run: |
+          set -o pipefail
+          python scripts/validate_issue5_principal_parts.py | tee issue5-principal-parts.log
+
+      - name: Add frontier to job summary
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "## Exact revision"
+            echo
+            echo '```text'
+            cat exact-sha.txt 2>/dev/null || true
+            echo '```'
+            echo
+            echo "## Proof frontier"
+            echo
+            echo '```text'
+            cat frontier.log 2>/dev/null || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload exact-revision validation logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: repository-validation-${{ github.event.pull_request.head.sha || github.sha }}-${{ github.run_id }}
+          path: |
+            exact-sha.txt
+            runtime.txt
+            generated-views.log
+            repository-validation.log
+            frontier.log
+            defect4-candidate.log
+            defect4-independent.log
+            issue3-models.log
+            issue4-stable-order.log
+            issue5-principal-parts.log
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Publish push-run locator and result
+        if: always() && github.event_name == 'push'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          JOB_STATUS: ${{ job.status }}
+        shell: bash
+        run: |
+          case "$JOB_STATUS" in
+            success) STATE=success ;;
+            failure) STATE=failure ;;
+            cancelled) STATE=error ;;
+            *) STATE=error ;;
+          esac
+          gh api --method POST \
+            -H "Accept: application/vnd.github+json" \
+            repos/${GITHUB_REPOSITORY}/statuses/${GITHUB_SHA} \
+            -f state="$STATE" \
+            -f target_url="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" \
+            -f description="Exact-revision repository validation: ${JOB_STATUS}" \
+            -f context="repository-validation/run-${GITHUB_RUN_ID}"

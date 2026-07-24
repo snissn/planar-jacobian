@@ -1,0 +1,46 @@
+{
+  "schema_version": 2,
+  "integration_branch": "maintenance/mainline-consolidation-gpt56",
+  "initial_main_sha": "e542948a6d645569518437c6c0634a059415cfc4",
+  "history_policy": {
+    "single_parent_from_live_main": true,
+    "force_push": false,
+    "published_history_rewritten": false,
+    "unrelated_branch_history_imported": false,
+    "shared_files_reconciled_manually": true
+  },
+  "source_revisions": [
+    {"role": "rich_tree_source", "sha": "588d662f7289fe3ffcee76d26b730e95be5ba537"},
+    {"role": "issue_3_mainline_packet", "sha": "e542948a6d645569518437c6c0634a059415cfc4"},
+    {"role": "issue_4_packet", "sha": "265a7867687ce20377e3978e8f80c5cb4d187caf"},
+    {"role": "issue_5_packet", "sha": "bbd125907b05538e33202ef706b404bb3ed9fcd5"},
+    {"role": "defect_4_reviewed_candidate", "sha": "96fc7ec34bd3b685a0edeae7ecd4404abab7e2f1"}
+  ],
+  "owned_packet_roots": [
+    "research/issues/issue-3-unramified-index",
+    "research/issue-4/stable-differential-order",
+    "research/issue-5",
+    "research/audits",
+    "governance/reviews"
+  ],
+  "shared_reconciliation_paths": [
+    "README.md",
+    "STATUS.md",
+    "AGENTS.md",
+    "AGENT_PROMPT.md",
+    "governance/SCIENTIFIC-WORKFLOW.md",
+    "governance/CLAIM-STATUS.md",
+    "governance/REVIEW-AND-FREEZE.md",
+    "research/PROGRAM.md",
+    "research/claim_ledger.json",
+    "research/proof_graph.json",
+    "research/work_queue.json"
+  ],
+  "scientific_nonclaims": [
+    "No theorem for defect five is integrated.",
+    "No existence theorem for a qualifying positive weight is integrated.",
+    "No finite stable differential order is constructed.",
+    "The actual Keller branch divisor is not proved radial.",
+    "The repository does not claim JC_2."
+  ]
+}

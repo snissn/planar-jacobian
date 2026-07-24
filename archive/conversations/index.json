@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "note": "Both exports are metadata_only. Topic summaries provide navigation, but the complete source messages cannot be reconstructed from the current Git tree; see archive/manifest.json and issue #22.",
+  "conversations": [
+    {
+      "id": "conversation-a",
+      "messages": 226,
+      "original_filename": "chatgpt-export-2026-07-24.md",
+      "storage_mode": "metadata_only",
+      "topic_summary": "archive/conversation-a-topic-summary.md"
+    },
+    {
+      "id": "conversation-b",
+      "messages": 78,
+      "original_filename": "chatgpt-export-2026-07-24(2).md",
+      "storage_mode": "metadata_only",
+      "topic_summary": "archive/conversation-b-topic-summary.md"
+    }
+  ]
+}

@@ -1,52 +1,60 @@
-# Agent Instructions
+# Agent Operating Protocol
 
-This repository uses the [`scientific-mainline-workflow`](https://github.com/snissn/skills/tree/main/scientific-mainline-workflow) from [`snissn/skills`](https://github.com/snissn/skills), with repository-specific review and tool rules in [`governance/SCIENTIFIC-WORKFLOW.md`](governance/SCIENTIFIC-WORKFLOW.md).
+Read [`governance/AUTHORITY-HIERARCHY.md`](governance/AUTHORITY-HIERARCHY.md) before resolving any conflict between documents. The latest `main` is the durable integration surface; branch age or pull-request state carries no scientific authority.
 
-Before scientific work:
+## Resume order
 
-1. Read the upstream skill at [`scientific-mainline-workflow/SKILL.md`](https://github.com/snissn/skills/blob/main/scientific-mainline-workflow/SKILL.md).
-2. Read [`governance/SCIENTIFIC-WORKFLOW.md`](governance/SCIENTIFIC-WORKFLOW.md) and the upstream scientific review checklist.
-3. Read [`STATUS.md`](STATUS.md), [`research/PROGRAM.md`](research/PROGRAM.md), and [`research/CLAIM_LEDGER.md`](research/CLAIM_LEDGER.md).
-4. Use the connected GitHub adapter for repository operations whenever it is available and supports the required action.
-5. Work from the active issue and an issue-scoped feature branch.
-6. Treat feature-branch scientific prose as `MUTABLE_NONAUTHORITATIVE` unless a documented review records `ACCEPT` for the claim at a pinned repository revision.
+1. Resolve and record the latest `main` SHA.
+2. Read [`STATUS.md`](STATUS.md), [`governance/REPOSITORY-MAP.md`](governance/REPOSITORY-MAP.md), and [`research/PROGRAM.md`](research/PROGRAM.md).
+3. Select one active leaf from [`research/WORK_QUEUE.md`](research/WORK_QUEUE.md) and read its issue, track, dependencies, corrections, and source bindings.
+4. Reserve a unique issue-specific artifact path before construction.
+5. Audit every load-bearing external theorem against a primary source before reuse.
 
-## Claim discipline
+## Mainline integration policy
 
-Every maintained mathematical statement must have one status:
+1. **Start from current `main`.** Never start a new task from a pull request or another historical baseline.
+2. **Reserve one owned path.** Every task uses a unique issue-specific artifact directory or explicitly owned leaf file.
+3. **Use local labels during construction.** Issue packets use issue-local claim labels. Global `CLM-*` IDs are allocated only during final synchronization against the then-current ledger.
+4. **Defer shared surfaces.** Do not edit README, STATUS, shared ledgers, proof graphs, queues, or issue indexes during ordinary construction. Record proposed deltas in the issue packet.
+5. **Re-resolve before integration.** Fetch the latest `main` immediately before synchronization. If it moved, transplant only owned files and recompute shared deltas on the new head.
+6. **Do not import unrelated history.** Never merge a historical or unrelated branch merely to recover a small packet; transplant the required files and reconcile shared changes field by field.
+7. **Integrate coherent speculative work promptly.** Preserve `candidate`, `candidate_proved`, `open_bridge`, blocked, conditional, falsification, and countermodel work on `main` with explicit status rather than leaving it on a large branch.
+8. **Keep pull requests short-lived.** When checks or a merge record justify a PR, open one small non-draft PR and merge it in the same run after required checks pass.
+9. **Treat merge as transport.** Integration to `main` is preservation, not scientific acceptance, theorem promotion, or issue closure.
+10. **Treat exact-byte manifests as optional provenance.** Require them only when a claim-specific review policy explicitly does so.
+11. **Permit declared local adversarial review.** A `local-adversarial-review` is allowed when no distinct reviewer is available; it must not be mislabeled independent.
+12. **Renew review for material changes.** Material changes to an accepted claim, proof, hypothesis, dependency, transformation, computation, or counterexample require renewed review. Editorial, formatting, link, transport, and metadata-only changes do not automatically invalidate acceptance.
 
-- `LITERATURE`: source-bound statement attributed to a primary source;
-- `CANDIDATE`: self-contained derivation awaiting documented adversarial review;
-- `CONDITIONAL`: proved only under named additional hypotheses;
-- `BLOCKED`: load-bearing implication not proved;
-- `RETIRED`: false, circular, or dependent on an invalid step;
-- `FROZEN_ACCEPTED`: reviewed scientific content accepted at a pinned revision and integrated under the scientific workflow.
+## Status discipline
 
-Do not upgrade a claim because symbolic experiments agree with it. Do not cite conversation prose as theorem authority. Recompute load-bearing algebra independently and record all hidden hypotheses.
+Do not conflate:
 
-## Review discipline
+- mutable research prose;
+- a `literature_bound` statement;
+- `candidate` or `candidate_proved` work;
+- a `reviewed_scoped` claim;
+- a review disposition;
+- a freeze record;
+- passing CI; or
+- provenance completeness.
 
-A distinct human reviewer, agent, or subagent is preferred when available, but it is not mandatory. If the environment cannot provide a distinct reviewer or does not support subagents, the constructing assistant may perform a separate local adversarial review pass.
+The JSON claim ledger, proof graph, and work queue are canonical. Generated views must be regenerated. A review record does not silently edit the ledger, and a validator does not evaluate mathematical truth.
 
-Do not return `BLOCK` solely because the same assistant performed construction and review. A local review must declare `local-adversarial-review`, identify the reviewed claim and pinned commit or revision, recompute the load-bearing steps, test edge cases and countermodels, record validations and unresolved risks, and return an explicit `ACCEPT` or `BLOCK` for the stated scope.
+## Review contract
 
-Exact-byte manifests and artifact hashes are optional. Any material change to an accepted statement, proof, computation, transformation, dependency, or counterexample requires review of the affected scope; purely editorial or metadata changes do not automatically invalidate acceptance.
+A review must declare `independent-review` or `local-adversarial-review`; identify claims, files, dependencies, and the pinned reviewed revision; recompute load-bearing steps; test mutations and edge cases; record commands and limits; list unresolved risks; and return a scoped `ACCEPT` or `BLOCK`.
 
-## Repository operations
+A `reviewed_scoped` ledger entry additionally requires an `ACCEPT` record and freeze/synchronization record that bind the exact statement and revision. Never broaden that status by implication.
 
-- Prefer the connected GitHub adapter for reads and writes, branch creation, commits, issues, pull requests, and review metadata.
-- Fall back to local `git`, `gh`, or another repository mechanism only when the adapter is unavailable or does not support the operation.
-- Record the branch and resulting commit or pull request in the handoff. Repository transport does not by itself change scientific authority.
+## Integration and handoff
 
-## Current lane
+Before integration:
 
-The active technical lane is [`research/tracks/filtered-equivariance.md`](research/tracks/filtered-equivariance.md). Its load-bearing task is the defect-4 staircase packet in [`research/leaf-packets/defect-4-staircase.md`](research/leaf-packets/defect-4-staircase.md).
+```bash
+python3 -m compileall -q scripts research/issues/issue-3-unramified-index
+python3 scripts/render_views.py --check
+python3 scripts/validate_repository.py
+python3 scripts/frontier.py
+```
 
-The preferred next artifact is an adversarial audit of the claimed `kappa_w <= 3` argument followed by a complete classification of the defect-4 resonance patterns. A valid outcome may be a theorem, a scoped obstruction, a counterexample to the candidate reduction, or a precise blocked implication.
-
-## Commit and push policy
-
-- Commit and push coherent non-decisive work to the issue branch.
-- Keep theorem candidates visibly mutable and non-authoritative until accepted review and promotion.
-- Do not merge scientific promotion changes to `main` without a documented review at a pinned revision and the validations required by the local workflow.
-- Do not use a pull request merely as a substitute for theorem review unless repository policy or the user separately requests one.
+Run all issue-specific regression checks named by the packet. Record the exact candidate SHA, Actions run, logs, scientific nonclaims, and surviving leaf in the PR or issue handoff. Update issue #2 with the canonical SHA and resume order after mainline integration.

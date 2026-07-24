@@ -1,90 +1,36 @@
-# Follow-up Agent Prompt
+# Reusable Issue-Scoped Agent Prompt
 
-Use this prompt verbatim or adapt only the task-specific scope.
+Work on exactly one active leaf from [`research/WORK_QUEUE.md`](research/WORK_QUEUE.md).
 
-```text
-You are continuing a rigorous research program on the two-dimensional Jacobian conjecture.
+## Start
 
-Repository:
-  https://github.com/snissn/planar-jacobian
+1. Resolve the latest live `main` and record its full SHA.
+2. Read `STATUS.md`, `governance/REPOSITORY-MAP.md`, `research/PROGRAM.md`, the selected leaf, its graph node, claim dependencies, track, issue, corrections, and source inventory.
+3. Reserve a unique path under `research/issue-<number>/` or another explicitly issue-owned directory.
+4. Create a short-lived branch from the recorded `main` SHA.
 
-Scientific workflow:
-  https://github.com/snissn/skills/tree/main/scientific-mainline-workflow
-  Read scientific-mainline-workflow/SKILL.md, its scientific review checklist,
-  and governance/SCIENTIFIC-WORKFLOW.md before changing any claim status.
+Do not use a pull request or historical branch as the operating baseline.
 
-Repository operations:
-  - Use the connected GitHub adapter for repository reads and writes, branches,
-    commits, issues, pull requests, and review metadata whenever it is available
-    and supports the required operation.
-  - Fall back to local git or gh only when the adapter is unavailable or does not
-    support the operation.
+## Construct
 
-Operating context:
-  - Active issue: https://github.com/snissn/planar-jacobian/issues/1
-  - Mutable research branch: issue-1/synchronized-findings
-  - This branch is MUTABLE_NONAUTHORITATIVE.
-  - Do not claim that JC_2 is proved unless every load-bearing step has a
-    documented accepted review and the maintainer explicitly approves promotion.
+Use issue-local labels for new claims. Keep proofs, calculations, source bindings, countermodels, mutations, review notes, and proposed shared deltas in the issue-owned path. Do not allocate global `CLM-*` IDs or edit shared ledgers, graphs, README, STATUS, or generated views during construction.
 
-Review mode:
-  - A distinct reviewer or subagent is preferred when available.
-  - If the environment does not support subagents or another reviewer, perform a
-    separate local adversarial review pass and label it local-adversarial-review.
-  - Do not return BLOCK solely because the same assistant constructed and reviewed
-    the candidate.
-  - Bind the review to the claim and a pinned commit or repository revision.
-    Exact-byte manifests and artifact hashes are optional, not mandatory.
-  - Re-review any material change to a statement, proof, computation,
-    transformation, dependency, or counterexample.
+State exact hypotheses, quantifiers, dependencies, permitted inference, and forbidden stronger inference. A conditional theorem, obstruction, failed construction, or countermodel is a valid durable result.
 
-Read in order:
-  1. README.md
-  2. STATUS.md
-  3. AGENTS.md
-  4. governance/SCIENTIFIC-WORKFLOW.md
-  5. research/PROGRAM.md
-  6. research/CLAIM_LEDGER.md
-  7. research/tracks/filtered-equivariance.md
-  8. research/leaf-packets/defect-4-staircase.md
-  9. research/SOURCES.md
+## Review
 
-Primary task:
-  Adversarially audit the weighted Rees staircase and then resolve the first unproved filtered case, grading defect kappa=4.
+Prefer a distinct reviewer. When none is available, run a separately declared `local-adversarial-review`. Bind the review to the pinned revision and exact scope. Recompute the load-bearing argument, test edge cases and mutations, record commands and limitations, and return `ACCEPT` or `BLOCK`.
 
-Load-bearing equation in the central resonance pattern:
-  J(P_0,Q_2) + J(P_1,Q_1) + J(P_2,Q_0) = 0.
+Do not treat a pull request, merge, manifest, or green CI run as mathematical review.
 
-The middle Wronskian J(P_1,Q_1) is the first term absent from the lower-defect line-pencil argument. Determine whether it can always be:
-  (a) removed by a filtration-compatible target automorphism;
-  (b) removed by a filtered polynomial symplectic/source transformation;
-  (c) shown to force a forbidden Newton/Puiseux or boundary-monodromy configuration; or
-  (d) realized by a formal layer system that disproves the staircase-reduction ansatz.
+## Synchronize
 
-Required scientific discipline:
-  - Independently recompute the Rees exponent and every staircase equation.
-  - Audit the candidate kappa<=3 proof before depending on it.
-  - Enumerate all defect-4 resonance positions: (1,3), (2,2), and (3,1), including missing layers and unequal positive weights.
-  - State exactly which source and target transformations are allowed and prove that they preserve J=1 and lower the declared defect.
-  - Treat conversation exports as provenance, not theorem authority.
-  - Do not use the retired boundary-excess identity, the retired generic-fiber-to-global-Kummer inference, or exact-form principalization.
-  - Search primary literature for weighted Keller maps, Newton inner polynomials, symplectic normal forms, and filtered/graded automorphism reductions.
-  - Try to falsify each candidate lemma before strengthening it.
+Immediately before integration, resolve `main` again. If it moved, create a fresh branch from the new head, transplant only owned files, and recompute every shared delta. Never merge an unrelated branch history to recover the packet.
 
-Expected output on an issue-scoped feature branch:
-  - a theorem candidate or scoped obstruction with explicit hypotheses;
-  - a complete case table for defect 4;
-  - exact derivations or symbolic identities for every load-bearing equation;
-  - an adversarial review note with ACCEPT/BLOCK disposition, declared review mode,
-    and a pinned commit or repository revision;
-  - updates to the claim ledger and active leaf packet;
-  - a pushed branch commit after every coherent non-decisive step.
+Allocate global claim IDs only now. Reconcile the claim ledger, proof graph, work queue, issue index, README, STATUS, and generated views field by field. Preserve unrelated entries. Material changes to previously accepted scope require renewed review.
 
-Acceptable outcomes:
-  1. prove all defect-4 cases reduce to smaller defect;
-  2. prove a substantial declared subclass reduces;
-  3. find a formal counterexample to the reduction ansatz;
-  4. isolate a strictly smaller invariant obstruction and prove the reduction to it.
+## Validate and integrate
 
-Do not broaden to arbitrary higher defects until defect 4 has an exact disposition. Do not rename the missing implication and present it as a theorem.
-```
+Run structural, generated-view, JSON, dependency, artifact-path, Markdown-link, and issue-specific checks against the exact candidate. Run GitHub Actions on that SHA. When a PR is useful, make it non-draft and merge it in the same run after checks pass; otherwise use a safe non-forced direct update when repository policy permits.
+
+After integration, verify live `main`, comment on the governing issue and issue #2 with the canonical SHA and resume order, and close only superseded transport PRs or leaves whose scientific stop rule was actually met.

@@ -1,136 +1,81 @@
-# Planar Jacobian Proof Program
+# Planar Jacobian Research Program
 
-> **Authority:** `MUTABLE_NONAUTHORITATIVE`
+> **Authority:** `MUTABLE_NONAUTHORITATIVE` program map. Individual reviewed scope is recorded in the claim ledger and review records.
 
-Let
+## Common problem spine
 
-```text
-F=(P,Q): A^2_C -> A^2_C,     J(P,Q)=1,
-A=C[x,y],                    B=C[P,Q],
-K=Frac(B),                   L=Frac(A).
-```
+Fix a polynomial Keller map `F=(P,Q): A2_C -> A2_C` with nonzero constant Jacobian. Let `B=C[P,Q]`, `K=Frac(B)`, `L=C(x,y)`, and let `Y` be the normalization of `Spec(B)` in `L`. The main goal remains to prove `[L:K]=1`, equivalently that `F` is a polynomial automorphism.
 
-The program seeks a contradiction from `A != B` while keeping local étaleness, global nonproperness, and boundary sheet loss separate.
+The maintained program separates:
 
-## Common geometric object
+1. the finite normalization and its boundary/ramification;
+2. canonical derivations and exact symplectic structure;
+3. monogenicity and index divisors;
+4. stable differential orders;
+5. logarithmic and radial fields;
+6. quasi-Albanese and Gauss–Manin finiteness;
+7. graded, filtered, and equivariant reductions;
+8. monodromy and boundary topology;
+9. primary-source and low-degree controls; and
+10. characteristic-p experiments.
 
-Let `Cbar` be the integral closure of `B` in `L`. Zariski's Main Theorem gives
+## Current high-priority frontier
 
-```text
-A^2 = Spec(A)  ->  Y=Spec(Cbar)  ->  A^2=Spec(B),
-```
+### `L14` — Keller index-form unit, issue #3
 
-with an open immersion followed by a finite map. A counterexample would require a nonempty boundary `Y \ A^2` carrying all ramification and nonproperness.
+The generic unramified-index bridge is false. `CLM-058` gives a scoped smooth rational finite-flat countermodel, while `CLM-029`, `CLM-031`, and `CLM-034` bank ramified adaptation and conditional globalization. The successor must consume source étaleness and the specified open immersion `A2_source -> Y` to force the universal index form to represent a unit.
 
-The main proof lanes are different descriptions of the same obstruction:
+### `L02` — finite stable differential order, issue #4
 
-- **finite normalization:** principalize the Kähler different or reduced branch divisor;
-- **monogenicity/index form:** construct one integral primitive element whose index ideal is a unit;
-- **canonical symmetry:** prove a pulled-back translation or Euler field is complete/locally finite;
-- **generic fibers:** eliminate finite asymptotic punctures and puncture monodromy;
-- **Brieskorn/Gauss--Manin:** produce one bounded coherent lattice in the target pencil;
-- **weighted degeneration:** reduce an arbitrary map to an exactly graded Keller map without losing the constant-Jacobian term;
-- **monodromy/Galois closure:** show fixed-sheet inertia and nonabelian gluing are incompatible with the affine-plane source.
+`CLM-011` and `CLM-013` give the exact conditional discriminant implication at mutable candidate scope. The ramified-DVR packet proves a transverse derivation preserves no full finite lattice at a ramified valuation. Existence of a finite locally free order stable under both canonical translations remains open as `CLM-061`.
 
-None of the full bridge theorems is currently maintained as proved. Issue #3 does, however, close several conditional monogenicity steps and refute the purely algebraic genericity bridge at exact scope.
+### `L03` — integrable logarithmic lift, issue #5
 
-## Exact graded leverage
+`CLM-052–056` record the monogenic lift formula, logarithmic tangency criterion, radial-line criterion, logarithmic-field characterization, and integration obstruction. `CLM-057` is the surviving bridge. The actual Keller branch is not proved radial; regularity, zero residue, or a branch Hamiltonian does not imply a locally finite algebraic action.
 
-The primary new literature input is T. Shaska, *Graded Keller maps and the Jacobian Conjecture*, arXiv:2607.20210. It proves that every nontrivially `G_m`-equivariant Keller endomorphism of `A^2` is an automorphism, for all sign patterns of source weights.
+### Reviewed defect-four disposition
 
-This suggests a filtered program: choose a positive primitive weight `w=(p,q)`, form the Rees deformation, and measure how many weighted layers separate the original map from exact grading.
-
-For
+`CLM-047–051` and `CLM-060` are `reviewed_scoped` under the independent review and freeze records. They prove only:
 
 ```text
-d_P = deg_w(P),
-d_Q = deg_w(Q),
-kappa_w = d_P + d_Q - p - q,
+primitive positive weight w and kappa_w <= 4
+  => the planar Keller pair is a polynomial automorphism.
 ```
 
-write
+They do not show that every Keller pair admits such a weight, do not treat defect five, and do not establish `JC_2`. `L13` is a reviewed disposition, not an active leaf and not a terminal graph node.
 
-```text
-Pcal(t,x,y)=t^{d_P} P(t^{-p}x,t^{-q}y),
-Qcal(t,x,y)=t^{d_Q} Q(t^{-p}x,t^{-q}y).
-```
+## Maintained tracks
 
-The chain rule gives the exact identity
+- [`tracks/a-normalization-boundary.md`](tracks/a-normalization-boundary.md) — finite normalization, class group, canonical divisor, and boundary baseline.
+- [`tracks/b-canonical-derivations.md`](tracks/b-canonical-derivations.md) — canonical fields, logarithmic tangency, and integration.
+- [`tracks/c-monogenicity-index-divisor.md`](tracks/c-monogenicity-index-divisor.md) and [`tracks/monogenicity-index-divisor.md`](tracks/monogenicity-index-divisor.md) — global monogenicity, collision divisors, countermodels, and Keller successor.
+- [`tracks/d-stable-differential-lattice.md`](tracks/d-stable-differential-lattice.md) — stable-order implication and local obstruction.
+- [`tracks/e-quasi-albanese-log-geometry.md`](tracks/e-quasi-albanese-log-geometry.md) — intrinsic torus geometry.
+- [`tracks/f-gauss-manin-generic-fibers.md`](tracks/f-gauss-manin-generic-fibers.md) — punctures and Gauss–Manin modules.
+- [`tracks/g-wright-graded-single-tree.md`](tracks/g-wright-graded-single-tree.md) — graded one-boundary rigidity.
+- [`tracks/h-monodromy-galois-braid.md`](tracks/h-monodromy-galois-braid.md) — inertia, fixed sheets, cusps, and braid monodromy.
+- [`tracks/i-exact-symplectic.md`](tracks/i-exact-symplectic.md) — exact one-forms, residues, and principal parts.
+- [`tracks/j-equivariant-degeneration.md`](tracks/j-equivariant-degeneration.md) — exact equivariance and no-escape degeneration.
+- [`tracks/k-characteristic-p.md`](tracks/k-characteristic-p.md) — reduction and p-curvature experiments.
+- [`tracks/l-literature-low-degree.md`](tracks/l-literature-low-degree.md) — primary-source and numerical frontier control.
+- [`tracks/m-filtered-equivariance.md`](tracks/m-filtered-equivariance.md) — reviewed positive-weight defect-at-most-four staircase.
+- [`tracks/0-three-dimensional-context.md`](tracks/0-three-dimensional-context.md) — three-dimensional marked-root mechanism as idea input only.
 
-```text
-J(Pcal,Qcal)=t^{kappa_w}.
-```
+## Cross-track interfaces
 
-Layer comparison yields the staircase equations recorded in [`tracks/filtered-equivariance.md`](tracks/filtered-equivariance.md).
+A successful bridge must eventually control at least one global obstruction:
 
-## Current frontier
+- finiteness/properness of the original source over the target;
+- all height-one support of an index or conductor module;
+- logarithmic tangency plus algebraic integration preserving the source open;
+- degree and boundary type under a degeneration;
+- monodromy/inertia strong enough to force one sheet; or
+- a filtration-compatible descent that terminates for an arbitrary Keller pair.
 
-The conversation-derived argument claims that grading defects `0,1,2,3` can be reduced to the exactly graded case. That claim is **candidate**, not reviewed theorem authority.
+A formal local identity, exact symbolic computation, or reviewed bounded theorem remains bounded until the graph records the additional global edge.
 
-Defect `4` is the first case containing a middle Wronskian correction. In the central resonance pattern, after normalizing the resonant coordinate pair, one encounters
+## Coordination and exit rules
 
-```text
-J(P_0,Q_2) + J(P_1,Q_1) + J(P_2,Q_0) = 0.
-```
+The active queue and dispositions are generated in [`WORK_QUEUE.md`](WORK_QUEUE.md). Issue [#2](https://github.com/snissn/planar-jacobian/issues/2) coordinates the program. Every new task starts from the latest `main`, reserves an issue-owned path, uses issue-local labels, and defers shared synchronization to the final step.
 
-The term `J(P_1,Q_1)` can bend the line-pencil argument that works at lower defect. It is the active load-bearing obstruction.
-
-## Moving-index disposition
-
-Issue [#3](https://github.com/snissn/planar-jacobian/issues/3) audits the global primitive-element route in [`tracks/monogenicity-index-divisor.md`](tracks/monogenicity-index-divisor.md).
-
-The correct height-one object is the entire semilocal algebra
-
-```text
-Cbar_p=Cbar tensor_B B_p,
-```
-
-not the separate DVR factors above `p`. For integral primitive `theta`, the index module and index ideal are
-
-```text
-M_theta=Cbar/B[theta],
-I_theta=Fitt^B_0(M_theta),
-```
-
-with
-
-```text
-ord_p(I_theta)=length_{B_p}(Cbar_p/B_p[theta]),
-Disc(B[theta]/B)=I_theta^2 Disc(Cbar/B).
-```
-
-The issue packet supplies candidate proofs that one element can generate every prescribed finite set of height-one semilocalizations, that generation at all height-one primes globalizes by `R1/S2`, and that a globally monogenic Keller normalization has degree one without circularity.
-
-The generic algebraic elimination step is false. A smooth rational rank-three cover can be locally monogenic everywhere, have squarefree tame fixed-sheet branching and an open affine plane, yet have a universal index form that never represents a nonzero constant. The exact missing property in that model is etaleness of the specified open plane over the base.
-
-The surviving bridge is therefore Keller-specific:
-
-> Convert source etaleness on `A2 -> Y` into a unit-value theorem for the universal index form.
-
-The first exact successor is the rank-three binary cubic index-form problem. Generic primitivity, distinct values on one fiber, parameter counts, class-group triviality, and local monogenicity are forbidden substitutes for the unit equation.
-
-## Parallel sufficient criteria
-
-The following are maintained only at the status assigned in [`CLAIM_LEDGER.md`](CLAIM_LEDGER.md):
-
-- principal Kähler different of the finite normalization;
-- a unit-valued universal index form, hence a global monogenic normalization;
-- global relative complete-intersection normalization;
-- local finiteness of the canonical hyperbolic Euler field;
-- local nilpotence/surjectivity of one canonical translation derivation;
-- finiteness of one Brieskorn lattice in the affine target pencil;
-- a simple component or trivial puncture monodromy;
-- a filtration-compatible reduction lowering `kappa_w`.
-
-Each would force invertibility, but the hypotheses are not presently known for every Keller pair.
-
-## Stop rule
-
-A research branch should stop when it has produced one of:
-
-1. an independently checkable theorem covering a declared class;
-2. a counterexample to a maintained candidate lemma;
-3. a minimal blocked implication with all equivalent reformulations named;
-4. a finite symbolic classification that is independently auditable.
-
-Do not relabel the missing bridge as a lemma and treat it as proved.
+A leaf exits when its declared stop rule yields a reviewed theorem, a rigorous obstruction, a counterexample to the maintained bridge, a finite audited classification, or a smaller successor leaf. Restricted results remain restricted.

@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "candidate_id": "issue-17-defect-4-staircase-v1",
+  "repository": "snissn/planar-jacobian",
+  "baseline_commit": "86d1b78cedd788b7335be692f9bb92921142c7d3",
+  "intended_baseline_pr": 15,
+  "candidate_branch": "issue-17/defect-4-staircase",
+  "issue": 17,
+  "authority": "MUTABLE_NONAUTHORITATIVE",
+  "engineering_status": "DEVELOPMENT",
+  "execution_validity": "NOT_A_SCIENTIFIC_EXECUTION",
+  "protocol_verdict": null,
+  "scientific_inference": "candidate_proved: primitive positive w and kappa_w<=4 imply a planar Keller pair is a polynomial automorphism",
+  "claim_scope": {
+    "field": "C",
+    "map": "polynomial F=(P,Q): A2_C -> A2_C",
+    "jacobian": "J(P,Q)=1",
+    "weight": "one primitive positive w=(p,q)",
+    "defect": "kappa_w=deg_w(P)+deg_w(Q)-p-q <= 4",
+    "nonclaims": [
+      "JC_2",
+      "defect >= 5",
+      "existence of a small-defect weight for every Keller pair",
+      "no-escape preservation of degree or boundary data"
+    ]
+  },
+  "review_scope": {
+    "evidence_level": "E3",
+    "quantifier_level": "Q3 restricted to the declared small-defect class",
+    "stability_level": "S0 / static algebraic statement",
+    "stop_rule": "Do not broaden to defect 5 before exact independent review."
+  },
+  "workflow_bindings": [
+    {
+      "repository": "snissn/skills",
+      "path": "scientific-mainline-workflow/SKILL.md",
+      "sha": "08bd5bc84654523677ebb851be09d4f4b3a81013"
+    },
+    {
+      "repository": "snissn/skills",
+      "path": "scientific-mainline-workflow/references/scientific-review-checklist.md",
+      "sha": "4b94e69fb2a936cafbb5b034c9380e9a551a1ce2"
+    },
+    {
+      "repository": "snissn/skills",
+      "path": "scientific-mainline-workflow/references/evidence-scope-ladder.md",
+      "sha": "63bda2c2398709d7ccc9433e1ed9cb93db56f3db"
+    }
+  ],
+  "primary_source_versions": [
+    "arXiv:2607.20210v1",
+    "arXiv:2408.01279v1",
+    "arXiv:1201.3463v1",
+    "arXiv:2012.03773v1",
+    "arXiv:1107.1115v1"
+  ],
+  "validation": {
+    "defect4_validator": "PASS; 2443 symbolic/support checks; 1966 primitive weights enumerated",
+    "claim_graph_sync": "PASS; 52 claims; 34 nodes; 50 edges",
+    "full_inherited_repository_validator": "NOT_RUN_IN_OVERLAY; requires complete baseline checkout including archive payloads",
+    "mathematical_authority": "NOT_CONFERRED_BY_VALIDATION"
+  },
+  "transport": {
+    "state": "LOCAL_OVERLAY_ONLY",
+    "remote_push_performed": false,
+    "reason": "Available GitHub connector actions are read-only and the execution environment has no authenticated Git transport."
+  },
+  "hash_algorithm": "sha256",
+  "aggregate_method": "For each sorted path: path UTF-8, NUL, byte length ASCII, NUL, file sha256 ASCII, LF; SHA-256 over concatenation.",
+  "candidate_file_count": 20,
+  "candidate_aggregate_sha256": "21550a32815a617cdb108c41954fb422c66773656a560505aeefcbf180a4a097",
+  "generated_utc": "2026-07-24T07:28:30Z",
+  "files": [
+    {
+      "path": "AGENT_PROMPT.md",
+      "bytes": 3902,
+      "sha256": "fc495a7a6e0eb7216db3de741849fdf8ec679df7f73ff901860f7535c0ace86b"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4296,
+      "sha256": "5df72d01672d87ad9042a803c5ede60bbf38e445ab0b33e908ebd0c8f0c29256"
+    },
+    {
+      "path": "STATUS.md",
+      "bytes": 3524,
+      "sha256": "e4d8f7766e98cbacf38964c3b8cd6dde5fec2f0701d9a89dce1d503426217d94"
+    },
+    {
+      "path": "research/CLAIM_LEDGER.md",
+      "bytes": 9423,
+      "sha256": "3d3b08227df8ddb7d0428e041b512b13013bb454de03e7ddecf36368e4aaf940"
+    },
+    {
+      "path": "research/PROGRAM.md",
+      "bytes": 3575,
+      "sha256": "7e1d4ee5ab3a538c923403411e199b3266bc7371b8ecb662db510bda7fc83c61"
+    },
+    {
+      "path": "research/PROOF_GRAPH.md",
+      "bytes": 7879,
+      "sha256": "837fcef6b44aa76aa1a945fbac9c96f17ee90151927e34c485bef8581d4da87f"
+    },
+    {
+      "path": "research/SOURCE_INVENTORY.md",
+      "bytes": 3528,
+      "sha256": "37c76a636155cb49fd9dd403d7599bfde43a9cb9cbc8e519e33af43af296f8bb"
+    },
+    {
+      "path": "research/WORK_QUEUE.md",
+      "bytes": 1654,
+      "sha256": "5197b15d9649f1dbf26c971083a4b2019646ee340d8c598e066f094268b81a9c"
+    },
+    {
+      "path": "research/audits/defect-4-case-table.md",
+      "bytes": 4067,
+      "sha256": "d996995b2903aa55973af00e87f414472d7c43c03d4ef6fbdd16cf66817b39a8"
+    },
+    {
+      "path": "research/audits/defect-4-primary-source-audit.md",
+      "bytes": 5276,
+      "sha256": "3f968da7620322edfcfb4ca66d0097710df699eacd632f0867e1bf570a7d71ad"
+    },
+    {
+      "path": "research/audits/defect-4-staircase-audit.md",
+      "bytes": 22159,
+      "sha256": "e9ef9a79773185fc18c8e72ad51b97bb61a1c04ce93dbfc822eafa6e92cb760b"
+    },
+    {
+      "path": "research/audits/filtered-transformation-catalogue.md",
+      "bytes": 5810,
+      "sha256": "014fbaf056a114ed0d1a62750bca9bd52fc385f19f3433f3c6ef0269f92ca746"
+    },
+    {
+      "path": "research/claim_ledger.json",
+      "bytes": 15799,
+      "sha256": "80f61d9ae9382e15bc0bc7ab88d097965bd9a887b6352da475394d2e4f81560f"
+    },
+    {
+      "path": "research/leaf-packets/L13-defect-4-staircase.md",
+      "bytes": 5794,
+      "sha256": "563095db23ae9983ce2c97e0e079aff49d47742cdced13ed8a4e95c29d507c63"
+    },
+    {
+      "path": "research/proof_graph.json",
+      "bytes": 9496,
+      "sha256": "2e380983db278ef348f69289d613bf6002af918b247e5a930222d08393b6d8cd"
+    },
+    {
+      "path": "research/tracks/g-wright-graded-single-tree.md",
+      "bytes": 1646,
+      "sha256": "f067a5297fb1e699e5de7445c8387be0784d0e7bf9bebbb19f9cfb8b876e062f"
+    },
+    {
+      "path": "research/tracks/j-equivariant-degeneration.md",
+      "bytes": 2526,
+      "sha256": "8a25152111f68f7d103e916bfdc026bb8a1e9e5ce6447af8f5311a8c4834c7c2"
+    },
+    {
+      "path": "research/tracks/m-filtered-equivariance.md",
+      "bytes": 5943,
+      "sha256": "9d00f89044fea02d3c4e2582831b909c074c6e8db59f5386137e8375f09f701c"
+    },
+    {
+      "path": "scripts/validate_defect4_staircase.py",
+      "bytes": 9882,
+      "sha256": "670bc547440c4966154d86fc0dc8ea6ab85db6a09f5b2e8229727315eafe4a21"
+    },
+    {
+      "path": "synthesis/CORRECTIONS_AND_RETRACTIONS.md",
+      "bytes": 2440,
+      "sha256": "b478efa17ff4e5301a1b818d825c9369f6ef7c7bf11970e68b73983ba226979d"
+    }
+  ]
+}

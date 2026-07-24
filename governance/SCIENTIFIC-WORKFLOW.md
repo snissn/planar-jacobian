@@ -1,71 +1,42 @@
-# Scientific Workflow Reference
+# Scientific Mainline Workflow
 
-This repository uses the scientific repository workflow maintained at:
+This repository uses `main` as the durable integration surface for coherent research, including speculative, conditional, blocked, falsified, and countermodel-bearing work. Scientific authority is carried by explicit claim status and review records, not inferred from branch location, pull-request state, merge status, manifests, or CI.
 
-- repository: <https://github.com/snissn/skills>
-- skill directory: <https://github.com/snissn/skills/tree/main/scientific-mainline-workflow>
-- skill file: <https://github.com/snissn/skills/blob/main/scientific-mainline-workflow/SKILL.md>
-- scientific review checklist: <https://github.com/snissn/skills/blob/main/scientific-mainline-workflow/references/scientific-review-checklist.md>
+## Mainline integration rules
 
-The workflow version consulted for the current branch is pinned to:
+1. Every agent starts from the latest `main`, records its full SHA, and selects one issue or leaf. A pull request or historical branch is never the operating baseline.
+2. Every task reserves a unique issue-specific artifact path before construction begins.
+3. Construction uses issue-local claim labels. Global claim IDs are allocated only during final integration against the then-current ledger.
+4. Shared ledgers, proof graphs, README, STATUS, and generated views are updated only in the final synchronization step.
+5. Immediately before integration, re-resolve `main`. If it moved, create a fresh branch from the new head, transplant only owned files, and recompute shared deltas there.
+6. Unrelated branch histories are never merged merely to recover a small packet.
+7. Coherent speculative work, conditional results, blockers, falsification results, and countermodels should be integrated promptly with explicit status rather than left on a large branch.
+8. When a pull request is useful for checks or a merge record, it should be small, non-draft, and merged in the same run after required checks pass. A safe direct non-forced update is acceptable when repository policy permits it.
+9. A merge to `main` is transport and preservation, not scientific acceptance. It does not close a leaf unless the leaf's scientific stop rule is met.
+10. Exact-byte manifests and hashes remain optional provenance unless a claim-specific review explicitly requires them.
+11. A separate declared `local-adversarial-review` is allowed when no distinct reviewer is available. Shared identity must not be represented as independent review.
+12. Material changes to an accepted claim, hypothesis, proof step, computation, transformation, dependency, or counterexample require renewed review. Editorial-only changes, formatting, links, transport, and metadata do not automatically invalidate acceptance.
 
-```text
-snissn/skills@0a6876bc72be73295a3772733d87293fcf4d3b35
-```
+## Construction record
 
-## Repository-specific authority
+Record exact hypotheses, dependencies, transformations, computations, countermodels, permitted inference, forbidden stronger inference, and the smallest surviving action. Keep issue-owned files separate from shared synchronization surfaces until the packet is coherent.
 
-The upstream skill supplies the default process. This file is authoritative for repository-specific tool use and review mechanics. Where this file explicitly differs from the pinned upstream workflow, this file governs work in `snissn/planar-jacobian`.
+## Review
 
-## GitHub operations
+A review declares `independent-review` or `local-adversarial-review`, identifies the pinned revision and exact files and claims, recomputes load-bearing reasoning, tests edge cases and mutations, records validation commands and their limitations, lists unresolved risks, and returns a scoped `ACCEPT` or `BLOCK`.
 
-- Use the connected GitHub adapter for repository reads and writes, branch creation, commits, issues, pull requests, and review metadata whenever it is available and supports the required operation.
-- Fall back to local `git`, `gh`, or another repository mechanism only when the adapter is unavailable or does not support the operation.
-- Tool choice does not confer scientific authority. A pushed commit or pull request remains development provenance until the relevant scientific review and promotion gates are satisfied.
+A distinct reviewer is preferred. A pull request, merge, manifest, validator count, or green CI run is not mathematical review.
 
-## Applied rules
+## Final synchronization
 
-- Use an issue-scoped feature branch as the durable mutable surface.
-- Commit and push coherent non-decisive scientific iterations.
-- Mark mutable work `MUTABLE_NONAUTHORITATIVE` with `protocol_verdict: null`.
-- Keep theorem candidates distinct from literature results, blocked implications, and retired claims.
-- Bind scientific review to an identified claim and a pinned repository revision.
-- Do not use a pull request as a substitute for adversarial theorem review.
-- Integrate to `main` only after the review, validation, synchronization, and freeze gates below are satisfied.
+Reconcile the claim ledger, proof graph, queue and dispositions, issue index, README, STATUS, and generated views field by field. Apply an accepted review only at its exact statement, dependencies, and pinned revision. Preserve branch provenance without importing unrelated history.
 
-## Review modes
+## Validation
 
-A distinct human reviewer, agent, or subagent is preferred when one is available. It is not an absolute requirement.
+Against the exact integration candidate, run Python byte-compilation, generated-view consistency, JSON parsing, prose/JSON claim-ledger consistency, claim and proof-graph dependency closure, artifact-path checks, queue/disposition consistency, internal Markdown links, frontier rendering, and each imported issue-specific regression check. Run GitHub Actions on that exact SHA and record the run and log artifact.
 
-If the execution environment does not support subagents or a distinct reviewer, the constructing assistant may perform a separate local adversarial review pass. That review must not be marked `BLOCK` solely because the same assistant performed construction and review.
+Validators are engineering evidence and do not evaluate mathematical truth.
 
-Every review record must:
+## Coordination
 
-1. declare its mode as `independent-review` or `local-adversarial-review`;
-2. identify the claim IDs, statements, proof files, and dependencies in scope;
-3. identify the reviewed commit SHA or other unambiguous repository revision;
-4. recompute load-bearing identities rather than merely restating the construction;
-5. test stated edge cases and plausible countermodels;
-6. record validation commands and results;
-7. list unresolved risks; and
-8. issue an explicit `ACCEPT` or `BLOCK` disposition for the declared scope.
-
-A local adversarial review may support promotion when no distinct reviewer is available, unless an issue, maintainer decision, or claim-specific policy imposes a stricter gate. A claim presented as a proof of `JC_2` additionally requires explicit maintainer approval and accepted reviews of every load-bearing dependency.
-
-## Revision binding
-
-Exact-byte manifests and artifact hashes are optional evidence, not mandatory workflow gates. Review acceptance is bound to the identified claim at the pinned repository revision.
-
-Editorial, formatting, link, or metadata changes do not automatically invalidate an accepted review when they do not alter the reviewed mathematical content. Any material change to a reviewed statement, hypothesis, proof step, computation, transformation, dependency, or counterexample requires a new review of the affected scope.
-
-## Promotion and merge
-
-A `CANDIDATE` may become `FROZEN_ACCEPTED` when:
-
-- the reviewed statement and proof scope are explicit;
-- a review record meeting the requirements above returns `ACCEPT`;
-- required validations pass;
-- the claim ledger, proof graph, work queue, status files, and active leaf packet are synchronized as applicable; and
-- the accepted revision is integrated to `main` without unreviewed material changes to the accepted scientific content.
-
-The upstream skill remains the source of general process guidance; this file records the repository-specific adoption and overrides for adapter use, local-review fallback, and revision-level review binding.
+Issue [#2](https://github.com/snissn/planar-jacobian/issues/2) is the durable coordination surface. After integration, record the canonical SHA, resume order, validation evidence, closed transport PRs, and surviving scientific leaves there.
