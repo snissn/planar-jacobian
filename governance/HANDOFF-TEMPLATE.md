@@ -1,0 +1,22 @@
+# Handoff Template
+
+- Governing issue and canonical leaf:
+- Branch and exact head SHA:
+- Pinned starting revision:
+- Unique artifact directory:
+- Exact question and scope:
+- Claim IDs read, changed, or proposed:
+- Proof-graph nodes/edges read, changed, or proposed:
+- Formulas, transformations, or objects introduced:
+- Primary sources and versions checked:
+- Hidden hypotheses checked:
+- Counterexamples and mutations tested:
+- Review mode, pinned reviewed revision, and disposition:
+- Material scientific changes after review:
+- Local validation commands and results:
+- GitHub Actions tested SHA, run ID, and conclusion:
+- Final shared-ledger synchronization commit:
+- Conflict resolution for shared files:
+- Blocking findings and unresolved risks:
+- Smallest next action:
+- Stop-rule status:
