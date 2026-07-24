@@ -24,4 +24,24 @@ jobs:
           python-version: "3.12"
       - run: python -m pip install --disable-pip-version-check sympy==1.14.0
       - name: Generate, validate, and commit isolated shared synchronization
-        run: python research/issues/rank-three-index-form-unit/sync_shared_temp.py
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git log -1 --pretty=%B | grep -Fq '[skip sync]'; then
+            echo "skip marker present"
+            exit 0
+          fi
+          set +e
+          python research/issues/rank-three-index-form-unit/sync_shared_temp.py 2>&1 | tee /tmp/rank-three-sync.log
+          status=${PIPESTATUS[0]}
+          set -e
+          if [ "$status" -ne 0 ]; then
+            git reset --hard HEAD
+            cp /tmp/rank-three-sync.log research/issues/rank-three-index-form-unit/SYNC_FAILURE.log
+            git config user.name github-actions[bot]
+            git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+            git add research/issues/rank-three-index-form-unit/SYNC_FAILURE.log
+            git commit -m 'temp(issue-3): capture sync failure [skip sync]'
+            git push origin HEAD
+            exit "$status"
+          fi
