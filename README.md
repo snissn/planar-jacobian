@@ -6,7 +6,7 @@
 > **Protocol verdict:** `null`  
 > **Scientific inference:** `none`
 
-This repository is a durable, dependency-tracked research workspace for the planar Jacobian conjecture. It imports two long July 2026 conversations, preserves them byte-for-byte in compressed form, separates usable lemmas from speculative bridges and withdrawn claims, and exposes the surviving work as a proof graph with agent-sized leaves.
+This repository is a durable, dependency-tracked research workspace for the planar Jacobian conjecture. It imports maintained syntheses of two long July 2026 conversations, records their exact declared source identities and hashes, separates usable lemmas from speculative bridges and withdrawn claims, and exposes the surviving work as a proof graph with agent-sized leaves. The complete source-export bytes are not yet embedded in the Git tree; archive completion is tracked in issue [#22](https://github.com/snissn/planar-jacobian/issues/22).
 
 **No file in this repository claims an unconditional proof of the planar Jacobian conjecture.** The repository is a research program and provenance archive.
 
@@ -25,11 +25,11 @@ The active filtered-equivariance audit is issue [#17](https://github.com/snissn/
 5. [`research/CLAIM_LEDGER.md`](research/CLAIM_LEDGER.md) — exact claim status.
 6. [`AGENTS.md`](AGENTS.md) — how to resume work without rediscovering the history.
 7. [`AGENT_PROMPT.md`](AGENT_PROMPT.md) — the current defect-4 handoff prompt.
-8. [`archive/MANIFEST.md`](archive/MANIFEST.md) — lossless conversation archive.
+8. [`archive/MANIFEST.md`](archive/MANIFEST.md) — source identities and archive-completion status.
 
 ## Repository layers
 
-- `archive/`: original conversations, hashes, and a message-level topic index.
+- `archive/`: source identities, partial historical chunks, and a message-level topic index.
 - `synthesis/`: narrative reconciliation and correction register.
 - `research/tracks/`: parallel formal proof programs.
 - `research/leaf-packets/`: bounded next tasks with stop rules and handoff contracts.
@@ -68,4 +68,4 @@ gh run watch <run-id> --exit-status
 gh run view <run-id> --log-failed
 ```
 
-The workflow records the tested SHA and Python version, runs compilation plus both repository validators, and retains logs. These checks validate repository structure, identifiers, graph closure, leaf references, and archive hashes. They do **not** validate mathematical truth, promote a theorem candidate, or create a scientific verdict.
+The workflow records the tested SHA and Python version, runs compilation plus both repository validators, and retains logs. These checks validate repository structure, identifiers, graph closure, leaf references, archive storage declarations, and embedded archive hashes when complete chunks are present. They do **not** validate mathematical truth, promote a theorem candidate, or create a scientific verdict.
