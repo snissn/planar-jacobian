@@ -1,0 +1,30 @@
+# Exact Symplectic Boundary Package
+
+- **Priority:** `P1`
+- **Status:** `OPEN`
+- **Dependencies:** CLM-022, CLM-023
+- **Authority:** `MUTABLE_NONAUTHORITATIVE`
+
+## Load-bearing question
+
+Compute and constrain the full boundary principal-part package induced by `P dQ + y dx = dH`, not only its logarithmic residues.
+
+## Accepted evidence
+
+A valuation-by-valuation expansion whose global compatibility contradicts a nonempty normalization boundary.
+
+## Forbidden shortcuts
+
+Do not conclude pole elimination from zero residues. Do not replace simultaneous boundary compatibility by a one-valuation calculation.
+
+## Required artifacts
+
+Local expansions, approximate-root/key-polynomial data, conductor moment conditions, singular-point corrections, and the global compatibility theorem.
+
+## Stop rule
+
+Stop when exactness excludes a declared boundary class or when an explicit local model demonstrates that the proposed constraint is insufficient. Bank each restricted obstruction at its exact scope.
+
+## Handoff
+
+Record boundary coordinates, pole orders, residues, higher coefficients, coordinate changes tested, and the first unconstrained principal part.
