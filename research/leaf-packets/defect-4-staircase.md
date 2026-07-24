@@ -48,7 +48,8 @@ A successful branch should contain:
 2. a complete list of resonance and missing-layer cases;
 3. independently recomputed staircase equations;
 4. either a reduction theorem, a formal counterexample to the reduction ansatz, or a strictly smaller blocked subcase;
-5. a review note identifying every use of algebraic dependence, closed-polynomial theory, and weight arithmetic.
+5. a review note identifying every use of algebraic dependence, closed-polynomial theory, and weight arithmetic; and
+6. a declared review mode and pinned commit or repository revision.
 
 ## Suggested technical attacks
 
@@ -70,12 +71,14 @@ Construct finite-dimensional ansätze for weighted layers and solve the staircas
 
 ## Acceptance conditions
 
-Return `ACCEPT` only for an exact, independently reviewed artifact that proves one of:
+Return `ACCEPT` only for a documented adversarial review at a pinned repository revision that proves one of:
 
 - every defect-4 system reduces to smaller defect;
 - a declared resonance subclass reduces to smaller defect;
 - the candidate low-defect theorem is false, with an explicit formal or polynomial counterexample;
 - defect `4` reduces to a smaller, precisely stated invariant obstruction.
+
+A distinct reviewer or subagent is preferred. If the environment does not support one, a separate `local-adversarial-review` by the constructing assistant is valid and must not be blocked solely because reviewer identity is shared. Exact-byte manifests and artifact hashes are optional; material scientific changes after acceptance require review of the affected scope.
 
 ## Forbidden inferences
 

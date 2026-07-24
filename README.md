@@ -17,20 +17,24 @@ The repository does **not** claim a proof of the planar conjecture. The active s
 3. Inspect the claim classifications in [`research/CLAIM_LEDGER.md`](research/CLAIM_LEDGER.md).
 4. Read the current technical frontier in [`research/tracks/filtered-equivariance.md`](research/tracks/filtered-equivariance.md).
 5. Pick up the bounded task in [`research/leaf-packets/defect-4-staircase.md`](research/leaf-packets/defect-4-staircase.md).
-6. Follow [`AGENTS.md`](AGENTS.md) before changing claim status.
+6. Follow [`AGENTS.md`](AGENTS.md) and [`governance/SCIENTIFIC-WORKFLOW.md`](governance/SCIENTIFIC-WORKFLOW.md) before changing claim status.
 
 ## Scientific workflow
 
-Work follows the [`scientific-mainline-workflow`](https://github.com/snissn/skills/tree/main/scientific-mainline-workflow) maintained in [`snissn/skills`](https://github.com/snissn/skills).
+Work follows the [`scientific-mainline-workflow`](https://github.com/snissn/skills/tree/main/scientific-mainline-workflow) maintained in [`snissn/skills`](https://github.com/snissn/skills), with repository-specific rules recorded in [`governance/SCIENTIFIC-WORKFLOW.md`](governance/SCIENTIFIC-WORKFLOW.md).
 
-The governing rule is:
+The governing rules are:
 
 - construct mutable, non-decisive scientific work on an issue-scoped feature branch;
-- bind review to exact candidate bytes;
-- keep candidate lemmas, literature results, blocked implications, and retractions distinct;
-- promote only independently reviewed frozen artifacts to `main`.
+- use the connected GitHub adapter for repository operations whenever it is available and supports the action;
+- bind review to identified claims at a pinned commit or repository revision;
+- prefer a distinct reviewer, while permitting a declared local adversarial review when the environment does not support subagents or another reviewer;
+- keep candidate lemmas, literature results, blocked implications, and retractions distinct; and
+- promote only reviewed and validated artifacts to `main`.
 
-A pushed feature-branch commit is development provenance, not theorem authority.
+Exact-byte manifests and artifact hashes are optional. Material scientific changes after acceptance require review of the affected scope, while editorial or metadata-only changes do not automatically invalidate a review.
+
+A pushed feature-branch commit or pull request is development provenance, not theorem authority.
 
 ## Current load-bearing question
 
