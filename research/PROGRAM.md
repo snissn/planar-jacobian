@@ -47,21 +47,21 @@ No branch below is presently a proof of `JC_2`. Each supplies either a sufficien
 - equivariant degeneration without loss of function-field degree or boundary data;
 - characteristic-p and p-curvature.
 
-The active filtered leaf is [`L13-defect-4-staircase.md`](leaf-packets/L13-defect-4-staircase.md). It treats the claimed low-defect reduction as a candidate and isolates the first new middle-Wronskian obstruction at defect `4`.
+The active filtered leaf is [`L13-defect-4-staircase.md`](leaf-packets/L13-defect-4-staircase.md). It now records a `candidate_proved` full reduction through positive-weight defect `4`, with independent exact-byte review still blocking promotion. The proof is scoped to the existence of one primitive positive weight with `kappa_w<=4`.
 
 ## Cross-track interfaces
 
-The filtered-equivariance lane must not remain a formal weight calculation detached from geometry. A successful reduction should identify at least one of the following:
+The filtered-equivariance lane must not remain a formal weight calculation detached from geometry. The defect-four candidate supplies a terminating algebraic reduction only inside its small-defect domain. A full route still needs at least one of the following:
 
-- a monotone Newton/valuation invariant on the finite-normalization boundary;
-- a filtration-compatible polynomial symplectic transformation;
-- a cusp or inertia configuration excluded by the monodromy track;
-- a no-escape result preserving the boundary stratum under degeneration.
+- a theorem producing a positive weight of bounded defect from boundary data;
+- a monotone Newton/valuation invariant that drives arbitrary defect into the proved domain;
+- a no-escape theorem preserving function-field degree and boundary valuations under a longer degeneration;
+- a simultaneous Wright-grading reduction that retains the nonzero bracket.
 
-Conversely, a formal defect-4 layer system that survives all staircase equations but cannot come from a global polynomial pair would identify the precise additional realization theorem required.
+The defect-four calculation does not use cusp monodromy or Newton--Puiseux exclusion: the middle Wronskian is eliminated by exact support and earlier-stair equations. This does not show that higher-defect middle layers lack geometric content.
 
 ## Exit rule
 
 A branch exits successfully only when it supplies a complete implication from the Keller hypothesis to degree one, with all imported theorems source-bound and all local-to-global steps explicit. A restricted theorem is banked at its exact scope and does not become a family-wide no-go.
 
-For the defect-4 leaf, an exact scoped obstruction or formal counterexample is also a successful scientific disposition; it does not by itself close the main goal.
+For the defect-4 leaf, the mathematical stop rule has been reached by a full scoped reduction. Scientific promotion remains blocked until independent review accepts the exact candidate bytes. Do not broaden to defect `5` before that review disposition.
