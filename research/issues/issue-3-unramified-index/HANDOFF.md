@@ -8,71 +8,163 @@ protocol_verdict: null
 scientific_inference: scoped obstruction and narrowed successor only
 ```
 
-- **Leaf and branch:** `L01-unramified-index-elimination`; `issue-3/unramified-index-gpt56`
-- **Base commit:** `296867d82d09d51ef2386de2a62067408b7f949c`
-- **Exact question:** Can one integral primitive element generate every height-one semilocal normalization, and can generic algebraic mutation eliminate all accidental etale collision divisors?
+- **Branch:** `issue-3/unramified-index-gpt56`
+- **Pinned base:** `agent/bootstrap-proof-graph@296867d82d09d51ef2386de2a62067408b7f949c`
+- **Disposed leaf:** `L01-unramified-index-elimination`
+- **Successor:** `L14-keller-index-form-unit`
 
-## Disposition
+## Exact disposition
 
-The question splits.
+The original question splits into three statements.
 
-1. **Yes, at any prescribed finite set of base divisors.** In particular, one integral primitive element simultaneously generates every ramified height-one semilocal algebra. This proves the content of `CLM-029` at mutable-candidate scope.
-2. **Yes, codimension-one equality globalizes.** The order `B[theta]` is a hypersurface and hence `S2`; equality with the normal order at every height-one base prime gives `R1`, so `B[theta]=O`. In the Keller setting, the minimal-polynomial derivative then forces degree one without circularity.
-3. **No, for the purely algebraic moving-index bridge.** The rank-three algebra in `COUNTERMODELS.md` is normal, connected, finite flat, and locally monogenic on all of `Spec(C[t,v])`, but every ramification-adapted element has nonempty unramified index support. Constant and polynomial mutations only move the divisor.
+1. **Finite ramification adaptation is valid.** For every finite set of
+   height-one base primes, one integral primitive element generates the whole
+   semilocal normalization over each selected DVR. In particular, one element
+   generates all ramified height-one semilocalizations.
+2. **Codimension-one equality globalizes.** If one element generates at every
+   height-one base prime, the hypersurface order is `S2` and `R1`, hence equals
+   the normalization. In the Keller setting, the minimal-polynomial
+   derivative then forces degree one without circularity.
+3. **Purely algebraic unramified elimination is false.** A smooth rational
+   rank-three normal finite-flat algebra is locally monogenic on the entire
+   base, has squarefree tame branch with a fixed unramified sheet over each
+   branch component, and contains an open affine plane, yet its index form
+   never represents a unit.
 
-The surviving bridge must use the Keller-specific open immersion and source etaleness. Local monogenicity, generic separability, factoriality, a finite-dimensional parameter count, and rationality considered separately are all insufficient.
+The remaining theorem must use etaleness of the specified Keller source.
 
-## Candidate statements
+## Strongest countermodel
 
-- Semilocal DVR monogenicity over an infinite perfect residue field.
-- Simultaneous finite-prime adaptation over `C[u,v]`.
-- Exact local index/Fitting/discriminant criterion.
-- Height-one generation implies `O=B[theta]` by `R1/S2`.
-- Global monogenic Keller normalization implies degree one.
-- Rank-two finite locally free algebras over `C[u,v]` are globally monogenic.
-- Whole-base affine-linear primitive transitions globalize; punctured-base transitions do not do so by Hartogs alone.
-- Purely algebraic unramified-index elimination is false in rank three.
-
-## Formulas and objects introduced
-
-```text
-M_theta = O/B[theta]
-I_theta = Fitt^B_0(M_theta)
-ord_p(I_theta)=length_{B_p}(O_p/B_p[theta])
-Disc(B[theta]/B)=I_theta^2 Disc(O/B)
-V(theta)=product_{i<j}(sigma_j(theta)-sigma_i(theta))
-```
-
-Main rank-three index form:
+Let `B=C[u,v]` and let `O` have basis `1,w,e` with
 
 ```text
-Phi(x,y)=-(t x^3+(t^2+1)y^3).
+w^2=w-u e,
+we=-uv,
+e^2=v(w-1).
 ```
 
-Biquadratic moving collision:
+Then
 
 ```text
-V(a+cb)=64c^2uv(u-c^2v),
-ind(a+cb)=-4c^2(u-c^2v).
+Phi(X,Y)=-(uX^3+X^2Y+vY^3),
+Disc(O/B)=-v(4+27u^2v).
 ```
 
-## Primary sources checked
+The algebra is connected, smooth, normal, finite flat, rational, locally
+monogenic everywhere, and generically non-Galois. Both branch components are
+simple: the cubic has one double root and one simple root at each generic
+branch point.
 
-No new external result is load-bearing. The finite-normalization/open-immersion statement remains the pinned `CLM-003` dependency and retains its separate `L12` source-audit obligation. Standard local and commutative algebra used here is proved at the exact scope consumed.
+No `x,y in C[u,v]` satisfy `Phi(x,y) in C*`. Setting `u=0` would force a
+nonconstant linear polynomial in `v` to be a square. Thus every
+ramification-adapted element has nonempty index support at unramified generic
+points.
 
-## Counterexamples and mutations tested
+For
 
-- `A x A` over a DVR: separate factor generation does not imply semilocal generation.
-- Connected normal rank-three locally-but-not-globally monogenic algebra over `C[t,v]`.
-- Constant mutation `w+lambda e`: divisor `t+lambda^3(t^2+1)` moves but never disappears.
-- Polynomial mutation `w+h(t,v)e`: index `t+(t^2+1)h^3` is never a unit.
-- Rational normal rank-three model with a square-zero embedding-dimension-two special fiber.
-- Biquadratic Galois model with moving collision line `u=c^2v`.
-- Tame non-Galois semilocal DVR extension generated by `beta+tau`.
+```text
+theta_lambda=w+lambda e,
+```
+
+one has
+
+```text
+ind(theta_lambda)=-(u+lambda+lambda^3v).
+```
+
+The collision line moves with `lambda` and never disappears.
+
+The surface contains
+
+```text
+X_0=Y-V(u,1-w) isomorphic to A2_{u,s},
+```
+
+and the finite map restricts to
+
+```text
+(u,s) |-> (u,us^3-s^2),
+J=s(3us-2).
+```
+
+Hence the open plane is not an etale source. This is why the model is not a
+Keller counterexample.
+
+## Banked candidate theorems
+
+- Exact semilocal special-fiber generation criterion.
+- Fitting/index length and square-discriminant formulas.
+- One primitive element simultaneously adapted at any finite set of
+  height-one base primes.
+- Height-one generation implies global equality by `R1/S2`.
+- Global monogenicity of a Keller normalization implies degree one.
+- Every rank-two finite locally free algebra over `C[P,Q]` is globally
+  monogenic.
+- Whole-base affine-linear primitive transitions globalize; a punctured-base
+  cover is insufficient without cocycle extension.
+
+## Countercontrols retained
+
+- `A x A` over a DVR: factorwise projection is not semilocal generation.
+- Diagonal cubic: locally but not globally monogenic; mutation depends on
+  `lambda^3`.
+- Rational corank-two cubic: square-zero embedding-dimension-two special
+  fiber.
+- Biquadratic Galois cover: exact Vandermonde collision line.
+- Tame non-Galois DVR extension: local monogenicity with mixed residue degree
+  and ramification.
+- Smooth rational fixed-sheet cubic: open affine plane present, source
+  etaleness absent.
+
+## Smallest unresolved calculation
+
+The first exact successor is the **rank-three Keller binary-index-form unit
+problem**.
+
+Assume a hypothetical rank-three Keller normalization is finite locally free.
+Use `(1/3)Tr` to split
+
+```text
+O=B direct_sum E,
+rank_B(E)=2.
+```
+
+For `s in E`, define the intrinsic cubic index section
+
+```text
+Phi(s)=det(1,s,s^2).
+```
+
+In a local frame `s=Xe_1+Ye_2`, this is a binary cubic. Ramification
+adaptation supplies a global section with
+
+```text
+gcd(Phi(s),Disc(O/B))=1.
+```
+
+The smallest remaining task is:
+
+```text
+Use the actual open immersion A2_source -> Y together with
+J(P,Q)=1 on A2_source to prove that Phi(s) is a nonzero constant
+for some integral section s.
+```
+
+Equivalently, find one exact differential, canonical-derivation, boundary, or
+fixed-sheet identity implied by source etaleness that excludes the explicit
+pattern
+
+```text
+uX^3+X^2Y+vY^3
+```
+
+and its moving lines `u+lambda+lambda^3v`.
+
+A proof in rank three is a rigorous restricted theorem even if higher ranks
+remain open. A Keller-compatible countermodel would need to retain the
+specified etale open `A2_source`; the present algebraic countermodel does not.
 
 ## Validation commands
-
-From the repository root:
 
 ```bash
 python3 -m compileall -q scripts research/issues/issue-3-unramified-index/verify_index_models.py
@@ -82,68 +174,23 @@ python3 scripts/frontier.py
 git diff --check
 ```
 
-The symbolic verifier recomputes associativity, index determinants, trace discriminants, and the Vandermonde identity. These checks are process evidence, not theorem review.
+The symbolic verifier recomputes associativity, index determinants, trace
+discriminants, the Galois Vandermonde identity, the mutation family, and the
+open-plane Jacobian. These are process checks, not theorem acceptance.
 
-## Blocking findings
+## Review state
 
-- Generic primitive elements separate only the generic fiber; collision incidence is usually dominant over the parameter space.
-- Adding a base element does not change any sheet difference or index ideal.
-- Patching a finite index support can create another support; no algebraic termination invariant exists in general.
-- `Cl(B)=0` makes the index divisor principal, not empty.
-- Local primitive elements can have nonlinear transitions.
-- Hartogs extension of functions does not trivialize an affine torsor on a punctured surface.
-
-## Nonblocking strengthening
-
-- The degree-two case is closed by the trace splitting and `Pic(B)=0`.
-- The ramified-prime patching theorem works for every prescribed finite set, not only the ramification set.
-- The local monogenicity lemma requires no Galois hypothesis and permits mixed residue degree and ramification.
-
-## Claim-ledger changes
-
-See `PROPOSED-SYNC.md`. The minimal synchronization promotes `CLM-029`, separates the proved conditional content of `CLM-031`, records the algebraic counterexample, and creates a Keller-specific open bridge.
-
-## Proof-graph changes
-
-Dispose `OPEN-UNRAMIFIED-INDEX` as a scoped obstruction and replace its direct terminal edge by a successor leaf `OPEN-KELLER-INDEX-UNIT`.
-
-## Smallest unresolved calculation
-
-The first exact successor is the **rank-three binary index-form unit problem**.
-
-Let a hypothetical rank-three Keller normalization be finite locally free over `B`. Split the unit section by `(1/3)Tr`. On the resulting trace-zero rank-two vector bundle `E`, the determinant
-
-```text
-s |-> det(1,s,s^2)
-```
-
-is an intrinsic cubic index form. In any local trivialization `s=Xe_1+Ye_2`, it is a binary cubic
-
-```text
-Phi(X,Y)=det(1, X e_1+Y e_2, (X e_1+Y e_2)^2).
-```
-
-Ramification adaptation supplies a global section `s` for which
-
-```text
-gcd(Phi(s), Disc(O/B))=1.
-```
-
-The smallest unresolved Keller-specific calculation is:
-
-```text
-prove that the open immersion A2_source -> Y and source etaleness
-force some Phi(x,y) to lie in C*.
-```
-
-Equivalently, identify one exact differential, boundary, or canonical-derivation identity that excludes the anisotropic pattern
-
-```text
-t X^3+(t^2+1)Y^3
-```
-
-and its rational corank-two analogue. A proof in rank three would be a rigorous restricted theorem even without treating higher degree.
+The constructor adversarial pass reports no known internal blocker after
+corrections, but it is not independent. Freeze or promotion remains blocked
+pending independent review of the load-bearing local patching,
+globalization, and fixed-sheet countermodel arguments.
 
 ## Stop-rule status
 
-`SATISFIED — SCOPED ALGEBRAIC OBSTRUCTION.` The generic moving-index bridge is false; its positive ramified-adaptation and globalization sublemmas are banked. The Keller-specific successor is explicitly separated rather than silently assumed.
+```text
+SATISFIED — SCOPED ALGEBRAIC OBSTRUCTION.
+```
+
+The generic moving-index bridge is false. The positive ramification-adaptation
+and globalization sublemmas are banked, and the Keller etale-source successor
+is isolated exactly.
