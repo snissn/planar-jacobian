@@ -33,6 +33,18 @@ No unconditional proof of the planar Jacobian conjecture is claimed. The maintai
 2. **Resonant layer.** At least one pair of weighted layers with indices summing to `kappa_w` has nonzero constant Jacobian and is therefore an exactly graded Keller automorphism.
 3. **Low-defect candidate.** The conversation-derived argument claims that `kappa_w <= 3` forces the original map to be an automorphism. This has not received a documented adversarial review at a pinned repository revision and is not promoted as a theorem.
 
+### Moving-index route — issue #3
+
+The issue #3 packet now gives an exact scoped disposition of the global monogenicity route.
+
+1. **Ramified adaptation — candidate.** One integral primitive element can generate every prescribed finite set of height-one semilocal normalization algebras, including all ramified height-one primes.
+2. **Codimension-one globalization — candidate.** If one element generates at every height-one base prime, then the hypersurface order is `R1` and `S2`, hence equals the normalization.
+3. **Degree one after monogenicity — candidate.** Restriction to the etale Keller source makes the derivative of the minimal polynomial a polynomial unit, forcing function-field degree one without using the conclusion in the globalization step.
+4. **Pure algebraic moving-index elimination — obstructed.** Explicit smooth rational rank-three countermodels show that local monogenicity, squarefree tame fixed-sheet branch, an open affine plane, generic primitive-element mutation, and class-group triviality do not force the index divisor to disappear.
+5. **Surviving bridge — blocked.** Use etaleness on the specified Keller source to force the universal index form to represent a nonzero constant.
+
+The complete theorem packet, collision analysis, countermodels, and handoff are in [`research/issues/issue-3-unramified-index/`](research/issues/issue-3-unramified-index/README.md). The compact track is [`research/tracks/monogenicity-index-divisor.md`](research/tracks/monogenicity-index-divisor.md).
+
 ### First unresolved filtered case
 
 At `kappa_w=4`, after normalizing an interior resonant pair, the first new equation has the form
@@ -50,7 +62,8 @@ The following must not be used without a new proof:
 - the oversimplified boundary-excess identity `d = 1 + sum e_i + C_boundary`;
 - the assertion that a finite Kummer cover on one generic `PQ` fiber makes the full two-dimensional function-field extension cyclic Galois;
 - any inference that exactness of a canonical two-form alone principalizes its zero divisor;
-- any claim that numerical compactification frameworks alone determine puncture monodromy or realizability.
+- any claim that numerical compactification frameworks alone determine puncture monodromy or realizability;
+- any assertion that a generic primitive element, a generic linear mutation, or distinct values on one fiber eliminate all codimension-one sheet collisions.
 
 ## Exit gate for issue #1
 
