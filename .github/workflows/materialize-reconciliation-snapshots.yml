@@ -28,7 +28,7 @@ jobs:
       - name: Check out current main snapshot
         uses: actions/checkout@v4
         with:
-          ref: d132adc131533776509075ee70829ab34aa60f53
+          ref: 7dada3a5d0c6c0bf0f40208b30215c495e17ee28
           path: snapshots/main
           fetch-depth: 1
 
@@ -52,7 +52,7 @@ jobs:
           set -euo pipefail
           mkdir -p snapshots/metadata
           {
-            echo "main=d132adc131533776509075ee70829ab34aa60f53"
+            echo "main=7dada3a5d0c6c0bf0f40208b30215c495e17ee28"
             echo "rich=296867d82d09d51ef2386de2a62067408b7f949c"
             echo "defect4=96fc7ec34bd3b685a0edeae7ecd4404abab7e2f1"
             echo "snapshot_workflow_commit=${GITHUB_SHA}"
