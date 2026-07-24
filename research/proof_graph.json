@@ -24,7 +24,7 @@
     {"id":"BR-DEGENERATION","title":"Equivariant degeneration and closed-orbit route","type":"branch","status":"open","artifact":"tracks/j-equivariant-degeneration.md"},
     {"id":"OPEN-CLOSED-ORBIT","title":"Prove a minimal counterexample has a closed torus orbit in a fixed boundary stratum","type":"leaf","status":"open","artifact":"leaf-packets/L08-equivariant-closed-orbit.md"},
     {"id":"BR-FILTERED-EQUIVARIANCE","title":"Weighted Rees staircase toward exact graded rigidity","type":"branch","status":"open","artifact":"tracks/m-filtered-equivariance.md"},
-    {"id":"OPEN-DEFECT-4","title":"Audit the staircase and resolve grading defect 4","type":"leaf","status":"open","artifact":"leaf-packets/L13-defect-4-staircase.md"},
+    {"id":"OPEN-DEFECT-4","title":"Audit the staircase and resolve grading defect 4","type":"leaf","status":"candidate_proved","artifact":"leaf-packets/L13-defect-4-staircase.md"},
     {"id":"BR-CHAR-P","title":"Characteristic-p and p-curvature route","type":"branch","status":"speculative","artifact":"tracks/k-characteristic-p.md"},
     {"id":"OPEN-PCURVATURE","title":"Turn reductions mod p into a finite-monodromy contradiction","type":"leaf","status":"open","artifact":"leaf-packets/L09-characteristic-p.md"},
     {"id":"CTL-LITERATURE","title":"Primary-source and low-degree audit","type":"control","status":"active","artifact":"tracks/l-literature-low-degree.md"},
