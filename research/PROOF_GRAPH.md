@@ -26,6 +26,8 @@
 | `OPEN-CUSP-BRAID` | Eliminate nonabelian cusp/tangency braid monodromy | `leaf` | `open` | leaf-packets/L07-cusp-braid.md |
 | `BR-DEGENERATION` | Equivariant degeneration and closed-orbit route | `branch` | `open` | tracks/j-equivariant-degeneration.md |
 | `OPEN-CLOSED-ORBIT` | Prove a minimal counterexample has a closed torus orbit in a fixed boundary stratum | `leaf` | `open` | leaf-packets/L08-equivariant-closed-orbit.md |
+| `BR-FILTERED-EQUIVARIANCE` | Weighted Rees staircase toward exact graded rigidity | `branch` | `open` | tracks/m-filtered-equivariance.md |
+| `OPEN-DEFECT-4` | Audit the staircase and resolve grading defect 4 | `leaf` | `open` | leaf-packets/L13-defect-4-staircase.md |
 | `BR-CHAR-P` | Characteristic-p and p-curvature route | `branch` | `speculative` | tracks/k-characteristic-p.md |
 | `OPEN-PCURVATURE` | Turn reductions mod p into a finite-monodromy contradiction | `leaf` | `open` | leaf-packets/L09-characteristic-p.md |
 | `CTL-LITERATURE` | Primary-source and low-degree audit | `control` | `active` | tracks/l-literature-low-degree.md |
@@ -44,6 +46,7 @@
 | `BASE-KELLER` | `RED-NORMALIZATION` | `requires` |
 | `BASE-KELLER` | `RED-DERIVATIONS` | `requires` |
 | `BASE-KELLER` | `RED-SYMPLECTIC` | `requires` |
+| `BASE-KELLER` | `BR-FILTERED-EQUIVARIANCE` | `requires` |
 | `RED-NORMALIZATION` | `RED-BOUNDARY` | `requires` |
 | `RED-BOUNDARY` | `OPEN-BOUNDARY-BASELINE` | `requires` |
 | `RED-NORMALIZATION` | `BR-MONOGENIC` | `requires` |
@@ -67,8 +70,12 @@
 | `BR-WRIGHT` | `OPEN-GRADED-REDUCTION` | `requires` |
 | `BR-MONODROMY` | `OPEN-CUSP-BRAID` | `requires` |
 | `BR-DEGENERATION` | `OPEN-CLOSED-ORBIT` | `requires` |
+| `BR-FILTERED-EQUIVARIANCE` | `OPEN-DEFECT-4` | `requires` |
+| `OPEN-DEFECT-4` | `OPEN-GRADED-REDUCTION` | `supports` |
+| `BR-FILTERED-EQUIVARIANCE` | `BR-DEGENERATION` | `supports` |
 | `BR-CHAR-P` | `OPEN-PCURVATURE` | `requires` |
 | `CTL-LITERATURE` | `OPEN-LITERATURE` | `requires` |
+| `CTL-LITERATURE` | `BR-FILTERED-EQUIVARIANCE` | `supports` |
 | `OPEN-UNRAMIFIED-INDEX` | `TERM-DEGREE-ONE` | `sufficient-if-closed` |
 | `OPEN-STABLE-ORDER` | `TERM-DEGREE-ONE` | `sufficient-if-closed` |
 | `OPEN-BOUNDARY-POLE` | `TERM-DEGREE-ONE` | `sufficient-if-closed` |
@@ -90,3 +97,5 @@
 ## Reading rule
 
 An edge marked `sufficient-if-closed` means the leaf is intended to provide a complete route to degree one. It does not mean the leaf is close to solved. Context and control nodes cannot by themselves establish the goal.
+
+The defect-4 leaf is a scoped subproblem supporting the full graded-reduction leaf. Closing defect 4 alone is not represented as sufficient for `JC_2`.
