@@ -56,6 +56,9 @@ jobs:
           test "$(git rev-parse refs/remotes/origin/agent/bootstrap-proof-graph)" = "$RICH_SHA"
           test "$(git rev-parse refs/remotes/origin/issue-17/defect-4-staircase)" = "$DEFECT4_SHA"
 
+          materializer_workflow="$RUNNER_TEMP/materialize-reconciliation-snapshots.yml"
+          git show "$STAGING_SHA:.github/workflows/materialize-reconciliation-snapshots.yml" > "$materializer_workflow"
+
           payload="$RUNNER_TEMP/reconciliation-payload.tar.gz"
           cat .github/reconciliation-payload/payload-*.b64 | tr -d '\r\n' | base64 --decode > "$payload"
           echo "$PAYLOAD_SHA256  $payload" | sha256sum --check --status
@@ -82,6 +85,10 @@ jobs:
           python3 scripts/validate_repository.py | tee "$RUNNER_TEMP/validation.log"
           python3 scripts/frontier.py | tee "$RUNNER_TEMP/frontier.log"
 
+          rm -f .github/workflows/repository-python-validators.yml
+          mkdir -p .github/workflows
+          cp "$materializer_workflow" .github/workflows/materialize-reconciliation-snapshots.yml
+
           git add --all
           git diff --cached --check -- . ':(exclude,glob)**/*.md' ':(exclude,glob)*.md'
           tree_sha="$(git write-tree)"
@@ -89,9 +96,10 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           new_commit="$({
-            echo 'maintenance: reconcile rich proof baseline with current governance'
+            echo 'maintenance: materialize validated reconciliation tree'
             echo
-            echo 'Resolved tree assembled from pinned current main and PR #15 rich baseline.'
+            echo 'Resolved non-workflow tree assembled from pinned current main and PR #15 rich baseline.'
+            echo 'The connected GitHub adapter performs the final canonical workflow swap.'
             echo 'No mathematical statement or substantive claim status is changed.'
           } | git commit-tree "$tree_sha" -p "$STAGING_SHA" -p "$MAIN_SHA" -p "$RICH_SHA")"
 
