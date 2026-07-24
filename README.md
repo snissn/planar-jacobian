@@ -6,57 +6,40 @@
 > **Protocol verdict:** `null`  
 > **Scientific inference:** `none`
 
+This repository is a durable research workspace for the two-dimensional Jacobian conjecture after the July 2026 three-dimensional counterexample. It preserves promising reductions without presenting an exploratory argument as a theorem.
 
-This repository is a durable research workspace for the two-dimensional Jacobian conjecture after the July 2026 three-dimensional counterexample. It memorializes two long exploratory conversations, separates candidate lemmas from retracted or literature-dependent claims, and exposes the surviving proof program as a dependency graph with agent-sized leaves.
-
-The repository does **not** claim a proof of the planar conjecture. As of 2026-07-23, the published discussion around the new three-dimensional counterexample continues to describe the two-dimensional case as open. The immediate purpose is to prevent repeated rediscovery, make assumptions and gaps explicit, and let independent agents resume any proof branch from a bounded handoff packet.
+The repository does **not** claim a proof of the planar conjecture. The active scientific tracker is [issue #1](https://github.com/snissn/planar-jacobian/issues/1).
 
 ## Start here
 
 1. Read [`STATUS.md`](STATUS.md).
 2. Read [`research/PROGRAM.md`](research/PROGRAM.md).
-3. Inspect [`research/PROOF_GRAPH.md`](research/PROOF_GRAPH.md) or the machine-readable [`research/proof_graph.json`](research/proof_graph.json).
-4. Select an open leaf in [`research/leaf-packets/`](research/leaf-packets/).
-5. Read the corresponding track under [`research/tracks/`](research/tracks/).
-6. Check every depended-on statement in [`research/CLAIM_LEDGER.md`](research/CLAIM_LEDGER.md).
-7. Follow [`AGENTS.md`](AGENTS.md) and the governance files before changing claim status.
+3. Inspect the claim classifications in [`research/CLAIM_LEDGER.md`](research/CLAIM_LEDGER.md).
+4. Read the current technical frontier in [`research/tracks/filtered-equivariance.md`](research/tracks/filtered-equivariance.md).
+5. Pick up the bounded task in [`research/leaf-packets/defect-4-staircase.md`](research/leaf-packets/defect-4-staircase.md).
+6. Follow [`AGENTS.md`](AGENTS.md) before changing claim status.
 
-## Repository layers
+## Scientific workflow
 
-- `archive/conversations/`: immutable raw exports and message-level topic index.
-- `research/synthesis/`: broad narrative synthesis of both conversations.
-- `research/tracks/`: parallel proof programs, including their honest current boundaries.
-- `research/leaf-packets/`: bounded tasks that another agent can pick up without reconstructing the full history.
-- `research/proof_graph.json`: dependency graph and frontier.
-- `research/claim_ledger.json`: candidate, open, retired, and source-bound claims.
-- `governance/`: scientific status, review, freeze, and handoff rules.
-- `scripts/`: deterministic structural validators and frontier rendering.
+Work follows the [`scientific-mainline-workflow`](https://github.com/snissn/skills/tree/main/scientific-mainline-workflow) maintained in [`snissn/skills`](https://github.com/snissn/skills).
+
+The governing rule is:
+
+- construct mutable, non-decisive scientific work on an issue-scoped feature branch;
+- bind review to exact candidate bytes;
+- keep candidate lemmas, literature results, blocked implications, and retractions distinct;
+- promote only independently reviewed frozen artifacts to `main`.
+
+A pushed feature-branch commit is development provenance, not theorem authority.
 
 ## Current load-bearing question
 
-The conversations repeatedly converge on one obstruction:
+Exact `G_m`-equivariance is known to force a planar Keller map to be an automorphism. The current lane studies a weighted Rees deformation of an arbitrary Keller pair. Candidate calculations eliminate grading defects through `3`; defect `4` is the first level containing a genuinely new middle Wronskian term.
 
-> A hypothetical planar Keller counterexample is locally rigid and locally étale on the affine plane, but its finite normalization can lose sheets at infinity. Can the boundary data be shown to force one global algebraic structure—such as a principal different, a global primitive element, a stable differential lattice, a complete canonical flow, or a finite quasi-Albanese map—that makes the normalization finite étale and therefore trivial?
+> Can the defect-4 middle Wronskian be absorbed by a filtration-compatible source or target transformation, or shown to force a forbidden boundary/monodromy configuration?
 
-No one bridge is currently established. The proof graph keeps the competing routes parallel rather than presenting one preferred speculation as settled.
+No proof of that step is currently maintained.
 
-## Validation
+## Sources
 
-```bash
-python3 scripts/validate_repository.py
-python3 scripts/frontier.py
-```
-
-The first command checks graph integrity, claim references, artifact paths, and transcript hashes. It does not validate mathematical truth.
-
-## Authority boundary
-
-Raw conversations are provenance and idea input, not theorem authority. A statement may enter the maintained mainline only after:
-
-- its exact formulation is recorded;
-- primary sources are bound where it is literature-dependent;
-- a self-contained proof or exact reduction is independently reviewed;
-- known counterexamples and hidden hypotheses are checked;
-- the claim ledger and proof graph are updated together.
-
-See [`governance/CLAIM-STATUS.md`](governance/CLAIM-STATUS.md).
+See [`research/SOURCES.md`](research/SOURCES.md), including T. Shaska, *Graded Keller maps and the Jacobian Conjecture*, arXiv:2607.20210.
