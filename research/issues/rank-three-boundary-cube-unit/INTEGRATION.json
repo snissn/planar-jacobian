@@ -7,10 +7,10 @@
     "research/issues/rank-three-boundary-cube-unit/"
   ],
   "base_sha": "652a5e252626fa5816445651245e8a8946cee53e",
-  "candidate_sha": "733990e68841ef7ea25cb7fb22f0f668aa522494",
+  "candidate_sha": "01183ee9c6fdd9090a29edc2d675e419fb71c078",
   "scientific_status": "LITERATURE_BOUND_RANK_THREE_EXCLUSION_WITH_CANDIDATE_INTERNAL_REFINEMENTS / MUTABLE_NONAUTHORITATIVE",
   "review_mode": "local-adversarial-review",
-  "reviewed_revision": "733990e68841ef7ea25cb7fb22f0f668aa522494",
+  "reviewed_revision": "01183ee9c6fdd9090a29edc2d675e419fb71c078",
   "proposed_global_claims": [
     {
       "id": "R3BC-01",
