@@ -1,38 +1,63 @@
-name: Defect Five Staging Synchronization
+name: Defect Five Final-Tree Generator
 
 on:
-  push:
+  pull_request:
     branches:
-      - issue-29/defect-five-sync-staging-r2
+      - main
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   generate:
-    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: issue-29/defect-five-sync-staging-r2
+          ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Generate synchronized tree
+      - name: Generate synchronized final files
         run: |
           set -euo pipefail
           python .github/defect-five-staging/sync.py
           python scripts/render_views.py --write
           git diff --check
-      - name: Commit staging output
-        run: |
-          set -euo pipefail
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add STATUS.md research scripts/render_views.py scripts/validate_repository_legacy.py
-          git diff --cached --quiet && exit 1
-          git commit -m 'staging(issue-29): generate defect-five shared synchronization'
-          git push origin HEAD:issue-29/defect-five-sync-staging-r2
+          test ! -e research/issues/defect-5-rees/.integration-ready
+          test ! -e research/issues/defect-5-rees/.local-review-complete
+      - name: Upload clean final-tree files
+        uses: actions/upload-artifact@v4
+        with:
+          name: defect-five-final-tree-${{ github.run_id }}
+          path: |
+            STATUS.md
+            research/CLAIM_LEDGER.md
+            research/PROOF_GRAPH.md
+            research/WORK_QUEUE.md
+            research/ISSUE_INDEX.md
+            research/LEGACY_CLAIM_MIGRATION.md
+            research/claim_ledger.json
+            research/proof_graph.json
+            research/work_queue.json
+            research/leaf-packets/L15-defect-5-staircase.md
+            research/tracks/m-filtered-equivariance.md
+            research/issues/defect-5-rees/README.md
+            research/issues/defect-5-rees/FOUNDATIONS.md
+            research/issues/defect-5-rees/TRANSFORMATIONS.md
+            research/issues/defect-5-rees/DERIVATION.md
+            research/issues/defect-5-rees/CASE_TABLE.md
+            research/issues/defect-5-rees/COUNTERMODEL_SEARCH.md
+            research/issues/defect-5-rees/VALIDATION.md
+            research/issues/defect-5-rees/VALIDATION.json
+            research/issues/defect-5-rees/validate_defect5.py
+            research/issues/defect-5-rees/review_validate_defect5_adversarial.py
+            research/issues/defect-5-rees/REVIEW.md
+            research/issues/defect-5-rees/HANDOFF.md
+            research/issues/defect-5-rees/INTEGRATION.json
+            scripts/render_views.py
+            scripts/validate_repository_legacy.py
+          if-no-files-found: error
+          retention-days: 3
