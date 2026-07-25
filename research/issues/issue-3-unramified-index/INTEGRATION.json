@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "issue_number": 3,
+  "leaf_id": "L01",
+  "role": "integration-maintainer",
+  "owned_paths": ["research/issues/issue-3-unramified-index/"],
+  "base_sha": "7dada3a5d0c6c0bf0f40208b30215c495e17ee28",
+  "candidate_sha": "1990ee62520e16c21c52e225d02608527281eafe",
+  "scientific_status": "SCOPED_ALGEBRAIC_OBSTRUCTION / MUTABLE_NONAUTHORITATIVE",
+  "review_mode": "local-adversarial-review",
+  "reviewed_revision": "1990ee62520e16c21c52e225d02608527281eafe",
+  "proposed_global_claims": [],
+  "proposed_graph_nodes": [],
+  "shared_surfaces_requested": [],
+  "supersedes_prs": [],
+  "temporary_artifacts_absent": true,
+  "integration_state": "merged",
+  "pr_number": 27,
+  "completion_receipt": "Merged as e542948a6d645569518437c6c0634a059415cfc4; transport did not confer scientific acceptance."
+}
