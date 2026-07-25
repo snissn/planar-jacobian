@@ -31,7 +31,7 @@ MARKERS = {
         "does **not** prove the planar Jacobian conjecture",
     ],
     "BOUNDARY_HYPOTHESES.md": [
-        "the branch divisor equals the boundary",
+        "The reverse containment need not hold",
         "actual nontrivial algebraic `G_m` action",
     ],
     "LOGARITHMIC_MODULE.md": [
