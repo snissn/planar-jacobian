@@ -37,6 +37,23 @@ jobs:
       - name: Install exact symbolic dependency
         run: python -m pip install --disable-pip-version-check sympy==1.14.0
 
+      - name: Rebind synchronization metadata
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('research/issues/one-boundary-logarithmic-field/sync_oblf.py')
+          text = path.read_text(encoding='utf-8')
+          text = text.replace(
+              'candidate_revision: ad7abee8370146e40f41cb2d108cf07dc129df03',
+              'candidate_revision: 02547f9a1c8c72486ad2bb07a06a10fde1351af4',
+          )
+          text = text.replace(
+              'review_revision: 1e585ee1b8fc4ae9a91500f7b1ae9607845fa630',
+              'review_revision: 3a96a48280228a7e38a4ca488109f90147d59b1c',
+          )
+          path.write_text(text, encoding='utf-8')
+          PY
+
       - name: Run final shared synchronization
         run: |
           set -euo pipefail
@@ -59,41 +76,7 @@ jobs:
         run: python scripts/render_views.py --check
 
       - name: Validate repository structure
-        id: repository_validation
-        continue-on-error: true
-        shell: bash
-        run: |
-          set +e
-          python scripts/validate_repository.py 2>&1 | tee /tmp/oblf-repository-validation.log
-          rc=${PIPESTATUS[0]}
-          echo "rc=$rc" >> "$GITHUB_OUTPUT"
-          exit "$rc"
-
-      - name: Publish repository validation diagnostics
-        if: steps.repository_validation.outcome == 'failure'
-        env:
-          GH_TOKEN: ${{ github.token }}
-          TARGET_BRANCH: issue-5/one-boundary-logarithmic-gpt56
-          DIAGNOSTIC_PATH: research/issues/one-boundary-logarithmic-field/VALIDATION_DIAGNOSTICS.txt
-        shell: bash
-        run: |
-          set -euo pipefail
-          encoded=$(base64 -w0 /tmp/oblf-repository-validation.log)
-          current_sha=$(gh api \
-            "repos/$GITHUB_REPOSITORY/contents/$DIAGNOSTIC_PATH?ref=$TARGET_BRANCH" \
-            --jq .sha 2>/dev/null || true)
-          args=(
-            --method PUT
-            "repos/$GITHUB_REPOSITORY/contents/$DIAGNOSTIC_PATH"
-            -f "message=ci(issue-5): record validation diagnostics"
-            -f "content=$encoded"
-            -f "branch=$TARGET_BRANCH"
-          )
-          if [[ -n "$current_sha" ]]; then
-            args+=( -f "sha=$current_sha" )
-          fi
-          gh api "${args[@]}" --jq '.commit.sha'
-          exit 1
+        run: python scripts/validate_repository.py
 
       - name: Render frontier
         run: python scripts/frontier.py
