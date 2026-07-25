@@ -7,7 +7,7 @@ task_issue: #3
 owned_path: research/issues/rank-three-boundary-cube-unit/
 base_commit: 652a5e252626fa5816445651245e8a8946cee53e
 scientific_disposition: RANK_THREE_KELLER_CASE_EXCLUDED_BY_PRIMARY_LITERATURE
-review_state: local-adversarial-review ACCEPT at 733990e68841ef7ea25cb7fb22f0f668aa522494
+review_state: local-adversarial-review ACCEPT at 01183ee9c6fdd9090a29edc2d675e419fb71c078
 ```
 
 ## Exact disposition
