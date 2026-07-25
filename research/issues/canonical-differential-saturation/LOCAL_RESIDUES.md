@@ -109,9 +109,10 @@ In a normal/tangent frame this becomes
 (j/e,0).
 \]
 
-Integer twists shift only the first coordinate by a common integer.
-The two commuting residues are simultaneously semisimple after tame
-splitting, but their commutativity supplies no cancellation.
+Integer twists shift only the first coordinate by an integer on each
+fixed character line.  The two commuting residues are simultaneously
+semisimple after tame splitting, but their commutativity supplies no
+cancellation.
 
 ## 6. Tame non-Galois cubic
 
@@ -170,10 +171,22 @@ A trace-dual basis can be written as
 
 the same multiset modulo \(\mathbf Z\).
 
-Conductor powers, canonical twists, and rank-one reflexive
-fractional ideals likewise apply integer valuation shifts.  Their
-reflexive hulls are determined at height one and retain the same
-classes.
+A base-divisor twist \(t^m\) shifts each fixed character
+representative by the integer \(m\).  Multiplication by a fractional
+ramification parameter \(s^k\), as in a different or canonical
+fractional ideal, may additionally permute the tame character labels:
+
+\[
+\left\{\frac{j+k}{e}\bmod\mathbf Z:0\le j<e\right\}
+ =
+\left\{\frac je\bmod\mathbf Z:0\le j<e\right\}.
+\]
+
+Thus conductor powers, trace duals, inverse differents, canonical
+twists, and rank-one reflexive fractional ideals preserve the full
+intrinsic class multiset even when they do not act by one common
+integer shift in a chosen basis.  Their reflexive hulls are determined
+at height one and retain the same obstruction.
 
 ## 9. Ordinary versus logarithmic conclusion
 
@@ -185,6 +198,7 @@ preserved by \(tD_t\).  No full finite lattice is preserved by
   derivation;
 - permits coherent logarithmic lattices;
 - survives combining all sheets, reflexive hull, completion, strict
-  henselization, conductor shifts, and global monodromy;
+  henselization, conductor shifts, fractional-ideal twists, and global
+  monodromy;
 - is diagnostic, not contradictory, until the polynomial Keller
   source supplies an ordinary coherent extension.
