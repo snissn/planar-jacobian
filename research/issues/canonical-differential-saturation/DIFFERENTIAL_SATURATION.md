@@ -158,6 +158,21 @@ divisorial sheaf
 
 It is finite and full over \(B\).
 
+The normalization morphism
+
+\[
+\nu:Y=\operatorname{Spec}O\longrightarrow\operatorname{Spec}B
+\]
+
+is finite.  Hence the image of every irreducible divisor \(E_i\) is a
+closed irreducible subset of the same dimension: finite fibers cannot
+lower the dimension of \(E_i\).  Since both source and target are
+surfaces, \(E_i\) therefore maps onto a height-one base divisor.  In
+local terms, if \(q\) is the height-one generic prime of \(E_i\) and
+\(p=q\cap B\), then \(p\ne0\) and \(B_p\subset O_q\) is an extension
+of DVRs.  Thus no divisorial \(E_i\) in this finite normalization is
+contracted to codimension two.
+
 ### Theorem 5.1
 
 1. If some \(E_i\) is ramified, \(S(M(\mathbf N))\) is nonfinite for
@@ -170,11 +185,12 @@ It is finite and full over \(B\).
 ### Proof
 
 The first assertion is Theorem 2.1, or the explicit local escape in
-Section 4.  For the second, let \(p\) be the image of \(E_i\) on the
-base and let \(q\) be its generic point on \(Y\).  Choose a canonical
-frame member \(D\) whose base derivation is transverse to \(p\).
-Because \(O_q/B_p\) is unramified, \(D\) preserves the DVR
-\(S=O_q\).  For a uniformizer \(s\) of \(S\),
+Section 4.  For the second, let \(q\) be the generic point of \(E_i\)
+and \(p=q\cap B\).  The finite-normalization observation above makes
+\(p\) the generic point of a height-one base divisor dominated by
+\(E_i\).  Choose a canonical frame member \(D\) whose base derivation
+is transverse to \(p\).  Because \(O_q/B_p\) is unramified, \(D\)
+preserves the DVR \(S=O_q\).  For a uniformizer \(s\) of \(S\),
 
 \[
 a=D(s)\in S^\times.
@@ -214,8 +230,11 @@ whereas every finite \(B_p\)-module in \(L\) is.  Therefore the global
 saturation is nonfinite.  The third assertion follows from normality
 and Theorem 3.1.  \(\square\)
 
-Reflexive hulls and finite intersections do not change this
-codimension-one calculation.
+Reflexive hulls do not change this codimension-one calculation.  A
+finite intersection of pole stages or derivative translates is
+subject to Theorem 2.1 only when the intersection remains full over
+\(B\); if it is not full, it is not a candidate lattice with generic
+fiber \(L\).
 
 ## 6. Multiplier, dual, and translate constructions
 
@@ -267,8 +286,9 @@ nonzero classes in \(\mathbf Q/\mathbf Z\), so ordinary transverse
 stability still fails.
 
 A finite intersection of finitely many derivative translates remains
-a finite seed, not a stable saturation.  Closing it under all
-derivatives returns to Theorem 2.1.
+a finite seed.  Only when it is full does closing it under all
+derivatives invoke Theorem 2.1; a nonfull intersection cannot be the
+required full lattice in \(L\).
 
 ## 7. Exact bounded-ambient formulation
 
