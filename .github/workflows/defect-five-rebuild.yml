@@ -1,0 +1,204 @@
+name: Defect Five Mainline Rebuild
+
+on:
+  push:
+    branches: [issue-29/defect-five-mainline-rebuild]
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: issue-29/defect-five-mainline-rebuild
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check sympy==1.14.0
+      - name: Verify reviewed candidate bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object research/issues/defect-5-rees/README.md)" = 20e5f1e5c2c0a06f044e31b2abf27d9f499506b2
+          test "$(git hash-object research/issues/defect-5-rees/FOUNDATIONS.md)" = 7ee1ae5f7fff3b34a73fee5819d35c91c531c026
+          test "$(git hash-object research/issues/defect-5-rees/TRANSFORMATIONS.md)" = 4869da7f6d9a68e84d0cbe69fa621d20dcfa4b65
+          test "$(git hash-object research/issues/defect-5-rees/DERIVATION.md)" = 97eeac0375ead289b0c87646e34b0e2b99411988
+          test "$(git hash-object research/issues/defect-5-rees/CASE_TABLE.md)" = e21969832bb6c8214e772f214fd352b0e786686d
+          test "$(git hash-object research/issues/defect-5-rees/COUNTERMODEL_SEARCH.md)" = d7f8b56ce0ac9a50b0f283a861cb7d78e2adcba3
+          test "$(git hash-object research/issues/defect-5-rees/VALIDATION.md)" = e7770db79053ff2835d59550d1602eec9558d8eb
+          test "$(git hash-object research/issues/defect-5-rees/validate_defect5.py)" = e702b0114642c20b71111b702ef883d6473e84d5
+      - name: Synchronize ledgers and generated surfaces
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('.')
+          def load(p): return json.loads((root/p).read_text())
+          def save(p,x): (root/p).write_text(json.dumps(x,indent=2,ensure_ascii=False)+'\n')
+
+          c=load('research/claim_ledger.json')
+          ids=[x['id'] for x in c['claims']]
+          assert ids[-1]=='CLM-072' and 'CLM-073' not in ids, ids[-5:]
+          c['claims'].append({
+            'id':'CLM-073','status':'candidate_proved','track':'filtered-equivariance',
+            'statement':'For any primitive positive weight w, a planar Keller pair with grading defect kappa_w=5 admits a filtration-compatible polynomial source or target automorphism that strictly lowers the actual integer defect to at most four; hence it is a polynomial automorphism by the reviewed defect-at-most-four theorem.',
+            'depends_on':['CLM-047','CLM-048','CLM-049','CLM-051','CLM-060'],
+            'note':'Issue #29 defect-five packet. A separate local-adversarial-review returned ACCEPT for candidate 2eeb36d232366d124b5a66774b29769ec1eba43d, but this is not independent review and the claim remains mutable candidate_proved. It does not prove that every Keller pair admits a qualifying primitive positive weight, does not treat defect six, and does not establish JC_2.'})
+          save('research/claim_ledger.json',c)
+
+          g=load('research/proof_graph.json')
+          assert not any(n['id']=='OPEN-DEFECT-5' for n in g['nodes'])
+          g['nodes'].append({'id':'OPEN-DEFECT-5','title':'Independently review the fixed-weight defect-five closure','type':'leaf','status':'open','artifact':'leaf-packets/L15-defect-5-staircase.md','note':'Issue #29 banks CLM-073 at candidate_proved after local-adversarial-review ACCEPT. Independent review remains open; no qualifying-weight existence, defect-six, or JC_2 inference is licensed.'})
+          for e in [
+            {'from':'BR-FILTERED-EQUIVARIANCE','to':'OPEN-DEFECT-5','kind':'requires'},
+            {'from':'OPEN-DEFECT-4','to':'OPEN-DEFECT-5','kind':'supports'},
+            {'from':'OPEN-DEFECT-5','to':'OPEN-GRADED-REDUCTION','kind':'supports'}]:
+            if e not in g['edges']: g['edges'].append(e)
+          save('research/proof_graph.json',g)
+
+          q=load('research/work_queue.json')
+          assert not any(x['id']=='L15' for x in q['leaves']+q['dispositions'])
+          leaf={'id':'L15','graph_node':'OPEN-DEFECT-5','title':'Independent Review of Fixed-Weight Defect Five','priority':'P0','status':'open','artifact':'research/leaf-packets/L15-defect-5-staircase.md','track_artifact':'research/tracks/m-filtered-equivariance.md','issue_number':29,'claim_dependencies':['CLM-047','CLM-048','CLM-049','CLM-051','CLM-060','CLM-073']}
+          i=next((i+1 for i,x in enumerate(q['leaves']) if x['id']=='L14'),0)
+          q['leaves'].insert(i,leaf); save('research/work_queue.json',q)
+
+          (root/'research/leaf-packets/L15-defect-5-staircase.md').write_text('''# L15 — Independent Review of Fixed-Weight Defect Five
+
+> **Issue packet:** [`research/issues/defect-5-rees/`](../issues/defect-5-rees/)  
+> **Banked claim:** `CLM-073` (`candidate_proved`)  
+> **Required review mode:** `independent-review`
+
+## Load-bearing question
+
+Independently review the exact issue #29 candidate at `2eeb36d232366d124b5a66774b29769ec1eba43d`: for a fixed primitive positive weight and actual grading defect five, does every Keller pair have a resonant endpoint or a filtration-compatible strict descent to defect at most four?
+
+## Forbidden shortcuts
+
+- Do not treat the local adversarial review as independent acceptance.
+- Do not infer existence of a defect-at-most-five weight for every Keller pair.
+- Do not omit zero layers, simultaneous resonances, either source-weight order, or either target-component order.
+- Do not begin defect six or attach a terminal `JC_2` edge.
+
+## Required artifacts
+
+- independent reconstruction of normalization, complete-top descent, support sieve, equal-weight chains, and finite exceptional systems;
+- an independently implemented checker or exact hand calculations;
+- a pinned `ACCEPT` or `BLOCK` review record;
+- a synchronization proposal limited to `CLM-073` and `OPEN-DEFECT-5`.
+
+## Candidate evidence
+
+The issue packet contains a complete derivation, exact case table, from-definitions checker, mutation controls, saturated Groebner eliminations, and a separate local-adversarial-review checker. These are falsification evidence, not independent theorem authority.
+
+## Stop rule
+
+Return `ACCEPT` only after every load-bearing case and transformation is independently reconstructed at the pinned bytes. Otherwise return the smallest exact `BLOCK`, correction, or formal countermodel.
+
+## Handoff
+
+On independent `ACCEPT`, promote only the fixed-weight defect-five statement. Preserve the nonclaims about qualifying-weight existence, defect six, arbitrary termination, and `JC_2`.
+''')
+
+          p=root/'research/tracks/m-filtered-equivariance.md'; t=p.read_text()
+          h='> **Defect-five candidate:** issue [#29](https://github.com/snissn/planar-jacobian/issues/29), `CLM-073`; local-adversarial-review only  \n'
+          a='> **Scientific inference:** primitive positive weight and `kappa_w<=4` imply automorphism; no broader inference\n'
+          assert a in t
+          t=t.replace(a,a+h,1)
+          s='''## 9. Defect five candidate and successor review
+
+Issue #29 banks the fixed-weight defect-five theorem in [`../issues/defect-5-rees/README.md`](../issues/defect-5-rees/README.md) as `CLM-073` with status `candidate_proved`. The exact candidate `2eeb36d232366d124b5a66774b29769ec1eba43d` received a separate local-adversarial-review `ACCEPT`, not independent acceptance.
+
+Every resonant endpoint is invertible; every interior system either admits complete-top strict descent to `kappa_w<=4` or contradicts the complete staircase. The standard-weight coupled transverse chains are the first new defect-five correction and are not imported from the defect-four middle-Wronskian row.
+
+The successor leaf [`L15-defect-5-staircase.md`](../leaf-packets/L15-defect-5-staircase.md) requests independent review. No qualifying-weight existence, defect-six, arbitrary-termination, or `JC_2` claim is introduced.
+
+'''
+          assert '## Exit' in t
+          t=t.replace('## Exit',s+'## Exit',1)
+          t=t.replace('Defect `5`, a theorem producing a qualifying weight, and `JC_2` remain outside this track\'s reviewed scope.','Defect `5` is banked only as mutable candidate `CLM-073`; independent review remains open as `L15`. A qualifying-weight theorem, defect six, and `JC_2` remain outside this track\'s reviewed scope.',1)
+          p.write_text(t)
+
+          (root/'research/issues/defect-5-rees/.integration-ready').write_text('issue=29\nstatus=CANDIDATE_PROVED\nclaim=CLM-073\ngraph=OPEN-DEFECT-5\nbase=8c659ec6f6be77368cd03ecbae2809df88860a76\nvalidation=PASS\n')
+
+          p=root/'scripts/validate_repository.py'; t=p.read_text()
+          t=t.replace('range(1, 73)]','range(1, 74)]',1).replace('through CLM-066")','through CLM-073")',1)
+          a='    if "arXiv:2607.20210v1" not in by_id.get("CLM-070", {}).get("note", ""):\n        error("CLM-070: terminal subclass exclusion must retain exact external dependency")\n'
+          assert a in t
+          t=t.replace(a,a+'    if by_id.get("CLM-073", {}).get("status") != "candidate_proved":\n        error("CLM-073 must remain candidate_proved pending independent review")\n    if "does not prove that every Keller pair admits" not in by_id.get("CLM-073", {}).get("note", ""):\n        error("CLM-073 lost its qualifying-weight nonclaim")\n    for forbidden in [ROOT / ".github/defect-five-sync", ROOT / ".github/workflows/defect-five-workspace-export.yml"]:\n        if forbidden.exists():\n            error(f"forbidden defect-five temporary path remains: {forbidden.relative_to(ROOT)}")\n',1)
+          a='    if node_by_id.get("OPEN-DEFECT-4", {}).get("status") != "reviewed":\n        error("OPEN-DEFECT-4 must retain reviewed status")\n'
+          assert a in t
+          t=t.replace(a,a+'    if node_by_id.get("OPEN-DEFECT-5", {}).get("status") != "open":\n        error("OPEN-DEFECT-5 must remain open pending independent review")\n',1)
+          p.write_text(t)
+
+          p=root/'scripts/render_views.py'; t=p.read_text()
+          a='        "- **Issue #17:** the exact positive-weight defect-at-most-four theorem is reviewed only at the pinned revision. It creates no terminal edge to `JC_2`.",\n'
+          assert a in t
+          t=t.replace(a,a+'        "- **Issue #29:** fixed primitive positive weight and actual defect five is banked as `CLM-073` at mutable `candidate_proved` scope. Independent review remains open as `L15`; no qualifying-weight, defect-six, or `JC_2` claim is introduced.",\n',1)
+          p.write_text(t)
+
+          p=root/'.github/workflows/repository-python-validators.yml'; t=p.read_text()
+          t=t.replace('research/issues/one-boundary-logarithmic-field\n','research/issues/one-boundary-logarithmic-field research/issues/defect-5-rees\n',1)
+          a='''      - name: "Validate issue #5 one-boundary successor"
+        shell: bash
+        run: |
+          set -o pipefail
+          python research/issues/one-boundary-logarithmic-field/verify_all.py | tee issue5-one-boundary.log
+
+'''
+          assert a in t
+          t=t.replace(a,a+'''      - name: "Validate issue #29 defect-five candidate"
+        shell: bash
+        run: |
+          set -o pipefail
+          python research/issues/defect-5-rees/validate_defect5.py --max-weight 64 --json | tee issue29-defect5.log
+
+      - name: "Validate issue #29 local adversarial checker"
+        shell: bash
+        run: |
+          set -o pipefail
+          python research/issues/defect-5-rees/review_validate_defect5_adversarial.py | tee issue29-defect5-review.log
+
+''',1)
+          t=t.replace('            issue5-one-boundary.log\n','            issue5-one-boundary.log\n            issue29-defect5.log\n            issue29-defect5-review.log\n',1)
+          p.write_text(t)
+          PY
+          python scripts/render_views.py --write
+      - name: Validate issue #29 and complete repository
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/issues/defect-5-rees/validate_defect5.py --max-weight 64 --json
+          python research/issues/defect-5-rees/review_validate_defect5_adversarial.py
+          python -m compileall -q scripts research/issues/issue-3-unramified-index research/issues/rank-three-index-form-unit research/issues/source-reflexive-lattice research/issues/one-boundary-logarithmic-field research/issues/defect-5-rees
+          python scripts/render_views.py --check
+          python scripts/validate_repository.py
+          python scripts/frontier.py
+          python scripts/validate_defect4_staircase.py
+          python scripts/review_validate_defect4_independent.py
+          python research/issues/issue-3-unramified-index/verify_index_models.py
+          python research/issues/rank-three-index-form-unit/verify_all.py
+          python scripts/validate_issue4_stable_order.py
+          python research/issues/source-reflexive-lattice/verify_all.py
+          python scripts/validate_issue5_principal_parts.py
+          python research/issues/one-boundary-logarithmic-field/verify_all.py
+          test ! -e .github/defect-five-sync
+          test ! -e .github/workflows/defect-five-workspace-export.yml
+          git diff --check
+      - name: Commit synchronized tree
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add .github/workflows/repository-python-validators.yml STATUS.md research scripts/validate_repository.py scripts/render_views.py
+          git diff --cached --quiet && exit 1
+          git commit -m 'sync(issue-29): allocate defect-five candidate and review frontier'
+          git push origin HEAD:issue-29/defect-five-mainline-rebuild
