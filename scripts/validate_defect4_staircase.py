@@ -219,8 +219,10 @@ if claims_path.exists() and graph_path.exists():
     for edge in graph["edges"]:
         require(edge["from"] in all_node_ids, f"missing graph source {edge['from']}")
         require(edge["to"] in all_node_ids, f"missing graph target {edge['to']}")
-    require(len(graph["nodes"]) == 35, "proof graph node count")
-    require(len(graph["edges"]) == 53, "proof graph edge count")
+    # The reviewed defect-four snapshot had 35 nodes and 53 edges. Later packets
+    # may append independent nodes and edges; this regression guard forbids loss.
+    require(len(graph["nodes"]) >= 35, "proof graph node-count lower bound")
+    require(len(graph["edges"]) >= 53, "proof graph edge-count lower bound")
     terminal_nodes = {"ROOT-JC2", "TERM-FINITE-ETALE", "TERM-DEGREE-ONE", "TERM-AUTOMORPHISM"}
     for edge in graph["edges"]:
         require(
