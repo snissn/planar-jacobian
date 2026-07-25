@@ -5,9 +5,9 @@ role: research-worker
 task_issue: #3
 owned_path: research/issues/rank-three-boundary-cube-unit/
 base_main: 652a5e252626fa5816445651245e8a8946cee53e
-scientific_candidate: c281ecd845fe63e88b47ae16f99135325a2f988f
+scientific_candidate: eefb40d0475dcdc5a3b07d89ce84354a4b210280
 review_mode: local-adversarial-review
-reviewed_revision: c281ecd845fe63e88b47ae16f99135325a2f988f
+reviewed_revision: eefb40d0475dcdc5a3b07d89ce84354a4b210280
 integration_state: integration-ready after exact-head CI
 merge_authority: none in this parallel round
 ```
@@ -32,8 +32,10 @@ Jacobian of a three-sheeted polynomial map `C2 -> C2` cannot be constant.
 Therefore no planar Keller map, and hence no Keller normalization, has rank
 three.
 
-This is `R3BC-01` at `literature_bound` scope. The packet does not reconstruct
-Orevkov's proof and does not produce one section with `Phi(s) in C*`.
+This is `R3BC-01` at `literature_bound` scope. The primary English full text has
+been audited at its definition, theorem, proof architecture, and terminal
+three-sheeted cases, but the packet does not reproduce Orevkov's proof and does
+not produce one section with `Phi(s) in C*`.
 
 ## 2. Strongest internal refinement
 
@@ -203,7 +205,7 @@ allocation. No permanent workflow change is requested.
 Pinned local adversarial review:
 
 ```text
-reviewed_revision: c281ecd845fe63e88b47ae16f99135325a2f988f
+reviewed_revision: eefb40d0475dcdc5a3b07d89ce84354a4b210280
 disposition: ACCEPT_LITERATURE_BOUND_RANK_THREE_TERMINAL_AND_SCOPED_INTERNAL_REFINEMENTS; BLOCK_CONSTRUCTIVE_UNIT_SECTION_AND_BROADER_PROMOTION
 ```
 
