@@ -67,9 +67,10 @@ jobs:
                   '"run: python -m compileall -q scripts research/issues/issue-3-unramified-index research/issues/rank-three-index-form-unit research/issues/source-reflexive-lattice research/issues/one-boundary-logarithmic-field",',
           }
           for old, new in replacements.items():
-              if old not in text:
-                  raise SystemExit(f'missing synchronization anchor: {old}')
               text = text.replace(old, new, 1)
+          missing = [new for new in replacements.values() if new not in text]
+          if missing:
+              raise SystemExit('missing rebound targets: ' + repr(missing))
           path.write_text(text, encoding='utf-8')
           PY
 
