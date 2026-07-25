@@ -1,0 +1,11 @@
+claims: 72
+reviewed-scoped claims: 6
+graph nodes: 36
+graph edges: 58
+open queue leaves: 12
+recorded leaf dispositions: 2
+errors: 1
+warnings: 2
+ERROR: research/issues/one-boundary-logarithmic-field/SEMISIMPLE_CLASSIFICATION.md: broken internal link: G_m->G_m,
+WARNING: archive conversation-a is metadata_only; declared source hashes are not reproducible
+WARNING: archive conversation-b is metadata_only; declared source hashes are not reproducible
