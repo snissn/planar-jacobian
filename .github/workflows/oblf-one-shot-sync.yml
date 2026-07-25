@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - issue-5/one-boundary-logarithmic-gpt56
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened]
   workflow_dispatch:
 
 permissions:
