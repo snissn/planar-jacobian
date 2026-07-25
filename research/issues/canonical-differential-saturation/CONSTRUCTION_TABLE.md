@@ -23,7 +23,7 @@ translations, not logarithmic stability.
 | Reflexive \(\operatorname{Hom}\) modules | yes under finite hypotheses | depends | dual residue classes | no automatic embedding as a stable full lattice in \(L\) |
 | Deligne logarithmic lattice | yes | yes | stable under logarithmic fields | exists with ramification; insufficient |
 | \(j_+\mathcal E\) / meromorphic localization | holonomic, often \(\mathcal O\)-infinite | yes | allows arbitrary poles | counterexample to holonomic \(\Rightarrow\) \(\mathcal O\)-finite |
-| \(j_{!*}\mathcal E\) | regular holonomic | yes | \(\mathcal O\)-coherent iff height-one inertia trivial | exact bridge `CDS-007` |
+| \(j_{!*}\mathcal E\) | regular holonomic | yes generically | underlying module is \(\mathcal O\)-coherent at a generic height-one point iff local inertia is trivial there | local diagnostic only; a direct global lattice also needs global coherence and a torsion-free embedding into \(L\) |
 | \(j_*\mathcal O_U\) as quasi-coherent module | pole union | yes | stable as a union | not coherent in standard boundary models |
 | \(j_!\) constructible extension | constructible/perverse notion | no direct module in \(L\) | categorical support condition | not a finite \(B\)-lattice |
 | Relative de Rham \(H^0\) on finite-etale locus | finite vector bundle | yes | reproduces \(\mathcal E\) | inherits inertia; no improvement |
@@ -43,7 +43,7 @@ Every audited construction falls into one of four categories:
 2. it is stable only as an infinite pole union;
 3. it is coherent only for logarithmic differential operators; or
 4. it is a categorical/cohomological object whose generic fiber is
-   not a full lattice in \(L\).
+   not a full embedded lattice in \(L\).
 
 No row supplies a new finite full pair-stable lattice under the
 general Keller hypotheses.
