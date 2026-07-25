@@ -5,11 +5,11 @@
 
 ## Summary
 
-- Nodes: **35**
-- Directed edges: **53**
+- Nodes: **36**
+- Directed edges: **58**
 - Open leaf nodes: **12**
-- Node types: `branch` 10, `context` 1, `control` 2, `foundation` 1, `goal` 1, `leaf` 14, `reduction` 3, `terminal` 3
-- Node statuses: `active` 5, `blocked` 4, `disposed` 1, `literature_bound` 1, `open` 22, `reviewed` 1, `speculative` 1
+- Node types: `branch` 10, `context` 1, `control` 2, `foundation` 1, `goal` 1, `leaf` 14, `reduction` 4, `terminal` 3
+- Node statuses: `active` 6, `blocked` 4, `disposed` 1, `literature_bound` 1, `open` 22, `reviewed` 1, `speculative` 1
 
 ## Nodes
 
@@ -27,7 +27,7 @@
 | `BR-STABLE-LATTICE` | Finite differential order route | `branch` | `open` | [tracks/d-stable-differential-lattice.md](tracks/d-stable-differential-lattice.md) | — |
 | `OPEN-STABLE-ORDER` | Construct a finite full B-lattice stable under D_P,D_Q | `leaf` | `open` | [leaf-packets/L02-stable-order.md](leaf-packets/L02-stable-order.md) | CLM-011 and CLM-013 record the conditional implication. The source-reflexive-lattice successor proves the reflexive multiplier-ring bridge and excludes every finite divisorial pole stage at ramification. CLM-061 remains open at finite pair-stable lattice existence. |
 | `BR-RADIAL` | Canonical radial/logarithmic field completion | `branch` | `open` | [tracks/b-canonical-derivations.md](tracks/b-canonical-derivations.md) | — |
-| `OPEN-BOUNDARY-POLE` | Produce an integrable logarithmic lift after radial pole classification | `leaf` | `open` | [leaf-packets/L03-radial-pole-elimination.md](leaf-packets/L03-radial-pole-elimination.md) | Issue #5 gives the logarithmic tangency criterion and an integration obstruction. The actual Keller branch is not proved radial. |
+| `OPEN-BOUNDARY-POLE` | Solve the non-toric one-boundary Laurent-conductor bridge | `leaf` | `open` | [leaf-packets/L03-radial-pole-elimination.md](leaf-packets/L03-radial-pole-elimination.md) | Issue #5 classifies logarithmic lifting, excludes G_m-invariant and purely unramified one-boundary subclasses at candidate scope, and leaves CLM-072: a fixed-type non-toric Laurent/conductor system. |
 | `BR-QUASI-ALBANESE` | Intrinsic torus-complement route | `branch` | `open` | [tracks/e-quasi-albanese-log-geometry.md](tracks/e-quasi-albanese-log-geometry.md) | — |
 | `OPEN-QA-FINITE` | Prove the intrinsic quasi-Albanese map is finite | `leaf` | `open` | [leaf-packets/L04-quasi-albanese-finiteness.md](leaf-packets/L04-quasi-albanese-finiteness.md) | — |
 | `BR-GAUSS-MANIN` | Generic-fiber puncture and connection route | `branch` | `open` | [tracks/f-gauss-manin-generic-fibers.md](tracks/f-gauss-manin-generic-fibers.md) | — |
@@ -50,6 +50,7 @@
 | `TERM-FINITE-ETALE` | Show the finite normalization is finite étale | `terminal` | `blocked` | — | — |
 | `TERM-DEGREE-ONE` | Show the function-field degree is one | `terminal` | `blocked` | — | — |
 | `TERM-AUTOMORPHISM` | Apply the birational/finite Keller conclusion | `terminal` | `blocked` | — | — |
+| `RED-ONE-BOUNDARY-LOG` | One-boundary logarithmic semisimple obstruction | `reduction` | `active` | [issues/one-boundary-logarithmic-field/README.md](issues/one-boundary-logarithmic-field/README.md) | Candidate packet excludes torus-invariant generically ramified and purely unramified one-boundary models; the general non-toric fixed-type system remains open. |
 
 ## Edges
 
@@ -108,3 +109,8 @@
 | `OPEN-KELLER-INDEX-UNIT` | `sufficient-if-closed` | `TERM-DEGREE-ONE` |
 | `OPEN-SYMPLECTIC` | `supports` | `OPEN-BOUNDARY-POLE` |
 | `OPEN-BOUNDARY-POLE` | `supports` | `TERM-DEGREE-ONE` |
+| `RED-NORMALIZATION` | `requires` | `RED-ONE-BOUNDARY-LOG` |
+| `RED-DERIVATIONS` | `requires` | `RED-ONE-BOUNDARY-LOG` |
+| `RED-SYMPLECTIC` | `requires` | `RED-ONE-BOUNDARY-LOG` |
+| `BR-WRIGHT` | `supports` | `RED-ONE-BOUNDARY-LOG` |
+| `RED-ONE-BOUNDARY-LOG` | `supports` | `OPEN-BOUNDARY-POLE` |

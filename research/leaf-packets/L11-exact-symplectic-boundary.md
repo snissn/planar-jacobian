@@ -28,3 +28,7 @@ Stop when exactness excludes a declared boundary class or when an explicit local
 ## Handoff
 
 Record boundary coordinates, pole orders, residues, higher coefficients, coordinate changes tested, and the first unconstrained principal part.
+
+## Integrated one-boundary successor (2026-07-24)
+
+The issue #5 one-boundary packet derives the first additional common-valuation equation `n a' b-m a b'=0` and shows that the leading primitive coefficient is determined rather than forced to vanish. The torus-invariant and purely unramified one-boundary subclasses are excluded at candidate scope, but `CLM-072` remains open because exactness does not eliminate higher principal parts in the non-toric class.

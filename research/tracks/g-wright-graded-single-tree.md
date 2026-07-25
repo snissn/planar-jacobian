@@ -25,3 +25,7 @@ If all boundary components lie in one exceptional affine-line fiber, prove that 
 ### Exit
 
 A simultaneous Newton/valuation reduction that preserves the constant term and reaches either the homogeneous no-go theorem or the independently accepted positive-weight `kappa<=4` domain.
+
+## Integrated one-boundary successor (2026-07-24)
+
+The weighted-homogeneous one-boundary subclass is now excluded at candidate scope by `CLM-070`, provided the exact normalization and unique generically ramified boundary hypotheses hold. This does not supply the simultaneous graded reduction sought by `CLM-025`; it removes only the class in which an actual target grading already preserves the reduced branch.

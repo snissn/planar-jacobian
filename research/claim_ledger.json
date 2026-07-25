@@ -632,7 +632,7 @@
         "CLM-055",
         "CLM-056"
       ],
-      "note": "Smallest surviving issue #5 bridge. Regularity and zero residue do not supply integration."
+      "note": "Smallest surviving issue #5 bridge. The one-boundary successor excludes torus-invariant and purely unramified one-boundary subclasses at candidate scope, while CLM-072 records the remaining non-toric Laurent/conductor system. Regularity and zero residue still do not supply integration."
     },
     {
       "id": "CLM-058",
@@ -752,6 +752,79 @@
         "CLM-058"
       ],
       "note": "Fixed or affine-linear first-coordinate constant-Jacobian repairs of the displayed countermodel are triangular automorphisms; the deformation audit is not exhaustive."
+    },
+    {
+      "id": "CLM-067",
+      "status": "candidate_proved",
+      "track": "canonical-derivations",
+      "statement": "For every irreducible reduced plane curve g=0 over C, Der_C(C[P,Q])(-log g) is a free rank-two module, identified with Syz(g_P,g_Q,-g); a logarithmic pair is a basis exactly when its determinant is a nonzero constant multiple of g.",
+      "depends_on": [],
+      "note": "Issue #5 one-boundary packet, OBLF-01. Freeness does not select a complete or locally finite field; Saito's determinant criterion is source-bound."
+    },
+    {
+      "id": "CLM-068",
+      "status": "candidate_proved",
+      "track": "canonical-derivations",
+      "statement": "For a locally finite logarithmic derivation of C[P,Q], the additive Jordan semisimple and nilpotent parts remain logarithmic; an integral semisimple part integrates to a target G_m action, and after polynomial target linearization the invariant irreducible branch equation is a diagonal semi-invariant.",
+      "depends_on": [
+        "CLM-056",
+        "CLM-067"
+      ],
+      "note": "Issue #5 one-boundary packet, OBLF-02/03. Irrational weight ratios are not made integral by scalar rescaling; a torus-closure cocharacter can be a different field. No claim is made that every branch admits such a field."
+    },
+    {
+      "id": "CLM-069",
+      "status": "candidate_proved",
+      "track": "canonical-derivations",
+      "statement": "For a finite normal affine cover Y->X that is finite etale off a G_m-invariant divisor, a finite isogeny of the target G_m action lifts algebraically to Y; if Y-U has one irreducible generically ramified divisor, the lifted action preserves U.",
+      "depends_on": [
+        "CLM-003",
+        "CLM-053",
+        "CLM-066",
+        "CLM-068"
+      ],
+      "note": "Issue #5 one-boundary packet, OBLF-04/05. This is a new finite-isogeny lifting lemma accepted only by local adversarial review; independent scrutiny is required before promotion."
+    },
+    {
+      "id": "CLM-070",
+      "status": "candidate_proved",
+      "track": "canonical-derivations",
+      "statement": "A nontrivial Keller normalization with one irreducible generically ramified boundary divisor cannot have its reduced branch curve preserved by a nontrivial target G_m action: after the isogeny lift and source-open invariance, equivariance forces an automorphism and empty boundary.",
+      "depends_on": [
+        "CLM-001",
+        "CLM-015",
+        "CLM-016",
+        "CLM-069"
+      ],
+      "note": "Issue #5 one-boundary packet, OBLF-05. Conditional on T. Shaska, arXiv:2607.20210v1, Theorem 3.3. This excludes coordinate-line, weighted-homogeneous, weighted-cusp, and hyperbolic monomial branches under the exact one-boundary hypotheses, not all smooth branches."
+    },
+    {
+      "id": "CLM-071",
+      "status": "candidate_proved",
+      "track": "normalization",
+      "statement": "If a Keller normalization has exactly one boundary divisor and it is generically unramified, purity makes the finite normalization finite etale and connectedness forces degree one; purely unramified one-boundary sheet loss is impossible.",
+      "depends_on": [
+        "CLM-003",
+        "CLM-005",
+        "CLM-066"
+      ],
+      "note": "Issue #5 one-boundary packet, OBLF-06; uses purity of branch locus and triviality of connected finite etale covers of A2_C. It does not address an unramified boundary component when other ramified components are present."
+    },
+    {
+      "id": "CLM-072",
+      "status": "open_bridge",
+      "track": "exact-symplectic",
+      "statement": "For the remaining non-toric one-boundary class, solve the fixed valuation/conductor compatibility system: leading source poles satisfy n a' b-m a b'=0, while exactness determines but need not kill higher principal parts.",
+      "depends_on": [
+        "CLM-023",
+        "CLM-057",
+        "CLM-067",
+        "CLM-068",
+        "CLM-069",
+        "CLM-070",
+        "CLM-071"
+      ],
+      "note": "Issue #5 one-boundary packet, OBLF-07/09. The system is finite only after pole orders, ramification index, boundary normalization, conductor algebra, and punctures are fixed; no uniform bound or general one-boundary exclusion is proved."
     }
   ]
 }

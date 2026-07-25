@@ -21,3 +21,7 @@ A branch Hamiltonian gives a regular logarithmic lift, but regularity does not i
 [`L03-radial-pole-elimination.md`](../leaf-packets/L03-radial-pole-elimination.md) remains open under the narrower goal in `CLM-057`: produce a nonzero locally finite logarithmic target field preserving the source open, or prove radial tangency directly.
 
 The complete candidate packet is [`../issue-5/PRINCIPAL_PARTS.md`](../issue-5/PRINCIPAL_PARTS.md), with source audit and adversarial self-review in the same directory.
+
+## Integrated one-boundary successor (2026-07-24)
+
+[`../issues/one-boundary-logarithmic-field/README.md`](../issues/one-boundary-logarithmic-field/README.md) records `CLM-067`–`CLM-070`: freeness of the one-curve logarithmic module, Jordan-part stability, a finite-isogeny action lift, and exclusion of a `G_m`-invariant reduced branch in the unique generically ramified boundary class. All remain mutable candidates; `CLM-072` is the non-toric successor.

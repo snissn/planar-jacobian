@@ -90,11 +90,11 @@
     },
     {
       "id": "OPEN-BOUNDARY-POLE",
-      "title": "Produce an integrable logarithmic lift after radial pole classification",
+      "title": "Solve the non-toric one-boundary Laurent-conductor bridge",
       "type": "leaf",
       "status": "open",
       "artifact": "leaf-packets/L03-radial-pole-elimination.md",
-      "note": "Issue #5 gives the logarithmic tangency criterion and an integration obstruction. The actual Keller branch is not proved radial."
+      "note": "Issue #5 classifies logarithmic lifting, excludes G_m-invariant and purely unramified one-boundary subclasses at candidate scope, and leaves CLM-072: a fixed-type non-toric Laurent/conductor system."
     },
     {
       "id": "BR-QUASI-ALBANESE",
@@ -251,6 +251,14 @@
       "type": "terminal",
       "status": "blocked",
       "artifact": null
+    },
+    {
+      "id": "RED-ONE-BOUNDARY-LOG",
+      "title": "One-boundary logarithmic semisimple obstruction",
+      "type": "reduction",
+      "status": "active",
+      "artifact": "issues/one-boundary-logarithmic-field/README.md",
+      "note": "Candidate packet excludes torus-invariant generically ramified and purely unramified one-boundary models; the general non-toric fixed-type system remains open."
     }
   ],
   "edges": [
@@ -517,6 +525,31 @@
     {
       "from": "OPEN-BOUNDARY-POLE",
       "to": "TERM-DEGREE-ONE",
+      "kind": "supports"
+    },
+    {
+      "from": "RED-NORMALIZATION",
+      "to": "RED-ONE-BOUNDARY-LOG",
+      "kind": "requires"
+    },
+    {
+      "from": "RED-DERIVATIONS",
+      "to": "RED-ONE-BOUNDARY-LOG",
+      "kind": "requires"
+    },
+    {
+      "from": "RED-SYMPLECTIC",
+      "to": "RED-ONE-BOUNDARY-LOG",
+      "kind": "requires"
+    },
+    {
+      "from": "BR-WRIGHT",
+      "to": "RED-ONE-BOUNDARY-LOG",
+      "kind": "supports"
+    },
+    {
+      "from": "RED-ONE-BOUNDARY-LOG",
+      "to": "OPEN-BOUNDARY-POLE",
       "kind": "supports"
     }
   ]
