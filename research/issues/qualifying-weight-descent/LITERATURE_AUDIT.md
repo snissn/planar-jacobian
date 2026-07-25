@@ -71,9 +71,10 @@ weight of bounded `kappa_w`.
 The publisher abstract states a plane result under the additional hypothesis
 that one component degree has at most two prime factors. A. Nowicki and Y.
 Nakai, *On Appelgate--Onishi's Lemmas*, J. Pure Appl. Algebra 51 (1988),
-305--310, revisits key lemmas. No part of this result is consumed here; a future
-promotion should bind the original proof and later corrections at theorem
-level.
+305--310, revisits key lemmas. Its introduction says one lemma was not proved
+in the earlier paper and another proof was unclear. No part of this result is
+consumed here; a future promotion must bind the original proof and the later
+lemma audit at theorem level.
 
 ### Marek Karaś, weighted bidegrees
 
@@ -256,9 +257,11 @@ degeneration preserves all sheets.
 
 ### Leonid Makar-Limanov, 2021
 
-- *On the Newton polyhedron of a Jacobian pair*, Izv. Math. 85 (2021),
-  127--137.
-- DOI: <https://doi.org/10.4213/im9067>
+- *On the Newton polyhedron of a Jacobian pair*, Izv. Math. 85:3 (2021),
+  457--467.
+- English-edition DOI: <https://doi.org/10.1070/IM9067>.
+- Russian original: Izv. RAN. Ser. Mat. 85:3 (2021), 127--137,
+  DOI <https://doi.org/10.4213/im9067>.
 
 The abstract describes a Newton polyhedron attached to a minimal counterexample
 and applications to geometric degree and a characteristic-pair case. It is
