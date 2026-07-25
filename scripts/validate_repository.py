@@ -82,7 +82,7 @@ def validate_claims(claims: dict[str, Any]) -> tuple[set[str], dict[str, dict[st
     claim_ids = set(ids)
     by_id = {item.get("id", ""): item for item in items if item.get("id")}
 
-    expected_sequence = [f"CLM-{number:03d}" for number in range(1, 67)]
+    expected_sequence = [f"CLM-{number:03d}" for number in range(1, 73)]
     if ids != expected_sequence:
         error("claim IDs must be the ordered contiguous sequence CLM-001 through CLM-066")
 
@@ -187,6 +187,15 @@ def validate_claims(claims: dict[str, Any]) -> tuple[set[str], dict[str, dict[st
             error(f"{claim_id}: rank-three successor result must remain candidate_proved")
     if "universal coefficient/content ideal" not in by_id.get("CLM-059", {}).get("statement", ""):
         error("CLM-059: fixed-section bridge must retain the universal-content correction")
+    for claim_id in ["CLM-067", "CLM-068", "CLM-069", "CLM-070", "CLM-071"]:
+        if by_id.get(claim_id, {}).get("status") != "candidate_proved":
+            error(f"{claim_id}: one-boundary successor result must remain candidate_proved")
+    if by_id.get("CLM-072", {}).get("status") != "open_bridge":
+        error("CLM-072: non-toric one-boundary compatibility system must remain open_bridge")
+    if "no uniform bound" not in by_id.get("CLM-072", {}).get("note", ""):
+        error("CLM-072: fixed-type reduction must retain its no-uniform-bound nonclaim")
+    if "arXiv:2607.20210v1" not in by_id.get("CLM-070", {}).get("note", ""):
+        error("CLM-070: terminal subclass exclusion must retain exact external dependency")
 
     return claim_ids, by_id
 
