@@ -1,8 +1,8 @@
 # Radial Pole Elimination
 
 - **Priority:** `P0`
-- **Status:** `OPEN — BLOCKED_BY_TANGENCY_AND_INTEGRATION`
-- **Dependencies:** CLM-003, CLM-007, CLM-014, CLM-015, CLM-022, CLM-023, CLM-052–CLM-057
+- **Status:** `OPEN — NARROWED_TO_NON_TORIC_COMPATIBILITY`
+- **Dependencies:** CLM-003, CLM-007, CLM-014, CLM-015, CLM-022, CLM-023, CLM-052–CLM-057, CLM-067–CLM-072
 - **Authority:** `MUTABLE_NONAUTHORITATIVE`
 - **Historical construction baseline:** `agent/bootstrap-proof-graph@296867d82d09d51ef2386de2a62067408b7f949c`
 - **Historical source branch:** `issue-5/radial-pole-elimination-gpt56`
@@ -197,3 +197,9 @@ branch equation \(g\) and determine the semisimple integral-weight part of
 For the smooth one-component case, decide whether this module contains a nonzero
 locally finite field without assuming \(g\) is homogeneous. Record the first
 coefficient obstruction if it does not.
+
+## Integrated one-boundary successor (2026-07-24)
+
+The successor packet [`../issues/one-boundary-logarithmic-field/README.md`](../issues/one-boundary-logarithmic-field/README.md) proves, at mutable candidate scope, that a nontrivial one-boundary Keller normalization cannot have a reduced branch preserved by a nontrivial target `G_m` action. It also excludes a unique generically unramified boundary by purity. Thus coordinate-line, weighted-homogeneous, weighted-cusp, and hyperbolic monomial branch subclasses are disposed under the exact one-boundary hypotheses.
+
+The leaf remains open as `CLM-072`: for a branch with no target torus symmetry, solve the fixed valuation/conductor system beginning with `n a' b-m a b'=0`. No uniform bound on valuation or conductor types, and no general smooth one-boundary theorem, is claimed.
