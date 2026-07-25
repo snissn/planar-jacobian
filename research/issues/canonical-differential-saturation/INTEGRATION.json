@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "issue_number": 4,
+  "leaf_id": "L02",
+  "role": "research-worker",
+  "owned_paths": [
+    "research/issues/canonical-differential-saturation/"
+  ],
+  "base_sha": "652a5e252626fa5816445651245e8a8946cee53e",
+  "candidate_sha": "2a0300d3dbfba2a58622d3e60351c18dd28a094a",
+  "scientific_status": "scoped equivalence, counterexamples, and exact reduction / MUTABLE_NONAUTHORITATIVE",
+  "review_mode": "local-adversarial-review",
+  "reviewed_revision": "2a0300d3dbfba2a58622d3e60351c18dd28a094a",
+  "proposed_global_claims": [
+    {
+      "id": "CDS-003",
+      "status": "candidate_proved",
+      "statement": "The normalization-seed differential saturation is finite if and only if the finite normalization is unramified in codimension one."
+    },
+    {
+      "id": "CDS-005",
+      "status": "candidate_proved",
+      "statement": "For the full finite-cover permutation connection, ordinary coherent extension across a height-one divisor is equivalent to trivial inertia there."
+    },
+    {
+      "id": "CDS-006",
+      "status": "counterexample",
+      "statement": "Regular holonomicity and coherent logarithmic extension do not imply ordinary structure-sheaf finiteness or translation stability."
+    },
+    {
+      "id": "CDS-007",
+      "status": "open_bridge",
+      "statement": "Derive trivial height-one inertia, equivalently ordinary coherence of the full intermediate extension, from the polynomial Keller source."
+    }
+  ],
+  "proposed_graph_nodes": [
+    {
+      "id": "ISSUE4-CDS-COHERENCE-WALL",
+      "status": "open",
+      "dependencies": [
+        "CLM-003",
+        "CLM-010",
+        "CLM-011",
+        "CLM-013",
+        "CLM-061"
+      ],
+      "statement": "The canonical D-module and differential-saturation routes reduce to trivial height-one inertia; logarithmic or holonomic coherence is insufficient."
+    }
+  ],
+  "shared_surfaces_requested": [
+    "research/claim_ledger.json",
+    "research/proof_graph.json",
+    "research/work_queue.json",
+    "research/ISSUE_INDEX.md",
+    "research/leaf-packets/L02-stable-order.md",
+    "research/tracks/d-stable-differential-lattice.md"
+  ],
+  "supersedes_prs": [],
+  "temporary_artifacts_absent": true,
+  "integration_state": "integration-ready",
+  "pr_number": null,
+  "completion_receipt": null
+}
