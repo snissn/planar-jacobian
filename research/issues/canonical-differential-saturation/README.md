@@ -6,7 +6,7 @@
 > **Base revision:** `main@652a5e252626fa5816445651245e8a8946cee53e`  
 > **Authority:** `MUTABLE_NONAUTHORITATIVE`  
 > **Scientific disposition:** `SCOPED_EQUIVALENCE_COUNTEREXAMPLE_AND_REDUCTION`  
-> **Review mode:** `local-adversarial-review` — `ACCEPT_SCOPED` at `d8c9dc19ad6201042afb315ccab57489c863105b`
+> **Review mode:** `local-adversarial-review` — `ACCEPT_SCOPED` at `ab498bd9f40fdb36137fbe8a52658555a3eef004`
 
 ## Question
 
