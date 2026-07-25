@@ -1,8 +1,8 @@
 name: Temporary Defect Five Finalizer
 
 on:
-  push:
-    branches: [issue-29/defect-five-clean-integration]
+  pull_request:
+    branches: [main]
 
 permissions:
   contents: write
