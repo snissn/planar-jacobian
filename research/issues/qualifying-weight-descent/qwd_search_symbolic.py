@@ -65,7 +65,18 @@ def campaign_binomial_chain(max_n: int) -> None:
                     present.add(k)
             COUNTS.missing_support_patterns += 1
             if len(present) < n + 1:
-                check(any(k not in present for k in range(1, n)), "missing support bookkeeping")
+                # Since a,b and the retained endpoint coefficients are nonzero,
+                # each recurrence has nonzero scalar multipliers and therefore
+                # q_k=0 iff q_(k+1)=0.  The zero/nonzero support pattern must be
+                # constant along the entire chain; endpoints present with any
+                # interior hole are exactly incompatible.
+                recurrence_compatible = all(
+                    (k in present) == (k + 1 in present) for k in range(n)
+                )
+                check(
+                    not recurrence_compatible,
+                    f"B_{n}: missing support pattern survived recurrence closure",
+                )
         p_w = x + y**n
         q_w = y + p_w**n
         u, v = sp.symbols("u v")
