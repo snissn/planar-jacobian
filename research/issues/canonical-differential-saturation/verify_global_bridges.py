@@ -11,10 +11,12 @@ import sympy as sp
 
 
 def cycle_classes(length: int) -> tuple[Fraction, ...]:
+    """Return the fractional residue classes of one inertia cycle."""
     return tuple(Fraction(j, length) for j in range(length))
 
 
 def verify_inertia(max_degree: int) -> dict[str, int]:
+    """Check that ordinary coherence detects only trivial cycle partitions."""
     checks = 0
     for degree in range(1, max_degree + 1):
         for split in integer_partitions(degree):
@@ -28,6 +30,7 @@ def verify_inertia(max_degree: int) -> dict[str, int]:
 
 
 def integer_partitions(n: int, minimum: int = 1):
+    """Yield nondecreasing integer partitions of ``n``."""
     if n == 0:
         yield ()
         return
@@ -37,6 +40,7 @@ def integer_partitions(n: int, minimum: int = 1):
 
 
 def verify_localization(max_n: int) -> dict[str, int]:
+    """Check repeated transverse derivatives of ordinary pole terms."""
     checks = 0
     for m in range(1, 6):
         for n in range(max_n + 1):
@@ -52,13 +56,16 @@ def verify_localization(max_n: int) -> dict[str, int]:
 
 
 def verify_exact_symplectic(max_e: int) -> dict[str, int]:
+    """Check the Laurent exact-symplectic countercontrol through ``max_e``."""
     x, y = sp.symbols("x y", nonzero=True)
     checks = 0
     for e in range(2, max_e + 1):
         P = x**e
         Q = y / (e * x ** (e - 1))
-        jac = sp.simplify(sp.diff(P, x) * sp.diff(Q, y)
-                          - sp.diff(P, y) * sp.diff(Q, x))
+        jac = sp.simplify(
+            sp.diff(P, x) * sp.diff(Q, y)
+            - sp.diff(P, y) * sp.diff(Q, x)
+        )
         assert jac == 1
 
         # Compare coefficients of x dy - P dQ and ((e-1)/e) d(xy).
@@ -73,19 +80,22 @@ def verify_exact_symplectic(max_e: int) -> dict[str, int]:
 
 
 def main() -> int:
+    """Parse bounds, run all exact checks, and print a stable report."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--max-degree", type=int, default=12)
     parser.add_argument("--max-n", type=int, default=12)
     parser.add_argument("--max-e", type=int, default=10)
     parser.add_argument("--json", action="store_true")
     args = parser.parse_args()
-    if min(args.max_degree, args.max_n, args.max_e) < 1:
-        raise SystemExit("all bounds must be positive")
+    if args.max_degree < 1 or args.max_n < 1 or args.max_e < 2:
+        raise SystemExit(
+            "bounds must satisfy max-degree >= 1, max-n >= 1, and max-e >= 2"
+        )
 
     result = {}
     result.update(verify_inertia(args.max_degree))
     result.update(verify_localization(args.max_n))
-    result.update(verify_exact_symplectic(max(2, args.max_e)))
+    result.update(verify_exact_symplectic(args.max_e))
     result["total_checks"] = sum(result.values())
 
     if args.json:
