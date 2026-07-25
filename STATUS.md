@@ -12,10 +12,10 @@
 
 ## Machine-derived inventory
 
-- Claims: **66** across **10** statuses.
+- Claims: **72** across **10** statuses.
 - Reviewed-scoped claims: **6**.
-- Proof graph: **35** nodes and **53** directed edges.
-- Graph node statuses: `active` 5, `blocked` 4, `disposed` 1, `literature_bound` 1, `open` 22, `reviewed` 1, `speculative` 1.
+- Proof graph: **36** nodes and **58** directed edges.
+- Graph node statuses: `active` 6, `blocked` 4, `disposed` 1, `literature_bound` 1, `open` 22, `reviewed` 1, `speculative` 1.
 - Open canonical leaves: **12**; recorded dispositions: **2**.
 - Metadata-only conversation exports: **2**; completion remains issue [#22](https://github.com/snissn/planar-jacobian/issues/22).
 
@@ -23,14 +23,14 @@
 
 - **Issue #3:** rank-three trace/index foundations, a finite source/boundary gcd-one certificate, and an exact cubic differential congruence are banked at candidate scope. The universal-content shortcut is false; `L14` remains open at the boundary-cube/unit-value bridge.
 - **Issue #4:** the stable-order-to-degree-one implication is recorded at mutable candidate scope, together with a ramified-DVR no-lattice obstruction. No finite stable order is constructed; issue #4 remains open.
-- **Issue #5:** regular lifting is classified by logarithmic tangency, and regularity is separated from algebraic integration. The Keller branch divisor is not proved radial; issue #5 remains open.
+- **Issue #5:** the one-boundary successor excludes torus-invariant generically ramified and purely unramified one-boundary subclasses at mutable candidate scope. The general non-toric Laurent/conductor system remains open as `CLM-072`; exactness still permits higher principal parts.
 - **Issue #17:** the exact positive-weight defect-at-most-four theorem is reviewed only at the pinned revision. It creates no terminal edge to `JC_2`.
 
 ## P0 resume order
 
 - `L14`: [Rank-Three Keller Boundary-Cube Unit](research/leaf-packets/L14-keller-index-form-unit.md) — issue [#3](https://github.com/snissn/planar-jacobian/issues/3).
 - `L02`: [Finite Stable Differential Order](research/leaf-packets/L02-stable-order.md) — issue [#4](https://github.com/snissn/planar-jacobian/issues/4).
-- `L03`: [Integrable Logarithmic Lift after Radial Classification](research/leaf-packets/L03-radial-pole-elimination.md) — issue [#5](https://github.com/snissn/planar-jacobian/issues/5).
+- `L03`: [Non-Toric One-Boundary Laurent-Conductor Bridge](research/leaf-packets/L03-radial-pole-elimination.md) — issue [#5](https://github.com/snissn/planar-jacobian/issues/5).
 - `L06`: [Wright Graded Reduction](research/leaf-packets/L06-graded-reduction.md) — issue [#8](https://github.com/snissn/planar-jacobian/issues/8).
 - `L10`: [Primary-Source Audit](research/leaf-packets/L10-literature-audit.md) — issue [#12](https://github.com/snissn/planar-jacobian/issues/12).
 - `L12`: [Normalization Baseline Audit](research/leaf-packets/L12-normalization-baseline.md) — issue [#14](https://github.com/snissn/planar-jacobian/issues/14).
