@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "issue_number": 3,
+  "leaf_id": "L14",
+  "role": "integration-maintainer",
+  "owned_paths": ["research/issues/rank-three-index-form-unit/"],
+  "base_sha": "99c90e393cde7f15e34aaae3726c4d4ab305e0fb",
+  "candidate_sha": "07e4cef9904eacaa127fb4d2fc3ba398229184f2",
+  "scientific_status": "BLOCKED_WITH_EXACT_REDUCTION / MUTABLE_NONAUTHORITATIVE",
+  "review_mode": "local-adversarial-review",
+  "reviewed_revision": "ee74679869d5d2188fec93db9a9e10c3978a26cf",
+  "proposed_global_claims": [],
+  "proposed_graph_nodes": [],
+  "shared_surfaces_requested": [],
+  "supersedes_prs": [],
+  "temporary_artifacts_absent": true,
+  "integration_state": "merged",
+  "pr_number": 32,
+  "completion_receipt": "Merged as 788e94419080debf356d17123cbf81cb23b391ac; CLM-059 remains open."
+}
