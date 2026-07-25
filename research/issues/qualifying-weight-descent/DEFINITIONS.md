@@ -128,20 +128,38 @@ is therefore rejected in this packet.
 
 ## 4. Why the two scalar extremes are inadequate
 
-For every polynomial automorphism `F` with `J(F)=1`,
+For every normalized planar Keller pair `F`,
 
 ```text
-mu_full(F)=0,
+F is a polynomial automorphism
+  => mu_full(F)=mu_tame(F)=0,                              (4.1)
 ```
 
-because the target automorphism `F^-1` sends `F` to the identity. The scalar
-therefore uses the inverse whose existence is the unknown conclusion when `F`
-is only known to be Keller.
+because the target automorphism `F^-1` sends `F` to the identity. Conversely,
+if `mu_full(F)<=4`, the minimum is achieved by a transformed normalized Keller
+pair `G=beta o F o alpha` and a primitive positive weight with
+`kappa_w(G)<=4`. The independently reviewed fixed-weight theorem makes `G` an
+automorphism, and therefore makes `F` an automorphism. Since tame and full
+plane automorphisms coincide,
+
+```text
+F is a polynomial automorphism
+  <=> mu_full(F)=0
+  <=> mu_full(F)<=4
+  <=> mu_tame(F)<=4.                                      (4.2)
+```
+
+Thus the universal statement `mu_full(F)<=4` is exactly another formulation of
+`JC_2`, not a prior reduction of it. Conditional on independent acceptance of
+the exact fixed-weight defect-five candidate, the same conclusion holds with
+`4` replaced by `5`. Without that acceptance, no defect-five implication is
+used here.
 
 Conversely, [`TRANSFORMATION_ORBIT.md`](TRANSFORMATION_ORBIT.md) proves that
 `mu_aff` and `mu_SL` are unbounded on explicit automorphisms. An affine-only
-scalar is too rigid, while the full-orbit scalar is circular as a practical
-descent detector.
+scalar is too rigid, while the full/tame scalar already contains the unknown
+inverse or an equivalently decisive low-defect representative. A useful
+replacement must retain a checkable forward certificate.
 
 ## 5. Certified directed descent
 
@@ -225,7 +243,8 @@ line. Thus the coefficient-free record
 ```text
 Core_D(F)={
   (Supp(R),Supp(S),w,
-   exposed faces, lattice edge lengths, coprime powers)
+   exposed faces, lattice edge lengths,
+   coprime powers when kappa_w>0, otherwise a terminal marker)
   attaining nu_D(F)
 }
 ```
