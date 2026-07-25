@@ -259,6 +259,14 @@
       "status": "active",
       "artifact": "issues/one-boundary-logarithmic-field/README.md",
       "note": "Candidate packet excludes torus-invariant generically ramified and purely unramified one-boundary models; the general non-toric fixed-type system remains open."
+    },
+    {
+      "id": "OPEN-DEFECT-5",
+      "title": "Independently review the fixed-weight defect-five closure",
+      "type": "leaf",
+      "status": "open",
+      "artifact": "leaf-packets/L15-defect-5-staircase.md",
+      "note": "Issue #29 banks CLM-073 at candidate_proved after local-adversarial-review ACCEPT. Independent review is issue #38; no qualifying-weight existence, defect-six, or JC_2 inference is licensed."
     }
   ],
   "edges": [
@@ -550,6 +558,21 @@
     {
       "from": "RED-ONE-BOUNDARY-LOG",
       "to": "OPEN-BOUNDARY-POLE",
+      "kind": "supports"
+    },
+    {
+      "from": "BR-FILTERED-EQUIVARIANCE",
+      "to": "OPEN-DEFECT-5",
+      "kind": "requires"
+    },
+    {
+      "from": "OPEN-DEFECT-4",
+      "to": "OPEN-DEFECT-5",
+      "kind": "supports"
+    },
+    {
+      "from": "OPEN-DEFECT-5",
+      "to": "OPEN-GRADED-REDUCTION",
       "kind": "supports"
     }
   ]

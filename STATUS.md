@@ -8,15 +8,16 @@
 - **Main theorem:** open; `ROOT-JC2` remains `blocked`.
 - **Merge meaning:** preservation and transport, not scientific acceptance.
 - **Reviewed scope:** the primitive-positive-weight defect-at-most-four theorem is `reviewed_scoped` at candidate `96fc7ec34bd3b685a0edeae7ecd4404abab7e2f1` under an independent `ACCEPT` and freeze record.
-- **Explicit nonclaims:** no defect-five theorem, no theorem producing a qualifying weight for every Keller pair, and no proof of `JC_2`.
+- **Candidate-only defect five:** fixed primitive positive weight and actual defect five is `CLM-073` at mutable `candidate_proved` scope after local-adversarial review; no independent acceptance.
+- **Explicit nonclaims:** no theorem producing a qualifying weight for every Keller pair, no defect-six or arbitrary-termination theorem, and no proof of `JC_2`.
 
 ## Machine-derived inventory
 
-- Claims: **72** across **10** statuses.
+- Claims: **73** across **10** statuses.
 - Reviewed-scoped claims: **6**.
-- Proof graph: **36** nodes and **58** directed edges.
-- Graph node statuses: `active` 6, `blocked` 4, `disposed` 1, `literature_bound` 1, `open` 22, `reviewed` 1, `speculative` 1.
-- Open canonical leaves: **12**; recorded dispositions: **2**.
+- Proof graph: **37** nodes and **61** directed edges.
+- Graph node statuses: `active` 6, `blocked` 4, `disposed` 1, `literature_bound` 1, `open` 23, `reviewed` 1, `speculative` 1.
+- Open canonical leaves: **13**; recorded dispositions: **2**.
 - Metadata-only conversation exports: **2**; completion remains issue [#22](https://github.com/snissn/planar-jacobian/issues/22).
 
 ## Integrated scientific packets
@@ -25,10 +26,12 @@
 - **Issue #4:** the source-reflexive-lattice successor proves at mutable candidate scope that a finite full pair-stable module yields a finite locally free stable multiplier order and that divisorial source-pole stages escape at ramification. No finite pair-stable lattice is constructed; issue #4 remains open.
 - **Issue #5:** the one-boundary successor excludes torus-invariant generically ramified and purely unramified one-boundary subclasses at mutable candidate scope. The general non-toric Laurent/conductor system remains open as `CLM-072`; exactness still permits higher principal parts.
 - **Issue #17:** the exact positive-weight defect-at-most-four theorem is reviewed only at the pinned revision. It creates no terminal edge to `JC_2`.
+- **Issue #29:** fixed primitive positive weight and actual defect five is banked as `CLM-073` at mutable `candidate_proved` scope. Independent review is issue #38; no qualifying-weight, defect-six, or `JC_2` claim is introduced.
 
 ## P0 resume order
 
 - `L14`: [Rank-Three Keller Boundary-Cube Unit](research/leaf-packets/L14-keller-index-form-unit.md) — issue [#3](https://github.com/snissn/planar-jacobian/issues/3).
+- `L15`: [Independent Review of Fixed-Weight Defect Five](research/leaf-packets/L15-defect-5-staircase.md) — issue [#38](https://github.com/snissn/planar-jacobian/issues/38).
 - `L02`: [Finite Stable Differential Order](research/leaf-packets/L02-stable-order.md) — issue [#4](https://github.com/snissn/planar-jacobian/issues/4).
 - `L03`: [Non-Toric One-Boundary Laurent-Conductor Bridge](research/leaf-packets/L03-radial-pole-elimination.md) — issue [#5](https://github.com/snissn/planar-jacobian/issues/5).
 - `L06`: [Wright Graded Reduction](research/leaf-packets/L06-graded-reduction.md) — issue [#8](https://github.com/snissn/planar-jacobian/issues/8).

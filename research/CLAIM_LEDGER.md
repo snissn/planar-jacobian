@@ -10,7 +10,7 @@
 | `reviewed_scoped` | 6 |
 | `verified_internal` | 9 |
 | `verified_conceptual` | 3 |
-| `candidate_proved` | 32 |
+| `candidate_proved` | 33 |
 | `candidate` | 2 |
 | `literature_bound` | 7 |
 | `source_audit_required` | 1 |
@@ -94,5 +94,6 @@
 | `CLM-070` | `candidate_proved` | `canonical-derivations` | A nontrivial Keller normalization with one irreducible generically ramified boundary divisor cannot have its reduced branch curve preserved by a nontrivial target G_m action: after the isogeny lift and source-open invariance, equivariance forces an automorphism and empty boundary. | `CLM-001`, `CLM-015`, `CLM-016`, `CLM-069` | — | Issue #5 one-boundary packet, OBLF-05. Conditional on T. Shaska, arXiv:2607.20210v1, Theorem 3.3. This excludes coordinate-line, weighted-homogeneous, weighted-cusp, and hyperbolic monomial branches under the exact one-boundary hypotheses, not all smooth branches. |
 | `CLM-071` | `candidate_proved` | `normalization` | If a Keller normalization has exactly one boundary divisor and it is generically unramified, purity makes the finite normalization finite etale and connectedness forces degree one; purely unramified one-boundary sheet loss is impossible. | `CLM-003`, `CLM-005`, `CLM-066` | — | Issue #5 one-boundary packet, OBLF-06; uses purity of branch locus and triviality of connected finite etale covers of A2_C. It does not address an unramified boundary component when other ramified components are present. |
 | `CLM-072` | `open_bridge` | `exact-symplectic` | For the remaining non-toric one-boundary class, solve the fixed valuation/conductor compatibility system: leading source poles satisfy n a' b-m a b'=0, while exactness determines but need not kill higher principal parts. | `CLM-023`, `CLM-057`, `CLM-067`, `CLM-068`, `CLM-069`, `CLM-070`, `CLM-071` | — | Issue #5 one-boundary packet, OBLF-07/09. The system is finite only after pole orders, ramification index, boundary normalization, conductor algebra, and punctures are fixed; no uniform bound or general one-boundary exclusion is proved. |
+| `CLM-073` | `candidate_proved` | `filtered-equivariance` | For any primitive positive weight w, a planar Keller pair with grading defect kappa_w=5 admits a filtration-compatible polynomial source or target automorphism that strictly lowers the actual integer defect to at most four; hence it is a polynomial automorphism by the reviewed defect-at-most-four theorem. | `CLM-047`, `CLM-048`, `CLM-049`, `CLM-051`, `CLM-060` | — | Issue #29 defect-five packet. A separate local-adversarial-review returned ACCEPT for candidate 2eeb36d232366d124b5a66774b29769ec1eba43d, but this is not independent review and the claim remains mutable candidate_proved. It does not prove that every Keller pair admits a qualifying primitive positive weight, does not treat defect six, and does not establish JC_2. |
 
 The canonical vocabulary and synchronization rules are defined in [`governance/CLAIM-STATUS.md`](../governance/CLAIM-STATUS.md) and [`governance/REVIEW-AND-FREEZE.md`](../governance/REVIEW-AND-FREEZE.md).

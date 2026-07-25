@@ -51,5 +51,17 @@ if old not in source:
     print("ERROR: legacy claim-sequence snapshot was not found")
     raise SystemExit(1)
 source = source.replace(old, new, 1)
+claim_anchor = '    if "arXiv:2607.20210v1" not in by_id.get("CLM-070", {}).get("note", ""):\n        error("CLM-070: terminal subclass exclusion must retain exact external dependency")\n'
+claim_checks = claim_anchor + '    if by_id.get("CLM-073", {}).get("status") != "candidate_proved":\n        error("CLM-073 must remain candidate_proved pending independent review")\n    if "does not prove that every Keller pair admits" not in by_id.get("CLM-073", {}).get("note", ""):\n        error("CLM-073 lost its qualifying-weight nonclaim")\n'
+if claim_anchor not in source:
+    print("ERROR: legacy CLM-070 invariant anchor was not found")
+    raise SystemExit(1)
+source = source.replace(claim_anchor, claim_checks, 1)
+graph_anchor = '    if node_by_id.get("OPEN-DEFECT-4", {}).get("status") != "reviewed":\n        error("OPEN-DEFECT-4 must retain reviewed status")\n'
+graph_checks = graph_anchor + '    if node_by_id.get("OPEN-DEFECT-5", {}).get("status") != "open":\n        error("OPEN-DEFECT-5 must remain open pending independent review")\n'
+if graph_anchor not in source:
+    print("ERROR: legacy OPEN-DEFECT-4 invariant anchor was not found")
+    raise SystemExit(1)
+source = source.replace(graph_anchor, graph_checks, 1)
 namespace = {"__name__": "__main__", "__file__": str(legacy)}
 exec(compile(source, str(legacy), "exec"), namespace)
