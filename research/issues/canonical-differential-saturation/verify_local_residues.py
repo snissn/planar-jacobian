@@ -10,6 +10,7 @@ import sympy as sp
 
 
 def falling(alpha: Fraction, n: int) -> Fraction:
+    """Return the falling factorial alpha(alpha-1)...(alpha-n+1)."""
     value = Fraction(1)
     for r in range(n):
         value *= alpha - r
@@ -17,7 +18,9 @@ def falling(alpha: Fraction, n: int) -> Fraction:
 
 
 def verify_kummer(max_e: int, max_n: int) -> dict[str, int]:
+    """Check residue classes, lattice shifts, and repeated derivatives."""
     checks = 0
+    twist_checks = 0
     for e in range(2, max_e + 1):
         classes = {Fraction(j, e) % 1 for j in range(e)}
         assert len(classes) == e
@@ -26,6 +29,14 @@ def verify_kummer(max_e: int, max_n: int) -> dict[str, int]:
             shifted = {(Fraction(j, e) + shift) % 1 for j in range(e)}
             assert shifted == classes
             checks += 1
+        # Multiplication by s^k may permute tame characters rather than
+        # shift every fixed eigenspace by one common integer.
+        for parameter_shift in range(-2 * e, 2 * e + 1):
+            twisted = {
+                Fraction(j + parameter_shift, e) % 1 for j in range(e)
+            }
+            assert twisted == classes
+            twist_checks += 1
         for j in range(1, e):
             for N in range(-3, 4):
                 alpha = Fraction(N * e + j, e)
@@ -41,10 +52,11 @@ def verify_kummer(max_e: int, max_n: int) -> dict[str, int]:
             assert determinant_residue.denominator == 1
             assert any(Fraction(j, e).denominator != 1 for j in range(1, e))
         checks += 1
-    return {"kummer_checks": checks}
+    return {"kummer_checks": checks, "fractional_twist_checks": twist_checks}
 
 
 def verify_pair_spectrum(max_e: int) -> dict[str, int]:
+    """Check the normal/tangent change of frame for both derivations."""
     checks = 0
     hp, hq, a, b = sp.symbols("hp hq a b")
     for e in range(2, max_e + 1):
@@ -60,6 +72,7 @@ def verify_pair_spectrum(max_e: int) -> dict[str, int]:
 
 
 def verify_non_galois_cubic() -> dict[str, int]:
+    """Check the discriminant and ramified local equation of the cubic control."""
     z, t, s, tau = sp.symbols("z t s tau")
     polynomial = z**3 - 3 * z - t
     discriminant = sp.discriminant(polynomial, z)
@@ -72,6 +85,7 @@ def verify_non_galois_cubic() -> dict[str, int]:
 
 
 def main() -> int:
+    """Parse bounds, run all exact checks, and print a stable report."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--max-e", type=int, default=12)
     parser.add_argument("--max-n", type=int, default=16)
