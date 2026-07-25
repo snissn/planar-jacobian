@@ -27,9 +27,9 @@ REQUIRED = {
 }
 
 
-def run(script: str) -> None:
+def run(script: str, *args: str) -> None:
     """Execute one packet-local validator with the active interpreter."""
-    subprocess.run([sys.executable, str(ROOT / script)], check=True)
+    subprocess.run([sys.executable, str(ROOT / script), *args], check=True)
 
 
 def validate_manifest() -> None:
@@ -81,8 +81,21 @@ def main() -> int:
     if missing:
         print("missing required artifacts:", ", ".join(missing), file=sys.stderr)
         return 1
+
+    # Fast defaults catch ordinary regressions; the larger bounds reproduce
+    # the exact adversarial runs recorded in REVIEW.md and HANDOFF.md.
     run("verify_local_residues.py")
     run("verify_global_bridges.py")
+    run("verify_local_residues.py", "--max-e", "30", "--max-n", "64")
+    run(
+        "verify_global_bridges.py",
+        "--max-degree",
+        "25",
+        "--max-n",
+        "50",
+        "--max-e",
+        "25",
+    )
     validate_manifest()
     validate_prose()
     print("canonical differential saturation packet: PASS")
