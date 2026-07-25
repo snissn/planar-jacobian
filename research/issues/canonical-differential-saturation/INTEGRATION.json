@@ -7,15 +7,20 @@
     "research/issues/canonical-differential-saturation/"
   ],
   "base_sha": "652a5e252626fa5816445651245e8a8946cee53e",
-  "candidate_sha": "7523052bde101036bc1753acbc37ba6be78e895b",
-  "scientific_status": "scoped equivalence, counterexamples, corrected multiplier audit, and exact reduction / MUTABLE_NONAUTHORITATIVE",
+  "candidate_sha": "d8c9dc19ad6201042afb315ccab57489c863105b",
+  "scientific_status": "scoped equivalence, divisorial pole-stage theorem, counterexamples, corrected multiplier and intersection audit, and exact reduction / MUTABLE_NONAUTHORITATIVE",
   "review_mode": "local-adversarial-review",
-  "reviewed_revision": "7523052bde101036bc1753acbc37ba6be78e895b",
+  "reviewed_revision": "d8c9dc19ad6201042afb315ccab57489c863105b",
   "proposed_global_claims": [
     {
       "id": "CDS-003",
       "status": "candidate_proved",
       "statement": "The normalization-seed differential saturation is finite if and only if the finite normalization is unramified in codimension one."
+    },
+    {
+      "id": "CDS-004",
+      "status": "candidate_proved",
+      "statement": "Because the normalization is finite over the target, every divisorial source boundary maps onto a height-one base divisor; ramified pole stages and genuine positive unramified pole stages have nonfinite saturation."
     },
     {
       "id": "CDS-005",
@@ -30,12 +35,12 @@
     {
       "id": "CDS-007",
       "status": "open_bridge",
-      "statement": "Derive trivial height-one inertia from the polynomial Keller source; a direct global D-module route additionally requires global ordinary coherence and a torsion-free meromorphic embedding with generic fiber L."
+      "statement": "Derive trivial height-one inertia from the polynomial Keller source; a direct global D-module route additionally requires global ordinary coherence with a compatible connection preserving both unscaled translations, and a torsion-free meromorphic embedding with generic fiber L."
     },
     {
       "id": "CDS-008",
       "status": "negative_audit",
-      "statement": "The audited dual, canonical, jet, and cohomological constructions do not bypass the inertia bridge; multiplier stability is a separate stable-order condition, and seed instability does not imply multiplier instability."
+      "statement": "The audited dual, canonical, intersection, jet, and cohomological constructions do not bypass the inertia bridge; the finite-seed obstruction applies only to full intersections, and multiplier stability is a separate stable-order condition."
     }
   ],
   "proposed_graph_nodes": [
@@ -49,7 +54,7 @@
         "CLM-013",
         "CLM-061"
       ],
-      "statement": "The normalization-saturation and local D-module routes reduce to trivial height-one inertia; logarithmic or holonomic coherence is insufficient, and the direct global D-module route also needs an embedded ordinary coherent extension."
+      "statement": "The normalization-saturation and local D-module routes reduce to trivial height-one inertia; logarithmic or holonomic coherence is insufficient, and the direct global D-module route also needs an embedded ordinary coherent extension with a compatible connection preserving both unscaled translations."
     }
   ],
   "shared_surfaces_requested": [
