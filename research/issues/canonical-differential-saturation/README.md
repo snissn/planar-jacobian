@@ -6,7 +6,7 @@
 > **Base revision:** `main@652a5e252626fa5816445651245e8a8946cee53e`  
 > **Authority:** `MUTABLE_NONAUTHORITATIVE`  
 > **Scientific disposition:** `SCOPED_EQUIVALENCE_COUNTEREXAMPLE_AND_REDUCTION`  
-> **Review mode:** `local-adversarial-review` — `ACCEPT_SCOPED` at `7523052bde101036bc1753acbc37ba6be78e895b`
+> **Review mode:** renewed local adversarial review pending at the corrected candidate revision
 
 ## Question
 
@@ -53,10 +53,13 @@ D-module and logarithmic constructions do not cross it.
    missing lattice while retaining ramification.
 
 3. **Pole-bounded source stages.**  The source open supplies a
-   canonical ind-system of finite reflexive pole modules.  Saturating
-   any stage with a ramified component is nonfinite.  At an unramified
-   omitted divisor, any stage containing an actual pole is also
-   nonfinite under a transverse canonical translation.  The proof
+   canonical ind-system of finite reflexive pole modules.  Since the
+   normalization \(Y\to\operatorname{Spec}B\) is finite, every
+   divisorial boundary component maps onto a height-one base divisor;
+   there is no contracted-divisor case outside the DVR argument.
+   Saturating any stage with a ramified component is nonfinite.  At an
+   unramified omitted divisor, any stage containing an actual pole is
+   also nonfinite under a transverse canonical translation.  The proof
    starts from a pole-bearing section of the stage and tracks its
    unique lowest-valuation term; it does not assume that a bare local
    monomial belongs to the global module.  Only the zero-pole
@@ -111,10 +114,11 @@ D-module and logarithmic constructions do not cross it.
 
    A direct global D-module construction is a distinct, stronger
    formulation: prove that the full intermediate extension is
-   globally \(\mathcal O\)-coherent and admits a
-   connection-compatible torsion-free embedding into the meromorphic
-   sheaf with generic fiber \(L\).  The audited D-module theorems do not
-   derive this package from the Keller hypotheses.
+   globally \(\mathcal O\)-coherent, is preserved by both ordinary
+   unscaled translations, and admits a connection-compatible
+   torsion-free embedding into the meromorphic sheaf with generic
+   fiber \(L\).  The audited D-module theorems do not derive this
+   package from the Keller hypotheses.
 
 Accordingly, the first supported requested dispositions are:
 
@@ -132,10 +136,10 @@ Accordingly, the first supported requested dispositions are:
 | `CDS-001` | `verified_internal` | The displayed canonical derivations have the required signs and commute. |
 | `CDS-002` | `candidate_proved` | For every finite full seed, finite differential saturation forces no height-one ramification. |
 | `CDS-003` | `candidate_proved` | The normalization-seed saturation is finite iff the normalization is unramified in codimension one. |
-| `CDS-004` | `candidate_proved` | Ramified source-pole stages and genuine positive unramified pole stages have nonfinite saturation; the latter is proved from an actual pole-bearing section. |
+| `CDS-004` | `candidate_proved` | Every divisorial source boundary maps onto a height-one base divisor; ramified pole stages and genuine positive unramified pole stages have nonfinite saturation. |
 | `CDS-005` | `candidate_proved` | At a generic height-one point of the finite-cover permutation connection, an embedded ordinary coherent lattice exists iff local inertia is trivial. |
 | `CDS-006` | `counterexample` | Regular holonomic or logarithmically coherent extensions need not be finite over the ordinary structure sheaf. |
-| `CDS-007` | `open_bridge` | Derive trivial height-one inertia from the polynomial Keller source; a direct global D-module route additionally requires global coherence and a torsion-free embedding into \(L\). |
+| `CDS-007` | `open_bridge` | Derive trivial height-one inertia from the polynomial Keller source; a direct global D-module route additionally requires global coherence, preservation by both unscaled translations, and a torsion-free embedding into \(L\). |
 | `CDS-008` | `negative_audit` | The audited dual, canonical, jet, and cohomological constructions do not bypass `CDS-007`; multiplier stability is a separate stable-order condition, not an automatic consequence of seed coherence or instability. |
 
 These are issue-local labels.  They allocate or promote no global
