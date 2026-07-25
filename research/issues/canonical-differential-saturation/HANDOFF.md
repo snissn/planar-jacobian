@@ -4,7 +4,7 @@
 > **Task issue:** `#4`  
 > **Owned path:** `research/issues/canonical-differential-saturation/`  
 > **Base:** `652a5e252626fa5816445651245e8a8946cee53e`  
-> **Reviewed candidate:** `7523052bde101036bc1753acbc37ba6be78e895b`  
+> **Reviewed candidate:** `d8c9dc19ad6201042afb315ccab57489c863105b`  
 > **Review:** `local-adversarial-review` / `ACCEPT_SCOPED`  
 > **Pull request:** `#42`, non-draft, integration-ready, not merged  
 > **Integration state:** `integration-ready`, not on `main`
@@ -19,15 +19,33 @@ The canonical normalization saturation
 \]
 
 is finite if and only if the finite normalization is unramified in
-codimension one.  More generally, finite saturation of any finite
-full seed excludes height-one ramification.
+codimension one.  More generally, finite saturation of any finite full
+seed excludes height-one ramification.
+
+For each divisorial component \(E\) of the source boundary, finiteness
+of
+
+\[
+Y=\operatorname{Spec}O\longrightarrow\operatorname{Spec}B
+\]
+
+forces its image to be a height-one base divisor.  If \(q\) is the
+generic prime of \(E\) and \(p=q\cap B\), then
+\(B/p\subset O/q\) is finite integral and both quotient rings have
+dimension one.  Thus no divisorial source boundary is contracted to a
+codimension-two target point.
 
 Every finite source-pole stage meeting ramification has nonfinite
 saturation.  At an unramified omitted divisor, every stage containing
 an actual pole also escapes under a transverse canonical translation.
-The positive-pole proof starts from a pole-bearing section of the
-localized module and tracks its unique lowest-valuation derivative
-term; it does not assume that a bare local monomial globalizes.
+The proof begins with a pole-bearing section of the localized module
+and tracks its unique lowest-valuation derivative term; it does not
+assume that a bare local monomial globalizes.
+
+A finite intersection of pole stages or derivative translates is
+subject to the finite-seed obstruction only if it remains full over
+\(B\).  A nonfull intersection is not a lattice with generic fiber
+\(L\), so it cannot solve issue #4.
 
 On the maximal finite-etale locus, the full pushforward is the
 permutation connection.  At the generic point of a height-one divisor,
@@ -43,56 +61,53 @@ normalization-route bridge is:
 > prove from the polynomial Keller source that every height-one
 > inertia action on the full permutation local system is trivial.
 
-This is equivalent, only at each generic height-one point, to ordinary
-coherence of the corresponding local intermediate-extension module.
-A direct global D-module route is stronger: it must establish global
-ordinary coherence, compatibility with both unscaled translations,
-and a torsion-free embedding into the meromorphic sheaf with generic
-fiber \(L\).
+This is equivalent only at each generic height-one point to ordinary
+coherence of the local intermediate-extension module.  A direct global
+D-module route is stronger: it must establish global ordinary
+coherence, a compatible connection preserving both unscaled
+translations, and a torsion-free embedding into the meromorphic sheaf
+with generic fiber \(L\).
 
-## Corrected multiplier boundary
+## Corrected multiplier and residue boundaries
 
 For a finite full seed \(M\), pair stability implies stability of its
-multiplier ring \((M:M)\), but the converse is false.  The exact
-control
+multiplier ring \((M:M)\), but the converse is false.  The control
 
 \[
 M=P B\subset K=L=\operatorname{Frac}(B)
 \]
 
 satisfies \(D_P(M)\not\subset M\) while \((M:M)=B\) is stable.
-Therefore seed instability alone cannot be used to exclude a stable
-multiplier.
+Seed instability therefore does not exclude a stable multiplier.
 
-This correction does not create a shortcut.  A direct proof that a
-finite full multiplier ring is pair-stable already constructs the
-stable order required by the predecessor theorem.  For every named
-rank-one reflexive fractional \(O\)-module \(I\) in this packet,
+A direct proof that a finite full multiplier ring is pair-stable
+already constructs the stable order required by the predecessor
+route.  For each named rank-one reflexive fractional \(O\)-module
+\(I\),
 
 \[
 (I:I)=O,
 \]
 
-so the trace dual, inverse different, canonical and conductor twists,
+so trace duals, inverse differents, canonical and conductor twists,
 and divisorial source-pole modules return the normalization rather
-than a hidden new order.
+than a hidden order.
 
-The residue statement is likewise multiset-valued: changing a
-logarithmic lattice shifts representatives by integers on fixed
-monodromy eigenspaces, while fractional ramification-parameter twists
-may permute character labels.  The full class multiset in
-\(\mathbf Q/\mathbf Z\) is unchanged.
+Changing a logarithmic lattice shifts residue representatives by
+integers on fixed monodromy eigenspaces, while fractional
+ramification-parameter twists may permute character labels.  The full
+class multiset in \(\mathbf Q/\mathbf Z\) is unchanged.
 
 ## Supported requested dispositions
 
-The packet reaches, at `MUTABLE_NONAUTHORITATIVE` scope:
+At `MUTABLE_NONAUTHORITATIVE` scope the packet reaches:
 
 1. **Disposition (6):** counterexamples to
    `holonomic => O-finite` and
    `coherent logarithmic lattice => ordinary stable lattice`;
 2. **Disposition (7):** reduction to trivial height-one inertia, with
-   the stronger global coherence-plus-embedding package isolated for
-   a direct D-module route.
+   the stronger global ordinary-coherence, pair-stability, and
+   embedding package isolated for a direct D-module route.
 
 It does not construct a finite full pair-stable lattice, exclude
 height-one ramification for every Keller pair, prove degree one, or
@@ -101,28 +116,35 @@ prove the planar Jacobian conjecture.
 ## Proposed shared synchronization
 
 A serialized integration maintainer may, after re-resolving live
-`main` and reviewing the scoped mathematics, make only the following
-global changes.
+`main` and reviewing the scoped mathematics, make only these global
+changes.
 
 1. Amend the note for `CLM-061` to record:
    - normalization-seed differential saturation is coherent iff there
      is no height-one ramification;
+   - every divisorial source boundary maps onto a height-one target
+     divisor because the normalization is finite;
+   - positive unramified source-pole stages escape under a transverse
+     translation;
+   - the finite-seed obstruction applies to finite intersections only
+     when they remain full;
    - at a generic height-one point, embedded ordinary coherence of the
      full permutation connection is equivalent to trivial inertia;
-   - a direct global D-module route additionally needs global
-     coherence and a torsion-free meromorphic embedding;
+   - a direct global D-module route additionally needs global ordinary
+     coherence, preservation by both unscaled translations, and a
+     torsion-free meromorphic embedding;
    - holonomic and logarithmic coherence are insufficient;
    - seed instability does not imply multiplier instability, while a
      directly stable full multiplier is already the desired order;
    - no finite pair-stable lattice was constructed.
-2. Add a proof-graph obstruction/reduction node for the `CDS-007`
-   coherence wall, depending on `CLM-003`, `CLM-010`, `CLM-011`,
-   `CLM-013`, and `CLM-061`.
+2. Add a proof-graph obstruction/reduction node for `CDS-007`,
+   depending on `CLM-003`, `CLM-010`, `CLM-011`, `CLM-013`, and
+   `CLM-061`.
 3. Point `L02`, Track D, the work queue, and the issue index to this
    packet as the current issue #4 successor.
-4. Allocate any global claim or graph identifiers against the live
-   ledgers at integration time.  Do not reuse packet-local `CDS-*`
-   labels as global identifiers without deliberate allocation.
+4. Allocate global claim or graph identifiers against the live ledgers
+   at integration time.  Packet-local `CDS-*` labels are not global
+   allocations.
 
 No shared file has been edited by this branch.
 
@@ -132,11 +154,11 @@ Work directly on the polynomial-source restriction rather than on a
 new generic lattice functor:
 
 1. compactify the actual source open and finite normalization;
-2. compute the inertia permutation and the embedding of source
-   coordinate functions in each tame character;
+2. compute the inertia permutation and embedding of source coordinate
+   functions in each tame character;
 3. use that both canonical translations are polynomial on the entire
    source \(\mathbf A^2\), not merely on the finite-etale locus;
-4. prove that a nontrivial inertia character would force source pole or
+4. prove that a nontrivial inertia character forces source pole or
    monodromy behavior incompatible with both polynomial coordinates.
 
 A useful exact target is:
@@ -147,14 +169,17 @@ A useful exact target is:
 > algebra while that algebra is stable under both canonical
 > translations and has fraction field \(L\).
 
-This target is strictly smaller than constructing a global lattice,
-but it consumes the source \(\mathbf A^2\) condition that all current
-countermodels lack.
-
 ## Validation evidence
 
-The pinned candidate was byte-compiled and tested at default and
-enlarged adversarial bounds.
+The exact remote validator files were reconstructed byte for byte.
+Their Git blob hashes matched the repository blobs:
+
+```text
+verify_local_residues.py  053d71a550992dfe6be5edb99d1ab0e578c557a3
+verify_global_bridges.py  1428959b91216d65eebd0f1c12a6d10681c8b7e0
+```
+
+Byte compilation and enlarged adversarial runs passed:
 
 ```text
 verify_local_residues.py --max-e 30 --max-n 64
@@ -175,30 +200,31 @@ verify_global_bridges.py --max-degree 25 --max-n 50 --max-e 25
 ```
 
 The packet aggregator, complete repository suite, and integration
-contract are to be confirmed by the permanent read-only workflow on
-the exact final PR head.  The workflow locator and conclusion are
-recorded on PR #42 so that adding them does not mutate the tested head.
-Passing validators records encoded identities and repository
-consistency only; it does not establish mathematical truth.
+contract are confirmed by the permanent read-only workflow on the
+exact final PR head.  The workflow locator and conclusion are recorded
+on PR #42 so that adding them does not mutate the tested head.  Passing
+validators records encoded identities and repository consistency
+only; it does not establish mathematical truth.
 
 ## Integration cautions
 
 - Do not state that `j_{!*}` is \(\mathcal O\)-coherent merely because
   it is regular holonomic.
 - Do not replace ordinary translations by logarithmic vector fields.
-- Do not infer global D-module coherence from the generic height-one
-  criterion alone.
-- Do not infer multiplier instability merely from seed instability.
+- Do not omit either unscaled translation from the global D-module
+  bridge.
+- Do not infer global coherence from the generic height-one criterion.
+- Do not apply the finite-seed theorem to a nonfull intersection.
+- Do not invent a contracted divisorial boundary in the finite
+  normalization; finite images of divisors remain divisorial.
+- Do not infer multiplier instability from seed instability.
 - Do not infer full-rank triviality from trace, norm, invariants, or
   determinant.
-- Do not describe every fractional-ideal twist as one common integer
-  shift; preserve the full residue-class multiset.
+- Preserve the full residue-class multiset under fractional twists.
 - Do not infer stabilization of an unbounded pole union from
   Noetherianity.
-- Do not claim that exact symplectic residue cancellation removes
-  every tame character.
-- Preserve the local-adversarial, mutable status until a distinct
-  reviewer adjudicates the exact candidate revision.
+- Preserve local-adversarial mutable status until a distinct reviewer
+  adjudicates the exact candidate revision.
 
 ## Validation commands
 
