@@ -7,10 +7,10 @@
     "research/issues/canonical-differential-saturation/"
   ],
   "base_sha": "652a5e252626fa5816445651245e8a8946cee53e",
-  "candidate_sha": "d8c9dc19ad6201042afb315ccab57489c863105b",
+  "candidate_sha": "ab498bd9f40fdb36137fbe8a52658555a3eef004",
   "scientific_status": "scoped equivalence, divisorial pole-stage theorem, counterexamples, corrected multiplier and intersection audit, and exact reduction / MUTABLE_NONAUTHORITATIVE",
   "review_mode": "local-adversarial-review",
-  "reviewed_revision": "d8c9dc19ad6201042afb315ccab57489c863105b",
+  "reviewed_revision": "ab498bd9f40fdb36137fbe8a52658555a3eef004",
   "proposed_global_claims": [
     {
       "id": "CDS-003",
