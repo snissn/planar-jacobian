@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "issue_number": 5,
+  "leaf_id": "L03",
+  "role": "integration-maintainer",
+  "owned_paths": ["research/issues/one-boundary-logarithmic-field/"],
+  "base_sha": "114aefeaf98429a3bd08ca9429b4ceebd3d21e08",
+  "candidate_sha": "35f272c8092feee3b477cced305d98c833b1b904",
+  "scientific_status": "SUBCLASS_EXCLUSION_WITH_EXACT_REDUCTION / MUTABLE_NONAUTHORITATIVE",
+  "review_mode": "local-adversarial-review",
+  "reviewed_revision": "02547f9a1c8c72486ad2bb07a06a10fde1351af4",
+  "proposed_global_claims": [],
+  "proposed_graph_nodes": [],
+  "shared_surfaces_requested": [],
+  "supersedes_prs": [34],
+  "temporary_artifacts_absent": true,
+  "integration_state": "merged",
+  "pr_number": 35,
+  "completion_receipt": "Merged as 8c659ec6f6be77368cd03ecbae2809df88860a76; CLM-072 remains open."
+}

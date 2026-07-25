@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "issue_number": 4,
+  "leaf_id": "L02",
+  "role": "integration-maintainer",
+  "owned_paths": ["research/issues/source-reflexive-lattice/"],
+  "base_sha": "788e94419080debf356d17123cbf81cb23b391ac",
+  "candidate_sha": "fe29ccae398dbbe9340f78a3c893eb7b2330eee0",
+  "scientific_status": "SCOPED_OBSTRUCTION_AND_EQUIVALENCE / MUTABLE_NONAUTHORITATIVE",
+  "review_mode": "local-adversarial-review",
+  "reviewed_revision": "8ad9d542e5177a3240ad6c1f02b8b75e7657a085",
+  "proposed_global_claims": [],
+  "proposed_graph_nodes": [],
+  "shared_surfaces_requested": [],
+  "supersedes_prs": [26],
+  "temporary_artifacts_absent": true,
+  "integration_state": "merged",
+  "pr_number": 33,
+  "completion_receipt": "Merged as 114aefeaf98429a3bd08ca9429b4ceebd3d21e08; CLM-061 remains open."
+}
