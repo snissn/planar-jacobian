@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   statuses: write
 
 concurrency:
@@ -104,31 +104,6 @@ jobs:
           set -o pipefail
           python scripts/validate_issue5_principal_parts.py | tee issue5-principal-parts.log
 
-      # BEGIN ISSUE4 SELF-SYNC
-      - name: Apply issue #4 final synchronization
-        if: github.event_name == 'push' && github.ref == 'refs/heads/issue-4/source-reflexive-lattice-gpt56' && !contains(github.event.head_commit.message, '[issue4-sync-applied]')
-        shell: bash
-        run: |
-          set -o pipefail
-          {
-            set -euo pipefail
-            python scripts/sync_issue4_source_reflexive.py
-            python scripts/render_views.py --write
-            python -m compileall -q scripts research/issues/source-reflexive-lattice
-            python research/issues/source-reflexive-lattice/verify_all.py
-            python scripts/render_views.py --check
-            python scripts/validate_repository.py
-            git diff --check
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            find . -type d -name __pycache__ -prune -exec rm -rf {} +
-            find . -type f \( -name '*.pyc' -o -name '*.pyo' \) -delete
-            git add -A
-            git diff --cached --quiet || git commit -m "sync(issue-4): authoritative source-lattice surfaces [issue4-sync-applied]"
-            git push origin HEAD:${GITHUB_REF_NAME}
-          } 2>&1 | tee issue4-sync.log
-      # END ISSUE4 SELF-SYNC
-
       - name: Add frontier to job summary
         if: always()
         shell: bash
@@ -164,7 +139,6 @@ jobs:
             issue3-rank-three.log
             issue4-stable-order.log
             issue4-source-reflexive-lattice.log
-            issue4-sync.log
             issue5-principal-parts.log
           if-no-files-found: warn
           retention-days: 30
