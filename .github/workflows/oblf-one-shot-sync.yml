@@ -59,7 +59,41 @@ jobs:
         run: python scripts/render_views.py --check
 
       - name: Validate repository structure
-        run: python scripts/validate_repository.py
+        id: repository_validation
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          python scripts/validate_repository.py 2>&1 | tee /tmp/oblf-repository-validation.log
+          rc=${PIPESTATUS[0]}
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit "$rc"
+
+      - name: Publish repository validation diagnostics
+        if: steps.repository_validation.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TARGET_BRANCH: issue-5/one-boundary-logarithmic-gpt56
+          DIAGNOSTIC_PATH: research/issues/one-boundary-logarithmic-field/VALIDATION_DIAGNOSTICS.txt
+        shell: bash
+        run: |
+          set -euo pipefail
+          encoded=$(base64 -w0 /tmp/oblf-repository-validation.log)
+          current_sha=$(gh api \
+            "repos/$GITHUB_REPOSITORY/contents/$DIAGNOSTIC_PATH?ref=$TARGET_BRANCH" \
+            --jq .sha 2>/dev/null || true)
+          args=(
+            --method PUT
+            "repos/$GITHUB_REPOSITORY/contents/$DIAGNOSTIC_PATH"
+            -f "message=ci(issue-5): record validation diagnostics"
+            -f "content=$encoded"
+            -f "branch=$TARGET_BRANCH"
+          )
+          if [[ -n "$current_sha" ]]; then
+            args+=( -f "sha=$current_sha" )
+          fi
+          gh api "${args[@]}" --jq '.commit.sha'
+          exit 1
 
       - name: Render frontier
         run: python scripts/frontier.py
