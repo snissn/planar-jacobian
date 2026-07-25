@@ -7,7 +7,7 @@
     "research/issues/defect-5-rees/"
   ],
   "base_sha": "4e26438c83d370be8fcddf14da88ef151cb3e841",
-  "candidate_sha": "99d502ffb965d84b4046a625a6f83c3a03f9328c",
+  "candidate_sha": "00aa3b063ce2f9c4b54c0ec7abc3b3dc1ed02aff",
   "scientific_status": "candidate_proved / MUTABLE_NONAUTHORITATIVE",
   "review_mode": "local-adversarial-review",
   "reviewed_revision": "2eeb36d232366d124b5a66774b29769ec1eba43d",
