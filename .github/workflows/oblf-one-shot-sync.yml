@@ -12,6 +12,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 concurrency:
   group: oblf-one-shot-sync
@@ -43,33 +44,63 @@ jobs:
           python -m py_compile research/issues/one-boundary-logarithmic-field/sync_oblf.py
           python research/issues/one-boundary-logarithmic-field/sync_oblf.py
 
+      - name: Validate synchronized tree
+        id: validation
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          {
+            python -m compileall -q scripts research/issues/issue-3-unramified-index research/issues/rank-three-index-form-unit research/issues/one-boundary-logarithmic-field
+            python research/issues/one-boundary-logarithmic-field/verify_all.py
+            python scripts/render_views.py --check
+            python scripts/validate_repository.py
+            python scripts/frontier.py
+            git diff --check
+          } 2>&1 | tee /tmp/oblf-validation.log
+          rc=${PIPESTATUS[0]}
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit "$rc"
+
       - name: Commit synchronized surfaces
+        id: transport
+        continue-on-error: true
+        shell: bash
         run: |
-          set -euo pipefail
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add .
-          if git diff --cached --quiet; then
-            echo 'No synchronization delta to commit.'
-          else
-            git commit -m 'sync(issue-5): allocate one-boundary claims and frontier'
-            git push origin HEAD:issue-5/one-boundary-logarithmic-gpt56
-          fi
+          set +e
+          {
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git status --short
+            git add .
+            if git diff --cached --quiet; then
+              echo 'No synchronization delta to commit.'
+            else
+              git commit -m 'sync(issue-5): allocate one-boundary claims and frontier'
+              git push --verbose origin HEAD:issue-5/one-boundary-logarithmic-gpt56
+            fi
+          } 2>&1 | tee /tmp/oblf-transport.log
+          rc=${PIPESTATUS[0]}
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit "$rc"
 
-      - name: Byte-compile synchronized tree
-        run: python -m compileall -q scripts research/issues/issue-3-unramified-index research/issues/rank-three-index-form-unit research/issues/one-boundary-logarithmic-field
-
-      - name: Run issue-owned checks
-        run: python research/issues/one-boundary-logarithmic-field/verify_all.py
-
-      - name: Verify generated views
-        run: python scripts/render_views.py --check
-
-      - name: Validate repository structure
-        run: python scripts/validate_repository.py
-
-      - name: Render frontier and check patch
+      - name: Publish failure diagnostics
+        if: steps.validation.outcome == 'failure' || steps.transport.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          set -euo pipefail
-          python scripts/frontier.py
-          git diff --check
+          {
+            echo '### OBLF one-shot synchronization diagnostics'
+            echo
+            echo '**Validation**'
+            echo '```text'
+            tail -n 200 /tmp/oblf-validation.log 2>/dev/null || true
+            echo '```'
+            echo
+            echo '**Transport**'
+            echo '```text'
+            tail -n 200 /tmp/oblf-transport.log 2>/dev/null || true
+            echo '```'
+          } > /tmp/oblf-comment.md
+          gh pr comment 34 --body-file /tmp/oblf-comment.md
+          exit 1
