@@ -685,13 +685,13 @@
       "id": "CLM-061",
       "status": "open_bridge",
       "track": "differential-lattice",
-      "statement": "Construct a finite locally free B-order in L stable under both D_P and D_Q.",
+      "statement": "Construct a finite full B-lattice in L stable under both D_P and D_Q; its reflexive multiplier ring then gives the required finite locally free stable order.",
       "depends_on": [
         "CLM-010",
         "CLM-011",
         "CLM-013"
       ],
-      "note": "Issue #4 remains open. The ramified-DVR obstruction shows that such an order would already exclude codimension-one ramification; no construction is known."
+      "note": "Issue #4 remains open. The source-reflexive-lattice packet proves that pair-stability is equivalent to height-one unramifiedness, that every finite divisorial source-pole stage escapes at ramification, and that multiplier closure is automatic. No finite pair-stable lattice is constructed."
     },
     {
       "id": "CLM-062",

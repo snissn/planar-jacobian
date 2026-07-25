@@ -1,6 +1,6 @@
 # Declared Adversarial Review
 
-> **Review mode:** `constructor-adversarial-review`  
+> **Review mode:** `local-adversarial-review`
 > **Reviewed revision:** `8ad9d542e5177a3240ad6c1f02b8b75e7657a085`  
 > **Candidate aggregate SHA-256:** `963a7f5b7c30d033574b16a1d5dfcec8742ec85edf682cea316dc9bfbdd6e659`  
 > **Disposition:** `PASS_FOR_MUTABLE_MAINLINE_INTEGRATION`  
@@ -14,10 +14,12 @@ The review covers the exact files listed in
 later synchronization edits, this review record itself, or any theorem beyond
 the packet's stated characteristic-zero finite-normalization scope.
 
-The same assistant constructed and adversarially reviewed the candidate.
-Repository governance permits this as a declared fallback, but it is not an
-independent scientific acceptance and cannot promote any claim to
-`reviewed_scoped`.
+The same assistant constructed and adversarially reviewed the candidate in declared
+`local-adversarial-review` mode. Repository governance permits this fallback
+when no distinct reviewer is available, but it is not independent scientific
+acceptance and cannot promote any claim to `reviewed_scoped`. The mode-name
+correction in packet metadata is editorial and does not alter the pinned
+candidate theorem bytes.
 
 ## 2. Attack: ring orientation and boundary purity
 

@@ -1,0 +1,8 @@
+issue #5 validation mode: principal-part-regression-evidence
+exact assertions: 31
+Laurent residue/higher-pole control: PASS
+radial and logarithmic tangency examples: PASS
+regularity-to-integration countercontrol: PASS
+Keller branch proved radial: NO
+algebraic action constructed: NO
+mathematical authority: HUMAN-READABLE PACKET AND REVIEW, NOT CHECK COUNT

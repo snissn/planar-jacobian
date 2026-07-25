@@ -3,20 +3,20 @@
 > **Status:** `MUTABLE_NONAUTHORITATIVE`  
 > **Protocol verdict:** `null`
 
-Seek a finite locally free `B=C[P,Q]`-order `M` in `L=C(x,y)` preserved by both canonical derivations `D_P,D_Q`. Here an order is a finite `B`-subalgebra containing `B` with total quotient field `L`; a stable module without multiplication is not the requested object.
+Seek a finite full `B=C[P,Q]`-module `M subset L=C(x,y)` preserved by both canonical derivations `D_P,D_Q`. The source-reflexive-lattice successor proves that an algebra structure on `M` is not an additional hypothesis: the reflexive multiplier ring of any such module is a finite locally free stable `B`-order with total quotient field `L`.
 
 ## Audited implication
 
-The implication from existence to degree one is now written exactly in the issue #4 packet:
+The predecessor issue #4 packet proves at mutable candidate scope:
 
-1. in a local basis `e`, write `D(e)=eA`;
+1. in a local basis `e` of a finite locally free stable order, write `D(e)=eA`;
 2. for the trace Gram matrix `G`,
 
    ```text
    delta(G)=A^T G+GA;
    ```
 
-3. therefore
+3. hence
 
    ```text
    delta(det G)=2 Tr(A)det G;
@@ -24,69 +24,87 @@ The implication from existence to degree one is now written exactly in the issue
 
 4. the trace-discriminant ideal is stable under `partial_P,partial_Q`;
 5. every nonzero ideal of `C[P,Q]` stable under both partials is the unit ideal;
-6. a finite locally free algebra with unit discriminant is finite etale;
-7. a connected finite etale cover of `A^2_C` has degree one.
+6. the order is finite etale and connected over `A^2_C`;
+7. the function-field degree is one.
 
-Multiplicative closure, local freeness, generic separability, and connectedness are explicit hypotheses. This implication is a mutable theorem candidate; it does not construct the order.
-
-## Local obstruction
-
-At a height-one prime `(h)` of `B`, at least one canonical derivation is transverse because `h` cannot divide both `partial_P h` and `partial_Q h`. In the tame ramified DVR model
+The successor supplies the module-to-order bridge. For a finite full stable module,
 
 ```text
-t=s^e,
-e>1,
+O_M = {z in L : zM subset M}
 ```
 
-a transverse derivation satisfies
+is finite, stable, and generically `L`; its `B`-reflexive hull is an intersection of height-one localized rings and is locally free over the regular surface `B`. Therefore one finite full pair-stable module is sufficient for the audited implication.
+
+## Sharp codimension-one theorem
+
+For a fixed base derivation `delta`, a finite full stable lattice exists exactly when `delta` is logarithmic along every reduced ramified base divisor; in that case the normalization itself is stable.
+
+For the pair `D_P,D_Q`, at least one member is transverse to every irreducible target divisor. Consequently:
 
 ```text
-D^n(t^N s)
- = product_(j=0)^(n-1)(N+1/e-j)t^(N-n)s,
+finite full pair-stable B-lattice
+  <=> no height-one ramification in the finite normalization.
 ```
 
-so the valuation tends to minus infinity. Consequently no full finite local lattice is stable at a ramified valuation, even before imposing multiplication.
+The right side is the full unramified DVR condition, including separable residue extension, not merely the numerical equation `e=1`.
 
-The exact Keller-specific input is the dual translation frame. It exposes every reduced target divisor to a transverse derivation; it does not cancel the resulting poles. Exact stability can survive locally only when the ramification index is one.
+## Fractional-residue spectrum
 
-## Construction audit
+At a valuation of ramification index `e`, the intrinsic semisimplified tame spectrum is
 
-The issue packet tests:
+```text
+(1/e)Z / Z
+```
 
-- differential saturation inside a purported fixed ambient lattice;
-- bounded-pole modules;
-- conductor orders `R+t^N S`;
-- trace duals and inverse differents;
-- canonical modules;
-- finite intersections of fractional ideals;
-- regular-singular connection lattices;
-- tame non-Galois cubic and cusp branches;
-- compactification-boundary coordinate changes;
-- characteristic-`p` reductions.
+with residue-degree multiplicity. At a branch `h(P,Q)=0`, the pair spectrum on the `j`-th tame character is
 
-In the ramified Kummer model every genuine finite order fails exact translation stability. Fractional duals and bounded-pole modules fail multiplicative closure; differential saturation leaves every fixed finite module; regular-singular methods preserve only logarithmic lattices; primewise nilpotence has no uniform characteristic-zero bound.
+```text
+(j/e)(h_P,h_Q).
+```
+
+A normal/tangent frame gives `(j/e,0)`. Integer lattice shifts move the scalar by an integer and cannot erase a nonzero class. The commuting residues are flat-compatible but do not cancel. The determinant-line sum `(e-1)/2` can be integral for odd `e`, so trace or determinant data alone lose the full obstruction.
+
+## Source pole filtration
+
+For the open immersion `j:U=Spec A -> Y=Spec O`, the ring direction is `O -> A`. No purity of `Y\U` is assumed. If `E_1,...,E_r` are its divisorial components, normality gives
+
+```text
+A = union_{m in N^r} Gamma(Y,O_Y(sum m_i E_i)).
+```
+
+Every fixed stage is coherent and finite over `B`; under the finite-flat surface package it is `B`-locally free. The canonical derivations shift pole bounds by finite vectors, but repeated derivatives grow linearly rather than remaining in one stage.
+
+- ramified transverse increment: `e`;
+- ramified logarithmic increment: `0`;
+- unramified transverse boundary increment: `1`.
+
+Every finite ramified stage is excluded by the local no-lattice theorem. At an unramified omitted divisor, `O` is locally stable but every stage admitting a genuine pole escapes under a transverse frame member. Commutativity controls ordering, not boundedness. The directed union is stable; no finite stage is.
+
+## Canonical candidates and countercontrols
+
+The successor audits the normalization, inverse different, trace dual, canonical module, conductor shifts, divisorial modules, colons, finite intersections, determinant lines, and multiplier rings. Rank-one reflexive fractional `O`-modules all have multiplier ring `O`, so they do not hide a new order.
+
+Controls include Kummer and tame non-Galois ramification, a cusp branch, several boundary components, unramified nonproper boundary, logarithmic versus exact fields, a never-stabilizing pole union, characteristic-`p` collapse, and a Laurent exact-symplectic model. The last satisfies both `dP wedge dQ=dx wedge dy` and an exact primitive relation while retaining ramification; it is explicitly not a polynomial Keller pair on `A^2`.
 
 ## Current obstruction boundary
 
-- `C[x,y]` is an exact stable algebra but is not known finite over `B`.
-- The finite normalization `Cbar` is locally free under the maintained surface hypotheses but is not stable at ramified height one.
-- No bounded valuation lattice can interpolate between them across a ramified divisor.
+- `A=C[x,y]` is a pair-stable algebra but is not known finite over `B`.
+- `O` is finite and locally free under the maintained surface hypotheses, but pair stability is equivalent to absence of height-one ramification.
+- Every coherent divisorial pole stage, fixed conductor/different shift, reflexive hull, and finite intersection is excluded at a ramified component.
+- Multiplier closure is automatic once a finite stable module exists.
 
-Thus the remaining route must either:
+The surviving route must therefore construct a finite non-divisorial source-derived module inside one fixed finite ambient module, or prove codimension-one unramifiedness by another argument.
 
-1. prove codimension-one unramifiedness by an argument independent of a stable lattice;
-2. identify a Keller-specific cancellation that invalidates the Kummer residue spectrum, with an exact local calculation;
-3. or construct a global object that is not valuation-bounded at an intermediate stage but nevertheless becomes a finite multiplicatively closed order without using an infinite union.
+## Issue-specific artifacts
 
-The third option currently has no viable model.
+- predecessor: `research/issue-4/stable-differential-order/`;
+- successor: `research/issues/source-reflexive-lattice/`.
 
-## Issue-specific artifact
-
-See `research/issue-4/stable-differential-order/` for the exact global proof, local DVR theorem, construction table, source bindings, adversarial review, and handoff.
+The successor's declared `local-adversarial-review` passes mutable integration but blocks promotion. No finite pair-stable lattice is constructed.
 
 ## Exit
 
-The leaf remains open on existence. It may close only with:
+The leaf remains open. It may close only with:
 
-- a finite stable order and exact proof of finite generation, local freeness, multiplication, and invariance; or
-- an independently reviewed class-level obstruction showing that no allowed stable-order construction can cross the remaining Keller boundary.
+- a finite full module stable under both canonical translations, together with its audited reflexive multiplier order; or
+- an independently reviewed obstruction covering a strictly larger exact construction class.

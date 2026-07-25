@@ -2,7 +2,7 @@
 
 > **Authority:** `MUTABLE_NONAUTHORITATIVE`  
 > **Scientific disposition:** `SCOPED_OBSTRUCTION_AND_EQUIVALENCE`  
-> **Review status:** constructor adversarial review required before integration  
+> **Review status:** declared `local-adversarial-review`; promotion blocked
 > **Issue:** `#4`  
 > **Branch base:** `main@788e94419080debf356d17123cbf81cb23b391ac`
 

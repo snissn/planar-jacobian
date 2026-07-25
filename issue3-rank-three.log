@@ -1,0 +1,4 @@
+rank-three index checks: PASS
+rank-three differential checks: PASS
+countermodel boundary checks: PASS
+rank-three packet verification: PASS

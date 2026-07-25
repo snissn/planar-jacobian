@@ -1,0 +1,12 @@
+review mode: independent-review
+reviewed candidate: 96fc7ec34bd3b685a0edeae7ecd4404abab7e2f1
+exact assertions: 7361
+semantic mutations detected: 8
+random exact Rees/Keller trials: 36
+primitive weights enumerated (1 <= p <= q <= 80): 1966
+generated no-descent formal systems: 317
+projective common-root charts eliminated: 319
+largest generated system: 6 equations, 10 variables
+random exceptional coefficient trials: 800
+independent defect-four symbolic validation: PASS
+mathematical authority: HUMAN-READABLE REVIEW, NOT CHECK COUNT

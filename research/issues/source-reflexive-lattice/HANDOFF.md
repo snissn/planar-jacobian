@@ -28,7 +28,7 @@
 ## Scientific status
 
 The packet reaches a class-level obstruction, not an unconditional planar
-Jacobian theorem.  The constructor adversarial review permits mutable
+Jacobian theorem. The declared `local-adversarial-review` permits mutable
 mainline preservation but blocks promotion to reviewed authority.
 
 ## Smallest surviving question

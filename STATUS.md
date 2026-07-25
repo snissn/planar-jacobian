@@ -22,7 +22,7 @@
 ## Integrated scientific packets
 
 - **Issue #3:** rank-three trace/index foundations, a finite source/boundary gcd-one certificate, and an exact cubic differential congruence are banked at candidate scope. The universal-content shortcut is false; `L14` remains open at the boundary-cube/unit-value bridge.
-- **Issue #4:** the stable-order-to-degree-one implication is recorded at mutable candidate scope, together with a ramified-DVR no-lattice obstruction. No finite stable order is constructed; issue #4 remains open.
+- **Issue #4:** the source-reflexive-lattice successor proves at mutable candidate scope that a finite full pair-stable module yields a finite locally free stable multiplier order and that divisorial source-pole stages escape at ramification. No finite pair-stable lattice is constructed; issue #4 remains open.
 - **Issue #5:** regular lifting is classified by logarithmic tangency, and regularity is separated from algebraic integration. The Keller branch divisor is not proved radial; issue #5 remains open.
 - **Issue #17:** the exact positive-weight defect-at-most-four theorem is reviewed only at the pinned revision. It creates no terminal edge to `JC_2`.
 

@@ -1,0 +1,34 @@
+PLANAR JACOBIAN RESEARCH FRONTIER
+claims=66 (candidate=2, candidate_proved=27, literature_bound=7, open_bridge=6, retired=4, reviewed_scoped=6, source_audit_required=1, speculative=1, verified_conceptual=3, verified_internal=9)
+graph_nodes=35 graph_edges=53 (active=5, blocked=4, disposed=1, literature_bound=1, open=22, reviewed=1, speculative=1)
+open_leaves=12 (P0=6, P1=4, P2=1, P3=1)
+leaf_dispositions=2 (disposed=1, reviewed=1)
+archive_exports=2 (metadata_only=2)
+root_goal=ROOT-JC2:blocked
+merge_is_scientific_acceptance=false
+
+P0
+  L14 OPEN-KELLER-INDEX-UNIT issue=#3 claims=CLM-029,CLM-030,CLM-031,CLM-034,CLM-058,CLM-059,CLM-062,CLM-063,CLM-064,CLM-065,CLM-066 artifact=research/leaf-packets/L14-keller-index-form-unit.md
+  L02 OPEN-STABLE-ORDER issue=#4 claims=CLM-010,CLM-011,CLM-012,CLM-013,CLM-061 artifact=research/leaf-packets/L02-stable-order.md
+  L03 OPEN-BOUNDARY-POLE issue=#5 claims=CLM-014,CLM-015,CLM-023,CLM-052,CLM-053,CLM-054,CLM-055,CLM-056,CLM-057 artifact=research/leaf-packets/L03-radial-pole-elimination.md
+  L06 OPEN-GRADED-REDUCTION issue=#8 claims=CLM-024,CLM-025 artifact=research/leaf-packets/L06-graded-reduction.md
+  L10 OPEN-LITERATURE issue=#12 claims=CLM-003,CLM-004,CLM-005,CLM-015,CLM-016,CLM-017,CLM-021,CLM-044,CLM-048 artifact=research/leaf-packets/L10-literature-audit.md
+  L12 OPEN-BOUNDARY-BASELINE issue=#14 claims=CLM-003,CLM-004,CLM-005,CLM-006,CLM-007 artifact=research/leaf-packets/L12-normalization-baseline.md
+P1
+  L04 OPEN-QA-FINITE issue=#6 claims=CLM-018,CLM-019 artifact=research/leaf-packets/L04-quasi-albanese-finiteness.md
+  L05 OPEN-PUNCTURE issue=#7 claims=CLM-020,CLM-021,CLM-035 artifact=research/leaf-packets/L05-gauss-manin-punctures.md
+  L07 OPEN-CUSP-BRAID issue=#9 claims=CLM-026,CLM-027,CLM-028 artifact=research/leaf-packets/L07-cusp-braid.md
+  L11 OPEN-SYMPLECTIC issue=#13 claims=CLM-022,CLM-023 artifact=research/leaf-packets/L11-exact-symplectic-boundary.md
+P2
+  L08 OPEN-CLOSED-ORBIT issue=#10 claims=CLM-016,CLM-046 artifact=research/leaf-packets/L08-equivariant-closed-orbit.md
+P3
+  L09 OPEN-PCURVATURE issue=#11 claims=CLM-045 artifact=research/leaf-packets/L09-characteristic-p.md
+
+DISPOSITIONS
+  L01 OPEN-UNRAMIFIED-INDEX status=disposed disposition=SCOPED_ALGEBRAIC_OBSTRUCTION next=OPEN-KELLER-INDEX-UNIT
+  L13 OPEN-DEFECT-4 status=reviewed disposition=REVIEWED_SCOPED next=governance/reviews/issue-17-defect4-independent-gpt56.md
+
+reviewed_defect_at_most_four_scope=primitive_positive_weight_only
+defect_five_covered=false
+qualifying_weight_existence_proved=false
+structural_validation_is_not_mathematical_review=true

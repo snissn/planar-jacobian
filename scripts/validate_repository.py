@@ -174,6 +174,43 @@ def validate_claims(claims: dict[str, Any]) -> tuple[set[str], dict[str, dict[st
         error("CLM-060: missing explicit defect-five nonclaim")
     if by_id.get("CLM-061", {}).get("status") != "open_bridge":
         error("CLM-061: stable-order existence must remain open_bridge")
+    if "finite full B-lattice" not in by_id.get("CLM-061", {}).get("statement", ""):
+        error("CLM-061: source-reflexive successor must retain the finite full lattice bridge")
+    if "No finite pair-stable lattice is constructed" not in by_id.get("CLM-061", {}).get("note", ""):
+        error("CLM-061: successor synchronization must retain the finite-lattice nonclaim")
+    source_lattice_root = ROOT / "research/issues/source-reflexive-lattice"
+    required_source_lattice_files = [
+        "README.md",
+        "LOCAL_RESIDUE_THEOREM.md",
+        "TWO_DERIVATION_SPECTRUM.md",
+        "SOURCE_POLE_FILTRATION.md",
+        "MULTIPLIER_RING.md",
+        "CANDIDATE_LATTICE_TABLE.md",
+        "COUNTERMODELS.md",
+        "SOURCE_BINDINGS.md",
+        "REVIEW.md",
+        "HANDOFF.md",
+        "CANDIDATE_MANIFEST.sha256",
+        "verify_all.py",
+        "verify_local_residues.py",
+        "verify_filtration_and_symplectic.py",
+    ]
+    for relative in required_source_lattice_files:
+        if not (source_lattice_root / relative).is_file():
+            error(f"source-reflexive-lattice packet: missing {relative}")
+    if source_lattice_root.is_dir():
+        source_readme = (source_lattice_root / "README.md").read_text(encoding="utf-8")
+        review_text = (source_lattice_root / "REVIEW.md").read_text(encoding="utf-8")
+        if "O\\longrightarrow A" not in source_readme and "O -> A" not in source_readme:
+            error("source-reflexive-lattice packet: ring orientation O -> A is missing")
+        if "8ad9d542e5177a3240ad6c1f02b8b75e7657a085" not in review_text:
+            error("source-reflexive-lattice review: reviewed candidate revision is not pinned")
+        if "Promotion disposition:** `BLOCK`" not in review_text:
+            error("source-reflexive-lattice review: promotion BLOCK is missing")
+        if "Review mode:** `local-adversarial-review`" not in review_text:
+            error("source-reflexive-lattice review: permitted local-adversarial-review mode is missing")
+        if "constructor-adversarial-review" in review_text:
+            error("source-reflexive-lattice review: unsupported constructor review mode remains")
     if "no stable order is constructed" not in by_id.get("CLM-013", {}).get("note", "").lower():
         error("CLM-013: conditional stable-order implication must state that existence is open")
     if by_id.get("CLM-057", {}).get("status") != "open_bridge":
