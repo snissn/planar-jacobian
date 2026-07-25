@@ -62,7 +62,18 @@ D-module and logarithmic constructions do not cross it.
    monomial belongs to the global module.  Only the zero-pole
    normalization stage can possibly be finite and stable.
 
-4. **Generic height-one D-module criterion.**  On the maximal
+4. **Multiplier qualification.**  A pair-stable finite seed has a
+   pair-stable multiplier ring, but the converse need not hold:
+   \(M=P B\subset K=L\) is not \(\partial_P\)-stable whereas
+   \((M:M)=B\) is stable.  Therefore seed instability alone does not
+   exclude a stable multiplier.  A direct proof that a finite full
+   multiplier ring is pair-stable is already a construction of the
+   stable order required by the predecessor theorem.  For every named
+   rank-one divisorial candidate in this packet, \((I:I)=O\), so the
+   multiplier operation returns the normalization and does not bypass
+   the ramification criterion.
+
+5. **Generic height-one D-module criterion.**  On the maximal
    finite-etale locus, the pushforward is the rank-\([L:K]\)
    permutation connection.  At the generic point of a height-one
    divisor, a cycle of inertia length \(e\) contributes residue
@@ -80,7 +91,7 @@ D-module and logarithmic constructions do not cross it.
    control codimension-two behavior, or supply an embedding into
    \(L\).
 
-5. **Holonomicity is insufficient.**  A regular holonomic
+6. **Holonomicity is insufficient.**  A regular holonomic
    \(\mathcal D\)-module may be infinitely generated over
    \(\mathcal O\).  Both a Kummer finite cover and the open immersion
    \(D(t)\hookrightarrow\mathbf A^2\) provide exact controls.  The
@@ -89,7 +100,7 @@ D-module and logarithmic constructions do not cross it.
    intermediate extension of the trivial local system is
    \(\mathcal O\).
 
-6. **Smallest surviving bridge.**  Prove from the polynomial Keller
+7. **Smallest surviving bridge.**  Prove from the polynomial Keller
    source that the full finite-etale permutation local system has
    trivial inertia at every height-one divisor.  The
    normalization-saturation theorem then makes \(O\) a finite full
@@ -125,7 +136,7 @@ Accordingly, the first supported requested dispositions are:
 | `CDS-005` | `candidate_proved` | At a generic height-one point of the finite-cover permutation connection, an embedded ordinary coherent lattice exists iff local inertia is trivial. |
 | `CDS-006` | `counterexample` | Regular holonomic or logarithmically coherent extensions need not be finite over the ordinary structure sheaf. |
 | `CDS-007` | `open_bridge` | Derive trivial height-one inertia from the polynomial Keller source; a direct global D-module route additionally requires global coherence and a torsion-free embedding into \(L\). |
-| `CDS-008` | `negative_audit` | The audited multiplier, dual, canonical, jet, and cohomological constructions do not bypass `CDS-007`. |
+| `CDS-008` | `negative_audit` | The audited dual, canonical, jet, and cohomological constructions do not bypass `CDS-007`; multiplier stability is a separate stable-order condition, not an automatic consequence of seed coherence or instability. |
 
 These are issue-local labels.  They allocate or promote no global
 `CLM-*` identifier.
@@ -142,8 +153,8 @@ These are issue-local labels.  They allocate or promote no global
 - `LOCAL_RESIDUES.md` — Kummer calculation, pair spectrum, singular
   and non-Galois mutations.
 - `CONSTRUCTION_TABLE.md` — candidate-by-candidate audit.
-- `COUNTERMODELS.md` — finite-cover, open-immersion, non-Galois, and
-  exact-symplectic controls.
+- `COUNTERMODELS.md` — finite-cover, open-immersion, multiplier,
+  non-Galois, and exact-symplectic controls.
 - `SOURCE_AUDIT.md` — primary-source bindings and hypothesis limits.
 - `REVIEW.md` — pinned local adversarial review.
 - `HANDOFF.md` — proposed shared deltas and next exact task.
