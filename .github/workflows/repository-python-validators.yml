@@ -42,7 +42,7 @@ jobs:
           python -c 'import sympy; print("sympy", sympy.__version__)' | tee -a runtime.txt
 
       - name: Byte-compile all maintained Python
-        run: python -m compileall -q scripts research/issues/issue-3-unramified-index research/issues/rank-three-index-form-unit
+        run: python -m compileall -q scripts research/issues/issue-3-unramified-index research/issues/rank-three-index-form-unit research/issues/source-reflexive-lattice
 
       - name: Verify generated Markdown views
         shell: bash
@@ -92,6 +92,12 @@ jobs:
           set -o pipefail
           python scripts/validate_issue4_stable_order.py | tee issue4-stable-order.log
 
+      - name: "Validate issue #4 source-reflexive-lattice successor"
+        shell: bash
+        run: |
+          set -o pipefail
+          python research/issues/source-reflexive-lattice/verify_all.py | tee issue4-source-reflexive-lattice.log
+
       - name: "Validate issue #5 principal-part examples"
         shell: bash
         run: |
@@ -132,9 +138,33 @@ jobs:
             issue3-models.log
             issue3-rank-three.log
             issue4-stable-order.log
+            issue4-source-reflexive-lattice.log
             issue5-principal-parts.log
           if-no-files-found: warn
           retention-days: 30
+
+      - name: Upload synchronization inputs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: repository-sync-inputs-${{ github.event.pull_request.head.sha || github.sha }}-${{ github.run_id }}
+          path: |
+            README.md
+            STATUS.md
+            research/claim_ledger.json
+            research/proof_graph.json
+            research/work_queue.json
+            research/CLAIM_LEDGER.md
+            research/PROOF_GRAPH.md
+            research/WORK_QUEUE.md
+            research/ISSUE_INDEX.md
+            research/leaf-packets/L02-stable-order.md
+            research/tracks/d-stable-differential-lattice.md
+            scripts/render_views.py
+            scripts/validate_repository.py
+            .github/workflows/repository-python-validators.yml
+          if-no-files-found: error
+          retention-days: 1
 
       - name: Publish push-run locator and result
         if: always() && github.event_name == 'push'
