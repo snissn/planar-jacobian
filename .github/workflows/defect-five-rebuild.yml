@@ -3,6 +3,8 @@ name: Defect Five Mainline Rebuild
 on:
   push:
     branches: [issue-29/defect-five-mainline-rebuild]
+  pull_request:
+    branches: [main]
 
 permissions:
   contents: write
