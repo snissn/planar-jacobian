@@ -28,10 +28,12 @@ REQUIRED = {
 
 
 def run(script: str) -> None:
+    """Execute one packet-local validator with the active interpreter."""
     subprocess.run([sys.executable, str(ROOT / script)], check=True)
 
 
 def validate_manifest() -> None:
+    """Check role, ownership, review pinning, and integration metadata."""
     manifest = json.loads((ROOT / "INTEGRATION.json").read_text())
     assert manifest["schema_version"] == 1
     assert manifest["issue_number"] == 4
@@ -44,6 +46,8 @@ def validate_manifest() -> None:
     assert len(manifest["candidate_sha"]) == 40
     assert manifest["review_mode"] == "local-adversarial-review"
     assert manifest["reviewed_revision"] == manifest["candidate_sha"]
+    assert manifest["pr_number"] == 42
+    assert manifest["completion_receipt"] is None
     assert manifest["temporary_artifacts_absent"] is True
     assert manifest["integration_state"] == "integration-ready"
     for claim in manifest["proposed_global_claims"]:
@@ -51,6 +55,7 @@ def validate_manifest() -> None:
 
 
 def validate_prose() -> None:
+    """Require key claims and reject known categorical or multiplier shortcuts."""
     combined = "\n".join(
         (ROOT / name).read_text()
         for name in REQUIRED
@@ -62,6 +67,8 @@ def validate_prose() -> None:
         "proves the planar Jacobian conjecture",
         "holonomic therefore O-coherent",
         "logarithmic therefore ordinary",
+        "multiplier ring is stable only",
+        "stable only when M_0 already is stable",
     )
     lower = combined.lower()
     for phrase in forbidden:
@@ -69,6 +76,7 @@ def validate_prose() -> None:
 
 
 def main() -> int:
+    """Run exact identities and validate all required packet artifacts."""
     missing = sorted(name for name in REQUIRED if not (ROOT / name).is_file())
     if missing:
         print("missing required artifacts:", ", ".join(missing), file=sys.stderr)
