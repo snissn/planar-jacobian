@@ -394,8 +394,8 @@ def write_sync_record() -> None:
 
 ```text
 source_main: 788e94419080debf356d17123cbf81cb23b391ac
-candidate_revision: ad7abee8370146e40f41cb2d108cf07dc129df03
-review_revision: 1e585ee1b8fc4ae9a91500f7b1ae9607845fa630
+candidate_revision: 02547f9a1c8c72486ad2bb07a06a10fde1351af4
+review_revision: 3a96a48280228a7e38a4ca488109f90147d59b1c
 allocated_claims: CLM-067 through CLM-072
 leaf_status: OPEN
 scientific_status: SUBCLASS_EXCLUSION_WITH_EXACT_REDUCTION
