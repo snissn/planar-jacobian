@@ -7,10 +7,10 @@
     "research/issues/qualifying-weight-descent/"
   ],
   "base_sha": "652a5e252626fa5816445651245e8a8946cee53e",
-  "candidate_sha": "3de516d76c8defd14a66b8727a6ae22618d368de",
+  "candidate_sha": "574a42de10d3927dd76ad5c6e8b3aa4fcd1f114b",
   "scientific_status": "candidate_proved_scoped_with_open_bridge / MUTABLE_NONAUTHORITATIVE",
   "review_mode": "local-adversarial-review",
-  "reviewed_revision": "3de516d76c8defd14a66b8727a6ae22618d368de",
+  "reviewed_revision": "574a42de10d3927dd76ad5c6e8b3aa4fcd1f114b",
   "proposed_global_claims": [
     {
       "id": "QWD-MIN",
@@ -18,6 +18,10 @@
     },
     {
       "id": "QWD-AFFINE",
+      "status": "candidate_proved_scoped"
+    },
+    {
+      "id": "QWD-ORBIT-DIAGNOSIS",
       "status": "candidate_proved_scoped"
     },
     {
@@ -33,6 +37,10 @@
       "status": "candidate_proved_scoped"
     },
     {
+      "id": "QWD-DIRECTED-CORE",
+      "status": "candidate_proved_scoped"
+    },
+    {
       "id": "QWD-CORE",
       "status": "open_bridge"
     }
@@ -44,6 +52,10 @@
     },
     {
       "id": "QWD-BINOMIAL-CLASS",
+      "status": "candidate_proved_scoped"
+    },
+    {
+      "id": "QWD-FULL-ORBIT-DIAGNOSIS",
       "status": "candidate_proved_scoped"
     },
     {
