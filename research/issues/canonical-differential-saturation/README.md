@@ -6,7 +6,7 @@
 > **Base revision:** `main@652a5e252626fa5816445651245e8a8946cee53e`  
 > **Authority:** `MUTABLE_NONAUTHORITATIVE`  
 > **Scientific disposition:** `SCOPED_EQUIVALENCE_COUNTEREXAMPLE_AND_REDUCTION`  
-> **Review mode:** `local-adversarial-review` — `ACCEPT_SCOPED` at `2a0300d3dbfba2a58622d3e60351c18dd28a094a`
+> **Review mode:** renewed local adversarial review pending at the corrected candidate revision
 
 ## Question
 
@@ -55,25 +55,30 @@ D-module and logarithmic constructions do not cross it.
 3. **Pole-bounded source stages.**  The source open supplies a
    canonical ind-system of finite reflexive pole modules.  Saturating
    any stage with a ramified component is nonfinite.  At an unramified
-   omitted divisor, any stage containing a genuine pole is also
-   nonfinite under a transverse canonical translation.  Only the
-   zero-pole normalization stage can possibly be finite and stable.
+   omitted divisor, any stage containing an actual pole is also
+   nonfinite under a transverse canonical translation.  The proof
+   starts from a pole-bearing section of the stage and tracks its
+   unique lowest-valuation term; it does not assume that a bare local
+   monomial belongs to the global module.  Only the zero-pole
+   normalization stage can possibly be finite and stable.
 
-4. **D-module coherence wall.**  On the maximal finite-etale locus,
-   the pushforward is the rank-\([L:K]\) permutation connection.  At a
-   height-one divisor, a cycle of inertia length \(e\) contributes
-   residue classes
+4. **Generic height-one D-module criterion.**  On the maximal
+   finite-etale locus, the pushforward is the rank-\([L:K]\)
+   permutation connection.  At the generic point of a height-one
+   divisor, a cycle of inertia length \(e\) contributes residue
+   classes
 
    \[
    0,\frac1e,\ldots,\frac{e-1}{e}\pmod{\mathbf Z}.
    \]
 
    A logarithmic Deligne lattice exists and is coherent, but an
-   ordinary \(\mathcal O\)-coherent extension stable under a transverse
-   translation exists exactly when every inertia cycle has length one.
-   Equivalently, ordinary \(\mathcal O\)-coherence of the full
-   intermediate extension at height one is already the no-ramification
-   statement.
+   embedded ordinary \(\mathcal O\)-coherent lattice stable under a
+   transverse translation exists exactly when every inertia cycle has
+   length one.  This is a local codimension-one criterion.  It does not
+   by itself prove global coherence of a named intermediate extension,
+   control codimension-two behavior, or supply an embedding into
+   \(L\).
 
 5. **Holonomicity is insufficient.**  A regular holonomic
    \(\mathcal D\)-module may be infinitely generated over
@@ -86,20 +91,28 @@ D-module and logarithmic constructions do not cross it.
 
 6. **Smallest surviving bridge.**  Prove from the polynomial Keller
    source that the full finite-etale permutation local system has
-   trivial inertia at every height-one divisor; equivalently, prove
-   that its canonical intermediate extension is
-   \(\mathcal O\)-coherent there and has generic fiber \(L\).
-   This produces a finite full pair-stable lattice, hence the stable
-   multiplier order and degree one.  No theorem audited here derives
-   this property from the Keller hypotheses.
+   trivial inertia at every height-one divisor.  The
+   normalization-saturation theorem then makes \(O\) a finite full
+   pair-stable lattice and enters the maintained multiplier-order
+   route.  Equivalently only at each generic height-one point, this is
+   the ordinary-coherence criterion for the local intermediate
+   extension.
+
+   A direct global D-module construction is a distinct, stronger
+   formulation: prove that the full intermediate extension is
+   globally \(\mathcal O\)-coherent and admits a
+   connection-compatible torsion-free embedding into the meromorphic
+   sheaf with generic fiber \(L\).  The audited D-module theorems do not
+   derive this package from the Keller hypotheses.
 
 Accordingly, the first supported requested dispositions are:
 
 - **(6)** counterexamples to the proposed implications
   “holonomic \(\Rightarrow\) \(\mathcal O\)-finite” and
   “logarithmic lattice \(\Rightarrow\) ordinary stable lattice”; and
-- **(7)** reduction to the exact height-one
-  \(\mathcal O\)-coherence/trivial-inertia statement.
+- **(7)** reduction to the exact height-one trivial-inertia statement,
+  with the stronger global coherence-and-embedding package isolated
+  for a direct D-module route.
 
 ## Packet-local claims
 
@@ -108,10 +121,10 @@ Accordingly, the first supported requested dispositions are:
 | `CDS-001` | `verified_internal` | The displayed canonical derivations have the required signs and commute. |
 | `CDS-002` | `candidate_proved` | For every finite full seed, finite differential saturation forces no height-one ramification. |
 | `CDS-003` | `candidate_proved` | The normalization-seed saturation is finite iff the normalization is unramified in codimension one. |
-| `CDS-004` | `candidate_proved` | Positive source-pole stages and ramified stages have nonfinite saturation. |
-| `CDS-005` | `candidate_proved` | For the finite-cover permutation connection, ordinary coherent extension across a height-one divisor is equivalent to trivial inertia there. |
+| `CDS-004` | `candidate_proved` | Ramified source-pole stages and genuine positive unramified pole stages have nonfinite saturation; the latter is proved from an actual pole-bearing section. |
+| `CDS-005` | `candidate_proved` | At a generic height-one point of the finite-cover permutation connection, an embedded ordinary coherent lattice exists iff local inertia is trivial. |
 | `CDS-006` | `counterexample` | Regular holonomic or logarithmically coherent extensions need not be finite over the ordinary structure sheaf. |
-| `CDS-007` | `open_bridge` | Derive trivial height-one inertia, or ordinary \(\mathcal O\)-coherence of the full intermediate extension, from the polynomial Keller source. |
+| `CDS-007` | `open_bridge` | Derive trivial height-one inertia from the polynomial Keller source; a direct global D-module route additionally requires global coherence and a torsion-free embedding into \(L\). |
 | `CDS-008` | `negative_audit` | The audited multiplier, dual, canonical, jet, and cohomological constructions do not bypass `CDS-007`. |
 
 These are issue-local labels.  They allocate or promote no global
@@ -122,8 +135,8 @@ These are issue-local labels.  They allocate or promote no global
 - `FOUNDATIONS.md` — setup, signs, dependencies, and definitions.
 - `DIFFERENTIAL_SATURATION.md` — finite-seed and normalization-seed
   coherence theorems.
-- `DMODULE_ROUTE.md` — finite-etale connection, intermediate
-  extension, and exact \(\mathcal O\)-coherence bridge.
+- `DMODULE_ROUTE.md` — finite-etale connection, generic height-one
+  criterion, and exact global coherence-and-embedding bridge.
 - `LOGARITHMIC_LATTICES.md` — Deligne lattices, residues, regularity,
   and the ordinary/logarithmic distinction.
 - `LOCAL_RESIDUES.md` — Kummer calculation, pair spectrum, singular
@@ -143,6 +156,7 @@ These are issue-local labels.  They allocate or promote no global
 This packet does not prove that a finite full pair-stable lattice
 exists for an arbitrary Keller pair.  It does not prove that the
 normalization is unramified, that the source is finite over the target,
-that a holonomic direct image is \(\mathcal O\)-coherent, or that the
-planar Jacobian conjecture holds.  Passing validators records
+that a holonomic direct image is \(\mathcal O\)-coherent, that the full
+intermediate extension is globally coherent and embedded in \(L\), or
+that the planar Jacobian conjecture holds.  Passing validators records
 algebraic and repository consistency only.
