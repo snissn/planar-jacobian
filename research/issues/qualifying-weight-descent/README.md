@@ -42,10 +42,18 @@ results, one finite reduction, and one exact diagnosis.
    possible, even on automorphisms.
 4. **Invariant diagnosis (requested disposition 7).** The scalar written as
    `mu(F)` is inadequate until the transformation class is declared. The
-   affine value is unbounded on `A_N`; the full target automorphism group makes
-   the value zero on every known automorphism by applying its inverse. The
-   useful replacement is a directed, certificate-bearing descent relation plus
-   a lexicographic Newton core, not an undirected full-orbit scalar.
+   affine value is unbounded on `A_N`. At the other extreme, tame and full
+   plane orbit classes coincide, and the reviewed defect-four theorem gives
+
+   ```text
+   F is an automorphism  <=>  mu_full(F)<=4.
+   ```
+
+   Conditional on independent acceptance of the exact fixed-weight defect-five
+   candidate, the same equivalence holds with bound five. The full-orbit scalar
+   therefore repackages the terminal invertibility question rather than
+   supplying a constructive bridge. The useful replacement is a directed,
+   certificate-bearing descent relation plus a lexicographic Newton core.
 
 The global qualifying-weight problem remains open at the exact no-escape step:
 force a certified complete-top descent or a bounded terminal common-power core
@@ -68,6 +76,11 @@ achieved value is a nonnegative integer by the exact Rees identity. The
 identity transformation and `w=(1,1)` make the value set nonempty. The
 well-ordering of `N` therefore gives an **achieved** minimum. No compactness or
 finite generation of the automorphism group is used.
+
+For the full/tame class, existence of the minimum is exact but not constructive:
+a value at most four is equivalent to invertibility by the reviewed
+fixed-weight theorem. This is why the directed replacement records explicit
+forward certificates rather than an arbitrary orbit representative.
 
 ### `QWD-AFFINE` — exact affine-orbit obstruction
 
@@ -192,9 +205,10 @@ primitive positive w and kappa_w<=4  =>  polynomial automorphism.
 
 It is bound to candidate `96fc7ec34bd3b685a0edeae7ecd4404abab7e2f1` and the
 mainline freeze record. The fixed-weight defect-five theorem is **not** used as
-unconditional authority. Any improvement from `kappa>=5` to `kappa>=6` is
-stated only conditionally on independent acceptance of the exact issue #29
-candidate or on a future independent rederivation.
+unconditional authority. Any improvement from `kappa>=5` to `kappa>=6`, or the
+full-orbit threshold-five equivalence, is stated only conditionally on
+independent acceptance of the exact issue #29 candidate or on a future
+independent rederivation.
 
 ## Artifact map
 
