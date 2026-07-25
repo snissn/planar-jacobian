@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "issue_number": 29,
+  "leaf_id": "L15",
+  "role": "integration-maintainer",
+  "owned_paths": [
+    "research/issues/defect-5-rees/",
+    "research/leaf-packets/L15-defect-5-staircase.md",
+    "research/tracks/m-filtered-equivariance.md"
+  ],
+  "base_sha": "4e26438c83d370be8fcddf14da88ef151cb3e841",
+  "candidate_sha": "2eeb36d232366d124b5a66774b29769ec1eba43d",
+  "scientific_status": "candidate_proved",
+  "review_mode": "local-adversarial-review",
+  "reviewed_revision": "2eeb36d232366d124b5a66774b29769ec1eba43d",
+  "proposed_global_claims": [
+    {
+      "id": "CLM-073",
+      "status": "candidate_proved",
+      "scope": "fixed primitive positive weight with actual grading defect five"
+    }
+  ],
+  "proposed_graph_nodes": [
+    {
+      "id": "OPEN-DEFECT-5",
+      "status": "disposed",
+      "disposition": "CANDIDATE_PROVED_LOCAL_REVIEW"
+    }
+  ],
+  "shared_surfaces_requested": [
+    "STATUS.md",
+    "research/claim_ledger.json",
+    "research/CLAIM_LEDGER.md",
+    "research/proof_graph.json",
+    "research/PROOF_GRAPH.md",
+    "research/work_queue.json",
+    "research/WORK_QUEUE.md",
+    "research/ISSUE_INDEX.md",
+    "scripts/render_views.py",
+    "scripts/validate_repository_legacy.py"
+  ],
+  "supersedes_prs": [30, 36],
+  "temporary_artifacts_absent": true,
+  "integration_state": "integration-ready"
+}
