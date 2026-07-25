@@ -12,7 +12,7 @@ translations, not logarithmic stability.
 | Source algebra \(A=\mathbf C[x,y]\) | not known | yes | exactly pair-stable | finiteness is the original nonproperness gap |
 | \(\operatorname{Sat}_D(O)\) | iff no height-one ramification | yes | stable by definition | `CDS-003`; coherence is equivalent to the missing condition |
 | \(\operatorname{Sat}_D(M_0)\), arbitrary finite full seed | not in general | yes | stable by definition | if finite, no height-one ramification |
-| Fixed source pole module \(M(\mathbf N)\) | yes | yes | derivative shifts pole vector | any ramified stage, or any positive unramified pole stage, has nonfinite saturation |
+| Fixed source pole module \(M(\mathbf N)\) | yes | yes | derivative shifts pole vector | any ramified stage, or any unramified stage containing an actual positive pole, has nonfinite saturation |
 | Directed union of all pole stages | generally not finite | yes | stable | ind-object only; no fixed finite ambient module |
 | Reflexive hull of a pole stage | yes | yes | same height-one residue-class multiset | no improvement |
 | Finite intersection of pole stages/translates | yes | must be checked | not closed under all derivatives | if the intersection is full, complete saturation is subject to the finite-full-seed obstruction; if not full, it is not a candidate lattice in \(L\) |
