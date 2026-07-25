@@ -71,7 +71,7 @@ is
 
 ## 3. Ordinary coherent extension criterion
 
-### Theorem 3.1 — height-one D-module coherence criterion
+### Theorem 3.1 — generic height-one criterion
 
 For the finite-cover permutation connection near the generic point of
 \(H\), the following are equivalent.
@@ -79,8 +79,9 @@ For the finite-cover permutation connection near the generic point of
 1. Its full generic fiber admits a finite
    \(\mathcal O\)-lattice stable under the ordinary transverse
    derivation \(D_t\).
-2. It admits an \(\mathcal O\)-coherent extension carrying an
-   ordinary integrable connection across \(H\).
+2. It admits a coherent torsion-free \(\mathcal O\)-lattice embedded
+   in the meromorphic generic fiber and carrying an ordinary
+   integrable connection across \(H\).
 3. Every local inertia cycle has length one.
 4. The finite normalization is unramified over \(H\).
 5. Every fractional residue class is zero in
@@ -89,15 +90,16 @@ For the finite-cover permutation connection near the generic point of
 ### Proof
 
 `1 => 5` is the local no-lattice theorem, character by character.
-`2 => 1` follows by taking the generic-fiber embedding and removing
-torsion.  `5 <=> 3` follows from the cycle multiset above, and
-`3 <=> 4` is the local finite-cover inertia criterion in
-characteristic zero.  If inertia is trivial, the finite cover is
-etale over the trait and the normalization itself is preserved by
-\(D_t\), proving `4 => 2`.  \(\square\)
+`2 => 1` is immediate from the asserted embedding.  `5 <=> 3` follows
+from the cycle multiset above, and `3 <=> 4` is the local finite-cover
+inertia criterion in characteristic zero.  If inertia is trivial, the
+finite cover is etale over the trait and the normalization itself is
+an embedded coherent lattice preserved by \(D_t\), proving
+`4 => 2`.  \(\square\)
 
-This theorem is proved locally and does not require a global
-Riemann-Hilbert equivalence.
+This theorem is local at the generic point of one divisor.  It neither
+asserts global \(\mathcal O\)-coherence of a named D-module extension
+nor supplies a global embedding into \(L\).
 
 ## 4. Logarithmic extension versus ordinary extension
 
@@ -117,7 +119,7 @@ Thus the statement
 > the canonical local system has a coherent logarithmic extension
 
 is true in the ramified Kummer model and cannot imply no
-ramification.  The required statement is ordinary
+ramification.  The required local statement is ordinary
 \(\mathcal O\)-coherence under unscaled translations.
 
 ## 5. The intermediate extension
@@ -155,11 +157,13 @@ The module is cyclic over \(\mathcal D\) but infinite over
 
 ### Corollary 5.1
 
-The full intermediate extension is
-\(\mathcal O\)-coherent at the generic point of every height-one
-divisor if and only if all local inertia is trivial there.
+At the generic point of a height-one divisor, the underlying
+ordinary module of the full intermediate extension is
+\(\mathcal O\)-coherent if and only if the local inertia is trivial
+there.
 
-This is exactly `CDS-007`, not a consequence of holonomicity.
+This is a codimension-one diagnostic for `CDS-007`, not a theorem of
+global coherence and not a consequence of holonomicity.
 
 ## 6. Direct image distinctions
 
@@ -185,40 +189,65 @@ No direct-image theorem used in this packet asserts ordinary
 
 ## 7. Local-to-global theorem
 
-### Theorem 7.1 — exact property X
+Let \(\underline L_{\mathrm{rat}}\) denote the sheaf of meromorphic
+sections on \(\mathbf A^2\) with generic fiber \(L\).
+
+### Theorem 7.1 — exact global property X
 
 Assume the full permutation connection \(\mathcal E\) has an
 extension \(\mathcal M\) on \(\mathbf A^2\) satisfying:
 
 1. \(\mathcal M\) is coherent over
    \(\mathcal O_{\mathbf A^2}\);
-2. its generic fiber is identified with \(L\) as a \(K\)-vector
-   space;
-3. its connection is stable under both ordinary translations
-   \(\partial_P,\partial_Q\).
+2. there is an injective \(\mathcal O\)-linear morphism
+   \(\iota:\mathcal M\hookrightarrow\underline L_{\mathrm{rat}}\)
+   inducing the prescribed generic-fiber identification with \(L\);
+3. the connection agrees generically with the canonical connection
+   and preserves \(\iota(\mathcal M)\) under both ordinary
+   translations \(\partial_P,\partial_Q\).
 
-Then \(M=\Gamma(\mathbf A^2,\mathcal M)\), embedded in \(L\), is a
-finite full pair-stable \(B\)-lattice.  Its reflexive multiplier ring
-is a finite locally free stable order, and the maintained
+Then
+
+\[
+M=\iota\bigl(\Gamma(\mathbf A^2,\mathcal M)\bigr)\subset L
+\]
+
+is a finite full pair-stable \(B\)-lattice.  Its reflexive multiplier
+ring is a finite locally free stable order, and the maintained
 discriminant theorem forces \([L:K]=1\).
 
 ### Proof
 
 Affineness turns \(\mathcal O\)-coherence into finite generation over
-\(B\).  The generic-fiber identification gives fullness.  The
-connection gives pair stability.  Apply the multiplier-order theorem
-and then the stable-order discriminant theorem.  \(\square\)
+\(B\).  Injectivity places global sections inside \(L\), while the
+generic isomorphism gives fullness and torsion-freeness.  Condition 3
+shows that the two canonical derivations preserve this embedded
+module.  Apply the multiplier-order theorem and then the stable-order
+discriminant theorem.  \(\square\)
 
-One may replace conditions 1–3 by the named statement:
+The corresponding named **direct D-module bridge** is:
 
-> the full intermediate extension \(j_{V!*}\mathcal E\) is an
-> ordinary \(\mathcal O\)-coherent connection with generic fiber
-> \(L\).
+> the full intermediate extension \(j_{V!*}\mathcal E\) is globally
+> \(\mathcal O\)-coherent and has a connection-compatible,
+> torsion-free embedding into \(\underline L_{\mathrm{rat}}\) with
+> generic fiber \(L\).
 
-By Theorem 3.1, this named statement is equivalent in codimension one
-to trivial inertia/no ramification.  The Keller hypotheses currently
-supply the local system and connection, but not this
-\(\mathcal O\)-coherence.
+Theorem 3.1 and Corollary 5.1 identify only the generic height-one
+part of this statement.  Trivial inertia at all height-one divisors
+does not, by the D-module argument alone, prove global coherence,
+control codimension-two behavior, or construct the required embedding.
+
+There are therefore two distinct exact routes:
+
+1. **Normalization route.**  Prove trivial height-one inertia.  The
+   normalization-saturation theorem then makes \(O\) itself a finite
+   full pair-stable lattice.
+2. **Direct D-module route.**  Prove the stronger global coherent and
+   embedded intermediate-extension statement above, then apply
+   Theorem 7.1.
+
+The Keller hypotheses currently provide the finite-etale local system
+and connection on \(V\), but establish neither route's missing input.
 
 ## 8. Cohomological constructions
 
@@ -249,4 +278,5 @@ Finite-order jets along a boundary are coherent, but a transverse
 derivation raises jet or principal-part order.  The directed union is
 D-stable; no finite jet order is.
 
-Thus none of these constructions establishes property X as stated.
+Thus none of these constructions establishes global property X as
+stated.
