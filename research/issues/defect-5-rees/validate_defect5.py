@@ -168,7 +168,7 @@ def build_formal_system(p: int, q: int, a: int, chart: int = 0) -> FormalSystem 
 def unit_groebner(equations: Iterable[sp.Expr], variables: Iterable[sp.Symbol], nonzero: sp.Expr) -> tuple[int, int]:
     z = sp.Symbol("saturation_z")
     ordered_variables = list(dict.fromkeys([*variables, z]))
-    ideal = [sp.expand(eq) for equations] + [sp.expand(z * nonzero - 1)]
+    ideal = [sp.expand(eq) for eq in equations] + [sp.expand(z * nonzero - 1)]
     basis = sp.groebner(ideal, *ordered_variables, order="grevlex")
     assert any(poly.as_expr() == 1 for poly in basis.polys), "formal no-descent system survived"
     return len(ideal), len(ordered_variables)
