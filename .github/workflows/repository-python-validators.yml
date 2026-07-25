@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: read
+  pull-requests: read
   statuses: write
 
 concurrency:
@@ -17,13 +18,14 @@ jobs:
   validate:
     name: Validate exact research revision
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
 
     steps:
       - name: Check out exact event revision
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -42,7 +44,21 @@ jobs:
           python -c 'import sympy; print("sympy", sympy.__version__)' | tee -a runtime.txt
 
       - name: Byte-compile all maintained Python
-        run: python -m compileall -q scripts research/issues/issue-3-unramified-index research/issues/rank-three-index-form-unit research/issues/source-reflexive-lattice research/issues/one-boundary-logarithmic-field
+        run: python -m compileall -q scripts research/issues
+
+      - name: Validate integration-contract fixtures
+        shell: bash
+        run: |
+          set -o pipefail
+          python -m unittest discover -s scripts/tests -p 'test_*.py' | tee integration-contract-tests.log
+
+      - name: Validate immutable integration contract
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -o pipefail
+          python scripts/validate_integration_contract.py | tee integration-contract.log
 
       - name: Verify generated Markdown views
         shell: bash
@@ -110,6 +126,17 @@ jobs:
           set -o pipefail
           python research/issues/one-boundary-logarithmic-field/verify_all.py | tee issue5-one-boundary.log
 
+      - name: "Validate defect-five packet when present"
+        shell: bash
+        run: |
+          set -o pipefail
+          if [ -d research/issues/defect-5-rees ]; then
+            python research/issues/defect-5-rees/validate_defect5.py | tee defect5-candidate.log
+            python research/issues/defect-5-rees/review_validate_defect5_adversarial.py | tee defect5-adversarial.log
+          else
+            echo "defect-five packet not present" | tee defect5-candidate.log defect5-adversarial.log
+          fi
+
       - name: Add frontier to job summary
         if: always()
         shell: bash
@@ -136,6 +163,8 @@ jobs:
           path: |
             exact-sha.txt
             runtime.txt
+            integration-contract-tests.log
+            integration-contract.log
             generated-views.log
             repository-validation.log
             frontier.log
@@ -147,6 +176,8 @@ jobs:
             issue4-source-reflexive-lattice.log
             issue5-principal-parts.log
             issue5-one-boundary.log
+            defect5-candidate.log
+            defect5-adversarial.log
           if-no-files-found: warn
           retention-days: 30
 
