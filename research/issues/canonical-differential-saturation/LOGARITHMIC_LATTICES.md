@@ -17,13 +17,13 @@ Equivalently, \(t\partial_t\) preserves \(M_{\log}\).  The residue is
 the endomorphism induced by \(t\nabla_{\partial_t}\) on
 \(M_{\log}/tM_{\log}\).
 
-Choosing a different logarithmic lattice shifts residue eigenvalues
-by integers.  Therefore the eigenvalue classes in
-\(\mathbf C/\mathbf Z\) are intrinsic.
+On each fixed monodromy eigenspace, choosing a different logarithmic
+lattice shifts the residue representative by an integer.  Therefore
+the eigenvalue classes in \(\mathbf C/\mathbf Z\) are intrinsic.
 
 For a finite-cover permutation local system the monodromy is finite,
-so the local connection is regular singular and semisimple after
-tame splitting.  Its intrinsic classes are rational.
+so the local connection is regular singular and semisimple after tame
+splitting.  Its intrinsic classes are rational.
 
 ## 2. Deligne lattice in the Kummer model
 
@@ -55,10 +55,10 @@ D_t(s^j)=\frac je\,t^{-1}s^j.
 This model disproves any bridge from existence of a coherent
 logarithmic lattice to existence of an ordinary stable lattice.
 
-## 3. Integer shifts and canonical windows
+## 3. Integer shifts, fractional twists, and canonical windows
 
-Multiplying a local generator by \(t^m\) changes the residue
-representative
+Multiplying a generator on a fixed monodromy eigenspace by \(t^m\)
+changes its residue representative
 
 \[
 \alpha\longmapsto\alpha+m.
@@ -68,9 +68,13 @@ A Deligne extension selects one representative from each class by
 choosing a strip or section of \(\mathbf C\to\mathbf C/\mathbf Z\).
 No choice turns a nonzero class \(j/e\) into zero.
 
-Trace duals, inverse differents, canonical modules, and conductor
-twists amount locally to such integral shifts, possibly with a
-permutation of characters.  Their class multisets are unchanged.
+A fractional \(O\)-ideal twist can also permute the tame character
+labels.  In the Kummer factor, multiplication by \(s^k\) replaces the
+multiset \(\{j/e\}\) by \(\{(j+k)/e\}\), which is the same multiset
+modulo \(\mathbf Z\).  Trace duals, inverse differents, canonical
+modules, and conductor twists therefore preserve the full intrinsic
+class multiset even though they need not be describable as one common
+integer shift in a chosen normalization basis.
 
 ## 4. Two canonical derivations
 
