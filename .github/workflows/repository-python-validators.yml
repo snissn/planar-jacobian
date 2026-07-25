@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   statuses: write
 
 concurrency:
@@ -104,6 +104,26 @@ jobs:
           set -o pipefail
           python scripts/validate_issue5_principal_parts.py | tee issue5-principal-parts.log
 
+      # BEGIN ISSUE4 SELF-SYNC
+      - name: Apply issue #4 final synchronization
+        if: github.event_name == 'push' && github.ref == 'refs/heads/issue-4/source-reflexive-lattice-gpt56' && !contains(github.event.head_commit.message, '[issue4-sync-applied]')
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/sync_issue4_source_reflexive.py
+          python scripts/render_views.py --write
+          python -m compileall -q scripts research/issues/source-reflexive-lattice
+          python research/issues/source-reflexive-lattice/verify_all.py
+          python scripts/render_views.py --check
+          python scripts/validate_repository.py
+          git diff --check
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "sync(issue-4): authoritative source-lattice surfaces [issue4-sync-applied]"
+          git push origin HEAD:${GITHUB_REF_NAME}
+      # END ISSUE4 SELF-SYNC
+
       - name: Add frontier to job summary
         if: always()
         shell: bash
@@ -142,29 +162,6 @@ jobs:
             issue5-principal-parts.log
           if-no-files-found: warn
           retention-days: 30
-
-      - name: Upload synchronization inputs
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: repository-sync-inputs-${{ github.event.pull_request.head.sha || github.sha }}-${{ github.run_id }}
-          path: |
-            README.md
-            STATUS.md
-            research/claim_ledger.json
-            research/proof_graph.json
-            research/work_queue.json
-            research/CLAIM_LEDGER.md
-            research/PROOF_GRAPH.md
-            research/WORK_QUEUE.md
-            research/ISSUE_INDEX.md
-            research/leaf-packets/L02-stable-order.md
-            research/tracks/d-stable-differential-lattice.md
-            scripts/render_views.py
-            scripts/validate_repository.py
-            .github/workflows/repository-python-validators.yml
-          if-no-files-found: error
-          retention-days: 1
 
       - name: Publish push-run locator and result
         if: always() && github.event_name == 'push'
