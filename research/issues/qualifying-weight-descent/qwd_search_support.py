@@ -142,7 +142,14 @@ def campaign_adjacent_edges(bound: int = 9) -> None:
                 check(pair1 == pair2, "nonzero shared vertex allowed incompatible powers")
     for pair1, pair2 in combinations(pairs, 2):
         zero_controls += 1
-        check((0 * pair1[0], 0 * pair1[1]) == (0, 0), "zero control failed")
+        m, n = pair1
+        r, s = pair2
+        h = h_prime = (0, 0)
+        check(
+            (m * h[0], m * h[1]) == (r * h_prime[0], r * h_prime[1])
+            and (n * h[0], n * h[1]) == (s * h_prime[0], s * h_prime[1]),
+            "zero shared vertex did not admit incompatible coprime pairs",
+        )
     COUNTS.adjacent_edge_solutions = nonzero_solutions
     COUNTS.adjacent_edge_zero_vertex_controls = zero_controls
     COUNTS.mutation_controls += 1
