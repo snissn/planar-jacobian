@@ -2,7 +2,7 @@
 
 ## Issue-specific exact campaign
 
-The construction revision was checked with
+The final construction revision was checked with
 
 ```bash
 python3 -m py_compile qwd_search_core.py qwd_search_symbolic.py \
@@ -39,6 +39,11 @@ exact assertions: 2488
 mathematical authority: HUMAN PROOFS IN PACKET, NOT CHECK COUNTS
 ```
 
+The missing-support control now checks the exact zero/nonzero propagation forced
+by every adjacent binomial-chain recurrence. The zero-vertex mutation now
+verifies both shared-vertex equations for distinct coprime exponent pairs at the
+origin. These are semantic assertions rather than bookkeeping-only counters.
+
 The machine-readable path was also checked:
 
 ```bash
@@ -48,7 +53,36 @@ python3 validate_qualifying_weight.py \
 python3 -m json.tool /tmp/qwd-search.json >/dev/null
 ```
 
+The larger campaign passed with:
+
+```text
+primitive weights: 10043
+affine A_N instances: 11
+affine weight evaluations: 220946
+finite-fan instances: 32
+finite-fan brute comparisons: 321376
+exhaustive two-term support pairs: 44100
+saturated bounded formal systems: 387
+bounded formal survivors: 0
+mutation controls: 4
+exact assertions: 2520
+```
+
 The generated JSON is transient and is not committed.
+
+## Additional adversarial fan checks
+
+Two exact randomized stress checks were run outside the committed validator:
+
+- 500 random finite support pairs satisfying the relevant nonnegative axis/fan
+  conditions: the regular-fan minimum agreed with brute enumeration of all
+  primitive weights with coordinates at most 80;
+- 19,978 random ordered pairs of primitive first-quadrant rays with coordinates
+  at most 100: the Euclidean subdivision retained its endpoints and order and
+  every consecutive determinant was one.
+
+The random seeds were fixed during the run. These checks are additional
+falsification evidence only; the unbounded result is the written fan proof.
 
 ## Repository validation contract
 
