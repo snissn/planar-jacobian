@@ -34,29 +34,24 @@ iff
 v_p(Phi(s))=0.
 ```
 
-For a generically primitive `s`, the exact valuation is
+For a generically primitive `s`,
 
 ```text
 v_p(Phi(s))=length_R(S/R[s]).
 ```
 
-## 2. Why there are exactly three special-fiber types
+## 2. The three geometric special fibers
 
 Pass faithfully flatly to a strict henselization and then to an algebraic closure
-of the residue field. This does not change whether the index determinant is a
-unit. Every height-one factor of the normalization is a DVR. In characteristic
-zero the ramification is tame at the generic point, so a factor with ramification
-index `e` has special fiber `k[epsilon]/(epsilon^e)`. The total rank is three.
-
-The partitions of three give only:
+of the residue field. This preserves whether the index determinant is a unit.
+In residue characteristic zero the height-one ramification is tame. Total rank
+three leaves only the partitions
 
 ```text
-1+1+1,
-2+1,
-3.
+1+1+1,  2+1,  3,
 ```
 
-Thus the geometric special fiber is respectively
+and the corresponding geometric special-fiber algebras
 
 ```text
 k x k x k,
@@ -64,47 +59,44 @@ k x k x k,
 k[epsilon]/epsilon^3.
 ```
 
-This classifies the reduction of the binary index cubic up to `GL_2(k)`.
+These determine the binary index cubic up to `GL_2(k)`.
 
 ## 3. Split fiber: three distinct linear factors
 
-Let
+For
 
 ```text
 S_0=k x k x k,
-s=(z1,z2,z3).
+s=(z1,z2,z3),
 ```
 
-In the standard basis, the determinant of `1,s,s^2` is the Vandermonde
+the determinant of `1,s,s^2` is the Vandermonde
 
 ```text
 Phi_0(s)
- = det [[1,z1,z1^2],
-        [1,z2,z2^2],
-        [1,z3,z3^2]]
  = (z2-z1)(z3-z1)(z3-z2).
 ```
 
-On trace zero, `z1+z2+z3=0`, so the three collision equations are three distinct
-linear forms on the two-dimensional trace-zero plane. Therefore
+On trace zero, `z1+z2+z3=0`; the three collision equations are distinct linear
+forms on the two-dimensional trace-zero plane. Hence
 
 ```text
 Phi mod p ~ L1 L2 L3.
 ```
 
-The section generates the special fiber exactly when the three sheet values are
-pairwise distinct.
+The reduction of `s` generates exactly when its three sheet values are pairwise
+distinct.
 
 ## 4. Simple ramification: one linear factor times a square
 
-Let
+For
 
 ```text
 S_0=(k[epsilon]/epsilon^2) x k,
-s=(a+b epsilon,c).
+s=(a+b epsilon,c),
 ```
 
-Use the basis
+use the basis
 
 ```text
 1=(1,1),
@@ -117,71 +109,56 @@ The coordinate matrix of `1,s,s^2` is
 ```text
 [1   a       a^2          ]
 [0   b       2ab          ]
-[0   c-a     c^2-a^2      ].
+[0   c-a     c^2-a^2      ],
 ```
 
-Its determinant is
+so
 
 ```text
 Phi_0(s)=b(c-a)^2.
 ```
 
-The trace is `2a+c`. On the trace-zero plane, `c=-2a`, hence
-
-```text
-Phi_0=9 b a^2.
-```
-
-Therefore
+Trace zero gives `2a+c=0`, hence `Phi_0=9ba^2`. Therefore
 
 ```text
 Phi mod p ~ L M^2,
 ```
 
-not a cube. The two conditions have different meanings:
-
-- `b != 0` supplies the nilpotent/uniformizer direction in the ramified factor;
-- `c-a != 0` separates the reduced ramified point from the unramified sheet.
-
-Failure of the second condition is a residual sheet collision; its square
-multiplicity is intrinsic to the two coincident values in the Vandermonde.
+not a cube. The simple factor supplies the nilpotent direction; the squared
+factor separates the reduced ramified point from the unramified sheet.
 
 ## 5. Total ramification: a cube
 
-Let
+For
 
 ```text
 S_0=k[epsilon]/epsilon^3,
-s=a+b epsilon+c epsilon^2.
+s=a+b epsilon+c epsilon^2,
 ```
 
-In the basis `1,epsilon,epsilon^2`, the coordinate matrix is
+the coordinate matrix is
 
 ```text
 [1   a   a^2       ]
 [0   b   2ab       ]
-[0   c   b^2+2ac   ].
+[0   c   b^2+2ac   ],
 ```
 
-Its determinant is
+with determinant
 
 ```text
 Phi_0(s)=b^3.
 ```
 
-The trace is `3a`, so trace zero imposes `a=0` and does not alter the formula.
-Thus
+Trace zero imposes `a=0` and does not change the formula. Thus
 
 ```text
 Phi mod p ~ L^3.
 ```
 
-Here the “boundary cube” description is exact: the special fiber is generated
-precisely when the coefficient of the first uniformizer direction is nonzero.
+The “boundary cube” description is exact only in this totally ramified case.
 
-## 6. Exact boundary-cubic trichotomy
-
-Combining the preceding calculations:
+## 6. Boundary-cubic trichotomy
 
 ### Proposition 6.1
 
@@ -190,22 +167,21 @@ the reduced binary index cubic is geometrically `GL_2`-equivalent to exactly one
 of
 
 ```text
-L1 L2 L3,   L M^2,   L^3.
+L1 L2 L3,   L M^2,   L^3,
 ```
 
-The cases correspond respectively to ramification partitions `1+1+1`, `2+1`,
-and `3`.
+corresponding to ramification partitions `1+1+1`, `2+1`, and `3`.
 
-### Consequences
+Consequently:
 
-1. A blanket “boundary cube” assumption is false.
-2. The different/discriminant distinguishes the repeated-factor cases but does
-   not select one global integral direction across all divisors.
-3. In each case, `p` divides `Phi(s)` exactly when the reduction of `s` fails
-   the displayed generation criterion.
-4. Higher valuation of `Phi(s)` measures excess integral index beyond the
-   special-fiber failure; the mod-`p` shape alone does not determine that
-   higher length.
+1. a blanket boundary-cube assumption is false;
+2. the different distinguishes repeated-factor cases but does not choose one
+   global integral direction;
+3. `p` divides `Phi(s)` exactly when the reduction of `s` fails the displayed
+   generation criterion;
+4. the mod-`p` shape does not determine higher index length.
+
+The determinant identities are checked in `verify_binary_cubic.py`.
 
 ## 7. Simultaneous boundary adaptation
 
@@ -215,16 +191,15 @@ Let
 U=Spec(A) -> Y=Spec(O)
 ```
 
-be the specified source open. The complement `Y-U` has finitely many irreducible
-height-one components. Because `Y -> Spec(B)` is finite, each maps to a
-height-one target prime. Let
+be the specified source open. Its finitely many height-one boundary components
+map, under the finite normalization morphism, to finitely many target
+height-one primes
 
 ```text
-S_boundary={p_1,...,p_r}
+S_boundary={p_1,...,p_r}.
 ```
 
-be the finite set of distinct target primes so obtained, and choose a square-free
-product
+Choose a square-free product
 
 ```text
 H=h_1 ... h_r,
@@ -232,23 +207,22 @@ H=h_1 ... h_r,
 ```
 
 By the predecessor's finite-prime adaptation theorem (`CLM-029`), there is an
-integral primitive `theta in O` such that
+integral primitive `theta in O` with
 
 ```text
 B_{p_i}[theta]=O_{p_i}
 ```
 
-for every `i`. Replacing `theta` by its trace-zero part changes it by a base
-scalar and therefore does not change sheet differences or the generated algebra.
-Thus take `theta in E` with
+for every `i`. Subtracting the trace scalar does not change the generated algebra
+or sheet differences, so take `theta in E` with
 
 ```text
 v_{p_i}(Phi(theta))=0
 ```
 
-for all boundary primes.
+at all boundary primes.
 
-### Proposition 7.1 — boundary-stable affine family
+### Proposition 7.1 — one boundary-stable congruence class
 
 For every `eta in E` and `T in B`, set
 
@@ -262,23 +236,25 @@ Then
 B_{p_i}[s_T]=O_{p_i}
 ```
 
-for every `i` and every `T`.
+for all `i` and all `T`.
 
 ### Proof
 
 Modulo `p_i`, `H=0`, so `bar(s_T)=bar(theta)`. Since `bar(theta)` generates the
-whole special fiber, the local generation criterion gives the result. ∎
+whole semilocal special fiber, the local generation criterion gives the result.
+∎
 
-Therefore
+Thus
 
 ```text
 v_{p_i}(Phi(s_T))=0
 ```
 
-uniformly in `T`. All positive boundary valuations have been cancelled
-simultaneously before the global unit search begins.
+uniformly in this congruence class. This simultaneously removes every boundary
+valuation for the chosen family. It does **not** show that every possible unit
+section is congruent to this `theta` modulo `H E`.
 
-## 8. Exact affine-family identity
+## 8. Exact affine-pencil identity
 
 Let `C(-,-,-)` be the symmetric trilinear polarization of `Phi`. Homogeneity
 gives
@@ -307,31 +283,48 @@ Phi(s_T)
  = D + H C_1 T + H^2 B_2 T^2 + H^3 A T^3.      (8.1)
 ```
 
-Equation (8.1) is checked symbolically in `verify_boundary_family.py`.
-At every `p_i|H`, it reduces to `D`, a unit. Hence every irreducible factor of
-`Phi(s_T)` lies outside the chosen boundary set.
+Equation (8.1) is checked symbolically in `verify_boundary_family.py`. At every
+`p_i|H`, it reduces to `D`, a unit. Hence every irreducible factor created in
+this pencil lies outside the chosen boundary set and is a nonboundary scalar
+collision.
 
-## 9. Exact remaining counterfactual bridge
+## 9. Exact residue-class decomposition of the conditional search
 
-If Orevkov's rank-three theorem is set aside, the entire unit problem becomes:
+Define
 
-> Find `eta in E`, `T in B`, and `lambda in C*` such that
->
-> ```text
-> D + H C_1 T + H^2 B_2 T^2 + H^3 A T^3 = lambda.   (9.1)
-> ```
+```text
+R_H={bar(theta) in E/H E :
+     bar(theta) generates O_p/pO_p for every p|H}.
+```
 
-All boundary primes are already excluded. Any failure of (9.1) is a newly
-created height-one divisor in the source-étale target locus, where it represents
-an accidental equality of two scalar sheet values of `s_T`. This is not
-ramification and is not detected by the different.
+Finite-prime adaptation proves only that `R_H` is nonempty. For each
+`bar(theta) in R_H` and any lift `theta`, the integral sections with that residue
+class are exactly
 
-Thus the predecessor phrase “boundary-cube unit” can be sharpened:
+```text
+theta+H eta,  eta in E.
+```
+
+Therefore, if Orevkov's terminal theorem is deliberately set aside, the full
+conditional unit problem is
+
+```text
+find bar(theta) in R_H, a lift theta, eta in E, and lambda in C*
+such that Phi(theta+H eta)=lambda.               (9.1)
+```
+
+For a fixed class and direction, (8.1) is an exact one-parameter subproblem.
+Choosing the initial `theta` does not prove that a hypothetical unit section lies
+in its class. Failure of one pencil—or even one full class—does not exclude a
+unit section with different boundary residues.
+
+The sharpened boundary statement is therefore:
 
 ```text
 boundary local shape: completely classified;
-boundary valuations: simultaneously removable;
-remaining divisor: nonboundary moving scalar collision.
+within each chosen primitive class: all boundary valuations vanish;
+remaining factors in a pencil: nonboundary moving scalar collisions;
+additional exhaustive choice: the boundary-primitive class in E/H E.
 ```
 
 ## 10. Relation to source denominators
@@ -343,8 +336,7 @@ For a source function `r in A` viewed in `E_K`, clearing a denominator by
 Phi((m r)^0)=m^3 Phi_K(r).
 ```
 
-The boundary-adapted construction above is stronger for the unit search: rather
-than accepting a cubic boundary contribution from one denominator, it first
-chooses an integral section primitive at all boundary primes and then varies it
-by a multiple of `H`. No denominator or valuation compensation remains at the
-boundary.
+The boundary-adapted family avoids that denominator contribution inside a chosen
+primitive congruence class: it fixes one integral section primitive at all
+boundary primes and varies it by multiples of `H`. No boundary valuation is
+created inside that class, but no canonical or exhaustive class is selected.
