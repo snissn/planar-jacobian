@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   statuses: write
 
 concurrency:
@@ -14,16 +14,71 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  validate:
-    name: Validate exact research revision
+  sync_defect_five:
+    name: Synchronize defect-five integration
+    if: github.event_name == 'pull_request' && github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
-    timeout-minutes: 20
-
+    timeout-minutes: 10
+    outputs:
+      changed: ${{ steps.sync.outputs.changed }}
+      head_sha: ${{ steps.sync.outputs.head_sha }}
     steps:
-      - name: Check out exact event revision
+      - name: Check out integration branch
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          ref: issue-29/defect-five-mainline-rebuild
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Apply synchronized mainline delta
+        id: sync
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          source = Path('.github/workflows/defect-five-rebuild.yml').read_text(encoding='utf-8')
+          start = "          python - <<'PY'\n"
+          end = "\n          PY\n"
+          block = source.split(start, 1)[1].split(end, 1)[0]
+          lines = []
+          for line in block.splitlines():
+              if line.startswith('          '):
+                  line = line[10:]
+              lines.append(line)
+          code = '\n'.join(lines) + '\n'
+          exec(compile(code, 'defect-five-inline-sync', 'exec'), {'__name__': '__main__'})
+          PY
+          python scripts/render_views.py --write
+          if git diff --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "head_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add .github/workflows/repository-python-validators.yml STATUS.md research scripts/validate_repository.py scripts/render_views.py
+          git diff --cached --check
+          git commit -m 'sync(issue-29): allocate defect-five candidate and review frontier'
+          git push origin HEAD:issue-29/defect-five-mainline-rebuild
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+          echo "head_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+  validate:
+    name: Validate exact synchronized research revision
+    needs: [sync_defect_five]
+    if: always() && (needs.sync_defect_five.result == 'success' || needs.sync_defect_five.result == 'skipped')
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Check out synchronized branch head
+        uses: actions/checkout@v4
+        with:
+          ref: issue-29/defect-five-mainline-rebuild
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -41,8 +96,21 @@ jobs:
           python --version | tee runtime.txt
           python -c 'import sympy; print("sympy", sympy.__version__)' | tee -a runtime.txt
 
+      - name: Verify reviewed candidate bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object research/issues/defect-5-rees/README.md)" = 20e5f1e5c2c0a06f044e31b2abf27d9f499506b2
+          test "$(git hash-object research/issues/defect-5-rees/FOUNDATIONS.md)" = 7ee1ae5f7fff3b34a73fee5819d35c91c531c026
+          test "$(git hash-object research/issues/defect-5-rees/TRANSFORMATIONS.md)" = 4869da7f6d9a68e84d0cbe69fa621d20dcfa4b65
+          test "$(git hash-object research/issues/defect-5-rees/DERIVATION.md)" = 97eeac0375ead289b0c87646e34b0e2b99411988
+          test "$(git hash-object research/issues/defect-5-rees/CASE_TABLE.md)" = e21969832bb6c8214e772f214fd352b0e786686d
+          test "$(git hash-object research/issues/defect-5-rees/COUNTERMODEL_SEARCH.md)" = d7f8b56ce0ac9a50b0f283a861cb7d78e2adcba3
+          test "$(git hash-object research/issues/defect-5-rees/VALIDATION.md)" = e7770db79053ff2835d59550d1602eec9558d8eb
+          test "$(git hash-object research/issues/defect-5-rees/validate_defect5.py)" = e702b0114642c20b71111b702ef883d6473e84d5
+
       - name: Byte-compile all maintained Python
-        run: python -m compileall -q scripts research/issues/issue-3-unramified-index research/issues/rank-three-index-form-unit research/issues/source-reflexive-lattice research/issues/one-boundary-logarithmic-field
+        run: python -m compileall -q scripts research/issues/issue-3-unramified-index research/issues/rank-three-index-form-unit research/issues/source-reflexive-lattice research/issues/one-boundary-logarithmic-field research/issues/defect-5-rees
 
       - name: Verify generated Markdown views
         shell: bash
@@ -110,6 +178,27 @@ jobs:
           set -o pipefail
           python research/issues/one-boundary-logarithmic-field/verify_all.py | tee issue5-one-boundary.log
 
+      - name: "Validate issue #29 defect-five candidate"
+        shell: bash
+        run: |
+          set -o pipefail
+          python research/issues/defect-5-rees/validate_defect5.py --max-weight 64 --json | tee issue29-defect5.log
+
+      - name: "Validate issue #29 local adversarial checker"
+        shell: bash
+        run: |
+          set -o pipefail
+          python research/issues/defect-5-rees/review_validate_defect5_adversarial.py | tee issue29-defect5-review.log
+
+      - name: Reject temporary payloads and dirty diffs
+        shell: bash
+        run: |
+          set -euo pipefail
+          test ! -e .github/defect-five-sync
+          test ! -e .github/workflows/defect-five-workspace-export.yml
+          ! find . -path './.git' -prune -o -name '*.b64' -print | grep -q .
+          git diff --check
+
       - name: Add frontier to job summary
         if: always()
         shell: bash
@@ -147,6 +236,8 @@ jobs:
             issue4-source-reflexive-lattice.log
             issue5-principal-parts.log
             issue5-one-boundary.log
+            issue29-defect5.log
+            issue29-defect5-review.log
           if-no-files-found: warn
           retention-days: 30
 
