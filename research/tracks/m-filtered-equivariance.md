@@ -4,6 +4,7 @@
 > **Reviewed issue:** [#17](https://github.com/snissn/planar-jacobian/issues/17)  
 > **Reviewed revision:** `96fc7ec34bd3b685a0edeae7ecd4404abab7e2f1`  
 > **Scientific inference:** primitive positive weight and `kappa_w<=4` imply automorphism; no broader inference
+> **Defect-five candidate:** issue [#29](https://github.com/snissn/planar-jacobian/issues/29), `CLM-073`; local-adversarial-review only  
 
 ## Purpose
 
@@ -133,6 +134,14 @@ It does not imply:
 * a reduction at defect `5`;
 * or `JC_2`.
 
+## 9. Defect five candidate and successor review
+
+Issue #29 banks the fixed-weight defect-five theorem in [`../issues/defect-5-rees/README.md`](../issues/defect-5-rees/README.md) as `CLM-073` with status `candidate_proved`. The exact candidate `2eeb36d232366d124b5a66774b29769ec1eba43d` received a separate local-adversarial-review `ACCEPT`, not independent acceptance.
+
+Every resonant endpoint is invertible; every interior system either admits complete-top strict descent to `kappa_w<=4` or contradicts the complete staircase. The standard-weight coupled transverse chains are the first new defect-five correction and are not imported from the defect-four middle-Wronskian row.
+
+The successor leaf [`L15-defect-5-staircase.md`](../leaf-packets/L15-defect-5-staircase.md) and issue [#38](https://github.com/snissn/planar-jacobian/issues/38) request independent review. No qualifying-weight existence, defect-six, arbitrary-termination, or `JC_2` claim is introduced.
+
 ## Exit
 
-The mathematical stop rule for defect `4` has been reached by a full scoped reduction, and an independent reviewer bound `ACCEPT` to the exact candidate revision. The branch and review are preserved as provenance; current-main synchronization is editorial except for the explicit reviewed-status delta. Defect `5`, a theorem producing a qualifying weight, and `JC_2` remain outside this track's reviewed scope.
+The mathematical stop rule for defect `4` has been reached by a full scoped reduction, and an independent reviewer bound `ACCEPT` to the exact candidate revision. The branch and review are preserved as provenance; current-main synchronization is editorial except for the explicit reviewed-status delta. Defect `5` is banked only as mutable candidate `CLM-073`; independent review remains open as `L15`. A qualifying-weight theorem, defect six, and `JC_2` remain outside this track's reviewed scope.

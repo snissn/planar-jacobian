@@ -825,6 +825,20 @@
         "CLM-071"
       ],
       "note": "Issue #5 one-boundary packet, OBLF-07/09. The system is finite only after pole orders, ramification index, boundary normalization, conductor algebra, and punctures are fixed; no uniform bound or general one-boundary exclusion is proved."
+    },
+    {
+      "id": "CLM-073",
+      "status": "candidate_proved",
+      "track": "filtered-equivariance",
+      "statement": "For any primitive positive weight w, a planar Keller pair with grading defect kappa_w=5 admits a filtration-compatible polynomial source or target automorphism that strictly lowers the actual integer defect to at most four; hence it is a polynomial automorphism by the reviewed defect-at-most-four theorem.",
+      "depends_on": [
+        "CLM-047",
+        "CLM-048",
+        "CLM-049",
+        "CLM-051",
+        "CLM-060"
+      ],
+      "note": "Issue #29 defect-five packet. A separate local-adversarial-review returned ACCEPT for candidate 2eeb36d232366d124b5a66774b29769ec1eba43d, but this is not independent review and the claim remains mutable candidate_proved. It does not prove that every Keller pair admits a qualifying primitive positive weight, does not treat defect six, and does not establish JC_2."
     }
   ]
 }
