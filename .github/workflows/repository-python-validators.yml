@@ -42,7 +42,7 @@ jobs:
           python -c 'import sympy; print("sympy", sympy.__version__)' | tee -a runtime.txt
 
       - name: Byte-compile all maintained Python
-        run: python -m compileall -q scripts research/issues/issue-3-unramified-index research/issues/rank-three-index-form-unit research/issues/source-reflexive-lattice
+        run: python -m compileall -q scripts research/issues/issue-3-unramified-index research/issues/rank-three-index-form-unit research/issues/source-reflexive-lattice research/issues/one-boundary-logarithmic-field
 
       - name: Verify generated Markdown views
         shell: bash
@@ -104,6 +104,12 @@ jobs:
           set -o pipefail
           python scripts/validate_issue5_principal_parts.py | tee issue5-principal-parts.log
 
+      - name: "Validate issue #5 one-boundary successor"
+        shell: bash
+        run: |
+          set -o pipefail
+          python research/issues/one-boundary-logarithmic-field/verify_all.py | tee issue5-one-boundary.log
+
       - name: Add frontier to job summary
         if: always()
         shell: bash
@@ -140,6 +146,7 @@ jobs:
             issue4-stable-order.log
             issue4-source-reflexive-lattice.log
             issue5-principal-parts.log
+            issue5-one-boundary.log
           if-no-files-found: warn
           retention-days: 30
 
