@@ -46,7 +46,24 @@ jobs:
       - name: Byte-compile synchronized tree
         run: python -m compileall -q scripts research/issues/issue-3-unramified-index research/issues/rank-three-index-form-unit research/issues/one-boundary-logarithmic-field
 
-      - name: Run issue-owned symbolic checks
+      - name: Check issue-owned packet structure
+        run: |
+          python - <<'PY'
+          import importlib.util
+          from pathlib import Path
+          path = Path('research/issues/one-boundary-logarithmic-field/verify_all.py')
+          spec = importlib.util.spec_from_file_location('verify_all_oblf', path)
+          module = importlib.util.module_from_spec(spec)
+          assert spec.loader is not None
+          spec.loader.exec_module(module)
+          module.check_files_and_markers()
+          print('OBLF packet markers: PASS')
+          PY
+
+      - name: Run exact OBLF symbolic identities
+        run: python research/issues/one-boundary-logarithmic-field/verify_oblf.py
+
+      - name: Run aggregate issue-owned checker
         run: python research/issues/one-boundary-logarithmic-field/verify_all.py
 
       - name: Verify generated views
