@@ -7,13 +7,10 @@ task_issue: #3
 owned_path: research/issues/rank-three-boundary-cube-unit/
 base_commit: 652a5e252626fa5816445651245e8a8946cee53e
 scientific_disposition: RANK_THREE_KELLER_CASE_EXCLUDED_BY_PRIMARY_LITERATURE
-review_state: local-adversarial-review ACCEPT at eefb40d0475dcdc5a3b07d89ce84354a4b210280
+review_state: local-adversarial-review ACCEPT at 733990e68841ef7ea25cb7fb22f0f668aa522494
 ```
 
 ## Exact disposition
-
-The rank-three Keller branch closes more strongly than the requested unit-value
-construction.
 
 ### R3BC-01 — rank-three exclusion (`literature_bound`)
 
@@ -26,23 +23,22 @@ K=C(P,Q),
 L=C(x,y).
 ```
 
-If `[L:K]=3`, then `F` is generically three-sheeted: after localizing the target,
-`C[x,y]` is finite étale of rank three over `C[P,Q]`, so every geometric fiber
-on a dense open has exactly three reduced points. Orevkov's theorem states that
-the Jacobian of a three-sheeted polynomial map `C2 -> C2` cannot be constant.
-Thus a planar Keller map cannot have function-field degree three.
+If `[L:K]=3`, then after localizing the target `C[x,y]` is finite étale of rank
+three over `C[P,Q]`, so the polynomial map is generically three-sheeted.
+Orevkov's theorem states that the Jacobian of a three-sheeted polynomial map
+`C2 -> C2` cannot be constant. Thus no planar Keller map has function-field
+degree three.
 
-The primary source is:
+Primary source:
 
 > S. Yu. Orevkov, “On three-sheeted polynomial mappings of C²,”
 > *Math. USSR-Izv.* **29** (1987), 587–596,
 > DOI `10.1070/IM1987v029n03ABEH000984`.
 
-The English primary full text defines the multiplicity as the number of
-preimages of a generic point, states the degree-three exclusion in Theorem 1.1,
-and closes all three multiplicity-three cases in the final proof. The application
-from field degree to sheet number is proved in
-[`FOUNDATIONS.md`](FOUNDATIONS.md), without importing an additional theorem.
+The English primary full text defines multiplicity as the number of preimages of
+a generic point, states the degree-three exclusion in Theorem 1.1, and closes all
+three multiplicity-three cases in the final proof. The degree-to-sheet bridge is
+proved in [`FOUNDATIONS.md`](FOUNDATIONS.md).
 
 Consequently, the simultaneous hypotheses
 
@@ -53,14 +49,14 @@ rank_B(O)=3
 ```
 
 are inconsistent. This packet does **not** construct a section `s` with
-`Phi(s) in C*`; it shows that no actual rank-three Keller normalization exists
-on which that construction would have to be performed.
+`Phi(s) in C*`; no actual rank-three Keller normalization exists on which that
+construction would have to be performed.
 
-### R3BC-02 — exact boundary-cubic trichotomy (`candidate_proved`)
+### R3BC-02 — boundary-cubic trichotomy (`candidate_proved`)
 
 Conditionally retaining the predecessor's finite-flat rank-three algebra, the
-special-fiber index cubic at a height-one base prime has, after strict
-henselization and a trace-zero frame, exactly one of the following shapes:
+geometric special-fiber index cubic at a height-one base prime is, after a
+trace-zero frame, exactly one of
 
 ```text
 unramified split:       L1 L2 L3,
@@ -68,105 +64,98 @@ simple ramification:    L M^2,
 total ramification:     L^3.
 ```
 
-Thus “boundary cube” is correct only in the totally ramified case. Simple
-ramification gives a distinguished simple factor times a square. The determinant
-calculations and unit criteria are in
-[`BOUNDARY_VALUATIONS.md`](BOUNDARY_VALUATIONS.md).
+Thus “boundary cube” is correct only at total ramification. The determinant
+calculations are in [`BOUNDARY_VALUATIONS.md`](BOUNDARY_VALUATIONS.md).
 
-### R3BC-03 — boundary valuations are simultaneously removable (`candidate_proved`)
+### R3BC-03 — exact boundary classes and affine pencils (`candidate_proved`)
 
-Let `H` be a square-free equation for the finite union of height-one target
-primes under the normalization boundary. By the predecessor's finite-prime
-adaptation theorem, choose `theta in E` with `Phi(theta)` a unit at every prime
-dividing `H`. Then for every `eta in E` and `T in B`,
+Let `H` be the square-free product of target height-one primes under the
+normalization boundary. Finite-prime adaptation supplies a section `theta in E`
+primitive at all primes dividing `H`. For every `eta in E` and `T in B`,
 
 ```text
-s_T = theta + H T eta
+s_T=theta+H T eta
 ```
 
-has the same special-fiber class as `theta` at each boundary prime, hence stays
-primitive there. Homogeneity gives the exact identity
+remains primitive at those primes and satisfies
 
 ```text
-Phi(s_T) = D + H C T + H^2 B_2 T^2 + H^3 A T^3,
+Phi(s_T)=D+H C T+H^2 B_2 T^2+H^3 A T^3.
 ```
 
-where `D=Phi(theta)` and `A=Phi(eta)`. Therefore no boundary prime divides any
-`Phi(s_T)`. Every remaining factor is a nonboundary scalar-collision divisor.
-This is the smallest exact internal reduction left if Orevkov's terminal theorem
-is deliberately set aside.
+Every factor created in that pencil is therefore a nonboundary scalar-collision
+divisor.
 
-### R3BC-04 — differential control does not remove the moving divisor (`candidate_proved`)
-
-No nonconstant principal divisor in `C[P,Q]` can be invariant under both target
-translations `partial_P` and `partial_Q`. However, the exact primitive-coordinate
-differential congruence does not imply that the fixed-section ideal
-`(Phi(s))` is translation-stable: differentiating `s` changes the section. On a
-split étale chart, the logarithmic derivative is the sum of the three relative
-sheet-velocity quotients, so accidental scalar collisions remain visible rather
-than contradictory.
-
-### R3BC-05 — countermodel ladder stops exactly at source étaleness (`candidate_proved`)
-
-The integrated issue #3 no-unit model reaches:
+This pencil lies in one class of `E/H E`; it does **not** exhaust all integral
+sections. If
 
 ```text
-finite locally free rank three,
-normal and connected,
-rational total space,
-an open A2,
-no nonzero constant represented by Phi.
+R_H={bar(theta) in E/H E : bar(theta) is primitive at every p|H},
 ```
 
-It fails because the displayed `A2` is not étale over the target. More strongly,
-no rank-three model can add “different supported outside the displayed source
-open”: that condition makes the restricted polynomial map étale, hence Keller,
-and Orevkov then excludes degree three. Stages 5–9 of the requested ladder are
-therefore incompatible already at stage 5.
+then the unrestricted conditional unit problem is exactly the union over
+`bar(theta) in R_H` of the classes `theta+H E`. The predecessor proves `R_H` is
+nonempty, but does not choose a class containing a unit-index section. This
+residue-class choice is the additional internal obstruction that was missing
+from the first draft of the packet.
 
-## What is and is not proved
+### R3BC-04 — differential control (`candidate_proved`)
 
-Proved at the stated packet scope:
+No nonconstant divisor in `C[P,Q]` is invariant under both target translations.
+However, the primitive-coordinate differential congruence does not make a fixed
+value ideal `(Phi(s))` translation-stable because differentiating changes the
+section. On a split étale chart, accidental scalar collisions remain visible as
+relative sheet-value collisions rather than ramification.
 
-1. the exact bridge from rank-three normalization degree to Orevkov's
-   three-sheeted hypothesis;
-2. the three local boundary forms `L1L2L3`, `LM^2`, and `L^3`;
-3. simultaneous elimination of all boundary valuations in one affine family;
-4. the exact remaining moving-collision polynomial;
-5. incompatibility of the countermodel ladder with source étaleness at degree
+### R3BC-05 — countermodel ladder terminal (`candidate_proved`)
+
+The integrated no-unit model reaches finite locally free rank three, normality,
+connectedness, rational total space, a displayed open `A2`, and no nonzero
+constant represented by `Phi`. It fails because that `A2` is not étale over the
+target. Adding different support only outside the specified source open would
+make the restricted degree-three polynomial map Keller, which Orevkov excludes.
+Stages 5–9 of the requested ladder are therefore incompatible already at source
+étaleness.
+
+## Exact scope
+
+Established at mutable packet scope:
+
+1. the full-text-audited bridge from degree three to Orevkov's theorem;
+2. the local forms `L1L2L3`, `LM^2`, and `L^3`;
+3. the boundary-primitive residue-class decomposition;
+4. the exact affine-pencil polynomial inside each chosen class;
+5. the nonboundary moving-collision interpretation;
+6. incompatibility of the countermodel ladder with source étaleness at degree
    three.
 
 Not claimed:
 
 - a new proof of Orevkov's theorem;
-- a constructed unit-index section for a hypothetical rank-three Keller
-  normalization;
+- a constructed unit-index section;
+- that one adapted boundary class exhausts all candidates;
 - a theorem for rank four or higher;
 - a proof of the planar Jacobian conjecture;
-- scientific promotion from this local construction/review round.
+- scientific promotion from this construction/review round.
 
-## Artifact map
+## Artifacts
 
-- [`FOUNDATIONS.md`](FOUNDATIONS.md): exact setup, degree-to-sheet bridge, and
-  Orevkov application.
+- [`FOUNDATIONS.md`](FOUNDATIONS.md): exact setup and Orevkov application.
 - [`BINARY_CUBIC_GEOMETRY.md`](BINARY_CUBIC_GEOMETRY.md): intrinsic cubic,
-  `GL_2` covariance, Fitting/discriminant identities, level schemes, and
-  resolvent limits.
-- [`BOUNDARY_VALUATIONS.md`](BOUNDARY_VALUATIONS.md): DVR trichotomy, valuation
-  criteria, and boundary-adapted family.
-- [`DIFFERENTIAL_CONTROL.md`](DIFFERENTIAL_CONTROL.md): canonical derivations,
-  sheet-difference derivatives, and the non-invariance result.
-- [`UNIT_VALUE_SEARCH.md`](UNIT_VALUE_SEARCH.md): exact affine search equation
-  and failure of content, CRT, monodromy, and rational-section shortcuts.
-- [`COUNTERMODEL_LADDER.md`](COUNTERMODEL_LADDER.md): stage-by-stage mutation
-  disposition and the precise source-étale wall.
-- [`LITERATURE_AUDIT.md`](LITERATURE_AUDIT.md): primary-source binding for
-  Orevkov and rejection of an unsupported broader prime-degree shortcut.
-- [`REVIEW.md`](REVIEW.md): revision-bound local adversarial audit.
-- [`HANDOFF.md`](HANDOFF.md): proposed global deltas and integration boundary.
+  covariance, Fitting/discriminant identities, levels, and resolvent limits.
+- [`BOUNDARY_VALUATIONS.md`](BOUNDARY_VALUATIONS.md): local trichotomy,
+  boundary classes, and affine-pencil identity.
+- [`DIFFERENTIAL_CONTROL.md`](DIFFERENTIAL_CONTROL.md): canonical derivations and
+  collision movement.
+- [`UNIT_VALUE_SEARCH.md`](UNIT_VALUE_SEARCH.md): exact residue-class
+  decomposition and restricted moving-divisor searches.
+- [`COUNTERMODEL_LADDER.md`](COUNTERMODEL_LADDER.md): stage-by-stage terminal.
+- [`LITERATURE_AUDIT.md`](LITERATURE_AUDIT.md): primary-source audit and rejected
+  broader shortcut.
+- [`REVIEW.md`](REVIEW.md): revision-bound local adversarial review.
+- [`HANDOFF.md`](HANDOFF.md): proposed serialized integration deltas.
+- [`INTEGRATION.json`](INTEGRATION.json): machine-readable manifest.
 - `verify_*.py`: exact SymPy checks.
-- [`INTEGRATION.json`](INTEGRATION.json): machine-readable ownership and
-  proposed integration deltas.
 
 ## Verification
 
@@ -179,6 +168,5 @@ python3 scripts/validate_integration_contract.py
 python3 scripts/render_views.py --check
 ```
 
-The first command is the packet-local exact suite. The remaining commands are
-predecessor and repository checks; exact-head GitHub Actions is the authoritative
-full-tree execution in this connector-only run.
+The packet-local suite was run directly. The permanent read-only GitHub workflow
+records the exact PR head for repository and predecessor regression checks.
