@@ -199,12 +199,17 @@ verify_global_bridges.py --max-degree 25 --max-n 50 --max-e 25
   PASS
 ```
 
-The packet aggregator, complete repository suite, and integration
-contract are confirmed by the permanent read-only workflow on the
-exact final PR head.  The workflow locator and conclusion are recorded
-on PR #42 so that adding them does not mutate the tested head.  Passing
-validators records encoded identities and repository consistency
-only; it does not establish mathematical truth.
+The permanent read-only workflow on the exact final PR head confirms
+byte compilation of all maintained Python, the integration contract,
+generated views, structural validation, frontier generation, and the
+complete maintained repository suite.  That workflow byte-compiles
+`verify_all.py` but does not invoke the packet aggregator.  The
+aggregator's required-file, manifest, and prose conditions were checked
+separately against the final remote diff and manifest; the two
+load-bearing issue validators above were executed byte for byte.
+The exact workflow locator and conclusion are recorded on PR #42.
+Passing validators records encoded identities and repository
+consistency only; it does not establish mathematical truth.
 
 ## Integration cautions
 
