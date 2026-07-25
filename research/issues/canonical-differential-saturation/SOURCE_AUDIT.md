@@ -153,7 +153,36 @@ Taking a reflexive hull does not automatically preserve an arbitrary
 connection or erase a height-one fractional residue.  Stability is
 rechecked by intersection of height-one localizations.
 
-## 6. Zariski Main, normalization, purity, and finite-etale triviality
+## 6. Multiplier rings and fractional-ideal twists
+
+The module-to-order bridge is inherited from
+`research/issues/source-reflexive-lattice/MULTIPLIER_RING.md` and is
+also checked directly here.
+
+- For a finite full module \(M\), \((M:M)\) is finite and has total
+  quotient field \(L\).
+- The Leibniz identity proves the one-way implication
+  \(D(M)\subset M\Rightarrow D((M:M))\subset(M:M)\).
+- The converse is false: for \(M=P B\subset K=L\), the seed is not
+  \(\partial_P\)-stable while \((M:M)=B\) is stable.
+- For every nonzero rank-one reflexive fractional \(O\)-module \(I\),
+  height-one localization and intersection give \((I:I)=O\).
+
+No external theorem is used to turn seed coherence into multiplier
+stability.  If a full multiplier ring is proved pair-stable directly,
+that ring is already the desired stable order.  For trace duals,
+inverse differents, canonical modules, conductor twists, and other
+rank-one divisorial candidates, the multiplier operation returns
+\(O\) and does not bypass the normalization obstruction.
+
+Likewise, changing logarithmic lattices shifts residue representatives
+by integers on fixed monodromy eigenspaces, while fractional
+ramification-parameter twists may permute the eigenspace labels.  The
+invariant statement used by the packet is preservation of the full
+class multiset in \(\mathbf Q/\mathbf Z\), not a common integer shift
+in every chosen basis.
+
+## 7. Zariski Main, normalization, purity, and finite-etale triviality
 
 The packet inherits the repository bindings for:
 
@@ -169,7 +198,7 @@ These results are consumed only after a finite full stable lattice or
 no-height-one-ramification statement has been obtained.  They are not
 used to infer that statement.
 
-## 7. Direct computations replacing advanced black boxes
+## 8. Direct computations replacing advanced black boxes
 
 The following load-bearing points are proved in the packet rather
 than outsourced.
@@ -184,13 +213,17 @@ than outsourced.
    and trivial inertia for the permutation connection.
 7. Failure of \(\mathcal O\)-finiteness in the Kummer and localization
    controls.
-8. Persistence under integer twists, duals, conductors, and reflexive
+8. Persistence of the full residue-class multiset under integer
+   shifts, duals, conductors, fractional-ideal twists, and reflexive
    hulls.
-9. Extraction of a global finite stable module from a globally
-   coherent, connection-compatible, torsion-free embedding into the
-   meromorphic sheaf with generic fiber \(L\).
+9. The one-way multiplier-stability implication, its converse
+   countercontrol, and \((I:I)=O\) for rank-one reflexive fractional
+   \(O\)-modules.
+10. Extraction of a global finite stable module from a globally
+    coherent, connection-compatible, torsion-free embedding into the
+    meromorphic sheaf with generic fiber \(L\).
 
-## 8. Source-audit conclusion
+## 9. Source-audit conclusion
 
 Primary D-module and logarithmic-extension theory provides canonical
 regular-holonomic or logarithmically coherent objects.  It does not
