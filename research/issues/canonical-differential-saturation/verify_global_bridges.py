@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Exact checks for inertia cycles, localization growth, and symplectic controls."""
+"""Exact checks for inertia cycles, localization growth, multiplier logic, and symplectic controls."""
 from __future__ import annotations
 
 import argparse
@@ -55,6 +55,31 @@ def verify_localization(max_n: int) -> dict[str, int]:
     return {"localization_checks": checks}
 
 
+def verify_multiplier_converse(max_degree: int) -> dict[str, int]:
+    """Check the unstable-seed/stable-multiplier control M=P*B."""
+    P, Q, b = sp.symbols("P Q b")
+    checks = 0
+
+    # M=P*B is not partial_P-stable because partial_P(P)=1 is not in (P).
+    derivative = sp.diff(P, P)
+    assert derivative == 1
+    assert derivative.subs(P, 0) != 0
+    checks += 2
+
+    # In the domain B, zP=Pb implies z=b by cancellation, so (PB:PB)=B.
+    assert sp.cancel(P * b / P) == b
+    checks += 1
+
+    # The multiplier B is stable under both target translations.
+    for a in range(max_degree + 1):
+        for c in range(max_degree + 1 - a):
+            monomial = P**a * Q**c
+            assert sp.diff(monomial, P).is_polynomial(P, Q)
+            assert sp.diff(monomial, Q).is_polynomial(P, Q)
+            checks += 2
+    return {"multiplier_converse_checks": checks}
+
+
 def verify_exact_symplectic(max_e: int) -> dict[str, int]:
     """Check the Laurent exact-symplectic countercontrol through ``max_e``."""
     x, y = sp.symbols("x y", nonzero=True)
@@ -95,6 +120,7 @@ def main() -> int:
     result = {}
     result.update(verify_inertia(args.max_degree))
     result.update(verify_localization(args.max_n))
+    result.update(verify_multiplier_converse(args.max_degree))
     result.update(verify_exact_symplectic(args.max_e))
     result["total_checks"] = sum(result.values())
 
