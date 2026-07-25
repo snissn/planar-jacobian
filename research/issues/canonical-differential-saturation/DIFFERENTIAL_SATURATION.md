@@ -140,15 +140,17 @@ unchanged.
 ## 5. Pole-bounded source intersections
 
 Let \(E_1,\ldots,E_r\) be the divisorial components of
-\(Y\setminus\operatorname{Spec}A\), and define
+\(Y\setminus\operatorname{Spec}A\), and for
+\(\mathbf N=(N_1,\ldots,N_r)\in\mathbf N^r\) define
 
 \[
 M(\mathbf N)
  =A\cap\{f\in L:w_{E_i}(f)\ge-N_i\ \forall i\}.
 \]
 
-After imposing nonnegative valuation at every other height-one point,
-this is the affine section module of the reflexive divisorial sheaf
+Because elements of \(A\) are regular at every height-one point of
+the source open, this is the affine section module of the reflexive
+divisorial sheaf
 
 \[
 \mathcal O_Y\!\left(\sum_iN_iE_i\right).
@@ -215,23 +217,54 @@ and Theorem 3.1.  \(\square\)
 Reflexive hulls and finite intersections do not change this
 codimension-one calculation.
 
-## 6. Multiplier, dual, and translate saturations
+## 6. Multiplier, dual, and translate constructions
 
-For a finite seed \(M_0\), the multiplier ring
+For a finite full seed \(M_0\), its multiplier ring
 
 \[
-(M_0:M_0)=\{z\in L:zM_0\subset M_0\}
+O_{M_0}=(M_0:M_0)=\{z\in L:zM_0\subset M_0\}
 \]
 
-is finite, but it is stable only when \(M_0\) already is stable.
-Taking the multiplier before differential saturation does not bound
-the derivative orbit.  Taking it after saturation is useful only if
-the saturation is finite.
+is a finite \(B\)-order with total quotient field \(L\).  If
+\(M_0\) is pair-stable, the Leibniz identity
 
-Trace duals, inverse differents, conductor shifts, canonical modules,
-and rank-one reflexive Hom modules are commensurable with \(O\) at
-height one.  Their residues differ by integers, so their nontrivial
-fractional classes and local escape persist.
+\[
+D(z)m=D(zm)-zD(m)
+\]
+
+shows that \(O_{M_0}\) is pair-stable.  This implication is only
+one-way.  For the exact control
+
+\[
+B=\mathbf C[P,Q],\qquad K=L=\operatorname{Frac}(B),
+\qquad M_0=P B,
+\]
+
+we have \(D_P(M_0)\not\subset M_0\) because \(D_P(P)=1\), while
+cancellation gives \((M_0:M_0)=B\), which is pair-stable.
+
+Thus taking a multiplier can create stability relative to an unstable
+presentation, but no automatic construction follows: proving directly
+that a finite full multiplier ring is pair-stable already produces the
+stable order required by the predecessor theorem.  For a nonzero
+rank-one reflexive fractional \(O\)-module \(I\), height-one
+localization gives \((I_q:I_q)=O_q\), hence
+
+\[
+(I:I)=O.
+\]
+
+Consequently the named divisorial candidates—trace duals, inverse
+differents, conductor or canonical twists, and reflexive source-pole
+modules—do not hide a different multiplier order.
+
+At a ramified height-one point, these full fractional lattices retain
+the same intrinsic tame residue-class multiset.  Changing a
+logarithmic lattice shifts representatives by integers on fixed
+monodromy eigenspaces; multiplication by a ramification parameter may
+also permute the character labels.  Neither operation removes the
+nonzero classes in \(\mathbf Q/\mathbf Z\), so ordinary transverse
+stability still fails.
 
 A finite intersection of finitely many derivative translates remains
 a finite seed, not a stable saturation.  Closing it under all
