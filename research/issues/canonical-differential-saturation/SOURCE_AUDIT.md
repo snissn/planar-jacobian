@@ -70,7 +70,11 @@ The packet uses only the categorical minimality statement.
 Perverse intermediate extension is not a theorem of ordinary
 \(\mathcal O\)-coherence.  The Kummer calculation shows that its
 regular-holonomic D-module can remain \(\mathcal O\)-infinite when
-local monodromy is nontrivial.
+local monodromy is nontrivial.  Even local ordinary coherence at every
+generic height-one point would not, by this categorical theorem alone,
+prove global \(\mathcal O\)-coherence, control codimension-two behavior,
+or provide a torsion-free embedding into the meromorphic sheaf with
+generic fiber \(L\).
 
 Official text:
 `https://publications.ias.edu/sites/default/files/Faisceaux%20pervers.pdf`.
@@ -176,17 +180,29 @@ than outsourced.
 4. Nonvanishing of the falling-factorial coefficients in
    characteristic zero.
 5. The inertia-cycle residue multiset.
-6. Equivalence between ordinary local coherent extension and trivial
-   inertia for the permutation connection.
+6. Equivalence between an embedded ordinary local coherent lattice
+   and trivial inertia for the permutation connection.
 7. Failure of \(\mathcal O\)-finiteness in the Kummer and localization
    controls.
 8. Persistence under integer twists, duals, conductors, and reflexive
    hulls.
+9. Extraction of a global finite stable module from a globally
+   coherent, connection-compatible, torsion-free embedding into the
+   meromorphic sheaf with generic fiber \(L\).
 
 ## 8. Source-audit conclusion
 
 Primary D-module and logarithmic-extension theory provides canonical
 regular-holonomic or logarithmically coherent objects.  It does not
 provide the ordinary \(\mathcal O\)-coherent, translation-stable full
-lattice required by issue #4.  The exact missing hypothesis remains
-trivial height-one inertia, equivalently no height-one ramification.
+lattice required by issue #4.
+
+The smallest surviving normalization-route hypothesis is trivial
+height-one inertia, equivalently no height-one ramification.  At a
+generic height-one point this is also equivalent to ordinary
+\(\mathcal O\)-coherence of the full local intermediate extension.  A
+direct global D-module construction requires the strictly more
+explicit package of global \(\mathcal O\)-coherence, ordinary
+translation stability, and a torsion-free embedding into the
+meromorphic sheaf with generic fiber \(L\).  None of the audited
+sources supplies either missing Keller-specific input.
