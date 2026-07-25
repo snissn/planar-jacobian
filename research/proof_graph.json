@@ -75,11 +75,11 @@
     },
     {
       "id": "OPEN-STABLE-ORDER",
-      "title": "Construct a finite B-order stable under D_P,D_Q",
+      "title": "Construct a finite full B-lattice stable under D_P,D_Q",
       "type": "leaf",
       "status": "open",
       "artifact": "leaf-packets/L02-stable-order.md",
-      "note": "CLM-011 and CLM-013 record the conditional implication at mutable candidate scope. CLM-061 remains open; a transverse ramified DVR admits no full stable finite lattice."
+      "note": "CLM-011 and CLM-013 record the conditional implication. The source-reflexive-lattice successor proves the reflexive multiplier-ring bridge and excludes every finite divisorial pole stage at ramification. CLM-061 remains open at finite pair-stable lattice existence."
     },
     {
       "id": "BR-RADIAL",

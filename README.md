@@ -23,7 +23,7 @@ A merge to `main` is transport and preservation. It does not promote a candidate
 
 - **Defect at most four:** `CLM-047–051` and `CLM-060` are `reviewed_scoped`, bound to independent `ACCEPT` at candidate revision `96fc7ec34bd3b685a0edeae7ecd4404abab7e2f1`. The theorem applies only to primitive positive weights with grading defect at most four. It does not cover defect five, prove that an arbitrary Keller pair has such a weight, or establish `JC_2`.
 - **Issue #3 / rank-three index form:** the generic unramified-index bridge is disposed by `CLM-058`. The [rank-three successor packet](research/issues/rank-three-index-form-unit/README.md) records `CLM-062`–`CLM-066`: intrinsic index foundations, a finite source/boundary gcd-one certificate, an exact cubic differential congruence, and exclusion of the countermodel's interior different. `CLM-059` remains open at the one-section boundary-cube/unit-value step; universal content one is insufficient.
-- **Issue #4 / stable order:** the stable-order-to-degree-one implication is a mutable conditional candidate, and the packet records a ramified-DVR no-lattice obstruction. Existence of a finite stable order remains open as `CLM-061`.
+- **Issue #4 / stable lattice:** the [source-reflexive-lattice packet](research/issues/source-reflexive-lattice/README.md) proves at mutable candidate scope that a finite full module stable under both canonical translations has a finite locally free stable multiplier order, and that every finite divisorial source-pole stage escapes at ramification. `CLM-061` remains open at existence of one finite pair-stable lattice; no such lattice is constructed.
 - **Issue #5 / radial field:** the packet records the logarithmic tangency criterion, full principal-part obstruction, and failure of regularity to imply algebraic integration. The actual Keller branch is not proved radial, and the leaf remains open.
 
 ## Start here
@@ -59,7 +59,7 @@ Branches are short-lived transport surfaces. When a pull request is useful, it s
 Run against the exact candidate tree:
 
 ```bash
-python3 -m compileall -q scripts research/issues/issue-3-unramified-index research/issues/rank-three-index-form-unit
+python3 -m compileall -q scripts research/issues/issue-3-unramified-index research/issues/rank-three-index-form-unit research/issues/source-reflexive-lattice
 python3 scripts/render_views.py --check
 python3 scripts/validate_repository.py
 python3 scripts/frontier.py
@@ -68,6 +68,7 @@ python3 scripts/review_validate_defect4_independent.py
 python3 research/issues/issue-3-unramified-index/verify_index_models.py
 python3 research/issues/rank-three-index-form-unit/verify_all.py
 python3 scripts/validate_issue4_stable_order.py
+python3 research/issues/source-reflexive-lattice/verify_all.py
 python3 scripts/validate_issue5_principal_parts.py
 ```
 

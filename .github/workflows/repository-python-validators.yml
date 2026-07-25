@@ -42,7 +42,7 @@ jobs:
           python -c 'import sympy; print("sympy", sympy.__version__)' | tee -a runtime.txt
 
       - name: Byte-compile all maintained Python
-        run: python -m compileall -q scripts research/issues/issue-3-unramified-index research/issues/rank-three-index-form-unit
+        run: python -m compileall -q scripts research/issues/issue-3-unramified-index research/issues/rank-three-index-form-unit research/issues/source-reflexive-lattice
 
       - name: Verify generated Markdown views
         shell: bash
@@ -92,6 +92,12 @@ jobs:
           set -o pipefail
           python scripts/validate_issue4_stable_order.py | tee issue4-stable-order.log
 
+      - name: "Validate issue #4 source-reflexive-lattice successor"
+        shell: bash
+        run: |
+          set -o pipefail
+          python research/issues/source-reflexive-lattice/verify_all.py | tee issue4-source-reflexive-lattice.log
+
       - name: "Validate issue #5 principal-part examples"
         shell: bash
         run: |
@@ -132,6 +138,7 @@ jobs:
             issue3-models.log
             issue3-rank-three.log
             issue4-stable-order.log
+            issue4-source-reflexive-lattice.log
             issue5-principal-parts.log
           if-no-files-found: warn
           retention-days: 30
