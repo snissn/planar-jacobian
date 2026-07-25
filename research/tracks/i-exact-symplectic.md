@@ -18,3 +18,7 @@ Residue cancellation does not eliminate higher-order poles. Exactness alone does
 ### Exit
 
 Derive a theorem that the complete principal-part package is incompatible with a nonempty normalization boundary.
+
+## Integrated one-boundary successor (2026-07-24)
+
+The one-boundary successor retains the full Laurent equations and adds the leading relation `n a' b-m a b'=0`. It explicitly rejects the inference from one boundary and zero residue to weighted homogeneity or pole elimination. The remaining fixed-type conductor/principal-part system is `CLM-072`.
