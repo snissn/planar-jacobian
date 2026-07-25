@@ -4,3 +4,4 @@ claim=CLM-073
 graph=OPEN-DEFECT-5
 base=8c659ec6f6be77368cd03ecbae2809df88860a76
 validation=PENDING
+sync_trigger=31d403eae0512ad70af81b08411a3cc021c7dce0
