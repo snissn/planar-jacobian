@@ -46,7 +46,7 @@ MARKERS = {
     ],
     "PRINCIPAL_PARTS.md": [
         "n a' b - m a b' = 0",
-        "does not eliminate higher principal parts",
+        "zero logarithmic residue and a nonzero higher pole",
     ],
     "SOURCE_OPEN_INVARIANCE.md": [
         "delta(p) subset p",
