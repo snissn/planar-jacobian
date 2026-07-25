@@ -1,7 +1,0 @@
-source-reflexive-lattice residue checks: PASS
-exact assertions: 1538
-scientific authority: NOT INFERRED FROM CHECK COUNT
-source-reflexive-lattice filtration/symplectic checks: PASS
-exact assertions: 70
-planar polynomial Keller counterexample constructed: NO
-source-reflexive-lattice aggregate validation: PASS
