@@ -73,10 +73,13 @@ Hamiltonian field
 H_g=2Q partial_P+(3P^2-1) partial_Q
 ```
 
-is a nonzero logarithmic field. A nontrivial `G_m` action preserving the affine
-curve would extend to its smooth projective completion and fix the missing
-point, but the automorphism group of an elliptic curve fixing a point is
-finite. Hence this branch has no nontrivial torus symmetry.
+is a nonzero logarithmic field. A connected `G_m` action preserving the affine
+curve induces a connected subgroup of automorphisms of the projective elliptic
+curve fixing the missing point; that automorphism group is finite, so the
+restriction must be trivial. It cannot fix the curve pointwise either:
+Gutwirth linearization makes the fixed locus of a nontrivial torus action on
+`A2` a coordinate linear subspace, which cannot contain this elliptic curve.
+Hence this branch has no nontrivial target torus symmetry.
 
 This is a control against the implication
 
