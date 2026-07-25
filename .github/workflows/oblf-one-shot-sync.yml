@@ -12,7 +12,6 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
 
 concurrency:
   group: oblf-one-shot-sync
@@ -45,62 +44,53 @@ jobs:
           python research/issues/one-boundary-logarithmic-field/sync_oblf.py
 
       - name: Validate synchronized tree
-        id: validation
-        continue-on-error: true
-        shell: bash
         run: |
-          set +e
-          {
-            python -m compileall -q scripts research/issues/issue-3-unramified-index research/issues/rank-three-index-form-unit research/issues/one-boundary-logarithmic-field
-            python research/issues/one-boundary-logarithmic-field/verify_all.py
-            python scripts/render_views.py --check
-            python scripts/validate_repository.py
-            python scripts/frontier.py
-            git diff --check
-          } 2>&1 | tee /tmp/oblf-validation.log
-          rc=${PIPESTATUS[0]}
-          echo "rc=$rc" >> "$GITHUB_OUTPUT"
-          exit "$rc"
+          set -euo pipefail
+          python -m compileall -q scripts research/issues/issue-3-unramified-index research/issues/rank-three-index-form-unit research/issues/one-boundary-logarithmic-field
+          python research/issues/one-boundary-logarithmic-field/verify_all.py
+          python scripts/render_views.py --check
+          python scripts/validate_repository.py
+          python scripts/frontier.py
+          git diff --check
 
-      - name: Commit synchronized surfaces
-        id: transport
-        continue-on-error: true
-        shell: bash
-        run: |
-          set +e
-          {
-            git config user.name 'github-actions[bot]'
-            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-            git status --short
-            git add .
-            if git diff --cached --quiet; then
-              echo 'No synchronization delta to commit.'
-            else
-              git commit -m 'sync(issue-5): allocate one-boundary claims and frontier'
-              git push --verbose origin HEAD:issue-5/one-boundary-logarithmic-gpt56
-            fi
-          } 2>&1 | tee /tmp/oblf-transport.log
-          rc=${PIPESTATUS[0]}
-          echo "rc=$rc" >> "$GITHUB_OUTPUT"
-          exit "$rc"
-
-      - name: Publish failure diagnostics
-        if: steps.validation.outcome == 'failure' || steps.transport.outcome == 'failure'
+      - name: Publish synchronized files through GitHub API
         env:
           GH_TOKEN: ${{ github.token }}
+          TARGET_BRANCH: issue-5/one-boundary-logarithmic-gpt56
+        shell: bash
         run: |
-          {
-            echo '### OBLF one-shot synchronization diagnostics'
-            echo
-            echo '**Validation**'
-            echo '```text'
-            tail -n 200 /tmp/oblf-validation.log 2>/dev/null || true
-            echo '```'
-            echo
-            echo '**Transport**'
-            echo '```text'
-            tail -n 200 /tmp/oblf-transport.log 2>/dev/null || true
-            echo '```'
-          } > /tmp/oblf-comment.md
-          gh pr comment 34 --body-file /tmp/oblf-comment.md
-          exit 1
+          set -euo pipefail
+          mapfile -t files < <(
+            {
+              git diff --name-only
+              git ls-files --others --exclude-standard
+            } | sort -u
+          )
+          printf 'Publishing %s synchronized paths.\n' "${#files[@]}"
+          for path in "${files[@]}"; do
+            # The permanent validator workflow is updated by the connected
+            # GitHub adapter after this generated-tree transport completes.
+            if [[ "$path" == ".github/workflows/repository-python-validators.yml" ]]; then
+              echo "defer adapter-owned workflow update: $path"
+              continue
+            fi
+            encoded=$(base64 -w0 "$path")
+            current_sha=$(gh api \
+              "repos/$GITHUB_REPOSITORY/contents/$path?ref=$TARGET_BRANCH" \
+              --jq .sha 2>/dev/null || true)
+            args=(
+              --method PUT
+              "repos/$GITHUB_REPOSITORY/contents/$path"
+              -f "message=sync(issue-5): update $path"
+              -f "content=$encoded"
+              -f "branch=$TARGET_BRANCH"
+            )
+            if [[ -n "$current_sha" ]]; then
+              args+=( -f "sha=$current_sha" )
+            fi
+            gh api "${args[@]}" --jq '.commit.sha'
+          done
+          gh api \
+            "repos/$GITHUB_REPOSITORY/contents/research/claim_ledger.json?ref=$TARGET_BRANCH" \
+            --jq .content | tr -d '\n' | base64 -d | grep -q '"id": "CLM-072"'
+          echo 'Remote OBLF synchronization marker: PASS'
