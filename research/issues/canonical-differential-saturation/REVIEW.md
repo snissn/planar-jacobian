@@ -2,111 +2,29 @@
 
 > **Review mode:** `local-adversarial-review`  
 > **Reviewer role:** same-session adversarial reviewer, not an independent reviewer  
-> **Candidate revision:** `d8c9dc19ad6201042afb315ccab57489c863105b`  
+> **Candidate revision:** `ab498bd9f40fdb36137fbe8a52658555a3eef004`  
 > **Candidate base:** `652a5e252626fa5816445651245e8a8946cee53e`  
 > **Owned path:** `research/issues/canonical-differential-saturation/`  
 > **Disposition:** `ACCEPT_SCOPED`  
 > **Authority after review:** `MUTABLE_NONAUTHORITATIVE`
 
-The corrected scientific candidate was pinned before this renewed
-review.  No candidate proof or validation file was edited while the
-review was conducted.  Reviews pinned to earlier candidates are
-superseded for the current packet head.
+The scientific candidate was pinned before this review.  No reviewed
+proof or validation file was edited while the review was conducted.
+The candidate extends the previously accepted local packet only by:
 
-## 1. Corrections adjudicated in this review
+1. imposing the normal-frame relation in the pair-spectrum validator;
+2. making the packet aggregator run both default and documented enlarged
+   bounds; and
+3. narrowing the unramified pole-stage table entry to stages containing
+   an actual positive pole.
 
-### Multiplier implication
+Reviews pinned to earlier candidates are superseded for the current
+packet head.
 
-The false necessity direction
-
-\[
-(M:M)\text{ stable}\Longrightarrow M\text{ stable}
-\]
-
-has been removed.  For
-
-\[
-B=\mathbf C[P,Q],\quad K=L=\operatorname{Frac}(B),
-\quad M=PB,
-\]
-
-we have \(D_P(P)=1\notin PB\) while \((M:M)=B\) is pair-stable.
-The packet uses only the valid implication from seed stability to
-multiplier stability.  A directly stable finite full multiplier ring
-is already the desired stable order; the named rank-one reflexive
-fractional \(O\)-modules satisfy \((I:I)=O\).
-
-### Fractional-ideal twists
-
-Changing a logarithmic lattice shifts residue representatives by
-integers on fixed monodromy eigenspaces, while multiplication by a
-ramification parameter can permute the tame character labels.  The
-correct invariant is the complete residue-class multiset in
-\(\mathbf Q/\mathbf Z\), which is unchanged.
-
-### Fullness of finite intersections
-
-A finite intersection of pole stages or derivative translates is
-subject to the finite-seed obstruction only if its generic fiber is
-all of \(L\).  If the intersection is not full, it is not a candidate
-for the required lattice.  The construction table and saturation
-proof now state this condition explicitly.
-
-### Images of source-boundary divisors
-
-The normalization morphism
-
-\[
-\nu:Y=\operatorname{Spec}O\longrightarrow\operatorname{Spec}B
-\]
-
-is finite.  If \(q\subset O\) is the height-one generic prime of a
-divisorial component \(E\), and \(p=q\cap B\), then
-\(B/p\subset O/q\) is finite integral.  Hence
-
-\[
-\dim(B/p)=\dim(O/q)=1.
-\]
-
-Since \(B\) is a two-dimensional polynomial ring, \(p\) is
-height one.  Thus every divisorial source-boundary component maps onto
-a height-one base divisor; no contracted-divisor or codimension-two
-image is silently covered by the DVR proof.  The unramified
-positive-pole argument is therefore legitimately localized at the
-DVR extension \(B_p\subset O_q\).
-
-## 2. Reviewed statements
-
-The review adjudicates only these packet-local statements.
-
-1. `CDS-001`: the canonical derivations have the displayed signs and
-   commute.
-2. `CDS-002`: finite differential saturation of any finite full seed
-   excludes height-one ramification.
-3. `CDS-003`: the normalization-seed saturation is finite exactly
-   when the normalization is unramified in codimension one.
-4. `CDS-004`: every divisorial source boundary maps onto a height-one
-   base divisor; ramified pole stages and genuine positive unramified
-   pole stages have nonfinite saturation.
-5. `CDS-005`: for the finite-cover permutation connection, an embedded
-   ordinary coherent extension across one generic height-one point is
-   equivalent to trivial inertia there.
-6. `CDS-006`: regular holonomicity or logarithmic coherence does not
-   imply ordinary structure-sheaf finiteness.
-7. `CDS-007`: trivial inertia at every height-one divisor is the
-   surviving normalization route; a direct D-module route also needs
-   global ordinary coherence, a connection preserving both unscaled
-   translations, and a torsion-free meromorphic embedding with generic
-   fiber \(L\).
-8. `CDS-008`: the audited dual, multiplier, intersection, jet, and
-   cohomological constructions do not bypass that bridge.
-
-No global `CLM-*` status is reviewed or promoted.
-
-## 3. Exact reviewed proof and validation bytes
+## 1. Exact reviewed scope
 
 `ACCEPT_SCOPED` is bound to the exact bytes of these eleven files at
-candidate revision `d8c9dc19ad6201042afb315ccab57489c863105b`:
+candidate revision `ab498bd9f40fdb36137fbe8a52658555a3eef004`:
 
 1. `FOUNDATIONS.md`;
 2. `DIFFERENTIAL_SATURATION.md`;
@@ -120,158 +38,329 @@ candidate revision `d8c9dc19ad6201042afb315ccab57489c863105b`:
 10. `verify_global_bridges.py`;
 11. `verify_all.py`.
 
-`README.md` is the packet summary rather than a load-bearing proof
-file.  Its scientific prose was checked against those candidate bytes.
-Its permitted post-candidate edit is limited to recording the completed
-review in the metadata header.
+`README.md` is the packet summary.  Its scientific prose was checked
+against the reviewed files; only review metadata may change after the
+candidate pin.  `REVIEW.md`, `HANDOFF.md`, and `INTEGRATION.json` are
+review and transport metadata and may record the pin, PR, validation,
+risks, and handoff without expanding the accepted mathematics.
 
-`REVIEW.md`, `HANDOFF.md`, and `INTEGRATION.json` are review and
-transport metadata.  They may record the review pin, PR number, exact
-scope, risks, validation, and handoff, but may not expand the accepted
-mathematics.  A later edit to one of the eleven reviewed files, or a
-scientific-prose edit to `README.md`, requires a new pinned review.
+Any later material edit to a reviewed file, or to the scientific prose
+of `README.md`, requires a new pinned review.
+
+## 2. Corrections adjudicated
+
+### 2.1 Multiplier implication
+
+The false converse
+
+\[
+(M:M)\text{ stable}\Longrightarrow M\text{ stable}
+\]
+
+is not used.  For
+
+\[
+B=\mathbf C[P,Q],\qquad K=L=\operatorname{Frac}(B),\qquad M=PB,
+\]
+
+we have \(D_P(P)=1\notin PB\), while \((M:M)=B\) is pair-stable.
+The packet uses only
+
+\[
+D(M)\subset M\Longrightarrow D((M:M))\subset(M:M).
+\]
+
+A direct proof that a finite full multiplier ring is pair-stable is
+already a construction of the required stable order.  For the named
+rank-one reflexive fractional \(O\)-modules, \((I:I)=O\).
+
+### 2.2 Fractional-ideal twists
+
+Changing a logarithmic lattice shifts residue representatives by
+integers on fixed monodromy eigenspaces.  Multiplication by a
+ramification parameter can instead permute tame character labels.  The
+invariant statement is preservation of the complete residue-class
+multiset in \(\mathbf Q/\mathbf Z\), not a common shift in a fixed basis.
+
+### 2.3 Fullness of finite intersections
+
+The finite-seed obstruction applies to a finite intersection of pole
+stages or derivative translates only when its generic fiber is all of
+\(L\).  A nonfull intersection is not a candidate lattice and is not fed
+into the theorem.
+
+### 2.4 Images of source-boundary divisors
+
+For the finite normalization morphism
+
+\[
+\nu:Y=\operatorname{Spec}O\longrightarrow\operatorname{Spec}B,
+\]
+
+let \(q\subset O\) be the height-one generic prime of a divisorial
+boundary component and \(p=q\cap B\).  Since \(B/p\subset O/q\) is
+finite integral,
+
+\[
+\dim(B/p)=\dim(O/q)=1.
+\]
+
+As \(B\) has dimension two, \(p\) has height one.  Thus the DVR proof
+does not silently treat a divisor contracted to codimension two.
+
+### 2.5 Actual-pole premise at an unramified omitted divisor
+
+The unramified pole-growth argument begins with an actual localized
+section \(f=us^{-m}\), \(m>0\), and a transverse field satisfying
+\(D(s)=a\in O_q^\times\).  It does not infer escape merely from a
+formally positive bound vector when the corresponding module contains
+no section attaining a positive pole.  The construction table now uses
+this exact premise.
+
+### 2.6 Pair-spectrum validator
+
+The prior check rewrote
+
+\[
+r(a h_P+b h_Q)-r=r(a h_P+b h_Q-1)
+\]
+
+without imposing the normal-frame relation.  The candidate constructs
+the Groebner basis of
+
+\[
+(a h_P+b h_Q-1)
+\]
+
+and verifies that the normal coefficient minus \(r=j/e\) reduces to
+zero modulo that ideal.  The tangential coefficient is checked to be
+identically zero.
+
+### 2.7 Aggregator coverage
+
+`verify_all.py` now invokes both validators at their defaults and again
+at the enlarged bounds recorded below.  It then checks the required
+artifact set, issue ownership, review pin, integration state, packet
+labels, and forbidden categorical shortcuts.
+
+## 3. Reviewed packet-local statements
+
+The review adjudicates only the following mutable packet-local claims.
+
+1. `CDS-001`: the canonical derivations have the displayed signs and
+   commute.
+2. `CDS-002`: finite differential saturation of any finite full seed
+   excludes height-one ramification.
+3. `CDS-003`: the normalization-seed saturation is finite exactly when
+   the normalization is unramified in codimension one.
+4. `CDS-004`: every divisorial source boundary maps onto a height-one
+   base divisor; every ramified pole stage, and every unramified stage
+   containing an actual positive pole, has nonfinite saturation.
+5. `CDS-005`: for the finite-cover permutation connection, an embedded
+   ordinary coherent extension across a generic height-one point is
+   equivalent to trivial inertia there.
+6. `CDS-006`: regular holonomicity or logarithmic coherence does not
+   imply ordinary structure-sheaf finiteness.
+7. `CDS-007`: trivial inertia at every height-one divisor is the
+   surviving normalization route.  A direct global D-module route also
+   needs global ordinary coherence, a compatible connection preserving
+   both unscaled translations, and a torsion-free meromorphic embedding
+   with generic fiber \(L\).
+8. `CDS-008`: the audited dual, multiplier, intersection, jet, and
+   cohomological constructions do not bypass that bridge.
+
+No global `CLM-*` claim is allocated, promoted, frozen, or re-reviewed.
 
 ## 4. Claim-to-file and dependency bindings
 
 | Claim | Reviewed proof files | Packet dependencies | Inherited repository dependencies |
 |---|---|---|---|
-| `CDS-001` | `FOUNDATIONS.md` | `J(P,Q)=1`; finite separability of `L/K` | canonical-derivation context associated with `CLM-003` |
-| `CDS-002` | `FOUNDATIONS.md`, `DIFFERENTIAL_SATURATION.md`, `LOCAL_RESIDUES.md` | `CDS-001`; finite full seed; transverse ramified-DVR escape | maintained issue #4 local-DVR theorem; no global promotion |
-| `CDS-003` | `DIFFERENTIAL_SATURATION.md`, `LOCAL_RESIDUES.md` | `CDS-002`; normal height-one intersection for `O`; extension through unramified DVRs | `CLM-003`; `CLM-010`–`CLM-013` only for the conditional degree-one consequence |
-| `CDS-004` | `DIFFERENTIAL_SATURATION.md`, `LOCAL_RESIDUES.md`, `CONSTRUCTION_TABLE.md` | `CDS-002`; finiteness of `Y/B`; actual pole-bearing localized section; characteristic-zero nonvanishing; fullness before applying Theorem 2.1 | mutable source-reflexive-lattice pole filtration |
-| `CDS-005` | `DMODULE_ROUTE.md`, `LOGARITHMIC_LATTICES.md`, `LOCAL_RESIDUES.md` | finite-etale permutation connection on `V`; tame inertia cycles; embedded full local lattice | no global coherence theorem inherited or asserted |
-| `CDS-006` | `DMODULE_ROUTE.md`, `LOGARITHMIC_LATTICES.md`, `COUNTERMODELS.md`, `SOURCE_AUDIT.md` | explicit Kummer and open-localization controls | Deligne/BBD/Kashiwara vocabulary only; none licenses ordinary `O`-finiteness |
-| `CDS-007` | `DIFFERENTIAL_SATURATION.md`, `DMODULE_ROUTE.md` | `CDS-003`, `CDS-005`; normalization route distinguished from the stronger global D-module route | `CLM-010`–`CLM-013` only after a stable full module exists; `CLM-061` remains open |
-| `CDS-008` | `CONSTRUCTION_TABLE.md`, `COUNTERMODELS.md`, `DIFFERENTIAL_SATURATION.md`, `SOURCE_AUDIT.md` | one-way multiplier implication; `(I:I)=O`; fullness condition for intersections; residue-multiset invariance | mutable predecessor multiplier-order bridge; no existence result imported |
+| `CDS-001` | `FOUNDATIONS.md` | \(J(P,Q)=1\); finite separability of \(L/K\) | canonical-derivation context associated with `CLM-010` |
+| `CDS-002` | `FOUNDATIONS.md`, `DIFFERENTIAL_SATURATION.md`, `LOCAL_RESIDUES.md` | finite full seed; transverse ramified-DVR escape | issue #4 local-DVR theorem; no global promotion |
+| `CDS-003` | `DIFFERENTIAL_SATURATION.md`, `LOCAL_RESIDUES.md` | `CDS-002`; normal height-one intersection; unramified DVR extension | `CLM-003`; `CLM-010`–`CLM-013` only for the conditional consequence |
+| `CDS-004` | `DIFFERENTIAL_SATURATION.md`, `LOCAL_RESIDUES.md`, `CONSTRUCTION_TABLE.md` | finite \(Y/B\); actual pole-bearing section; characteristic-zero leading coefficient | mutable source-reflexive-lattice pole filtration |
+| `CDS-005` | `DMODULE_ROUTE.md`, `LOGARITHMIC_LATTICES.md`, `LOCAL_RESIDUES.md` | finite-etale permutation connection; inertia cycles; embedded full local lattice | no global coherence theorem imported |
+| `CDS-006` | `DMODULE_ROUTE.md`, `LOGARITHMIC_LATTICES.md`, `COUNTERMODELS.md`, `SOURCE_AUDIT.md` | explicit Kummer and localization controls | Deligne/BBD/Kashiwara vocabulary only |
+| `CDS-007` | `DIFFERENTIAL_SATURATION.md`, `DMODULE_ROUTE.md` | `CDS-003`, `CDS-005`; distinction between normalization and global D-module routes | `CLM-010`–`CLM-013` only after a stable full module exists; `CLM-061` remains open |
+| `CDS-008` | `CONSTRUCTION_TABLE.md`, `COUNTERMODELS.md`, `DIFFERENTIAL_SATURATION.md`, `SOURCE_AUDIT.md` | one-way multiplier implication; \((I:I)=O\); fullness for intersections; residue-multiset invariance | mutable predecessor multiplier-order bridge |
 
-The validation files check encoded identities and mutations; they do
-not promote inherited candidates or replace mathematical review.
+## 5. Independent recomputation
 
-## 5. Unresolved risks and explicit exclusions
+### 5.1 Canonical frame
 
-1. **No Keller-specific inertia exclusion.**  Polynomial source
-   geometry has not been shown to force trivial height-one inertia.
-2. **No stable lattice or order.**  No finite non-divisorial
-   source-derived module, stable multiplier ring, or equivalent order
-   is constructed for an arbitrary Keller pair.
-3. **No global D-module bridge.**  Generic height-one ordinary
-   coherence does not establish global \(\mathcal O\)-coherence,
-   codimension-two control, preservation by both translations, or a
-   compatible meromorphic embedding.
-4. **Mutable predecessor dependencies.**  This review does not
-   independently re-adjudicate `CLM-010`–`CLM-013` or `CLM-061`.
-5. **Countermodels omit the decisive source condition.**  None is a
-   polynomial Keller counterexample on the full affine plane.
-6. **Review independence.**  The reviewer is the constructing
-   assistant; promotion or freeze requires a distinct reviewer.
-7. **Primary-source limit.**  The cited sources justify the named
-   categorical operations and residue framework, not the missing
-   ordinary-coherence or inertia theorem.
+For
 
-## 6. Independent recomputation
+\[
+D_P=Q_y\partial_x-Q_x\partial_y,\qquad
+D_Q=-P_y\partial_x+P_x\partial_y,
+\]
 
-### Canonical frame
-
-Direct substitution gives
+direct substitution gives
 
 \[
 D_P(P)=1,\quad D_P(Q)=0,\quad
 D_Q(P)=0,\quad D_Q(Q)=1.
 \]
 
-The commutator restricts to zero on \(K=\mathbf C(P,Q)\), and finite
-separability of \(L/K\) forces it to vanish.
+The commutator kills \(P,Q\), hence is a \(K=\mathbf C(P,Q)\)-derivation
+of the finite separable extension \(L/K\).  Therefore
+\([D_P,D_Q]=0\).
 
-### Saturation, finite intersections, and pole escape
+### 5.2 Saturation and pole escape
 
 Leibniz and commutativity make
 
 \[
-\sum_{a,b\ge0}B D_P^aD_Q^b(M_0)
+\operatorname{Sat}_D(M_0)
+ =\sum_{a,b\ge0}B D_P^aD_Q^b(M_0)
 \]
 
-the minimal pair-stable closure.  The local ramification obstruction
-applies precisely when \(M_0\) is finite and full.  Thus a nonfull
-finite intersection is excluded as a candidate rather than fed into
-the theorem.
+the minimal pair-stable closure.  If this is finite and \(M_0\) is
+full, localization gives the prohibited finite full stable lattice at
+any ramified height-one valuation.
 
-For a divisorial source boundary, finiteness of \(Y/B\) gives the
-height-one DVR pair \(B_p\subset O_q\) above.  In the unramified case,
-take an actual pole-bearing section \(f=us^{-m}\) and a transverse
-field with \(D(s)=a\in O_q^\times\).  Then
+At an unramified omitted divisor, for an actual pole-bearing section
+\(f=us^{-m}\) and transverse \(D(s)=a\in O_q^\times\),
 
 \[
-D^n(f)=(-1)^n(m)_nua^ns^{-m-n}+O(s^{-m-n+1}),
+D^n(f)=(-1)^n(m)_nua^ns^{-m-n}+O(s^{-m-n+1}).
 \]
 
-so pole order grows without assuming that a bare monomial globalizes.
+Characteristic zero makes the leading coefficient nonzero, so the pole
+order is unbounded.
 
-### Kummer residues and twists
+### 5.3 Kummer residues
 
 For \(t=s^e\),
 
 \[
-D^n(t^Ns^j)=
-\prod_{r=0}^{n-1}(N+j/e-r)t^{N-n}s^j.
+\partial_t^n(t^Ns^j)
+ =\prod_{r=0}^{n-1}(N+j/e-r)t^{N-n}s^j.
 \]
 
-For \(0<j<e\), the valuation is unbounded below.  For every integer
-\(k\), the multisets \(\{(j+k)/e\}\) and \(\{j/e\}\) agree modulo
-\(\mathbf Z\).
+For \(0<j<e\), none of the factors vanishes and the valuation tends to
+minus infinity.  Integer lattice shifts preserve \(j/e\bmod\mathbf Z\),
+and fractional ramification-parameter twists preserve the complete
+multiset by permutation.
 
-### Multiplier and D-module logic
+For a normal/tangent frame satisfying \(a h_P+b h_Q=1\), the pair
+residue on the \(j\)-th character is
+
+\[
+(j/e,0).
+\]
+
+The candidate validator now checks the normal equality modulo the
+actual frame relation rather than by a tautological rearrangement.
+
+### 5.4 Inertia criterion
+
+An inertia cycle of length \(e\) contributes
+
+\[
+0,1/e,\ldots,(e-1)/e\pmod{\mathbf Z}.
+\]
+
+An ordinary coherent embedded lattice stable under the transverse
+translation can exist only when all classes are integral, equivalently
+when every cycle has length one.  Conversely, trivial inertia gives the
+unramified integral closure locally.  This is a generic height-one
+criterion, not a global coherence theorem.
+
+### 5.5 Multiplier and D-module logic
 
 For stable \(M\), Leibniz proves stability of \((M:M)\); \(M=PB\)
-disproves the converse.  For rank-one reflexive fractional
-\(O\)-modules, height-one principalness and normal intersection give
-\((I:I)=O\).
-
-A length-\(e\) inertia cycle has classes \(j/e\bmod\mathbf Z\).  A
-nonintegral character is modeled by
+disproves the converse.  A nonintegral Kummer character is modeled by
 
 \[
 \mathcal D/\mathcal D(t\partial_t-\alpha),
 \]
 
-which is regular holonomic but \(\mathcal O\)-infinite.  The local
-criterion is not a global coherence or pair-stability theorem.
+which is regular holonomic but generates unbounded ordinary poles under
+\(\partial_t\).  Thus holonomicity and logarithmic coherence do not
+supply the required finite ordinary lattice.
 
-## 7. Adversarial mutations
+## 6. Adversarial mutations
 
 | Mutation | Result |
 |---|---|
-| Contract a divisorial `E_i` to codimension two | Impossible inside finite `Y -> Spec B`; finite integral quotients preserve the divisor dimension. |
-| Apply the finite-seed theorem to a nonfull intersection | Invalid; the packet now makes fullness an explicit premise. |
-| Replace translations by logarithmic fields | Kummer normalization becomes stable; the theorem is weakened. |
-| Twist fixed eigenspaces by base-divisor powers | Representatives shift by integers; nonzero classes survive. |
+| Contract a divisorial boundary to codimension two | Impossible for finite \(Y\to\operatorname{Spec}B\); finite integral quotients preserve divisor dimension. |
+| Apply the finite-seed theorem to a nonfull intersection | Invalid; fullness is an explicit premise. |
+| Treat a positive bound as an attained pole | Invalid; the unramified theorem begins with an actual pole-bearing section. |
+| Replace translations by logarithmic fields | The Kummer normalization becomes stable, weakening the target theorem. |
+| Shift residue representatives by integers | Nonzero classes survive. |
 | Twist by a ramification parameter | Character labels may permute; the complete class multiset survives. |
-| Infer multiplier instability from seed instability | False for `M=PB`; no such converse is used. |
-| Prove a full multiplier stable directly | This already constructs the desired stable order. |
+| Infer multiplier instability from seed instability | False for \(M=PB\); no such converse is used. |
 | Take determinant, trace, norm, or invariants | Individual characters or fullness are lost. |
-| Remove ramification but retain nonproper boundary | `j_+` may remain an infinite localization; `j_{!*}` is different. |
-| Invoke exact symplectic data | The Laurent control retains `j/e`. |
-| Invoke Noetherianity | Invalid without a fixed finite ambient module. |
-| Invoke Gauss-Manin or compact support | Produces cohomology, not a full embedded lattice in `L`. |
+| Remove ramification but retain nonproper boundary | \(j_+\) may remain an infinite localization; \(j_{!*}\) is different. |
+| Invoke exact symplectic data | The Laurent control retains \(j/e\). |
+| Invoke Noetherianity on the pole union | Invalid without one fixed finite ambient module. |
+| Invoke Gauss-Manin or compact support | Produces cohomology, not a full embedded lattice in \(L\). |
+| Omit \(a h_P+b h_Q=1\) in the symbolic check | Detected by review; corrected by ideal reduction. |
+| Run only default validator bounds | Detected by review; the aggregator now also runs the documented enlarged bounds. |
 
-## 8. Primary-source limits
+## 7. Primary-source audit
 
-The review checked the packet's use of Deligne for logarithmic
-extensions and residue/monodromy, BBD for intermediate extension,
-Kashiwara for the regular-holonomic Riemann–Hilbert framework,
-Katz–Oda for Gauss-Manin, and Hartshorne for reflexive
-codimension-one language.  None supplies the missing ordinary
-\(\mathcal O\)-coherence, trivial-inertia, pair-stability, or
-meromorphic-embedding theorem.
+The reviewed source use remains deliberately narrow.
 
-## 9. Automated review evidence
+- Deligne, *Equations différentielles à points singuliers réguliers*,
+  LNM 163 (1970), II.5.4 and II.5.6, supplies canonical logarithmic
+  extensions after choosing residue representatives and relates
+  monodromy to residues under the stated convention.  It does not
+  remove poles or make the meromorphic D-module 
+  \(\mathcal O\)-finite.
+- Beilinson–Bernstein–Deligne, *Faisceaux pervers*, Astérisque 100
+  (1983), supplies intermediate extension and categorical minimality.
+  It does not prove ordinary \(\mathcal O\)-coherence of the associated
+  D-module.
+- Kashiwara, “The Riemann–Hilbert Problem for Holonomic Systems,” PRIMS
+  20 (1984), 319–365, supplies the regular-holonomic/constructible
+  correspondence.  Holonomicity is coherence over \(\mathcal D\), not
+  over \(\mathcal O\).
+- Katz–Oda, “On the differentiation of De Rham cohomology classes with
+  respect to parameters,” J. Math. Kyoto Univ. 8 (1968), 199–213,
+  supplies the Gauss–Manin connection under smooth-family hypotheses.
+  A cohomology module is not automatically a submodule of \(L\).
+- Hartshorne, “Stable Reflexive Sheaves,” Math. Ann. 254 (1980),
+  121–176, supplies the standard reflexive/codimension-one framework.
+  Reflexive hulls do not automatically preserve a connection or erase
+  fractional residues.
 
-The two exact remote validator files were reconstructed byte for byte;
-their local Git blob hashes matched the repository blobs
-`053d71a550992dfe6be5edb99d1ab0e578c557a3` and
-`1428959b91216d65eebd0f1c12a6d10681c8b7e0`.  Byte compilation and
-enlarged runs passed:
+The load-bearing saturation, residue, multiplier, and local coherence
+claims are proved directly in the packet; no cited source is used as a
+black box for the missing Keller-specific inertia theorem.
+
+## 8. Validation evidence
+
+The two load-bearing validator files were reconstructed byte for byte.
+Their local Git blob hashes matched the candidate blobs:
 
 ```text
+verify_local_residues.py  de75ce69bae2324106b42c75f8f15ba9cffb4a91
+verify_global_bridges.py  1428959b91216d65eebd0f1c12a6d10681c8b7e0
+verify_all.py              a4a6c5903d1ea97a4ac0676450f58848dd9dc46a
+```
+
+Byte compilation, default runs, enlarged runs, and invalid-bound
+mutations passed:
+
+```text
+verify_local_residues.py
+  fractional_twist_checks: 319
+  kummer_checks: 7502
+  pair_spectrum_checks: 77
+  non_galois_checks: 3
+  total_checks: 7901
+  PASS
+
+verify_global_bridges.py
+  inertia_partition_checks: 271
+  localization_checks: 65
+  multiplier_converse_checks: 185
+  exact_symplectic_checks: 27
+  total_checks: 548
+  PASS
+
 verify_local_residues.py --max-e 30 --max-n 64
   fractional_twist_checks: 1885
   kummer_checks: 195170
@@ -287,36 +376,63 @@ verify_global_bridges.py --max-degree 25 --max-n 50 --max-e 25
   exact_symplectic_checks: 72
   total_checks: 10327
   PASS
+
+verify_local_residues.py --max-e 1 --max-n 4
+  rejected: bounds must satisfy max-e >= 2 and max-n >= 1
+
+verify_global_bridges.py --max-degree 4 --max-n 0 --max-e 3
+  rejected: bounds must satisfy max-degree >= 1, max-n >= 1,
+            and max-e >= 2
 ```
 
-The checks do not substitute for mathematical review.
+The automated checks evaluate encoded identities and artifact
+contracts.  They do not substitute for mathematical review.
+
+## 9. Unresolved risks and exclusions
+
+1. No Keller-specific theorem forces trivial height-one inertia.
+2. No finite non-divisorial pair-stable lattice or stable multiplier
+   order is constructed for an arbitrary Keller pair.
+3. Generic height-one ordinary coherence does not prove global
+   \(\mathcal O\)-coherence, codimension-two control, pair-stability, or
+   a compatible meromorphic embedding.
+4. The review does not independently re-adjudicate `CLM-010`–`CLM-013`
+   or `CLM-061`.
+5. None of the countermodels is a polynomial Keller counterexample on
+   the full affine plane.
+6. The reviewer is the constructing assistant; promotion or freeze
+   requires a distinct reviewer.
+7. The primary sources do not supply the missing ordinary-coherence or
+   inertia-exclusion theorem.
 
 ## 10. Blocking-question answers
 
 - **Finite full pair-stable lattice constructed?** No.
 - **Height-one ramification excluded for every Keller pair?** No.
-- **A contracted divisorial boundary silently covered?** No.
 - **Finite-seed obstruction applied without fullness?** No.
-- **Holonomicity or logarithmic stability conflated with ordinary pair
-  stability?** No.
+- **Unramified pole escape asserted without an actual pole?** No.
+- **Holonomicity or logarithmic stability conflated with ordinary
+  pair-stability?** No.
 - **Invalid multiplier converse used?** No.
 - **Local height-one coherence promoted to global coherence?** No.
-- **Both unscaled translations omitted from the direct bridge?** No in
-  the candidate; transport metadata is required to preserve them.
+- **Either unscaled translation omitted from the direct bridge?** No.
+- **Normal-frame relation omitted from the symbolic validation?** No.
+- **Documented enlarged bounds omitted from the aggregator?** No.
 - **Degree one claimed unconditionally?** No.
 
 ## 11. Verdict
 
 `ACCEPT_SCOPED`.
 
-The corrected candidate proves the normalization-saturation
-coherence equivalence, finite-seed and divisorial pole-stage
-obstructions, the generic height-one inertia criterion, and exact
+The candidate proves the normalization-saturation coherence
+equivalence, the finite-full-seed and divisorial pole-stage
+obstructions, the generic height-one inertia criterion, and explicit
 counterexamples to categorical shortcuts.  It isolates trivial
 height-one inertia as the smallest normalization-route bridge and the
-stronger ordinary-coherence, pair-stability, and embedding package for
-a direct D-module route.  It does not solve `CLM-061`.
+stronger global ordinary-coherence, pair-stability, and meromorphic
+embedding package for a direct D-module route.  It does not solve
+`CLM-061`.
 
 Because the same assistant constructed and reviewed the packet, this
-review is local adversarial evidence only and cannot confer independent
-or frozen authority.
+is local adversarial evidence only and cannot confer independent or
+frozen authority.
