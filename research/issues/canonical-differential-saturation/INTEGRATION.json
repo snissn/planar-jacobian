@@ -7,10 +7,10 @@
     "research/issues/canonical-differential-saturation/"
   ],
   "base_sha": "652a5e252626fa5816445651245e8a8946cee53e",
-  "candidate_sha": "2a0300d3dbfba2a58622d3e60351c18dd28a094a",
-  "scientific_status": "scoped equivalence, counterexamples, and exact reduction / MUTABLE_NONAUTHORITATIVE",
+  "candidate_sha": "7523052bde101036bc1753acbc37ba6be78e895b",
+  "scientific_status": "scoped equivalence, counterexamples, corrected multiplier audit, and exact reduction / MUTABLE_NONAUTHORITATIVE",
   "review_mode": "local-adversarial-review",
-  "reviewed_revision": "2a0300d3dbfba2a58622d3e60351c18dd28a094a",
+  "reviewed_revision": "7523052bde101036bc1753acbc37ba6be78e895b",
   "proposed_global_claims": [
     {
       "id": "CDS-003",
@@ -20,7 +20,7 @@
     {
       "id": "CDS-005",
       "status": "candidate_proved",
-      "statement": "For the full finite-cover permutation connection, ordinary coherent extension across a height-one divisor is equivalent to trivial inertia there."
+      "statement": "At a generic height-one point of the full finite-cover permutation connection, an embedded ordinary coherent lattice exists if and only if local inertia is trivial."
     },
     {
       "id": "CDS-006",
@@ -30,7 +30,12 @@
     {
       "id": "CDS-007",
       "status": "open_bridge",
-      "statement": "Derive trivial height-one inertia, equivalently ordinary coherence of the full intermediate extension, from the polynomial Keller source."
+      "statement": "Derive trivial height-one inertia from the polynomial Keller source; a direct global D-module route additionally requires global ordinary coherence and a torsion-free meromorphic embedding with generic fiber L."
+    },
+    {
+      "id": "CDS-008",
+      "status": "negative_audit",
+      "statement": "The audited dual, canonical, jet, and cohomological constructions do not bypass the inertia bridge; multiplier stability is a separate stable-order condition, and seed instability does not imply multiplier instability."
     }
   ],
   "proposed_graph_nodes": [
@@ -44,7 +49,7 @@
         "CLM-013",
         "CLM-061"
       ],
-      "statement": "The canonical D-module and differential-saturation routes reduce to trivial height-one inertia; logarithmic or holonomic coherence is insufficient."
+      "statement": "The normalization-saturation and local D-module routes reduce to trivial height-one inertia; logarithmic or holonomic coherence is insufficient, and the direct global D-module route also needs an embedded ordinary coherent extension."
     }
   ],
   "shared_surfaces_requested": [
@@ -58,6 +63,6 @@
   "supersedes_prs": [],
   "temporary_artifacts_absent": true,
   "integration_state": "integration-ready",
-  "pr_number": null,
+  "pr_number": 42,
   "completion_receipt": null
 }
