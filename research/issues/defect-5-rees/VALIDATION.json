@@ -1,0 +1,19 @@
+{
+  "branch": "agent/defect-5-rees-gpt56",
+  "checked_at": "2026-07-24",
+  "commands": [
+    "python3 -m py_compile research/issues/defect-5-rees/validate_defect5.py",
+    "python3 research/issues/defect-5-rees/validate_defect5.py --max-weight 64 --json"
+  ],
+  "checks": {
+    "complete_stairs_S0_through_S5": "PASS",
+    "exceptional_saturated_groebner_systems": "PASS",
+    "primitive_weight_sieve_through_64": "PASS",
+    "restored_3_2_rho_2_family": "PASS",
+    "semantic_negative_controls": "PASS",
+    "simultaneous_resonant_scalars": "PASS"
+  },
+  "mathematical_authority": "falsification evidence only; not independent theorem review",
+  "remote_branch_bytes_tested": true,
+  "status": "PASS"
+}
