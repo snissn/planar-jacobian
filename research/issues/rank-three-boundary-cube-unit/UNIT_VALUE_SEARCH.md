@@ -1,4 +1,4 @@
-# Unit-Value Search and the Exact Moving-Divisor Equation
+# Unit-Value Search and a Boundary-Stable Moving-Divisor Family
 
 ```text
 authority: MUTABLE_NONAUTHORITATIVE
@@ -37,20 +37,25 @@ a formal primitive element.
 The predecessor supplied the first two integral certificates and explicitly
 showed why they do not imply one unit value.
 
-## 2. Boundary-first normalization of the search
+## 2. Boundary-first restricted search
 
 Let `H` be the square-free product of all target height-one primes under the
 normalization boundary. Choose `theta in E` primitive at every prime dividing
 `H`, as in `BOUNDARY_VALUATIONS.md`. For an arbitrary second section `eta in E`,
-search only in
+consider the affine pencil
 
 ```text
 s_T=theta+H T eta,
 T in B.
 ```
 
-This loses no boundary flexibility relevant to the unit problem: every `s_T`
-remains primitive at every boundary prime.
+Every member remains primitive at every boundary prime. This is a useful
+**restricted** search, not an exhaustion of `E`: all its members have the same
+class as `theta` in `E/H E`. A hypothetical unit-index section can have a
+different primitive residue class at one or more boundary components. The
+finite-prime adaptation theorem supplies at least one boundary-primitive class,
+but it does not show that a unit-valued section can be moved into that chosen
+class while preserving its index value.
 
 Let
 
@@ -61,46 +66,79 @@ B_2=3 C_Phi(theta,eta,eta),
 A=Phi(eta).
 ```
 
-Then the exact one-parameter index polynomial is
+Then the exact index polynomial for this pencil is
 
 ```text
-G_eta(T)
+G_{theta,eta}(T)
  = Phi(s_T)
  = D+H C T+H^2 B_2 T^2+H^3 A T^3.         (2.1)
 ```
 
-The unit problem is exactly
+Consequently,
 
 ```text
-G_eta(T)=lambda,
+G_{theta,eta}(T)=lambda,
 eta in E,
 T in C[P,Q],
-lambda in C*.                              (2.2)
+lambda in C*                              (2.2)
 ```
 
-At each boundary prime `p|H`, equation (2.1) reduces to `D`, a unit. Hence every
-irreducible factor of `G_eta(T)` is a nonboundary collision component.
+is a sufficient unit-search subproblem inside the single congruence class
+`theta+H E`. It is not equivalent to the unrestricted unit problem for one
+fixed `theta`.
 
-## 3. Sheetwise meaning of the affine family
+At each boundary prime `p|H`, equation (2.1) reduces to `D`, a unit. Hence every
+irreducible factor of `G_{theta,eta}(T)` is a nonboundary collision component.
+
+## 3. Exact residue-class decomposition
+
+Define the set of boundary-primitive residue classes
+
+```text
+R_H={bar(theta) in E/H E :
+     bar(theta) generates O_p/p O_p for every p|H}.
+```
+
+The predecessor's finite-prime adaptation theorem proves `R_H` is nonempty.
+For any `bar(theta) in R_H` and any lift `theta in E`, the integral sections with
+that residue class are exactly
+
+```text
+theta+H eta,  eta in E.
+```
+
+Therefore the unrestricted conditional unit question is exactly
+
+```text
+find bar(theta) in R_H, a lift theta, eta in E, and lambda in C*
+such that Phi(theta+H eta)=lambda.          (3.1)
+```
+
+Equation (3.1) is a union over all boundary-primitive residue classes. The
+fixed-`theta` pencil (2.1) studies one class and one direction at a time. No
+finite list of classes, canonical class, or descent from an arbitrary unit
+section to the initially chosen `theta` is proved.
+
+## 4. Sheetwise meaning of the affine pencil
 
 On a split étale chart, let `z_i` be the sheet values of `theta` and `w_i` the
 sheet values of `eta`. Then
 
 ```text
-G_eta(T)
- = product_{i<j} ((z_j-z_i)+H T(w_j-w_i)).  (3.1)
+G_{theta,eta}(T)
+ = product_{i<j} ((z_j-z_i)+H T(w_j-w_i)).  (4.1)
 ```
 
-A zero of `G_eta(T)` is therefore one of the three equations
+A zero of `G_{theta,eta}(T)` is therefore one of the three equations
 
 ```text
-(z_j-z_i)+H T(w_j-w_i)=0.                  (3.2)
+(z_j-z_i)+H T(w_j-w_i)=0.                  (4.2)
 ```
 
-Equation (3.2) identifies two scalar values but not two source points. Since the
+Equation (4.2) identifies two scalar values but not two source points. Since the
 cover is étale there, it is an excess index divisor, not a branch divisor.
 
-## 4. Why Chinese remainder arguments stop
+## 5. Why Chinese remainder arguments stop
 
 For a finite set of height-one primes, one may prescribe `T mod p` to avoid the
 finitely many bad residue classes at those primes. The resulting polynomial
@@ -109,43 +147,43 @@ new nonconstant polynomial whose irreducible factors were absent from the finite
 list.
 
 The obstruction is not lack of local choices. It is the absence of a theorem
-that the entire divisor of `G_eta(T)` is supported on the already-controlled
-finite set. Equation (2.1) proves the opposite boundary statement: any new factor
-is automatically *outside* that set.
+that the entire divisor of `G_{theta,eta}(T)` is supported on the
+already-controlled finite set. Equation (2.1) proves the opposite boundary
+statement: any new factor is automatically *outside* that set.
 
 Thus a CRT construction is valid only if supplemented by a global theorem such
 as
 
 ```text
-all zeros of G_eta(T) lie over H=0,
+all zeros of G_{theta,eta}(T) lie over H=0,
 ```
 
 but no such theorem follows from source étaleness or the different.
 
-## 5. Constant and affine target choices
+## 6. Constant and affine target choices
 
-### 5.1 Constant `T`
+### 6.1 Constant `T`
 
 Taking `T=c in C` gives a one-dimensional pencil of sections. Even if the three
-linear sheet-difference equations in (3.2) avoid every boundary component, their
+linear sheet-difference equations in (4.2) avoid every boundary component, their
 eliminants in `P,Q` can define nonempty curves. A generic constant avoids
 identical vanishing, not pointwise vanishing over the entire target.
 
-### 5.2 Affine-linear `T`
+### 6.2 Affine-linear `T`
 
 An affine-linear polynomial can satisfy more interpolation conditions but also
-raises the degree of `G_eta(T)`. There is no monotonicity of collision support:
-removing one component can create another. This is the exact “moving divisor”
-phenomenon already observed in the predecessor packet.
+raises the degree of `G_{theta,eta}(T)`. There is no monotonicity of collision
+support: removing one component can create another. This is the exact “moving
+divisor” phenomenon already observed in the predecessor packet.
 
-### 5.3 Iteration
+### 6.3 Iteration
 
 Replacing a bad section by another affine combination and repeating does not
 give a descending invariant. Neither total degree, number of components, nor
 intersection multiplicity is known to decrease. Without such a well-founded
 measure, iteration is not a proof.
 
-## 6. Fixed-section geometry does not force a global point
+## 7. Fixed-section geometry does not force a global point
 
 The scheme
 
@@ -170,7 +208,7 @@ This variation prevents a uniform torsor interpretation. In particular:
 - the source open supplies many rational functions but no canonical integral
   point on one fixed level.
 
-## 7. Norm-form and resolvent attempts
+## 8. Norm-form and resolvent attempts
 
 The binary index cubic is a Vandermonde-type alternating product, not the norm
 of a canonical element of the cubic field. A norm representation after choosing
@@ -182,40 +220,45 @@ can distinguish `S_3` from `A_3` monodromy but cannot select one of the three
 sheets in either transitive case. A distinguished resolvent point therefore does
 not yield a distinguished integral primitive section.
 
-## 8. Differential attempts
+## 9. Differential attempts
 
 No nonconstant divisor can be invariant under both target translations, but the
-fixed-section ideal `(G_eta(T))` is not known to be stable under either one. The
-canonical derivations move the section coefficients and the parameter `T`.
-Consequently, the minimal-degree argument for translation-stable ideals cannot
-be applied to `G_eta(T)`.
+fixed-section ideal `(G_{theta,eta}(T))` is not known to be stable under either
+one. The canonical derivations move the section coefficients and the parameter
+`T`. Consequently, the minimal-degree argument for translation-stable ideals
+cannot be applied to `G_{theta,eta}(T)`.
 
 The exact primitive-coordinate congruence controls denominators and the relative
-different. It leaves the three scalar-collision factors in (3.1) unconstrained
+different. It leaves the three scalar-collision factors in (4.1) unconstrained
 at unramified points.
 
-## 9. Strongest internal reduction
+## 10. Strongest internal search statement
 
-Without invoking Orevkov, the smallest exact remaining equation is (2.2):
+Without invoking Orevkov, the exact conclusions are:
 
-```text
-D+H C T+H^2 B_2 T^2+H^3 A T^3=lambda in C*.
-```
+1. the unrestricted unit problem decomposes as (3.1) over all
+   boundary-primitive classes in `E/H E`;
+2. for each chosen class and direction, the exact pencil equation is
 
-Its defining properties are:
+   ```text
+   D+H C T+H^2 B_2 T^2+H^3 A T^3=lambda in C*;
+   ```
 
-1. `D` is a unit at every boundary prime;
-2. all higher coefficients carry the corresponding powers `H,H^2,H^3`;
-3. every divisor of the left side is a nonboundary scalar collision;
-4. no finite-prime patch controls all such divisors;
-5. neither the different nor source étaleness forbids them.
+3. `D` is a unit at every boundary prime and all higher coefficients carry the
+   powers `H,H^2,H^3`;
+4. every divisor produced inside the pencil is a nonboundary scalar collision;
+5. failure of one chosen class or pencil does not exclude a unit section in a
+   different boundary residue class;
+6. no finite-prime patch controls all newly created nonboundary divisors.
 
-This is stronger and more precise than saying only that “one moving divisor
-remains.”
+Thus the packet isolates a boundary-stable restricted moving-divisor equation
+and the exact extra residue-class choice that an exhaustive argument would have
+to control.
 
-## 10. Terminal rank-three disposition
+## 11. Terminal rank-three disposition
 
 For an actual planar Keller map, Orevkov's theorem makes the conditional search
-empty: field degree three cannot occur. The unit-value equation is retained as
-useful algebra for neighboring finite covers and for auditing proposed internal
-proofs, but it is no longer a necessary bridge for the rank-three Keller leaf.
+empty: field degree three cannot occur. The residue-class decomposition and
+pencil equation are retained as useful algebra for neighboring finite covers and
+for auditing proposed internal proofs, but they are no longer a necessary bridge
+for the rank-three Keller leaf.
