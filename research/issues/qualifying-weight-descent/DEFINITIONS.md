@@ -204,11 +204,23 @@ licensing an arbitrary inverse target automorphism.
 
 ## 7. Finite combinatorial core
 
-Fix a minimizing value of `Lambda`. Its ordinary-degree coordinate bounds all
-support exponents inside a finite degree triangle, and its support-cardinality
-coordinate bounds the number selected. For each fixed support pair, the finite
-fan theorem supplies finitely many candidate weights. Thus the coefficient-free
-record
+Fix a minimizing value
+
+```text
+Lambda(G,w)=(K,D,S,E,A,T).
+```
+
+The ordinary-degree coordinate `D` bounds all support exponents inside a finite
+degree triangle, and the support-cardinality coordinate `S` bounds the number
+selected. Hence only finitely many support pairs can occur. For any minimizing
+record with `w=(p,q)`, the first and sixth coordinates give the exact identity
+
+```text
+p+q=d_R(w)+d_S(w)-kappa_w=T-K.                            (7.1)
+```
+
+There are only finitely many positive primitive integer pairs on this fixed
+line. Thus the coefficient-free record
 
 ```text
 Core_D(F)={
@@ -218,9 +230,11 @@ Core_D(F)={
 }
 ```
 
-is finite. Coefficients can still vary in algebraic families. The claim is
-finiteness of the combinatorial record, not finiteness of the automorphism orbit
-or of all polynomial pairs.
+is finite. The finite-fan theorem independently gives an exact computable test
+set for minimizing `kappa_w` on each fixed support pair; equation (7.1) is what
+makes the full six-coordinate core finite. Coefficients can still vary in
+algebraic families. The claim is finiteness of the combinatorial record, not
+finiteness of the automorphism orbit or of all polynomial pairs.
 
 ## 8. Global minimal-counterexample universe
 
