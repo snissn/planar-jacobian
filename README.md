@@ -24,7 +24,7 @@ A merge to `main` is transport and preservation. It does not promote a candidate
 - **Defect at most four:** `CLM-047–051` and `CLM-060` are `reviewed_scoped`, bound to independent `ACCEPT` at candidate revision `96fc7ec34bd3b685a0edeae7ecd4404abab7e2f1`. The theorem applies only to primitive positive weights with grading defect at most four. It does not cover defect five, prove that an arbitrary Keller pair has such a weight, or establish `JC_2`.
 - **Issue #3 / rank-three index form:** the generic unramified-index bridge is disposed by `CLM-058`. The [rank-three successor packet](research/issues/rank-three-index-form-unit/README.md) records `CLM-062`–`CLM-066`: intrinsic index foundations, a finite source/boundary gcd-one certificate, an exact cubic differential congruence, and exclusion of the countermodel's interior different. `CLM-059` remains open at the one-section boundary-cube/unit-value step; universal content one is insufficient.
 - **Issue #4 / stable order:** the stable-order-to-degree-one implication is a mutable conditional candidate, and the packet records a ramified-DVR no-lattice obstruction. Existence of a finite stable order remains open as `CLM-061`.
-- **Issue #5 / radial field:** the packet records the logarithmic tangency criterion, full principal-part obstruction, and failure of regularity to imply algebraic integration. The actual Keller branch is not proved radial, and the leaf remains open.
+- **Issue #5 / one-boundary logarithmic field:** the predecessor packet classifies logarithmic lifting. The [one-boundary successor](research/issues/one-boundary-logarithmic-field/README.md) excludes, at mutable candidate scope, every generically ramified one-boundary model with a `G_m`-invariant reduced branch and every purely unramified one-boundary sheet-loss model. The general non-toric class remains open as `CLM-072`; exactness still permits higher principal parts.
 
 ## Start here
 
@@ -59,7 +59,7 @@ Branches are short-lived transport surfaces. When a pull request is useful, it s
 Run against the exact candidate tree:
 
 ```bash
-python3 -m compileall -q scripts research/issues/issue-3-unramified-index research/issues/rank-three-index-form-unit
+python3 -m compileall -q scripts research/issues/issue-3-unramified-index research/issues/rank-three-index-form-unit research/issues/one-boundary-logarithmic-field
 python3 scripts/render_views.py --check
 python3 scripts/validate_repository.py
 python3 scripts/frontier.py
@@ -69,6 +69,7 @@ python3 research/issues/issue-3-unramified-index/verify_index_models.py
 python3 research/issues/rank-three-index-form-unit/verify_all.py
 python3 scripts/validate_issue4_stable_order.py
 python3 scripts/validate_issue5_principal_parts.py
+python3 research/issues/one-boundary-logarithmic-field/verify_all.py
 ```
 
 The GitHub Actions workflow is [`.github/workflows/repository-python-validators.yml`](.github/workflows/repository-python-validators.yml). It records the tested SHA and uploads logs. Passing checks establish repository and regression consistency only; they do not review mathematics.
