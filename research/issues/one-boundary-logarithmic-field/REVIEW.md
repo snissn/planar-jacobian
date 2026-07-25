@@ -2,7 +2,7 @@
 
 ```text
 review_mode: local-adversarial-review
-candidate_revision: ad7abee8370146e40f41cb2d108cf07dc129df03
+candidate_revision: 02547f9a1c8c72486ad2bb07a06a10fde1351af4
 disposition: ACCEPT_FOR_CANDIDATE_INTEGRATION
 promotion_disposition: BLOCK_PROMOTION
 reviewer_independence: NOT_INDEPENDENT_SAME_ASSISTANT
@@ -28,8 +28,9 @@ Critical files reviewed:
 
 ## 2. Corrections made before the pinned revision
 
-Three defects were found during the adversarial pass and corrected before the
-candidate was pinned.
+Three substantive scope defects were found during the adversarial pass and
+corrected before the original candidate `ad7abee8370146e40f41cb2d108cf07dc129df03`
+was pinned.
 
 1. The finite-isogeny lifting lemma had been stated for a general normal
    complex variety while its extension proof was affine. It is now stated for
@@ -43,7 +44,11 @@ candidate was pinned.
    curve. The final version also uses affine-plane torus linearization, whose
    fixed locus is a coordinate linear subspace.
 
-No reviewed scientific file changed after `ad7abee8370146e40f41cb2d108cf07dc129df03`.
+After that pass, one notation-only change prefixed the displayed power-isogeny
+line with `power map` so the repository Markdown validator would not parse
+`[N]:G_m->G_m` as a reference link. No mathematical assertion changed. The
+packet was reread after that edit and is therefore rebound to exact candidate
+revision `02547f9a1c8c72486ad2bb07a06a10fde1351af4`.
 
 ## 3. Attack: logarithmic module
 
