@@ -1,203 +1,38 @@
-name: Repository Python Validators
+name: Defect Five Staging Synchronization
 
 on:
   push:
-  pull_request:
-  workflow_dispatch:
+    branches:
+      - issue-29/defect-five-sync-staging-r2
 
 permissions:
-  contents: read
-  pull-requests: read
-  statuses: write
-
-concurrency:
-  group: repository-python-validators-${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  contents: write
 
 jobs:
-  validate:
-    name: Validate exact research revision
+  generate:
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
-    timeout-minutes: 25
-
+    timeout-minutes: 10
     steps:
-      - name: Check out exact event revision
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          ref: issue-29/defect-five-sync-staging-r2
           fetch-depth: 0
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
-
-      - name: Install symbolic dependency
-        run: python -m pip install --disable-pip-version-check sympy==1.14.0
-
-      - name: Record exact revision and runtime
-        shell: bash
+          python-version: '3.12'
+      - name: Generate synchronized tree
         run: |
           set -euo pipefail
-          git rev-parse HEAD | tee exact-sha.txt
-          python --version | tee runtime.txt
-          python -c 'import sympy; print("sympy", sympy.__version__)' | tee -a runtime.txt
-
-      - name: Byte-compile all maintained Python
-        run: python -m compileall -q scripts research/issues
-
-      - name: Validate integration-contract fixtures
-        shell: bash
+          python .github/defect-five-staging/sync.py
+          python scripts/render_views.py --write
+          git diff --check
+      - name: Commit staging output
         run: |
-          set -o pipefail
-          python -m unittest discover -s scripts/tests -p 'test_*.py' | tee integration-contract-tests.log
-
-      - name: Validate immutable integration contract
-        shell: bash
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-        run: |
-          set -o pipefail
-          python scripts/validate_integration_contract.py | tee integration-contract.log
-
-      - name: Verify generated Markdown views
-        shell: bash
-        run: |
-          set -o pipefail
-          python scripts/render_views.py --check | tee generated-views.log
-
-      - name: Run structural and consistency validation
-        shell: bash
-        run: |
-          set -o pipefail
-          python scripts/validate_repository.py | tee repository-validation.log
-
-      - name: Render proof frontier
-        shell: bash
-        run: |
-          set -o pipefail
-          python scripts/frontier.py | tee frontier.log
-
-      - name: Validate reviewed defect-four candidate identities
-        shell: bash
-        run: |
-          set -o pipefail
-          python scripts/validate_defect4_staircase.py | tee defect4-candidate.log
-
-      - name: Validate independent defect-four review checker
-        shell: bash
-        run: |
-          set -o pipefail
-          python scripts/review_validate_defect4_independent.py | tee defect4-independent.log
-
-      - name: "Validate issue #3 symbolic countermodels"
-        shell: bash
-        run: |
-          set -o pipefail
-          python research/issues/issue-3-unramified-index/verify_index_models.py | tee issue3-models.log
-
-      - name: "Validate rank-three issue #3 successor"
-        shell: bash
-        run: |
-          set -o pipefail
-          python research/issues/rank-three-index-form-unit/verify_all.py | tee issue3-rank-three.log
-
-      - name: "Validate issue #4 stable-order identities"
-        shell: bash
-        run: |
-          set -o pipefail
-          python scripts/validate_issue4_stable_order.py | tee issue4-stable-order.log
-
-      - name: "Validate issue #4 source-reflexive-lattice successor"
-        shell: bash
-        run: |
-          set -o pipefail
-          python research/issues/source-reflexive-lattice/verify_all.py | tee issue4-source-reflexive-lattice.log
-
-      - name: "Validate issue #5 principal-part examples"
-        shell: bash
-        run: |
-          set -o pipefail
-          python scripts/validate_issue5_principal_parts.py | tee issue5-principal-parts.log
-
-      - name: "Validate issue #5 one-boundary successor"
-        shell: bash
-        run: |
-          set -o pipefail
-          python research/issues/one-boundary-logarithmic-field/verify_all.py | tee issue5-one-boundary.log
-
-      - name: "Validate defect-five packet when present"
-        shell: bash
-        run: |
-          set -o pipefail
-          if [ -d research/issues/defect-5-rees ]; then
-            python research/issues/defect-5-rees/validate_defect5.py | tee defect5-candidate.log
-            python research/issues/defect-5-rees/review_validate_defect5_adversarial.py | tee defect5-adversarial.log
-          else
-            echo "defect-five packet not present" | tee defect5-candidate.log defect5-adversarial.log
-          fi
-
-      - name: Add frontier to job summary
-        if: always()
-        shell: bash
-        run: |
-          {
-            echo "## Exact revision"
-            echo
-            echo '```text'
-            cat exact-sha.txt 2>/dev/null || true
-            echo '```'
-            echo
-            echo "## Proof frontier"
-            echo
-            echo '```text'
-            cat frontier.log 2>/dev/null || true
-            echo '```'
-          } >> "$GITHUB_STEP_SUMMARY"
-
-      - name: Upload exact-revision validation logs
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: repository-validation-${{ github.event.pull_request.head.sha || github.sha }}-${{ github.run_id }}
-          path: |
-            exact-sha.txt
-            runtime.txt
-            integration-contract-tests.log
-            integration-contract.log
-            generated-views.log
-            repository-validation.log
-            frontier.log
-            defect4-candidate.log
-            defect4-independent.log
-            issue3-models.log
-            issue3-rank-three.log
-            issue4-stable-order.log
-            issue4-source-reflexive-lattice.log
-            issue5-principal-parts.log
-            issue5-one-boundary.log
-            defect5-candidate.log
-            defect5-adversarial.log
-          if-no-files-found: warn
-          retention-days: 30
-
-      - name: Publish push-run locator and result
-        if: always() && github.event_name == 'push'
-        env:
-          GH_TOKEN: ${{ github.token }}
-          JOB_STATUS: ${{ job.status }}
-        shell: bash
-        run: |
-          case "$JOB_STATUS" in
-            success) STATE=success ;;
-            failure) STATE=failure ;;
-            cancelled) STATE=error ;;
-            *) STATE=error ;;
-          esac
-          gh api --method POST \
-            -H "Accept: application/vnd.github+json" \
-            repos/${GITHUB_REPOSITORY}/statuses/${GITHUB_SHA} \
-            -f state="$STATE" \
-            -f target_url="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" \
-            -f description="Exact-revision repository validation: ${JOB_STATUS}" \
-            -f context="repository-validation/run-${GITHUB_RUN_ID}"
+          set -euo pipefail
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add STATUS.md research scripts/render_views.py scripts/validate_repository_legacy.py
+          git diff --cached --quiet && exit 1
+          git commit -m 'staging(issue-29): generate defect-five shared synchronization'
+          git push origin HEAD:issue-29/defect-five-sync-staging-r2
