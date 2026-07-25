@@ -5,9 +5,9 @@ role: research-worker
 task_issue: #3
 owned_path: research/issues/rank-three-boundary-cube-unit/
 base_main: 652a5e252626fa5816445651245e8a8946cee53e
-scientific_candidate: 733990e68841ef7ea25cb7fb22f0f668aa522494
+scientific_candidate: 01183ee9c6fdd9090a29edc2d675e419fb71c078
 review_mode: local-adversarial-review
-reviewed_revision: 733990e68841ef7ea25cb7fb22f0f668aa522494
+reviewed_revision: 01183ee9c6fdd9090a29edc2d675e419fb71c078
 integration_state: integration-ready after exact-head CI
 merge_authority: none in this parallel round
 ```
@@ -196,7 +196,7 @@ change is requested.
 Pinned local adversarial review:
 
 ```text
-reviewed_revision: 733990e68841ef7ea25cb7fb22f0f668aa522494
+reviewed_revision: 01183ee9c6fdd9090a29edc2d675e419fb71c078
 disposition: ACCEPT_LITERATURE_BOUND_RANK_THREE_TERMINAL_AND_SCOPED_INTERNAL_REFINEMENTS; BLOCK_CONSTRUCTIVE_UNIT_SECTION_AND_BROADER_PROMOTION
 ```
 
