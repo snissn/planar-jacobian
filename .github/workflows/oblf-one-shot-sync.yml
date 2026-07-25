@@ -43,15 +43,23 @@ jobs:
           python -m py_compile research/issues/one-boundary-logarithmic-field/sync_oblf.py
           python research/issues/one-boundary-logarithmic-field/sync_oblf.py
 
-      - name: Validate synchronized tree
-        run: |
-          set -euo pipefail
-          python -m compileall -q scripts research/issues/issue-3-unramified-index research/issues/rank-three-index-form-unit research/issues/one-boundary-logarithmic-field
-          python research/issues/one-boundary-logarithmic-field/verify_all.py
-          python scripts/render_views.py --check
-          python scripts/validate_repository.py
-          python scripts/frontier.py
-          git diff --check
+      - name: Byte-compile synchronized tree
+        run: python -m compileall -q scripts research/issues/issue-3-unramified-index research/issues/rank-three-index-form-unit research/issues/one-boundary-logarithmic-field
+
+      - name: Run issue-owned symbolic checks
+        run: python research/issues/one-boundary-logarithmic-field/verify_all.py
+
+      - name: Verify generated views
+        run: python scripts/render_views.py --check
+
+      - name: Validate repository structure
+        run: python scripts/validate_repository.py
+
+      - name: Render frontier
+        run: python scripts/frontier.py
+
+      - name: Check synchronized patch
+        run: git diff --check
 
       - name: Publish synchronized files through GitHub API
         env:
