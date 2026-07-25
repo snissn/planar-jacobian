@@ -14,13 +14,13 @@ translations, not logarithmic stability.
 | \(\operatorname{Sat}_D(M_0)\), arbitrary finite full seed | not in general | yes | stable by definition | if finite, no height-one ramification |
 | Fixed source pole module \(M(\mathbf N)\) | yes | yes | derivative shifts pole vector | any ramified stage, or any positive unramified pole stage, has nonfinite saturation |
 | Directed union of all pole stages | generally not finite | yes | stable | ind-object only; no fixed finite ambient module |
-| Reflexive hull of a pole stage | yes | yes | same height-one residues | no improvement |
+| Reflexive hull of a pole stage | yes | yes | same height-one residue-class multiset | no improvement |
 | Finite intersection of pole stages/translates | yes | usually | not closed under all derivatives | complete saturation returns to the same obstruction |
-| Multiplier ring \((M:M)\) | yes for finite \(M\) | yes when \(M\) full | stable only if \(M\) stable | converts an existing stable module to an order; does not create stability |
-| Trace dual / inverse different | yes | yes | fractional classes integer-shifted | logarithmic at best; ordinary stability fails at ramification |
-| Conductor dual / conductor power | yes, or zero for the source conductor | varies | integer shifts or no full module | no cancellation of \(j/e\) |
-| Relative canonical module | yes | yes | determinant/dual shift | does not preserve every character under ordinary translations |
-| Reflexive \(\operatorname{Hom}\) modules | yes under finite hypotheses | depends | dual residue classes | no automatic embedding as a stable full lattice in \(L\) |
+| Multiplier ring \((M:M)\) | yes for finite \(M\) | yes when \(M\) is full | stable if \(M\) is stable; the converse can hold for an unstable seed and is not automatic | a direct stability proof already constructs the desired stable order; rank-one divisorial seeds return \(O\) |
+| Trace dual / inverse different | yes | yes | intrinsic fractional class multiset unchanged; representatives may shift and character labels may permute | logarithmic at best; ordinary stability fails at ramification |
+| Conductor dual / conductor power | yes, or zero for the source conductor | varies | integral shifts for base-divisor powers; more general fractional twists preserve the full class multiset | no cancellation of \(j/e\) |
+| Relative canonical module | yes | yes | determinant/dual twist preserves the full fractional spectrum | does not preserve every character under ordinary translations |
+| Reflexive \(\operatorname{Hom}\) modules | yes under finite hypotheses | depends | dual or permuted residue classes | no automatic embedding as a stable full lattice in \(L\) |
 | Deligne logarithmic lattice | yes | yes | stable under logarithmic fields | exists with ramification; insufficient |
 | \(j_+\mathcal E\) / meromorphic localization | holonomic, often \(\mathcal O\)-infinite | yes | allows arbitrary poles | counterexample to holonomic \(\Rightarrow\) \(\mathcal O\)-finite |
 | \(j_{!*}\mathcal E\) | regular holonomic | yes generically | underlying module is \(\mathcal O\)-coherent at a generic height-one point iff local inertia is trivial there | local diagnostic only; a direct global lattice also needs global coherence and a torsion-free embedding into \(L\) |
@@ -38,12 +38,20 @@ translations, not logarithmic stability.
 
 Every audited construction falls into one of four categories:
 
-1. it is finite but ordinary stability is equivalent to no
-   ramification;
+1. it is finite, but proving ordinary stability either reduces to no
+   ramification or is already the desired stable-order theorem;
 2. it is stable only as an infinite pole union;
 3. it is coherent only for logarithmic differential operators; or
 4. it is a categorical/cohomological object whose generic fiber is
    not a full embedded lattice in \(L\).
+
+The elementary control \(M=P B\subset K=L\) shows that an unstable
+seed can have the stable multiplier ring \((M:M)=B\); thus seed
+stability is sufficient, not necessary, for multiplier stability.
+This logical correction creates no Keller construction: for the named
+rank-one divisorial seeds the multiplier ring is \(O\), and a direct
+proof that a different full multiplier ring is pair-stable would
+already solve the predecessor stable-order problem.
 
 No row supplies a new finite full pair-stable lattice under the
 general Keller hypotheses.
