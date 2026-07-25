@@ -45,7 +45,7 @@
     {
       "id": "L03",
       "graph_node": "OPEN-BOUNDARY-POLE",
-      "title": "Integrable Logarithmic Lift after Radial Classification",
+      "title": "Non-Toric One-Boundary Laurent-Conductor Bridge",
       "priority": "P0",
       "status": "open",
       "artifact": "research/leaf-packets/L03-radial-pole-elimination.md",
@@ -60,7 +60,13 @@
         "CLM-054",
         "CLM-055",
         "CLM-056",
-        "CLM-057"
+        "CLM-057",
+        "CLM-067",
+        "CLM-068",
+        "CLM-069",
+        "CLM-070",
+        "CLM-071",
+        "CLM-072"
       ]
     },
     {
@@ -170,7 +176,10 @@
       "issue_number": 13,
       "claim_dependencies": [
         "CLM-022",
-        "CLM-023"
+        "CLM-023",
+        "CLM-070",
+        "CLM-071",
+        "CLM-072"
       ]
     },
     {
