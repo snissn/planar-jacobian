@@ -139,7 +139,7 @@ def validate_pr(manifests: list[dict[str, Any]], context: PullRequestContext, fi
         for m in touched:
             if m.get("base_sha") != context.base_sha: result.error("integration manifest base_sha does not match current PR base")
     if role == "governance-maintainer":
-        bad = [f for f in files if f.startswith("research/") and not f.endswith("/INTEGRATION.json")]
+        bad = [f for f in files if f.startswith("research/") and not governance_path(f)]
         if bad: result.error("governance PR changes scientific content: " + ", ".join(bad))
     body_role = marker(context.body, "Role")
     if body_role != role: result.error(f"PR body Role must be {role}")
