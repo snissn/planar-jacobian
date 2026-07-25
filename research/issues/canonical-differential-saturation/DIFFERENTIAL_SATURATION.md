@@ -168,17 +168,49 @@ It is finite and full over \(B\).
 ### Proof
 
 The first assertion is Theorem 2.1, or the explicit local escape in
-Section 4.  For the second, choose a local parameter \(s\) at the
-unramified omitted divisor and a member \(D\) of the canonical frame
-transverse to it.  After unit normalization, \(D(s)=1\), and
+Section 4.  For the second, let \(p\) be the image of \(E_i\) on the
+base and let \(q\) be its generic point on \(Y\).  Choose a canonical
+frame member \(D\) whose base derivation is transverse to \(p\).
+Because \(O_q/B_p\) is unramified, \(D\) preserves the DVR
+\(S=O_q\).  For a uniformizer \(s\) of \(S\),
 
 \[
-D^n(s^{-m})
- =(-1)^n m(m+1)\cdots(m+n-1)s^{-m-n}.
+a=D(s)\in S^\times.
 \]
 
-The pole order is unbounded.  The third assertion follows from
-normality and Theorem 3.1.  \(\square\)
+Indeed, a base uniformizer is a unit times \(s\), and its derivative
+is a unit modulo \(s\).
+
+By the actual-pole hypothesis there is an element of the localized
+module with valuation \(-m<0\).  Write it as
+
+\[
+f=u s^{-m},\qquad u\in S^\times.
+\]
+
+Let \((m)_n=m(m+1)\cdots(m+n-1)\), with \((m)_0=1\).  Induction gives
+
+\[
+D^n(f)=(-1)^n(m)_n u a^n s^{-m-n}+g_n,
+\qquad w_q(g_n)\ge -m-n+1.
+\]
+
+For the induction step, \(D\) lowers valuation by at most one because
+it preserves \(S\) and \(D(s)=a\) is a unit.  Differentiating the
+displayed leading term produces the unique term of valuation
+\(-m-n-1\); derivatives of its coefficient and of \(g_n\) have
+valuation at least \(-m-n\).  Its coefficient is
+\((-1)^{n+1}(m)_{n+1}ua^{n+1}\), which is nonzero in characteristic
+zero.  Hence
+
+\[
+w_q(D^n f)=-m-n
+\]
+
+for every \(n\).  The localized saturation is not valuation bounded,
+whereas every finite \(B_p\)-module in \(L\) is.  Therefore the global
+saturation is nonfinite.  The third assertion follows from normality
+and Theorem 3.1.  \(\square\)
 
 Reflexive hulls and finite intersections do not change this
 codimension-one calculation.
