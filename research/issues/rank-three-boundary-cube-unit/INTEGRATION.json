@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "issue_number": 3,
+  "leaf_id": "L14",
+  "role": "research-worker",
+  "owned_paths": [
+    "research/issues/rank-three-boundary-cube-unit/"
+  ],
+  "base_sha": "652a5e252626fa5816445651245e8a8946cee53e",
+  "candidate_sha": "c281ecd845fe63e88b47ae16f99135325a2f988f",
+  "scientific_status": "LITERATURE_BOUND_RANK_THREE_EXCLUSION_WITH_CANDIDATE_INTERNAL_REFINEMENTS / MUTABLE_NONAUTHORITATIVE",
+  "review_mode": "local-adversarial-review",
+  "reviewed_revision": "c281ecd845fe63e88b47ae16f99135325a2f988f",
+  "proposed_global_claims": [
+    {
+      "id": "R3BC-01",
+      "status": "literature_bound",
+      "statement": "A planar polynomial Keller map cannot have function-field degree three: degree three is generically three-sheeted, while Orevkov's 1987 primary theorem excludes constant Jacobian for a three-sheeted polynomial map C2 to C2.",
+      "dependencies": [
+        "CLM-001",
+        "CLM-002"
+      ]
+    },
+    {
+      "id": "R3BC-02",
+      "status": "candidate_proved",
+      "statement": "For a finite locally free normal rank-three algebra over a characteristic-zero DVR, the geometric reduction of the trace-zero binary index cubic is GL2-equivalent to L1 L2 L3, L M^2, or L^3 according to ramification partition 1+1+1, 2+1, or 3.",
+      "dependencies": [
+        "CLM-062"
+      ]
+    },
+    {
+      "id": "R3BC-03",
+      "status": "candidate_proved",
+      "statement": "After choosing a section primitive at every target boundary prime and a square-free product H of those primes, every theta+H T eta stays primitive at the boundary and has index D+H C T+H^2 B_2 T^2+H^3 A T^3; every remaining factor is a nonboundary scalar collision.",
+      "dependencies": [
+        "CLM-029",
+        "CLM-062",
+        "CLM-064",
+        "CLM-066"
+      ]
+    },
+    {
+      "id": "R3BC-04",
+      "status": "candidate_proved",
+      "statement": "No nonconstant fixed divisor in C[P,Q] is invariant under both target translations, but the exact Keller differential congruence does not make a named fixed-section index ideal translation-stable; moving scalar collisions are not ramification.",
+      "dependencies": [
+        "CLM-010",
+        "CLM-012",
+        "CLM-065",
+        "CLM-066"
+      ]
+    },
+    {
+      "id": "R3BC-05",
+      "status": "candidate_proved",
+      "statement": "The issue #3 no-unit countermodel reaches the finite-flat, normal, connected, rational, open-A2 stages, while adding boundary-only different support on the specified source open would produce an impossible degree-three Keller map.",
+      "dependencies": [
+        "CLM-058",
+        "CLM-066",
+        "R3BC-01"
+      ]
+    }
+  ],
+  "proposed_graph_nodes": [
+    {
+      "id": "R3BC-TERMINAL-DEGREE-THREE",
+      "type": "terminal",
+      "status": "literature_bound",
+      "statement": "Exclude planar Keller function-field degree three by Orevkov's three-sheeted theorem."
+    },
+    {
+      "id": "R3BC-CONDITIONAL-MOVING-COLLISION",
+      "type": "reduction",
+      "status": "candidate_proved",
+      "statement": "Conditionally reduce the binary-cubic unit search to D+HCT+H^2B_2T^2+H^3AT^3=lambda after all boundary primes are removed."
+    }
+  ],
+  "shared_surfaces_requested": [
+    "README.md",
+    "STATUS.md",
+    "research/claim_ledger.json",
+    "research/CLAIM_LEDGER.md",
+    "research/proof_graph.json",
+    "research/PROOF_GRAPH.md",
+    "research/work_queue.json",
+    "research/WORK_QUEUE.md",
+    "research/ISSUE_INDEX.md",
+    "research/leaf-packets/L14-keller-index-form-unit.md",
+    "research/tracks/c-monogenicity-index-divisor.md",
+    "research/tracks/monogenicity-index-divisor.md"
+  ],
+  "supersedes_prs": [],
+  "temporary_artifacts_absent": true,
+  "integration_state": "integration-ready"
+}
