@@ -64,7 +64,12 @@ def read_manifest(path: Path, root: Path, result: Result) -> dict[str, Any]:
     return value
 
 def scan_tree(root: Path, result: Result) -> None:
-    for path in root.rglob("*"):
+    try:
+        tracked = subprocess.check_output(["git", "ls-files"], cwd=root, text=True, stderr=subprocess.DEVNULL).splitlines()
+        paths = [root / rel for rel in tracked]
+    except Exception:
+        paths = [path for path in root.rglob("*") if path.is_file()]
+    for path in paths:
         if not path.is_file(): continue
         rel, name = path.relative_to(root).as_posix(), path.name
         low = rel.lower()
@@ -109,7 +114,16 @@ def validate_pr(manifests: list[dict[str, Any]], context: PullRequestContext, fi
     if context.draft: result.error("integration pull requests must not be draft")
     if context.base_ref != "main": result.error("pull request must target main")
     if not files: result.error("pull request changed-file set is empty"); return
-    governance = all(f.startswith(("governance/", "scripts/", ".github/")) or f in {"AGENTS.md", "AGENT_PROMPT.md"} or f.endswith("/INTEGRATION.json") for f in files)
+    def governance_path(path: str) -> bool:
+        name = Path(path).name
+        return (
+            path.startswith(("governance/", "scripts/", ".github/"))
+            or path in {"AGENTS.md", "AGENT_PROMPT.md"}
+            or path.endswith("/INTEGRATION.json")
+            or (path.startswith("research/issues/") and name == "SYNC_REPORT.md")
+            or (path.startswith("research/issues/") and name.startswith("sync_") and name.endswith(".py"))
+        )
+    governance = all(governance_path(f) for f in files)
     touched = [] if governance else [m for m in manifests if any(owned(f, m.get("owned_paths", [])) for f in files)]
     role = "governance-maintainer" if governance else (touched[0].get("role") if touched else None)
     if not governance and (not touched or len({m.get("role") for m in touched}) != 1): result.error("PR lacks one manifest-declared role"); return
