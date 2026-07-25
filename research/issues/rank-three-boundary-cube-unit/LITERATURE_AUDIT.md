@@ -16,6 +16,7 @@ S. Yu. Orevkov,
 
 - DOI: <https://doi.org/10.1070/IM1987v029n03ABEH000984>
 - Primary Math-Net record: <https://www.mathnet.ru/eng/im1571>
+- English full text: the `English version PDF` linked from the primary Math-Net record.
 - Original Russian publication: *Izv. Akad. Nauk SSSR Ser. Mat.* **50**:6
   (1986), 1231–1240.
 
@@ -30,36 +31,50 @@ No stronger statement is imported. In particular, this packet does not cite
 Orevkov for arbitrary prime degree, for maps in higher dimensions, or for a
 classification of nonproperness curves.
 
+### Full-text hypothesis and proof audit
+
+The English primary PDF was read at the load-bearing points.
+
+1. On printed page 587, Section 1 starts with a polynomial map
+   `f:C^2 -> C^2` whose Jacobian is a nonzero constant.
+2. The paper then defines the **multiplicity** of the map to be the number of
+   preimages of a generic target point. Thus Orevkov's “three-sheeted” language
+   is exactly generic fiber cardinality, not global proper degree or a condition
+   on every fiber.
+3. Theorem 1.1 states that the multiplicity of such a locally invertible
+   polynomial map cannot equal two or three.
+4. On printed page 595, the proof assumes multiplicity `N=3` and uses Lemma 4.2
+   to obtain three possible boundary/branch configurations. The first two would
+   give unbranched three-sheeted covers of simply connected complements. In the
+   third, Lemma 5.3 makes the finite branch image an embedded affine line;
+   Abhyankar–Moh rectifies it to a coordinate line, and the resulting unique
+   three-sheeted cover has third-order branching, contradicting the required
+   local multiplicity two. The paper explicitly closes the theorem at that
+   contradiction.
+
+This full-text check confirms both the meaning of “three-sheeted” and the exact
+terminal conclusion used here. The packet does not reproduce or independently
+reprove Orevkov's ten-page compactification, Euler-characteristic, knot-group,
+and rectification argument. The imported result therefore remains
+`literature_bound`, but there is no unresolved source-access or terminology gap.
+
 ### Hypothesis map
 
 | Orevkov hypothesis | Packet verification |
 |---|---|
 | polynomial map `C2 -> C2` | `P,Q in C[x,y]` |
-| generically three-sheeted | `[C(x,y):C(P,Q)]=3`; finite-étale localization proves three reduced generic preimages |
-| Jacobian constant | Keller assumption `J(P,Q) in C*` |
+| multiplicity/generic sheet number three | `[C(x,y):C(P,Q)]=3`; finite-étale localization proves three reduced generic preimages |
+| nonzero constant Jacobian | Keller assumption `J(P,Q) in C*` |
 
 The field-degree-to-sheet bridge is proved directly in `FOUNDATIONS.md`; it is
 not delegated to a secondary source.
-
-### Audit limitation
-
-The tool environment exposed the primary bibliographic page and exact abstract
-statement, and identified both the English and Russian full-text PDFs. The
-English PDF bytes were not machine-readable through the available web parser,
-so this packet does not claim a line-by-line reconstruction of Orevkov's proof.
-The theorem is therefore bound at `literature_bound` scope, not promoted as a
-new internally proved theorem. An independent integrator may strengthen the
-audit by obtaining the PDF and checking the proof text, but the exact published
-statement already matches the application without a hypothesis gap visible in
-the primary record.
 
 ## 2. Why the theorem is sufficient for this issue
 
 The issue's rank-three normalization rank is the function-field degree. A
 dominant generically finite polynomial map of degree three is finite over a
 dense target open; the Keller condition makes that restriction étale. Hence
-“rank three” and “three-sheeted” agree at the exact generic scope used by
-Orevkov.
+“rank three” agrees with Orevkov's full-text definition of multiplicity three.
 
 The theorem bypasses, rather than solves constructively, the fixed-section
 binary-cubic equation. This distinction is recorded throughout the packet.
@@ -140,7 +155,7 @@ terminal theorem.
 
 | Source | Disposition | Reason |
 |---|---|---|
-| Orevkov 1986/1987 primary article | `BOUND_AT_EXACT_STATEMENT` | exact theorem matches degree-three Keller application |
+| Orevkov 1986/1987 primary article | `PRIMARY_FULL_TEXT_AUDITED / LITERATURE_BOUND` | Section 1 definition, Theorem 1.1, and the terminal degree-three proof cases match the packet application |
 | Moskowicz arXiv:2407.13795v1 | `REJECT_AS_LOAD_BEARING` | first case misuses an example as a classification; cubic countermodel supplied |
 | MathOverflow answer | `AUDITED_AS_EXAMPLE_ONLY` | correctly constructs a quadratic rare-property model; does not prove uniqueness of degree |
 
