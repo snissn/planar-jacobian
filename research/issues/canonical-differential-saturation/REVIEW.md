@@ -74,7 +74,98 @@ The review adjudicates only the following packet-local statements.
 
 No global `CLM-*` status is reviewed or promoted.
 
-## 3. Independent recomputation
+## 3. Exact reviewed file scope
+
+The `ACCEPT_SCOPED` disposition is bound to the exact bytes of the
+following files at candidate revision
+`7523052bde101036bc1753acbc37ba6be78e895b`:
+
+1. `README.md` — scoped disposition and nonclaims;
+2. `FOUNDATIONS.md` — Keller setup, derivation signs, commutator, and
+   vocabulary;
+3. `DIFFERENTIAL_SATURATION.md` — minimal saturation, finite-seed
+   obstruction, normalization equivalence, source-pole escape, and
+   corrected multiplier logic;
+4. `DMODULE_ROUTE.md` — permutation connection, generic height-one
+   criterion, intermediate-extension distinction, and exact global
+   property X;
+5. `LOGARITHMIC_LATTICES.md` — Deligne lattices, residues, character
+   permutations, and ordinary/logarithmic separation;
+6. `LOCAL_RESIDUES.md` — Kummer escape, two-derivation spectrum,
+   non-Galois and singular-branch mutations, and fractional-ideal
+   multiset invariance;
+7. `CONSTRUCTION_TABLE.md` — candidate-by-candidate disposition;
+8. `COUNTERMODELS.md` — Kummer, localization, exact-symplectic, and
+   multiplier-converse controls;
+9. `SOURCE_AUDIT.md` — primary-source theorem boundaries and inherited
+   hypothesis bindings;
+10. `verify_local_residues.py` — exact residue, escape, pair-spectrum,
+    non-Galois, and fractional-twist checks;
+11. `verify_global_bridges.py` — inertia partitions, localization
+    growth, multiplier-converse, and exact-symplectic checks;
+12. `verify_all.py` — issue-owned artifact, manifest, and prose
+    contract.
+
+`REVIEW.md`, `HANDOFF.md`, and `INTEGRATION.json` are review and
+transport metadata, not candidate proof inputs.  Their post-candidate
+edits may record this review, the PR number, and integration handoff,
+but cannot expand the accepted scientific scope.  Any later edit to
+one of the twelve reviewed candidate files requires a new pinned
+review before `integration-ready` may remain valid.
+
+## 4. Claim-to-file and dependency bindings
+
+| Claim | Reviewed proof files | Packet dependencies | Inherited repository dependencies |
+|---|---|---|---|
+| `CDS-001` | `FOUNDATIONS.md` | Keller identity `J(P,Q)=1`; finite separability of `L/K` | canonical-derivation context associated with `CLM-003` |
+| `CDS-002` | `FOUNDATIONS.md`, `DIFFERENTIAL_SATURATION.md`, `LOCAL_RESIDUES.md` | `CDS-001`; finite full seed; transverse ramified-DVR escape | maintained issue #4 ramified-DVR theorem; no new global promotion |
+| `CDS-003` | `DIFFERENTIAL_SATURATION.md`, `LOCAL_RESIDUES.md` | `CDS-002`; normality and height-one intersection for `O`; unique extension across unramified DVRs | `CLM-003`; stable-order consequences are consumed only conditionally through `CLM-010`–`CLM-013` |
+| `CDS-004` | `DIFFERENTIAL_SATURATION.md`, `LOCAL_RESIDUES.md` | `CDS-002`; actual pole-bearing localized section; characteristic-zero nonvanishing | source-reflexive-lattice pole filtration, at mutable predecessor scope |
+| `CDS-005` | `DMODULE_ROUTE.md`, `LOGARITHMIC_LATTICES.md`, `LOCAL_RESIDUES.md` | finite-etale permutation connection on `V`; tame inertia cycle decomposition; embedded full local lattice | no global coherence theorem is inherited or asserted |
+| `CDS-006` | `DMODULE_ROUTE.md`, `LOGARITHMIC_LATTICES.md`, `COUNTERMODELS.md`, `SOURCE_AUDIT.md` | explicit Kummer and open-localization controls | Deligne/BBD/Kashiwara vocabulary only; none licenses ordinary `O`-finiteness |
+| `CDS-007` | `DIFFERENTIAL_SATURATION.md`, `DMODULE_ROUTE.md`, `README.md` | `CDS-003`, `CDS-005`; distinction between normalization route and stronger global D-module route | `CLM-010`–`CLM-013` only after a finite full stable module exists; `CLM-061` remains open |
+| `CDS-008` | `CONSTRUCTION_TABLE.md`, `COUNTERMODELS.md`, `DIFFERENTIAL_SATURATION.md`, `SOURCE_AUDIT.md` | corrected one-way multiplier implication; `(I:I)=O` for rank-one reflexive fractional `O`-modules; residue multiset invariance | predecessor multiplier-order bridge at mutable scope; no existence result imported |
+
+The validation files are evidence for the exact algebraic identities
+and mutations in these rows.  They do not promote any inherited
+candidate or replace mathematical review.
+
+## 5. Unresolved risks and explicit exclusions
+
+The following remain unresolved after `ACCEPT_SCOPED` and delimit the
+acceptance.
+
+1. **No Keller-specific inertia exclusion.**  The polynomial
+   \(\mathbf A^2\)-source hypotheses have not been shown to force
+   trivial height-one inertia.
+2. **No finite stable lattice or order.**  No finite non-divisorial
+   source-derived module, stable multiplier ring, or equivalent order
+   is constructed for an arbitrary Keller pair.
+3. **No global D-module bridge.**  Generic height-one ordinary
+   coherence does not establish global \(\mathcal O\)-coherence,
+   codimension-two control, or a compatible torsion-free meromorphic
+   embedding with generic fiber \(L\).
+4. **Mutable predecessor dependencies.**  The stable
+   module-to-multiplier-order and stable-order-to-degree-one route is
+   consumed at its maintained candidate scope; this review does not
+   independently re-adjudicate `CLM-010`–`CLM-013` or `CLM-061`.
+5. **Countermodels omit the decisive source condition.**  None of the
+   Kummer, Laurent, localization, singular-branch, non-Galois, or
+   multiplier controls is a polynomial Keller counterexample on the
+   full affine plane.
+6. **Review independence.**  The reviewer is the constructing
+   assistant.  The result may be integrated only at mutable,
+   nonauthoritative scope and cannot be promoted or frozen without a
+   distinct reviewer.
+7. **Primary-source limit.**  The cited D-module and logarithmic
+   sources justify the named categorical operations and residue
+   framework; none supplies the missing ordinary coherence or inertia
+   theorem.
+
+These risks are not defects in the eight scoped statements; they are
+the exact open boundary those statements preserve.
+
+## 6. Independent recomputation
 
 ### Canonical frame
 
@@ -176,7 +267,7 @@ ordinary connection, and an injective meromorphic realization with
 generic fiber \(L\).  Affineness then yields the desired finite full
 pair-stable module.
 
-## 4. Adversarial mutation tests
+## 7. Adversarial mutation tests
 
 | Mutation | Result |
 |---|---|
@@ -194,7 +285,7 @@ pair-stable module.
 | Invoke Noetherianity on the pole union | Invalid because the union is not contained in a fixed finite ambient module. |
 | Invoke Gauss-Manin or compact support | Produces cohomology objects, not automatically a full lattice in \(L\). |
 
-## 5. Primary-source audit
+## 8. Primary-source audit
 
 The source bindings were checked against the following primary
 references.
@@ -221,7 +312,7 @@ references.
 None of these sources supplies the missing Keller-specific ordinary
 coherence, trivial-inertia, or meromorphic-embedding theorem.
 
-## 6. Automated review evidence
+## 9. Automated review evidence
 
 The exact candidate scripts were byte-compiled and rerun at default
 and enlarged bounds.  Enlarged results were:
@@ -248,7 +339,7 @@ Default results were `7901` local checks and `548` global checks, both
 `PASS`.  These checks verify encoded identities and mutation controls;
 they do not substitute for the mathematical review.
 
-## 7. Blocking-question answers
+## 10. Blocking-question answers
 
 - **Was a finite full pair-stable lattice constructed?** No.
 - **Was height-one ramification excluded for every Keller pair?** No.
@@ -267,7 +358,7 @@ they do not substitute for the mathematical review.
   counterexamples?** No; the failure is explicit.
 - **Does the result prove degree one unconditionally?** No.
 
-## 8. Verdict
+## 11. Verdict
 
 `ACCEPT_SCOPED`.
 
