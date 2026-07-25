@@ -1,0 +1,63 @@
+name: OBLF one-shot synchronization
+
+on:
+  push:
+    branches:
+      - issue-5/one-boundary-logarithmic-gpt56
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: oblf-one-shot-sync
+  cancel-in-progress: false
+
+jobs:
+  synchronize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out issue branch
+        uses: actions/checkout@v4
+        with:
+          ref: issue-5/one-boundary-logarithmic-gpt56
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install exact symbolic dependency
+        run: python -m pip install --disable-pip-version-check sympy==1.14.0
+
+      - name: Run final shared synchronization
+        run: |
+          set -euo pipefail
+          python -m py_compile research/issues/one-boundary-logarithmic-field/sync_oblf.py
+          python research/issues/one-boundary-logarithmic-field/sync_oblf.py
+
+      - name: Validate synchronized tree
+        run: |
+          set -euo pipefail
+          python -m compileall -q scripts research/issues/issue-3-unramified-index research/issues/rank-three-index-form-unit research/issues/one-boundary-logarithmic-field
+          python research/issues/one-boundary-logarithmic-field/verify_all.py
+          python scripts/render_views.py --check
+          python scripts/validate_repository.py
+          python scripts/frontier.py
+          git diff --check
+
+      - name: Commit synchronized surfaces
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .
+          if git diff --cached --quiet; then
+            echo 'No synchronization delta to commit.'
+            exit 0
+          fi
+          git commit -m 'sync(issue-5): allocate one-boundary claims and frontier'
+          git push origin HEAD:issue-5/one-boundary-logarithmic-gpt56
