@@ -7,10 +7,10 @@
     "research/issues/rank-three-boundary-cube-unit/"
   ],
   "base_sha": "652a5e252626fa5816445651245e8a8946cee53e",
-  "candidate_sha": "eefb40d0475dcdc5a3b07d89ce84354a4b210280",
+  "candidate_sha": "733990e68841ef7ea25cb7fb22f0f668aa522494",
   "scientific_status": "LITERATURE_BOUND_RANK_THREE_EXCLUSION_WITH_CANDIDATE_INTERNAL_REFINEMENTS / MUTABLE_NONAUTHORITATIVE",
   "review_mode": "local-adversarial-review",
-  "reviewed_revision": "eefb40d0475dcdc5a3b07d89ce84354a4b210280",
+  "reviewed_revision": "733990e68841ef7ea25cb7fb22f0f668aa522494",
   "proposed_global_claims": [
     {
       "id": "R3BC-01",
@@ -32,7 +32,7 @@
     {
       "id": "R3BC-03",
       "status": "candidate_proved",
-      "statement": "After choosing a section primitive at every target boundary prime and a square-free product H of those primes, every theta+H T eta stays primitive at the boundary and has index D+H C T+H^2 B_2 T^2+H^3 A T^3; every remaining factor is a nonboundary scalar collision.",
+      "statement": "Boundary-primitive sections decompose into classes in E/H E. Within any chosen class theta+H E, every affine pencil theta+H T eta remains primitive at all boundary primes and has index D+H C T+H^2 B_2 T^2+H^3 A T^3; every factor created in the pencil is a nonboundary scalar collision. Finite-prime adaptation proves at least one primitive class exists but does not select a class containing a unit-index section.",
       "dependencies": [
         "CLM-029",
         "CLM-062",
@@ -73,7 +73,7 @@
       "id": "R3BC-CONDITIONAL-MOVING-COLLISION",
       "type": "reduction",
       "status": "candidate_proved",
-      "statement": "Conditionally reduce the binary-cubic unit search to D+HCT+H^2B_2T^2+H^3AT^3=lambda after all boundary primes are removed."
+      "statement": "Decompose the conditional unit search over boundary-primitive classes in E/H E; inside each chosen class, use the exact pencil D+HCT+H^2B_2T^2+H^3AT^3=lambda, whose factors are nonboundary scalar collisions."
     }
   ],
   "shared_surfaces_requested": [
