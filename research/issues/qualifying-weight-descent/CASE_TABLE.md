@@ -8,9 +8,11 @@
 | `A_N`, affine | compensated affine source/target | `mu=N^2-1` | proved internally |
 | `A_N`, triangular target | `(u,v)->(u,v-u^N)` | `kappa_(N,1)=0` | explicit identity |
 | `A_N`, tame | affine plus elementary triangular | `mu=0` | explicit shear |
-| any automorphism, full | arbitrary polynomial target | `mu=0` via inverse | exact but circular as detector |
+| any automorphism, full/tame | arbitrary plane polynomial automorphisms | `mu=0` via inverse | exact but circular as detector |
+| any Keller pair, full/tame | arbitrary plane polynomial automorphisms | `mu<=4` iff invertible | reviewed defect-four theorem plus orbit inversion |
+| any Keller pair, full/tame, conditional | same class | `mu<=5` iff invertible | conditional on independent defect-five acceptance |
 | arbitrary Keller pair, affine | all affine orientations | no universal bound five | falsified by actual `A_N`, `N>=3` |
-| arbitrary Keller pair, tame/full | all plane polynomial automorphisms | `mu<=5` unresolved | global bridge remains open |
+| arbitrary Keller pair, tame/full | all plane polynomial automorphisms | universal `mu<=5` unresolved | global bridge remains open |
 | undeclared `mu` | transformation class omitted | not a defined invariant | rejected |
 
 ## 2. Fixed representative
@@ -60,7 +62,7 @@ theorem gives `kappa_w>=5` for every primitive positive weight.
 | support cardinality | detects cancellation and holes | third coordinate |
 | positive compact-edge count | face complexity | fourth coordinate |
 | twice Minkowski area | lattice integer/global geometry | fifth coordinate |
-| `d_P(w)+d_Q(w)` | selected-weight tie break | sixth coordinate |
+| `d_P(w)+d_Q(w)` | selected-weight tie break and fixes `p+q` with `kappa_w` | sixth coordinate |
 | boundary valuation count | model-dependent | omitted |
 | stabilizer/transformation count | may be infinite | omitted |
 
@@ -82,7 +84,7 @@ theorem gives `kappa_w>=5` for every primitive positive weight.
 | 4. support alone cannot force affine bound five | strengthened to actual Keller automorphisms `A_N` |
 | 5. smaller exact invariant | directed lexicographic Newton core isolated |
 | 6. finite explicit global list | not obtained; fixed-support weight list is finite |
-| 7. proposed scalar inadequate | **proved by transformation-class separation** |
+| 7. proposed scalar inadequate | **proved by transformation-class separation and full-orbit equivalence** |
 
 The packet's primary constructive disposition is 3, accompanied by the exact
 class-dependence diagnosis in 7 and the fixed-representative reduction in 5.
