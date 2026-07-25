@@ -15,7 +15,7 @@ translations, not logarithmic stability.
 | Fixed source pole module \(M(\mathbf N)\) | yes | yes | derivative shifts pole vector | any ramified stage, or any positive unramified pole stage, has nonfinite saturation |
 | Directed union of all pole stages | generally not finite | yes | stable | ind-object only; no fixed finite ambient module |
 | Reflexive hull of a pole stage | yes | yes | same height-one residue-class multiset | no improvement |
-| Finite intersection of pole stages/translates | yes | usually | not closed under all derivatives | complete saturation returns to the same obstruction |
+| Finite intersection of pole stages/translates | yes | must be checked | not closed under all derivatives | if the intersection is full, complete saturation is subject to the finite-full-seed obstruction; if not full, it is not a candidate lattice in \(L\) |
 | Multiplier ring \((M:M)\) | yes for finite \(M\) | yes when \(M\) is full | stable if \(M\) is stable; the converse can hold for an unstable seed and is not automatic | a direct stability proof already constructs the desired stable order; rank-one divisorial seeds return \(O\) |
 | Trace dual / inverse different | yes | yes | intrinsic fractional class multiset unchanged; representatives may shift and character labels may permute | logarithmic at best; ordinary stability fails at ramification |
 | Conductor dual / conductor power | yes, or zero for the source conductor | varies | integral shifts for base-divisor powers; more general fractional twists preserve the full class multiset | no cancellation of \(j/e\) |
