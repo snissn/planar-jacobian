@@ -162,7 +162,40 @@ The commuting translations independently increase the two pole
 bounds.  Commutativity makes mixed differentiation order-independent
 but provides no common finite rectangle.
 
-## 7. Rank-three rational A2-open control already in the repository
+## 7. Multiplier stability does not imply seed stability
+
+Take
+
+\[
+B=\mathbf C[P,Q],\qquad K=L=\operatorname{Frac}(B),
+\qquad M=P B.
+\]
+
+The module \(M\) is finite and full, but
+
+\[
+\partial_P(P)=1\notin P B,
+\]
+
+so it is not stable under the canonical translation
+\(\partial_P\).  Nevertheless, cancellation in the domain \(B\)
+gives
+
+\[
+(M:M)=\{z\in K:zP B\subset P B\}=B,
+\]
+
+and \(B\) is stable under both \(\partial_P,\partial_Q\).
+
+Thus stability of a seed is sufficient but not necessary for
+stability of its multiplier ring.  This control does not bypass issue
+#4: it is the degree-one case, and in a nontrivial extension a direct
+proof that a finite full multiplier ring is pair-stable is already a
+construction of the desired stable order.  For the named rank-one
+divisorial candidates, the inherited calculation \((I:I)=O\) returns
+the normalization and therefore does not hide ramification.
+
+## 8. Rank-three rational A2-open control already in the repository
 
 The issue #3 packet records a connected smooth rational normal
 finite-flat rank-three algebra containing an open \(\mathbf A^2\)
@@ -174,7 +207,7 @@ differential frame.
 This packet consumes only that scoped lesson; it does not alter the
 issue #3 construction.
 
-## 8. Exact condition not modeled
+## 9. Exact condition not modeled
 
 A decisive countermodel to `CDS-007` would need all of:
 
