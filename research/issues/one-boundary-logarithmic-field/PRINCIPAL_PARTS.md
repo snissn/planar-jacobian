@@ -11,7 +11,7 @@ invalid inference from zero residue to regularity.
 Assume `OBLF-H0` through `OBLF-H3`. At the generic point of the unique boundary
 divisor `D0`, choose a uniformizer `pi` and write `k=C(D0)` for the tangential
 coefficient field. Let prime denote a fixed nonzero `C`-derivation of `k`.
-Write finite Laurent expansions
+Write Laurent series with finite negative parts
 
 ```text
 P = sum_i p_i pi^i,    Q = sum_j q_j pi^j,
@@ -21,7 +21,8 @@ H = sum_r h_r pi^r.
 
 Because `P,Q in O`, `p_i=q_i=0` for negative `i`. The source functions `x,y`
 and the polynomial primitive `H in C[x,y]` can have poles on `Y` because they
-are required to be regular only on `U`.
+are required to be regular only on `U`. For each fixed coefficient order, the
+sums below are finite because every series has a lower exponent bound.
 
 The equality
 
@@ -119,8 +120,9 @@ the primitive:
 h_(-(m+n)) = m a b/(m+n).                       (2.9)
 ```
 
-Equation (2.9) is determination, not vanishing. The next Laurent orders give a
-finite triangular family once the pole orders of `x,y` are fixed.
+Equation (2.9) is determination, not vanishing. Once the pole orders are fixed,
+the remaining negative orders through order zero form a finite coupled
+coefficient system; no triangular solvability is claimed.
 
 If `n=0`, (2.6) says `a b'=0`, so the leading regular coefficient of `y` is
 constant along `D0`; the symmetric statement holds if `m=0`. This is a genuine
@@ -159,7 +161,7 @@ For fixed data
 normalization of D0, conductor algebra, and puncture set,
 ```
 
-the surviving equations are finite:
+the negative and zero-order compatibility conditions are finite:
 
 1. logarithmic lifting:
 
@@ -167,13 +169,8 @@ the surviving equations are finite:
    A g_P+B g_Q = c g;
    ```
 
-2. semisimple/integral test, if sought:
-
-   ```text
-   E_s(A), E_s(B) have integral weights,
-   E_s(g)=d g;
-   ```
-
+2. semisimple/integral test, if sought: the semisimple part preserves `(g)`
+   and the selected cocharacter has integral weights on `B`;
 3. Laurent equations (2.1)-(2.3) from the lowest pole through order zero;
 4. the leading relation (2.6) and primitive coefficient (2.9);
 5. conductor descent modulo the finite conductor quotient;
