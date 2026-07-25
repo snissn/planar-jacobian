@@ -82,8 +82,8 @@ t.(u,v) = (t^m u, t^n v),  (m,n) in Z^2, (m,n)!=(0,0).     (3.1)
 ```
 
 If the irreducible curve `g=0` is invariant, its principal prime ideal is
-stable. The connected torus acts on its one-dimensional generator line by a
-character, so
+stable. The connected torus sends each generator to another generator, and the
+only units of `C[u,v]` are constants. Hence `g` is a semi-invariant:
 
 ```text
 g(t^m u,t^n v)=t^d g(u,v).                                 (3.2)
@@ -134,8 +134,9 @@ The central new step begins with an actual target action.
 
 ### Theorem `OBLF-04`
 
-Let `X` be a normal complex variety, let `pi:Y->X` be a finite morphism with
-`Y` normal and integral, and let `C subset X` be a reduced divisor such that
+Let `X` be a normal affine complex variety, let `pi:Y->X` be a finite morphism
+with `Y` normal and integral, and let `C subset X` be a reduced divisor such
+that
 
 ```text
 pi:Y^o=pi^(-1)(X-C) -> X^o=X-C
@@ -153,8 +154,8 @@ lifts to an algebraic `G_m` action on `Y`, and `pi` is equivariant.
 ### Proof
 
 **Topological lift on the etale locus.** Analytify. Pull the target action back
-to the universal cover `exp:C_add->C*`. Covering-space homotopy lifting gives a
-unique holomorphic map
+to the universal cover `exp:C_add->C*`. The covering-homotopy property, applied
+to the contraction of `C_add`, gives a unique holomorphic map
 
 ```text
 a_tilde:C x Y^o -> Y^o
@@ -174,13 +175,13 @@ action and the second projection. Riemann existence for finite etale covers
 algebraizes this isomorphism. We use SGA 1, Expose XII, Theorem 5.1. The cocycle
 identity holds analytically and hence algebraically.
 
-**Extension across `C`.** The action on `Y^o` acts on the function field of
-`Y`. If `z in O_Y` is integral over `O_X`, its transformed element satisfies
-the transformed monic equation and is integral over the coordinate ring of
-`G_m x X`. The product `G_m x Y` is normal, so integral elements in its
-function field lie in its coordinate ring. Thus the action morphism extends
-across `Y-Y^o`. The group law and equivariance extend from the dense open
-subset. `square`
+**Extension across `C`.** Work on coordinate rings. The action on `Y^o` acts on
+the function field of `Y`. If `z in O_Y` is integral over `O_X`, its transformed
+element satisfies the transformed monic equation and is integral over the
+coordinate ring of `G_m x X`, hence also integral over the coordinate ring of
+`G_m x Y`. The product `G_m x Y` is normal, so the transformed element belongs
+to that coordinate ring. Thus the action morphism extends across `Y-Y^o`. The
+group law and equivariance extend from the dense open subset. `square`
 
 The isogeny is necessary in general: an orbit loop can act by a nontrivial
 finite deck transformation. The theorem does not say that an arbitrary
@@ -241,7 +242,7 @@ of a nontrivial generically ramified one-boundary Keller normalization:
 - a hyperbolic monomial curve `u^a v^b=c`;
 - any smooth `A1` branch, after Abhyankar-Moh;
 - any branch preserved by a higher-dimensional target torus, after choosing a
-  nonzero cocharacter.
+  cocharacter acting nontrivially on the target.
 
 It does **not** prove that an arbitrary smooth or one-place branch has a torus
 symmetry. The remaining class is exactly the non-semi-invariant class addressed
