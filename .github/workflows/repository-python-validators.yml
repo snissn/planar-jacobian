@@ -51,6 +51,7 @@ jobs:
                   line = line[10:]
               lines.append(line)
           code = '\n'.join(lines) + '\n'
+          code = code.split("\np=root/'.github/workflows/repository-python-validators.yml';", 1)[0] + '\n'
           exec(compile(code, 'defect-five-inline-sync', 'exec'), {'__name__': '__main__'})
           PY
           python scripts/render_views.py --write
