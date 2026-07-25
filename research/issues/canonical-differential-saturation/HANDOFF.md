@@ -4,7 +4,7 @@
 > **Task issue:** `#4`  
 > **Owned path:** `research/issues/canonical-differential-saturation/`  
 > **Base:** `652a5e252626fa5816445651245e8a8946cee53e`  
-> **Reviewed candidate:** `d8c9dc19ad6201042afb315ccab57489c863105b`  
+> **Reviewed candidate:** `ab498bd9f40fdb36137fbe8a52658555a3eef004`  
 > **Review:** `local-adversarial-review` / `ACCEPT_SCOPED`  
 > **Pull request:** `#42`, non-draft, integration-ready, not merged  
 > **Integration state:** `integration-ready`, not on `main`
@@ -37,10 +37,10 @@ codimension-two target point.
 
 Every finite source-pole stage meeting ramification has nonfinite
 saturation.  At an unramified omitted divisor, every stage containing
-an actual pole also escapes under a transverse canonical translation.
-The proof begins with a pole-bearing section of the localized module
-and tracks its unique lowest-valuation derivative term; it does not
-assume that a bare local monomial globalizes.
+an actual positive pole also escapes under a transverse canonical
+translation.  The proof begins with a pole-bearing section of the
+localized module and tracks its unique lowest-valuation derivative
+term; it does not assume that a bare local monomial globalizes.
 
 A finite intersection of pole stages or derivative translates is
 subject to the finite-seed obstruction only if it remains full over
@@ -68,7 +68,7 @@ coherence, a compatible connection preserving both unscaled
 translations, and a torsion-free embedding into the meromorphic sheaf
 with generic fiber \(L\).
 
-## Corrected multiplier and residue boundaries
+## Corrected multiplier, residue, and validation boundaries
 
 For a finite full seed \(M\), pair stability implies stability of its
 multiplier ring \((M:M)\), but the converse is false.  The control
@@ -81,22 +81,28 @@ satisfies \(D_P(M)\not\subset M\) while \((M:M)=B\) is stable.
 Seed instability therefore does not exclude a stable multiplier.
 
 A direct proof that a finite full multiplier ring is pair-stable
-already constructs the stable order required by the predecessor
-route.  For each named rank-one reflexive fractional \(O\)-module
-\(I\),
+already constructs the stable order required by the predecessor route.
+For each named rank-one reflexive fractional \(O\)-module \(I\),
 
 \[
 (I:I)=O,
 \]
 
-so trace duals, inverse differents, canonical and conductor twists,
-and divisorial source-pole modules return the normalization rather
-than a hidden order.
+so trace duals, inverse differents, canonical and conductor twists, and
+divisorial source-pole modules return the normalization rather than a
+hidden order.
 
 Changing a logarithmic lattice shifts residue representatives by
 integers on fixed monodromy eigenspaces, while fractional
 ramification-parameter twists may permute character labels.  The full
 class multiset in \(\mathbf Q/\mathbf Z\) is unchanged.
+
+The renewed candidate also corrects two validation gaps:
+
+1. the normal/tangent pair-spectrum check now reduces modulo the actual
+   frame relation \(a h_P+b h_Q-1=0\); and
+2. the packet aggregator runs both default and documented enlarged
+   validator bounds.
 
 ## Supported requested dispositions
 
@@ -124,8 +130,8 @@ changes.
      is no height-one ramification;
    - every divisorial source boundary maps onto a height-one target
      divisor because the normalization is finite;
-   - positive unramified source-pole stages escape under a transverse
-     translation;
+   - unramified stages containing an actual positive pole escape under
+     a transverse translation;
    - the finite-seed obstruction applies to finite intersections only
      when they remain full;
    - at a generic height-one point, embedded ordinary coherence of the
@@ -171,17 +177,35 @@ A useful exact target is:
 
 ## Validation evidence
 
-The exact remote validator files were reconstructed byte for byte.
-Their Git blob hashes matched the repository blobs:
+The exact candidate validator files were reconstructed byte for byte.
+Their local Git blob hashes matched the remote candidate blobs:
 
 ```text
-verify_local_residues.py  053d71a550992dfe6be5edb99d1ab0e578c557a3
+verify_local_residues.py  de75ce69bae2324106b42c75f8f15ba9cffb4a91
 verify_global_bridges.py  1428959b91216d65eebd0f1c12a6d10681c8b7e0
+verify_all.py              a4a6c5903d1ea97a4ac0676450f58848dd9dc46a
 ```
 
-Byte compilation and enlarged adversarial runs passed:
+Byte compilation, default runs, enlarged adversarial runs, and
+invalid-bound mutations passed:
 
 ```text
+verify_local_residues.py
+  fractional_twist_checks: 319
+  kummer_checks: 7502
+  pair_spectrum_checks: 77
+  non_galois_checks: 3
+  total_checks: 7901
+  PASS
+
+verify_global_bridges.py
+  inertia_partition_checks: 271
+  localization_checks: 65
+  multiplier_converse_checks: 185
+  exact_symplectic_checks: 27
+  total_checks: 548
+  PASS
+
 verify_local_residues.py --max-e 30 --max-n 64
   fractional_twist_checks: 1885
   kummer_checks: 195170
@@ -199,17 +223,13 @@ verify_global_bridges.py --max-degree 25 --max-n 50 --max-e 25
   PASS
 ```
 
-The permanent read-only workflow on the exact final PR head confirms
-byte compilation of all maintained Python, the integration contract,
-generated views, structural validation, frontier generation, and the
-complete maintained repository suite.  That workflow byte-compiles
-`verify_all.py` but does not invoke the packet aggregator.  The
-aggregator's required-file, manifest, and prose conditions were checked
-separately against the final remote diff and manifest; the two
-load-bearing issue validators above were executed byte for byte.
-The exact workflow locator and conclusion are recorded on PR #42.
-Passing validators records encoded identities and repository
-consistency only; it does not establish mathematical truth.
+The permanent read-only repository workflow on the exact final PR head
+must confirm byte compilation of maintained Python, the integration
+contract, generated views, structural validation, frontier generation,
+and the complete maintained repository suite.  Its exact run locator
+and conclusion belong in PR #42 so that the tested head remains
+unchanged.  Passing validators records encoded identities and
+repository consistency only; it does not establish mathematical truth.
 
 ## Integration cautions
 
@@ -222,6 +242,8 @@ consistency only; it does not establish mathematical truth.
 - Do not apply the finite-seed theorem to a nonfull intersection.
 - Do not invent a contracted divisorial boundary in the finite
   normalization; finite images of divisors remain divisorial.
+- Do not infer unramified pole escape unless the stage contains an
+  actual positive pole.
 - Do not infer multiplier instability from seed instability.
 - Do not infer full-rank triviality from trace, norm, invariants, or
   determinant.
