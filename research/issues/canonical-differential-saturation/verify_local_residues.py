@@ -59,14 +59,20 @@ def verify_pair_spectrum(max_e: int) -> dict[str, int]:
     """Check the normal/tangent change of frame for both derivations."""
     checks = 0
     hp, hq, a, b = sp.symbols("hp hq a b")
+    constraint = a * hp + b * hq - 1
+    normal_frame_ideal = sp.groebner(
+        [constraint], a, b, hp, hq, order="lex", domain=sp.QQ
+    )
     for e in range(2, max_e + 1):
         for j in range(e):
             r = sp.Rational(j, e)
             normal = sp.expand(r * (a * hp + b * hq))
             tangent = sp.expand(r * (-hq * hp + hp * hq))
             assert tangent == 0
-            # Modulo h, a*hp+b*hq=1 by construction.
-            assert sp.expand(normal - r) == sp.expand(r * (a * hp + b * hq - 1))
+            # The normal coefficient equals r on the locus
+            # a*hp+b*hq=1; reduce modulo that defining relation.
+            _, remainder = normal_frame_ideal.reduce(normal - r)
+            assert remainder == 0
             checks += 1
     return {"pair_spectrum_checks": checks}
 
