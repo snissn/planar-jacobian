@@ -2,7 +2,7 @@
 
 ```text
 review_mode: local-adversarial-review
-reviewed_revision: 733990e68841ef7ea25cb7fb22f0f668aa522494
+reviewed_revision: 01183ee9c6fdd9090a29edc2d675e419fb71c078
 reviewed_scope: R3BC-01 through R3BC-05, R3BC-07, and all exact scripts
 constructor_independence: none; this is not independent scientific acceptance
 disposition: ACCEPT_LITERATURE_BOUND_RANK_THREE_TERMINAL_AND_SCOPED_INTERNAL_REFINEMENTS; BLOCK_CONSTRUCTIVE_UNIT_SECTION_AND_BROADER_PROMOTION
@@ -10,15 +10,16 @@ disposition: ACCEPT_LITERATURE_BOUND_RANK_THREE_TERMINAL_AND_SCOPED_INTERNAL_REF
 
 ## 1. Review protocol
 
-This review was rerun after the scientific candidate was corrected and pinned at
+This review was rerun after the complete corrected candidate, including proof,
+summary, handoff, and integration metadata, was pinned at
 
 ```text
-733990e68841ef7ea25cb7fb22f0f668aa522494.
+01183ee9c6fdd9090a29edc2d675e419fb71c078.
 ```
 
 The correction distinguishes one boundary-adapted congruence class from the
-unrestricted unit search. No proof file in the pinned revision was edited during
-this review pass. The pass:
+unrestricted unit search. No file in the pinned revision was edited during this
+review pass. The pass:
 
 1. read the load-bearing parts of Orevkov's English primary PDF, including the
    definition of multiplicity, Theorem 1.1, and the closing degree-three cases;
@@ -31,7 +32,9 @@ this review pass. The pass:
 7. differentiated the split-sheet Vandermonde;
 8. mutated the countermodel ladder at source étaleness;
 9. checked the MathOverflow source against the broader prime-degree preprint;
-10. reran the exact symbolic suite.
+10. reran the exact symbolic suite;
+11. checked that README, HANDOFF, INTEGRATION, and the PR body all preserve the
+    corrected restricted-family scope.
 
 This constructor self-audit creates no `reviewed_scoped` status.
 
@@ -98,7 +101,7 @@ the trace-zero part changes only a base scalar.
 
 No. Every section `theta+H eta` has the same class in `E/H E`. A hypothetical
 unit section may have another primitive boundary residue class. The finite-prime
-adaptation theorem proves only that the set
+adaptation theorem proves only that
 
 ```text
 R_H={bar(theta) in E/H E : bar(theta) is primitive at every p|H}
@@ -108,9 +111,8 @@ is nonempty; it does not identify a class containing a unit section.
 
 Conversely, every unit section is primitive at every boundary prime and hence
 lies in exactly one class from `R_H`. For any chosen class and lift `theta`, all
-sections in that class are exactly `theta+H eta`. Therefore the corrected packet
-has an exact **union over classes**, while a fixed `theta` is one class only.
-This resolves the review objection without weakening the local affine identity.
+sections in that class are exactly `theta+H eta`. The corrected packet therefore
+has an exact union over classes, while a fixed `theta` is one class only.
 
 ### H. Is the affine-pencil expansion exact within its scope?
 
@@ -161,7 +163,7 @@ used as a Keller or no-unit counterexample.
 
 ## 3. Exact checks
 
-The pinned candidate was checked with Python 3.12 and SymPy 1.14.0:
+The corrected candidate was checked with Python 3.12 and SymPy 1.14.0:
 
 ```text
 python3 research/issues/rank-three-boundary-cube-unit/verify_all.py
