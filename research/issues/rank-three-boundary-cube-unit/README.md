@@ -7,7 +7,7 @@ task_issue: #3
 owned_path: research/issues/rank-three-boundary-cube-unit/
 base_commit: 652a5e252626fa5816445651245e8a8946cee53e
 scientific_disposition: RANK_THREE_KELLER_CASE_EXCLUDED_BY_PRIMARY_LITERATURE
-review_state: local-adversarial-review required before integration
+review_state: local-adversarial-review ACCEPT at eefb40d0475dcdc5a3b07d89ce84354a4b210280
 ```
 
 ## Exact disposition
@@ -38,8 +38,10 @@ The primary source is:
 > *Math. USSR-Izv.* **29** (1987), 587–596,
 > DOI `10.1070/IM1987v029n03ABEH000984`.
 
-The publisher's primary record gives the theorem in exactly that form. The
-application from field degree to sheet number is proved in
+The English primary full text defines the multiplicity as the number of
+preimages of a generic point, states the degree-three exclusion in Theorem 1.1,
+and closes all three multiplicity-three cases in the final proof. The application
+from field degree to sheet number is proved in
 [`FOUNDATIONS.md`](FOUNDATIONS.md), without importing an additional theorem.
 
 Consequently, the simultaneous hypotheses
