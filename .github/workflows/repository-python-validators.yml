@@ -30,6 +30,7 @@ jobs:
             python .github/defect-five-staging/sync.py
             rc=$?
             if [ "$rc" -eq 0 ]; then
+              sed -i 's/[[:space:]]\+$//' research/tracks/m-filtered-equivariance.md
               python scripts/render_views.py --write
               rc=$?
             fi
