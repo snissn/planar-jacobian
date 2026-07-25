@@ -2,33 +2,35 @@
 
 ```text
 review_mode: local-adversarial-review
-reviewed_revision: c281ecd845fe63e88b47ae16f99135325a2f988f
-reviewed_scope: R3BC-01 through R3BC-05 and all exact scripts
+reviewed_revision: eefb40d0475dcdc5a3b07d89ce84354a4b210280
+reviewed_scope: R3BC-01 through R3BC-05, R3BC-07, and all exact scripts
 constructor_independence: none; this is not independent scientific acceptance
 disposition: ACCEPT_LITERATURE_BOUND_RANK_THREE_TERMINAL_AND_SCOPED_INTERNAL_REFINEMENTS; BLOCK_CONSTRUCTIVE_UNIT_SECTION_AND_BROADER_PROMOTION
 ```
 
 ## 1. Review protocol
 
-This review was performed as a separate pass after the scientific construction
-was pinned at
+This review was rerun as a separate pass after the strengthened scientific
+candidate, including the full-text Orevkov audit, was pinned at
 
 ```text
-c281ecd845fe63e88b47ae16f99135325a2f988f.
+eefb40d0475dcdc5a3b07d89ce84354a4b210280.
 ```
 
-No proof file in that revision was edited during the review. The pass:
+No proof file in that revision was edited during this rerun. The pass:
 
-1. remapped every hypothesis of Orevkov's published theorem to the Keller setup;
-2. recomputed the field-degree-to-generic-sheet-number bridge;
-3. recomputed all three rank-three special-fiber determinants;
-4. challenged the simultaneous boundary-adaptation argument at semilocal primes;
-5. differentiated the split-sheet Vandermonde to test the claimed differential
+1. read the load-bearing parts of Orevkov's English primary PDF, including the
+   definition of multiplicity, Theorem 1.1, and the closing degree-three cases;
+2. remapped every hypothesis of that theorem to the Keller setup;
+3. recomputed the field-degree-to-generic-sheet-number bridge;
+4. recomputed all three rank-three special-fiber determinants;
+5. challenged the simultaneous boundary-adaptation argument at semilocal primes;
+6. differentiated the split-sheet Vandermonde to test the claimed differential
    limitation;
-6. mutated the countermodel ladder at the first source-étale stage;
-7. checked the cited MathOverflow answer against the broader prime-degree
+7. mutated the countermodel ladder at the first source-étale stage;
+8. checked the cited MathOverflow answer against the broader prime-degree
    preprint's use of it;
-8. reran the exact symbolic suite.
+9. reran the exact symbolic suite.
 
 This is a constructor self-audit and creates no `reviewed_scoped` status.
 
@@ -42,15 +44,22 @@ extension, clearing denominators makes `C[x,y]` finite over a localization of
 A finite étale algebra of rank three has three geometric points in every fiber.
 No global properness or finiteness over the entire target is inserted.
 
+Orevkov's Section 1 independently defines the multiplicity of the map as the
+number of preimages of a generic point. Thus the packet bridge lands in the
+paper's own terminology exactly.
+
 ### B. Is Orevkov being quoted at a stronger scope than the primary source?
 
-No. The packet imports only the publisher's exact statement that the Jacobian of
-a three-sheeted polynomial mapping `C^2 -> C^2` cannot be constant. It does not
-import an all-prime-degree theorem or a boundary classification from Orevkov.
+No. The English primary PDF begins with a polynomial map `C^2 -> C^2` having
+nonzero constant Jacobian, defines generic-fiber multiplicity, and states in
+Theorem 1.1 that multiplicity cannot be two or three. The final proof assumes
+multiplicity three, exhausts the three configurations from Lemma 4.2, and closes
+with a contradiction in each case. The packet imports no all-prime-degree theorem
+and no independent boundary classification from Orevkov.
 
-The full proof text was not reconstructed in this tool environment. For that
-reason `R3BC-01` is explicitly `literature_bound`, not an internally proved or
-independently reviewed theorem.
+`R3BC-01` remains `literature_bound` because the external ten-page proof is
+source-audited rather than reproduced as a new internal proof. There is no
+remaining source-access or terminology gap.
 
 ### C. Does the terminal theorem construct a unit-index section?
 
@@ -173,8 +182,9 @@ scope.
 
 ## 4. Unresolved risks and limits
 
-1. The proof inside Orevkov's article was not line-by-line reconstructed here;
-   the terminal remains bound to the exact primary published statement.
+1. Orevkov's primary proof has been audited at its definition, theorem, proof
+   architecture, and terminal cases, but it is not independently reproved in
+   this packet; the claim remains `literature_bound`.
 2. The conditional boundary-adaptation result consumes the predecessor's
    mutable finite-prime adaptation theorem (`CLM-029`). Orevkov's terminal does
    not depend on that claim.
@@ -192,13 +202,14 @@ scope.
 
 ### Accepted at mutable packet scope
 
-- `R3BC-01`: exact application of Orevkov's primary published rank-three
-  theorem, at `literature_bound` scope;
+- `R3BC-01`: exact full-text-audited application of Orevkov's primary
+  rank-three theorem, at `literature_bound` scope;
 - `R3BC-02`: geometric boundary-cubic trichotomy;
 - `R3BC-03`: simultaneous boundary-prime elimination and exact affine-family
   polynomial;
 - `R3BC-04`: differential movement without fixed-value stability;
-- `R3BC-05`: countermodel ladder terminal at source étaleness.
+- `R3BC-05`: countermodel ladder terminal at source étaleness;
+- `R3BC-07`: packet-local rejection of the identified prime-degree shortcut.
 
 ### Blocked
 
