@@ -146,7 +146,7 @@ is finite etale. Suppose an algebraic `G_m` action on `X` preserves `C`. Then
 there is an integer `N>0` such that the action precomposed with
 
 ```text
-[N]:G_m->G_m,  t |-> t^N,
+power map [N]: G_m -> G_m,  t |-> t^N,
 ```
 
 lifts to an algebraic `G_m` action on `Y`, and `pi` is equivariant.
