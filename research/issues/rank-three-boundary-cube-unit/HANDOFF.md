@@ -5,9 +5,9 @@ role: research-worker
 task_issue: #3
 owned_path: research/issues/rank-three-boundary-cube-unit/
 base_main: 652a5e252626fa5816445651245e8a8946cee53e
-scientific_candidate: 01183ee9c6fdd9090a29edc2d675e419fb71c078
+scientific_candidate: f85f9e1e7143bc36859543c3d5520d06fe99cb17
 review_mode: local-adversarial-review
-reviewed_revision: 01183ee9c6fdd9090a29edc2d675e419fb71c078
+reviewed_revision: f85f9e1e7143bc36859543c3d5520d06fe99cb17
 integration_state: integration-ready after exact-head CI
 merge_authority: none in this parallel round
 ```
@@ -196,9 +196,13 @@ change is requested.
 Pinned local adversarial review:
 
 ```text
-reviewed_revision: 01183ee9c6fdd9090a29edc2d675e419fb71c078
+reviewed_revision: f85f9e1e7143bc36859543c3d5520d06fe99cb17
 disposition: ACCEPT_LITERATURE_BOUND_RANK_THREE_TERMINAL_AND_SCOPED_INTERNAL_REFINEMENTS; BLOCK_CONSTRUCTIVE_UNIT_SECTION_AND_BROADER_PROMOTION
 ```
+
+The reviewed revision includes the repaired exact `H`-adic divisibility check:
+polynomial division must have zero remainder, and nondivisible `+1` mutations
+must be rejected.
 
 Packet-local command:
 
@@ -225,6 +229,7 @@ python3 research/issues/issue-3-unramified-index/verify_index_models.py
 python3 research/issues/rank-three-index-form-unit/verify_all.py
 ```
 
+GitHub Actions run `30190603534` passed these checks at the reviewed candidate.
 Passing CI is engineering evidence only and does not strengthen mathematical
 status.
 
