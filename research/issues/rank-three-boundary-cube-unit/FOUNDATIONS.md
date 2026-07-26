@@ -55,7 +55,7 @@ calculations but are not additional hypotheses of the terminal contradiction.
 If `[L:K]=n<infinity`, there is `h in B-{0}` such that `A_h` is finite over
 `B_h`.
 
-### Proof
+### Proof of Lemma 2.1
 
 The elements `x,y` are algebraic over `K`. For each one, choose a monic
 polynomial over `K`, then clear all denominators except the leading coefficient.
@@ -69,7 +69,7 @@ After replacing `h` by a multiple, `A_h` is finite étale of rank `n` over
 `B_h`. Hence every geometric fiber over `Spec(B_h)` has exactly `n` reduced
 points.
 
-### Proof
+### Proof of Lemma 2.2
 
 The Jacobian determinant is a unit in `A`, so `Omega_{A/B}=0`. Localization
 preserves this equality. A finite morphism of finite presentation with vanishing
