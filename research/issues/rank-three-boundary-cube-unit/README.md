@@ -54,9 +54,9 @@ construction would have to be performed.
 
 ### R3BC-02 — boundary-cubic trichotomy (`candidate_proved`)
 
-Conditionally retaining the predecessor's finite-flat rank-three algebra, the
-geometric special-fiber index cubic at a height-one base prime is, after a
-trace-zero frame, exactly one of
+Conditionally retaining the predecessor's finite-flat rank-three algebra, pass
+to the strict henselization of a height-one DVR and then to its geometric special
+fiber. In a trace-zero frame, the reduced index cubic is exactly one of
 
 ```text
 unramified split:       L1 L2 L3,
@@ -64,8 +64,10 @@ simple ramification:    L M^2,
 total ramification:     L^3.
 ```
 
-Thus “boundary cube” is correct only at total ramification. The determinant
-calculations are in [`BOUNDARY_VALUATIONS.md`](BOUNDARY_VALUATIONS.md).
+Thus “boundary cube” is correct only at total ramification. This is a geometric
+local classification, not one simultaneous global `GL_2(B)` normal form. The
+determinant calculations are in
+[`BOUNDARY_VALUATIONS.md`](BOUNDARY_VALUATIONS.md).
 
 ### R3BC-03 — exact boundary classes and affine pencils (`candidate_proved`)
 
@@ -111,23 +113,32 @@ relative sheet-value collisions rather than ramification.
 
 The integrated no-unit model reaches finite locally free rank three, normality,
 connectedness, rational total space, a displayed open `A2`, and no nonzero
-constant represented by `Phi`. It fails because that `A2` is not étale over the
-target. Adding different support only outside the specified source open would
-make the restricted degree-three polynomial map Keller, which Orevkov excludes.
-Stages 5–9 of the requested ladder are therefore incompatible already at source
-étaleness.
+constant represented by `Phi`. It fails at the first genuine Keller condition.
+In the audited finite-normalization factorization
+
+```text
+U=Spec(C[x,y]) -> Y=Spec(O) -> Spec(C[P,Q]),
+```
+
+`U` is the specified displayed source open. If the relative different has no
+support on this `U`, then `Omega_{C[x,y]/C[P,Q]}=0`; the Jacobian determinant is
+a unit of `C[x,y]`, hence a nonzero constant. The induced polynomial map still
+has function-field degree three and is excluded by Orevkov. An arbitrary
+abstract open `A2` in a rational surface is not enough. Stages 5–9 of the
+requested ladder are incompatible specifically at this source-étale wall.
 
 ## Exact scope
 
 Established at mutable packet scope:
 
 1. the full-text-audited bridge from degree three to Orevkov's theorem;
-2. the local forms `L1L2L3`, `LM^2`, and `L^3`;
+2. the geometric local forms `L1L2L3`, `LM^2`, and `L^3` after strict
+   henselization;
 3. the boundary-primitive residue-class decomposition;
 4. the exact affine-pencil polynomial inside each chosen class;
 5. the nonboundary moving-collision interpretation;
-6. incompatibility of the countermodel ladder with source étaleness at degree
-   three.
+6. incompatibility of the countermodel ladder with étaleness on the specified
+   displayed source open at degree three.
 
 Not claimed:
 
