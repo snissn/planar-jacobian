@@ -7,7 +7,7 @@ task_issue: #3
 owned_path: research/issues/rank-three-boundary-cube-unit/
 base_commit: 652a5e252626fa5816445651245e8a8946cee53e
 scientific_disposition: RANK_THREE_KELLER_CASE_EXCLUDED_BY_PRIMARY_LITERATURE
-review_state: local-adversarial-review ACCEPT at f85f9e1e7143bc36859543c3d5520d06fe99cb17
+review_state: local-adversarial-review ACCEPT at 4c5d1e1bb8042b046af8af9d2fd764a61e2275e8
 ```
 
 ## Exact disposition
@@ -179,6 +179,6 @@ python3 scripts/validate_integration_contract.py
 python3 scripts/render_views.py --check
 ```
 
-The packet-local suite was rerun at the reviewed candidate. Exact-head GitHub
-Actions records repository and predecessor regression checks for the current PR
-head.
+The guarded packet-local suite was rerun at the reviewed candidate with SymPy
+1.14.0. Exact-head GitHub Actions records repository and predecessor regression
+checks for the current PR head.
