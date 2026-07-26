@@ -30,7 +30,14 @@ def main() -> int:
     assert_zero(repaired_jac - k, "triangular constant-Jacobian repair")
 
     # Cubic rare-property audit model: x=s+v, y=s+2v, R=C(s^3,v).
-    x, y, v = sp.symbols("x y v")
+    source_s, v = sp.symbols("source_s v")
+    x_from_sv = source_s + v
+    y_from_sv = source_s + 2 * v
+    assert_zero(2 * x_from_sv - y_from_sv - source_s, "rare model inverse s")
+    assert_zero(y_from_sv - x_from_sv - v, "rare model inverse v")
+
+    # Re-express the polynomial base map in the independent source coordinates x,y.
+    x, y = sp.symbols("x y")
     sigma = 2 * x - y
     base_v = y - x
     assert_zero((sigma + base_v) - x, "rare model inverse x")
