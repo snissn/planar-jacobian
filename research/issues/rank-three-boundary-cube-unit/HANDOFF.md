@@ -38,15 +38,16 @@ Orevkov's proof and does not construct a section with `Phi(s) in C*`.
 Retaining a finite locally free normal rank-three algebra only as a conditional
 algebraic model, the packet proves:
 
-1. **Boundary-cubic trichotomy (`R3BC-02`).** Geometrically at a height-one
-   prime, the index cubic is
+1. **Boundary-cubic trichotomy (`R3BC-02`).** After strict henselization of a
+   height-one DVR and passage to the geometric special fiber, the trace-zero
+   index cubic is
 
    ```text
    L1 L2 L3,   L M^2,   or   L^3
    ```
 
    for ramification partitions `1+1+1`, `2+1`, or `3`. A cube occurs only at
-   total ramification.
+   total ramification. This is not one simultaneous global `GL_2(B)` form.
 
 2. **Boundary-stable class (`R3BC-03`).** If `H` is the square-free product of
    target boundary primes and `theta` is primitive at all of them, then
@@ -82,13 +83,17 @@ algebraic model, the packet proves:
 
 5. **Countermodel terminal (`R3BC-05`).** The integrated no-unit model reaches
    finite-flat/normal/connected/rational/open-`A2`, but fails source étaleness.
-   Adding boundary-only different support on the specified source open would
-   produce a degree-three Keller map and is impossible by `R3BC-01`.
+   In the audited finite-normalization factorization, the relevant `A2` is the
+   specified displayed source open `U=Spec(C[x,y])`. If the relative different
+   has no support on `U`, then `Omega_{C[x,y]/C[P,Q]}=0`, so the induced
+   degree-three polynomial map has constant nonzero Jacobian and is excluded by
+   `R3BC-01`. An arbitrary abstract open `A2` is insufficient.
 
 6. **Literature falsification control (`R3BC-07`).** A cubic rare-property model
    rejects the degree-two classification used in the first case of
    arXiv:2407.13795v1. This is not needed for the Orevkov terminal and supports
-   no theorem beyond that narrow audit.
+   no theorem beyond that narrow audit. It remains packet-local and is excluded
+   from proposed global synchronization.
 
 ## 3. Proposed global claim deltas
 
@@ -110,10 +115,10 @@ nonclaims: no constructive unit-index section, no higher-degree result, no JC_2
 
 ```text
 status: candidate_proved
-statement: In a finite locally free normal rank-three algebra over a
-characteristic-zero DVR, the geometric trace-zero binary index cubic is
-GL2-equivalent to L1L2L3, LM^2, or L^3 according to ramification partition
-1+1+1, 2+1, or 3.
+statement: After strict henselization and passage to the geometric special
+fiber, the trace-zero binary index cubic of a finite locally free normal
+rank-three algebra over a characteristic-zero DVR is GL2-equivalent to L1L2L3,
+LM^2, or L^3 according to ramification partition 1+1+1, 2+1, or 3.
 dependencies: CLM-062
 ```
 
@@ -145,14 +150,17 @@ dependencies: CLM-010, CLM-012, CLM-065, CLM-066
 
 ```text
 status: candidate_proved
-statement: The issue #3 no-unit model satisfies stages 1-4 of the Keller-near
-ladder, while adding different support only outside the specified open A2 would
-make the restricted degree-three polynomial map Keller and is impossible by
-R3BC-01.
+statement: Under the audited finite-normalization/source-open factorization, the
+issue #3 no-unit countermodel reaches the finite-flat, normal, connected,
+rational, open-A2 stages; if the relative different has no support on the
+specified displayed source open U=Spec(C[x,y]), then Omega_{C[x,y]/C[P,Q]}=0,
+the induced degree-three polynomial map has constant nonzero Jacobian, and
+Orevkov excludes it.
 dependencies: CLM-058, CLM-066, R3BC-01
 ```
 
-Keep `R3BC-07` packet-local unless separately adjudicated.
+Keep `R3BC-07` packet-local and excluded from global synchronization unless it is
+separately adjudicated.
 
 ## 4. Proposed graph, leaf, and issue disposition
 
