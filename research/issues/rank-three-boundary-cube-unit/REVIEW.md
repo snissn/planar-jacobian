@@ -2,7 +2,7 @@
 
 ```text
 review_mode: local-adversarial-review
-reviewed_revision: 01183ee9c6fdd9090a29edc2d675e419fb71c078
+reviewed_revision: f85f9e1e7143bc36859543c3d5520d06fe99cb17
 reviewed_scope: R3BC-01 through R3BC-05, R3BC-07, and all exact scripts
 constructor_independence: none; this is not independent scientific acceptance
 disposition: ACCEPT_LITERATURE_BOUND_RANK_THREE_TERMINAL_AND_SCOPED_INTERNAL_REFINEMENTS; BLOCK_CONSTRUCTIVE_UNIT_SECTION_AND_BROADER_PROMOTION
@@ -11,15 +11,18 @@ disposition: ACCEPT_LITERATURE_BOUND_RANK_THREE_TERMINAL_AND_SCOPED_INTERNAL_REF
 ## 1. Review protocol
 
 This review was rerun after the complete corrected candidate, including proof,
-summary, handoff, and integration metadata, was pinned at
+summary, handoff, integration metadata, and the repaired exact divisibility
+validator, was pinned at
 
 ```text
-01183ee9c6fdd9090a29edc2d675e419fb71c078.
+f85f9e1e7143bc36859543c3d5520d06fe99cb17.
 ```
 
 The correction distinguishes one boundary-adapted congruence class from the
-unrestricted unit search. No file in the pinned revision was edited during this
-review pass. The pass:
+unrestricted unit search. The validator amendment replaces rational cancellation
+by exact polynomial division with a zero-remainder requirement and adds negative
+mutation controls. No file in the pinned revision was edited during this review
+pass. The pass:
 
 1. read the load-bearing parts of Orevkov's English primary PDF, including the
    definition of multiplicity, Theorem 1.1, and the closing degree-three cases;
@@ -32,8 +35,10 @@ review pass. The pass:
 7. differentiated the split-sheet Vandermonde;
 8. mutated the countermodel ladder at source étaleness;
 9. checked the MathOverflow source against the broader prime-degree preprint;
-10. reran the exact symbolic suite;
-11. checked that README, HANDOFF, INTEGRATION, and the PR body all preserve the
+10. inspected the repaired polynomial-divisibility assertion and its negative
+    controls;
+11. reran the exact symbolic suite;
+12. checked that README, HANDOFF, INTEGRATION, and the PR body preserve the
     corrected restricted-family scope.
 
 This constructor self-audit creates no `reviewed_scoped` status.
@@ -127,6 +132,11 @@ Modulo every boundary prime this is `D=Phi(theta)`, a unit. Every factor created
 in that pencil is therefore nonboundary. Failure of one pencil or one class does
 not exclude a unit section in another class.
 
+The corrected verifier treats each coefficient as a polynomial in `H`, divides
+by `H^i`, and requires zero remainder. It also checks that adding `1` to the
+coefficient is rejected. Thus the test now fails under the exact mutation that
+made the earlier rational-cancellation check vacuous.
+
 ### I. Does source étaleness eliminate scalar sheet collisions?
 
 No. On the split étale locus,
@@ -180,8 +190,9 @@ prime-degree literature-audit controls: PASS
 rank-three boundary-cube packet verification: PASS
 ```
 
-The scripts verify identities and bounded falsification controls. They do not
-prove Orevkov's theorem or mathematical truth beyond their stated scope.
+Exact-head repository workflow run `30190603534` also passed at the reviewed
+revision. The scripts verify identities and bounded falsification controls. They
+do not prove Orevkov's theorem or mathematical truth beyond their stated scope.
 
 ## 4. Risks and limits
 
@@ -197,6 +208,8 @@ prove Orevkov's theorem or mathematical truth beyond their stated scope.
 6. The countermodel result is terminal only at the source-étale wall; it is not a
    classification below that wall.
 7. The prime-degree criticism is limited to the identified first-case inference.
+8. This local adversarial review is by the constructor and does not constitute
+   independent scientific acceptance.
 
 ## 5. Disposition
 
