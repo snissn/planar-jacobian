@@ -24,7 +24,7 @@
     {
       "id": "R3BC-02",
       "status": "candidate_proved",
-      "statement": "For a finite locally free normal rank-three algebra over a characteristic-zero DVR, the geometric reduction of the trace-zero binary index cubic is GL2-equivalent to L1 L2 L3, L M^2, or L^3 according to ramification partition 1+1+1, 2+1, or 3.",
+      "statement": "After strict henselization and passage to the geometric special fiber, the trace-zero binary index cubic of a finite locally free normal rank-three algebra over a characteristic-zero DVR is GL2-equivalent to L1 L2 L3, L M^2, or L^3 according to ramification partition 1+1+1, 2+1, or 3.",
       "dependencies": [
         "CLM-062"
       ]
@@ -54,7 +54,7 @@
     {
       "id": "R3BC-05",
       "status": "candidate_proved",
-      "statement": "The issue #3 no-unit countermodel reaches the finite-flat, normal, connected, rational, open-A2 stages, while adding boundary-only different support on the specified source open would produce an impossible degree-three Keller map.",
+      "statement": "Under the audited finite-normalization/source-open factorization, the issue #3 no-unit countermodel reaches the finite-flat, normal, connected, rational, open-A2 stages; if the relative different has no support on that specified displayed source open, the induced degree-three polynomial map has constant nonzero Jacobian and is excluded by Orevkov.",
       "dependencies": [
         "CLM-058",
         "CLM-066",
