@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "issue_number": 38,
+  "leaf_id": "L15",
+  "role": "reviewer",
+  "owned_paths": [
+    "research/issues/defect-5-independent-review/"
+  ],
+  "base_sha": "652a5e252626fa5816445651245e8a8946cee53e",
+  "candidate_sha": "2eeb36d232366d124b5a66774b29769ec1eba43d",
+  "scientific_status": "independent-review ACCEPT / MUTABLE_NONAUTHORITATIVE until integration",
+  "review_mode": "independent-review",
+  "reviewed_revision": "2eeb36d232366d124b5a66774b29769ec1eba43d",
+  "proposed_global_claims": [
+    {
+      "id": "ISSUE38-CLM073-REVIEW",
+      "target": "CLM-073",
+      "proposed_status": "reviewed_scoped"
+    }
+  ],
+  "proposed_graph_nodes": [
+    {
+      "id": "ISSUE38-OPEN-DEFECT-5-REVIEW",
+      "target": "OPEN-DEFECT-5",
+      "proposed_status": "reviewed"
+    }
+  ],
+  "shared_surfaces_requested": [
+    "README.md",
+    "STATUS.md",
+    "research/claim_ledger.json",
+    "research/proof_graph.json",
+    "research/work_queue.json",
+    "research/ISSUE_INDEX.md",
+    "research/leaf-packets/L15-defect-5-staircase.md",
+    "research/tracks/m-filtered-equivariance.md"
+  ],
+  "supersedes_prs": [],
+  "temporary_artifacts_absent": true,
+  "integration_state": "integration-ready"
+}
