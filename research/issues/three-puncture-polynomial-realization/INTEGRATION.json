@@ -7,10 +7,10 @@
     "research/issues/three-puncture-polynomial-realization/"
   ],
   "base_sha": "b4545bd9ca395c023b0d452feee29b5e6f77f83e",
-  "candidate_sha": "b4545bd9ca395c023b0d452feee29b5e6f77f83e",
-  "scientific_status": "CONSTRUCTION / MUTABLE_NONAUTHORITATIVE",
-  "review_mode": "none",
-  "reviewed_revision": null,
+  "candidate_sha": "087fd32a1994a666f6e9d3aea445e1c0ba7bd687",
+  "scientific_status": "DISPLAYED_BRANCH_POLYNOMIAL_REALIZATION_EXCLUDED / MUTABLE_NONAUTHORITATIVE",
+  "review_mode": "local-adversarial-review",
+  "reviewed_revision": "087fd32a1994a666f6e9d3aea445e1c0ba7bd687",
   "proposed_global_claims": [
     {
       "id": "TPPR-01",
@@ -86,7 +86,7 @@
   ],
   "supersedes_prs": [],
   "temporary_artifacts_absent": true,
-  "integration_state": "construction",
+  "integration_state": "integration-ready",
   "pr_number": null,
   "completion_receipt": null
 }
