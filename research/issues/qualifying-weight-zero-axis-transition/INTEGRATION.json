@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "issue_number": 41,
+  "leaf_id": "QWZAT-41",
+  "role": "research-worker",
+  "owned_paths": [
+    "research/issues/qualifying-weight-zero-axis-transition/"
+  ],
+  "base_sha": "f2399d8634521edf220d412a3e14d42eb56d89be",
+  "candidate_sha": "7253c25b35847302ee44d697a98deedc1c70c819",
+  "scientific_status": "candidate_proved_scoped / MUTABLE_NONAUTHORITATIVE",
+  "review_mode": "local-adversarial-review",
+  "reviewed_revision": "7253c25b35847302ee44d697a98deedc1c70c819",
+  "proposed_global_claims": [
+    {"id": "ZAT-D6-ORIENT", "status": "candidate_proved_scoped"},
+    {"id": "ZAT-D6-REES", "status": "candidate_proved_scoped"},
+    {"id": "ZAT-D6-WALL", "status": "candidate_proved_scoped"},
+    {"id": "ZAT-D6-NO-TRANSITION", "status": "candidate_proved_scoped"},
+    {"id": "ZAT-D6-CHECK", "status": "verified_internal"}
+  ],
+  "proposed_graph_nodes": [
+    {"id": "ZAT-DEFECT6-23-CORE", "status": "disposed_scoped"},
+    {"id": "ZAT-DEFECT6-NEXT-COMMON-POWER", "status": "open"}
+  ],
+  "shared_surfaces_requested": [
+    "research/tracks/m-filtered-equivariance.md",
+    "research/claim_ledger.json",
+    "research/proof_graph.json",
+    "research/work_queue.json",
+    "research/ISSUE_INDEX.md"
+  ],
+  "supersedes_prs": [],
+  "temporary_artifacts_absent": true,
+  "integration_state": "integration-ready"
+}
