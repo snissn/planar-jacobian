@@ -137,6 +137,12 @@ jobs:
             echo "defect-five packet not present" | tee defect5-candidate.log defect5-adversarial.log
           fi
 
+      - name: "Validate independent defect-five review"
+        shell: bash
+        run: |
+          set -o pipefail
+          python research/issues/defect-5-independent-review/review_validate_defect5_independent.py --max-weight 96 | tee defect5-independent.log
+
       - name: Add frontier to job summary
         if: always()
         shell: bash
@@ -178,6 +184,7 @@ jobs:
             issue5-one-boundary.log
             defect5-candidate.log
             defect5-adversarial.log
+            defect5-independent.log
           if-no-files-found: warn
           retention-days: 30
 
