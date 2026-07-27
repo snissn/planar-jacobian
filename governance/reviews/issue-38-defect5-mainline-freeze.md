@@ -24,7 +24,8 @@ The independent review reconstructs the Rees identity and complete staircase, sc
 
 ## Protected scientific paths
 
-- `research/issues/defect-5-rees/THEOREM.md`
+- `research/issues/defect-5-rees/README.md`
+- `research/issues/defect-5-rees/DERIVATION.md`
 - `research/issues/defect-5-rees/CASE_TABLE.md`
 - `research/issues/defect-5-rees/validate_defect5.py`
 - `research/issues/defect-5-independent-review/REVIEW.md`
