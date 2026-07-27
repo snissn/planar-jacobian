@@ -21,7 +21,7 @@ A merge to `main` is transport and preservation. It does not promote a candidate
 
 ## Current synchronized scientific boundary
 
-- **Filtered defects:** `CLM-047–051` and `CLM-060` are `reviewed_scoped` only through defect four, bound to independent `ACCEPT` at candidate revision `96fc7ec34bd3b685a0edeae7ecd4404abab7e2f1`. The [defect-five packet](research/issues/defect-5-rees/README.md) is separately banked as mutable `CLM-073` after local-adversarial-review `ACCEPT`; independent review remains issue #38. Neither scope proves that an arbitrary Keller pair has a qualifying weight or establishes `JC_2`.
+- **Filtered defects:** `CLM-047–051` and `CLM-060` are `reviewed_scoped` through defect four at candidate `96fc7ec34bd3b685a0edeae7ecd4404abab7e2f1`. `CLM-073` is separately `reviewed_scoped` for a fixed primitive positive weight with actual defect five at candidate `2eeb36d232366d124b5a66774b29769ec1eba43d`, under the independent issue #38 `ACCEPT`. Neither review proves that an arbitrary Keller pair has a qualifying weight, proves arbitrary filtered termination, treats generic defect six, or establishes `JC_2`.
 - **Issue #3 / rank-three index form:** the generic unramified-index bridge is disposed by `CLM-058`. The [rank-three successor packet](research/issues/rank-three-index-form-unit/README.md) records `CLM-062`–`CLM-066`: intrinsic index foundations, a finite source/boundary gcd-one certificate, an exact cubic differential congruence, and exclusion of the countermodel's interior different. `CLM-059` remains open at the one-section boundary-cube/unit-value step; universal content one is insufficient.
 - **Issue #4 / stable lattice:** the [source-reflexive-lattice packet](research/issues/source-reflexive-lattice/README.md) proves at mutable candidate scope that a finite full module stable under both canonical translations has a finite locally free stable multiplier order, and that every finite divisorial source-pole stage escapes at ramification. `CLM-061` remains open at existence of one finite pair-stable lattice; no such lattice is constructed.
 - **Issue #5 / one-boundary logarithmic field:** the predecessor packet classifies logarithmic lifting. The [one-boundary successor](research/issues/one-boundary-logarithmic-field/README.md) excludes, at mutable candidate scope, every generically ramified one-boundary model with a `G_m`-invariant reduced branch and every purely unramified one-boundary sheet-loss model. The general non-toric class remains open as `CLM-072`; exactness still permits higher principal parts.
@@ -59,7 +59,9 @@ Branches are short-lived transport surfaces. When a pull request is useful, it s
 Run against the exact candidate tree:
 
 ```bash
-python3 -m compileall -q scripts research/issues/issue-3-unramified-index research/issues/rank-three-index-form-unit research/issues/source-reflexive-lattice research/issues/one-boundary-logarithmic-field
+python3 -m compileall -q scripts research/issues
+python3 -m unittest discover -s scripts/tests -p 'test_*.py'
+python3 scripts/validate_integration_contract.py
 python3 scripts/render_views.py --check
 python3 scripts/validate_repository.py
 python3 scripts/frontier.py
@@ -73,6 +75,7 @@ python3 scripts/validate_issue5_principal_parts.py
 python3 research/issues/one-boundary-logarithmic-field/verify_all.py
 python3 research/issues/defect-5-rees/validate_defect5.py --max-weight 64 --json
 python3 research/issues/defect-5-rees/review_validate_defect5_adversarial.py
+python3 research/issues/defect-5-independent-review/review_validate_defect5_independent.py --max-weight 96
 ```
 
 The GitHub Actions workflow is [`.github/workflows/repository-python-validators.yml`](.github/workflows/repository-python-validators.yml). It records the tested SHA and uploads logs. Passing checks establish repository and regression consistency only; they do not review mathematics.
