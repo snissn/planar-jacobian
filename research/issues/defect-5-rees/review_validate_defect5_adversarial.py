@@ -94,10 +94,14 @@ def exceptional_ideals() -> list[tuple[str, list[s.Expr], list[s.Symbol], s.Expr
     E = [sum((J(P[i], Q[n-i]) for i in range(n+1)), s.Integer(0)) - (1 if n == 5 else 0) for n in range(6)]
     systems.append(("a2-1-2", coeffs(E), [A,B,c,u,v,e,f,g,r,ss,k], A*B*c))
 
-    # (2,3), weight (2,3).
+    # (2,3), weight (2,3). The leading target layer has weight 6,
+    # so B*x**3 is supported and the former B*x**2 mutation is not.
     v, f, r, k = s.symbols("v f r k")
+    target_support = supp(6, 2, 3)
+    assert (3, 0) in target_support
+    assert (2, 0) not in target_support
     P = [A*x**2, v*y, x, 0, 0, 0]
-    Q = [B*x**2, f*x*y, r*x**2, c*y, k*x, 0]
+    Q = [B*x**3, f*x*y, r*x**2, c*y, k*x, 0]
     E = [sum((J(P[i], Q[n-i]) for i in range(n+1)), s.Integer(0)) - (1 if n == 5 else 0) for n in range(6)]
     systems.append(("a2-2-3", coeffs(E), [A,B,c,v,f,r,k], A*B*c))
 
