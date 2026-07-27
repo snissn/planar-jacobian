@@ -6,9 +6,9 @@
   "owned_paths": [
     "research/issues/defect-5-rees/"
   ],
-  "base_sha": "4e26438c83d370be8fcddf14da88ef151cb3e841",
+  "base_sha": "652a5e252626fa5816445651245e8a8946cee53e",
   "candidate_sha": "00aa3b063ce2f9c4b54c0ec7abc3b3dc1ed02aff",
-  "scientific_status": "candidate_proved / MUTABLE_NONAUTHORITATIVE",
+  "scientific_status": "candidate_proved / MUTABLE_NONAUTHORITATIVE; engineering checker correction only",
   "review_mode": "local-adversarial-review",
   "reviewed_revision": "2eeb36d232366d124b5a66774b29769ec1eba43d",
   "proposed_global_claims": [
@@ -23,19 +23,10 @@
       "status": "open"
     }
   ],
-  "shared_surfaces_requested": [
-    "README.md",
-    "STATUS.md",
-    "research/claim_ledger.json",
-    "research/proof_graph.json",
-    "research/work_queue.json",
-    "research/ISSUE_INDEX.md"
-  ],
+  "shared_surfaces_requested": [],
   "supersedes_prs": [
     30
   ],
   "temporary_artifacts_absent": true,
-  "integration_state": "integration-ready",
-  "pr_number": 39,
-  "completion_receipt": null
+  "integration_state": "integration-ready"
 }
