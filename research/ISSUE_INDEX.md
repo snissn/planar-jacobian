@@ -20,7 +20,6 @@ Issue [#2](https://github.com/snissn/planar-jacobian/issues/2) is the durable co
 | [L11-exact-symplectic-boundary.md](leaf-packets/L11-exact-symplectic-boundary.md) | `OPEN-SYMPLECTIC` | [#13](https://github.com/snissn/planar-jacobian/issues/13) |
 | [L12-normalization-baseline.md](leaf-packets/L12-normalization-baseline.md) | `OPEN-BOUNDARY-BASELINE` | [#14](https://github.com/snissn/planar-jacobian/issues/14) |
 | [L14-keller-index-form-unit.md](leaf-packets/L14-keller-index-form-unit.md) | `OPEN-KELLER-INDEX-UNIT` | [#3](https://github.com/snissn/planar-jacobian/issues/3) |
-| [L15-defect-5-staircase.md](leaf-packets/L15-defect-5-staircase.md) | `OPEN-DEFECT-5` | [#38](https://github.com/snissn/planar-jacobian/issues/38) |
 
 ## Disposed or reviewed leaves
 
@@ -28,3 +27,4 @@ Issue [#2](https://github.com/snissn/planar-jacobian/issues/2) is the durable co
 |---|---|---|
 | [L01-unramified-index-elimination.md](leaf-packets/L01-unramified-index-elimination.md) | `disposed` | [#3](https://github.com/snissn/planar-jacobian/issues/3) |
 | [L13-defect-4-staircase.md](leaf-packets/L13-defect-4-staircase.md) | `reviewed` | [#17](https://github.com/snissn/planar-jacobian/issues/17) |
+| [L15-defect-5-staircase.md](leaf-packets/L15-defect-5-staircase.md) | `reviewed` | [#38](https://github.com/snissn/planar-jacobian/issues/38) |

@@ -26,24 +26,6 @@
       ]
     },
     {
-      "id": "L15",
-      "graph_node": "OPEN-DEFECT-5",
-      "title": "Independent Review of Fixed-Weight Defect Five",
-      "priority": "P0",
-      "status": "open",
-      "artifact": "research/leaf-packets/L15-defect-5-staircase.md",
-      "track_artifact": "research/tracks/m-filtered-equivariance.md",
-      "issue_number": 38,
-      "claim_dependencies": [
-        "CLM-047",
-        "CLM-048",
-        "CLM-049",
-        "CLM-051",
-        "CLM-060",
-        "CLM-073"
-      ]
-    },
-    {
       "id": "L02",
       "graph_node": "OPEN-STABLE-ORDER",
       "title": "Finite Stable Differential Order",
@@ -266,6 +248,26 @@
       ],
       "review_artifact": "governance/reviews/issue-17-defect4-independent-gpt56.md",
       "note": "Accepted only for primitive positive weights with kappa_w <= 4; no defect-five or JC_2 inference."
+    },
+    {
+      "id": "L15",
+      "graph_node": "OPEN-DEFECT-5",
+      "title": "Independent Review of Fixed-Weight Defect Five",
+      "status": "reviewed",
+      "disposition": "REVIEWED_SCOPED",
+      "artifact": "research/leaf-packets/L15-defect-5-staircase.md",
+      "track_artifact": "research/tracks/m-filtered-equivariance.md",
+      "issue_number": 38,
+      "claim_dependencies": [
+        "CLM-047",
+        "CLM-048",
+        "CLM-049",
+        "CLM-051",
+        "CLM-060",
+        "CLM-073"
+      ],
+      "review_artifact": "research/issues/defect-5-independent-review/REVIEW.md",
+      "note": "Independent ACCEPT at candidate 2eeb36d232366d124b5a66774b29769ec1eba43d, limited to fixed primitive positive weight and actual defect five; no qualifying-weight, arbitrary-termination, defect-six, or JC_2 inference."
     }
   ]
 }

@@ -828,7 +828,7 @@
     },
     {
       "id": "CLM-073",
-      "status": "candidate_proved",
+      "status": "reviewed_scoped",
       "track": "filtered-equivariance",
       "statement": "For any primitive positive weight w, a planar Keller pair with grading defect kappa_w=5 admits a filtration-compatible polynomial source or target automorphism that strictly lowers the actual integer defect to at most four; hence it is a polynomial automorphism by the reviewed defect-at-most-four theorem.",
       "depends_on": [
@@ -838,7 +838,15 @@
         "CLM-051",
         "CLM-060"
       ],
-      "note": "Issue #29 defect-five packet. A separate local-adversarial-review returned ACCEPT for candidate 2eeb36d232366d124b5a66774b29769ec1eba43d, but this is not independent review and the claim remains mutable candidate_proved. It does not prove that every Keller pair admits a qualifying primitive positive weight, does not treat defect six, and does not establish JC_2."
+      "note": "Issue #29 defect-five packet independently accepted by issue #38 at candidate 2eeb36d232366d124b5a66774b29769ec1eba43d. The reviewed scope is exactly one fixed primitive positive weight with actual integer grading defect five. It does not prove that every Keller pair admits a qualifying primitive positive weight, does not prove arbitrary filtered termination, does not treat generic defect six, and does not establish JC_2.",
+      "review": {
+        "mode": "independent-review",
+        "disposition": "ACCEPT",
+        "reviewed_revision": "2eeb36d232366d124b5a66774b29769ec1eba43d",
+        "candidate_aggregate_sha256": "333614389c339f4a3383856de2dfc5b977dc5dd6a6520f176b25c7116d861d12",
+        "review_record": "research/issues/defect-5-independent-review/REVIEW.md",
+        "freeze_record": "governance/reviews/issue-38-defect5-mainline-freeze.md"
+      }
     }
   ]
 }

@@ -1,16 +1,16 @@
 # Track M — Filtered Equivariance and the Weighted Rees Staircase
 
-> **Authority:** `REVIEWED_SCOPED` only for the pinned positive-weight defect-at-most-four theorem  
+> **Authority:** `REVIEWED_SCOPED` for the separately pinned positive-weight defect-at-most-four and actual-defect-five theorems  
 > **Reviewed issue:** [#17](https://github.com/snissn/planar-jacobian/issues/17)  
 > **Reviewed revision:** `96fc7ec34bd3b685a0edeae7ecd4404abab7e2f1`  
 > **Scientific inference:** primitive positive weight and `kappa_w<=4` imply automorphism; no broader inference
-> **Defect-five candidate:** issue [#29](https://github.com/snissn/planar-jacobian/issues/29), `CLM-073`; local-adversarial-review only  
+> **Defect-five review:** issue [#38](https://github.com/snissn/planar-jacobian/issues/38), `CLM-073`; independent `ACCEPT` at `2eeb36d232366d124b5a66774b29769ec1eba43d`  
 
 ## Purpose
 
 Exact nontrivial `G_m`-equivariance is a literature-backed rigidity class for planar Keller maps: T. Shaska states that a `G_m`-equivariant planar Keller map is an automorphism for every sign pattern of the weights (arXiv:2607.20210v1, submitted 2026-07-22).
 
-This track studies whether a general Keller pair can be reduced toward that exact graded case through a weighted Rees filtration. Issue #17 produced a self-contained proof through positive-weight grading defect `4`. An independent review returned `ACCEPT` at the pinned candidate revision, and the mainline freeze record preserves exactly that scope. It does not show that an arbitrary Keller pair has such a small-defect weight.
+This track studies whether a general Keller pair can be reduced toward that exact graded case through a weighted Rees filtration. Issue #17 produced a self-contained proof through positive-weight grading defect `4`, and issue #38 independently accepted the separate issue #29 theorem at actual defect `5`. Each review is bound to its own pinned candidate and freeze record. Neither theorem shows that an arbitrary Keller pair has a qualifying small-defect weight.
 
 ## 1. Exact weighted Rees staircase
 
@@ -134,14 +134,14 @@ It does not imply:
 * a reduction at defect `5`;
 * or `JC_2`.
 
-## 9. Defect five candidate and successor review
+## 9. Independently reviewed defect five
 
-Issue #29 banks the fixed-weight defect-five theorem in [`../issues/defect-5-rees/README.md`](../issues/defect-5-rees/README.md) as `CLM-073` with status `candidate_proved`. The exact candidate `2eeb36d232366d124b5a66774b29769ec1eba43d` received a separate local-adversarial-review `ACCEPT`, not independent acceptance.
+Issue #29 records the fixed-weight defect-five theorem in [`../issues/defect-5-rees/README.md`](../issues/defect-5-rees/README.md). Issue #38 independently reconstructed the exact candidate `2eeb36d232366d124b5a66774b29769ec1eba43d` and returned `ACCEPT`; `CLM-073` is therefore `reviewed_scoped` at exactly that revision and statement.
 
 Every resonant endpoint is invertible; every interior system either admits complete-top strict descent to `kappa_w<=4` or contradicts the complete staircase. The standard-weight coupled transverse chains are the first new defect-five correction and are not imported from the defect-four middle-Wronskian row.
 
-The successor leaf [`L15-defect-5-staircase.md`](../leaf-packets/L15-defect-5-staircase.md) and issue [#38](https://github.com/snissn/planar-jacobian/issues/38) request independent review. No qualifying-weight existence, defect-six, arbitrary-termination, or `JC_2` claim is introduced.
+The completed review leaf is [`L15-defect-5-staircase.md`](../leaf-packets/L15-defect-5-staircase.md), and the independent record is [`../issues/defect-5-independent-review/REVIEW.md`](../issues/defect-5-independent-review/REVIEW.md). This does not produce a qualifying weight for arbitrary Keller pairs, prove arbitrary termination, treat generic defect six, or establish `JC_2`.
 
 ## Exit
 
-The mathematical stop rule for defect `4` has been reached by a full scoped reduction, and an independent reviewer bound `ACCEPT` to the exact candidate revision. The branch and review are preserved as provenance; current-main synchronization is editorial except for the explicit reviewed-status delta. Defect `5` is banked only as mutable candidate `CLM-073`; independent review remains open as `L15`. A qualifying-weight theorem, defect six, and `JC_2` remain outside this track's reviewed scope.
+The mathematical stop rules for defect `4` and actual defect `5` have each been reached by a full scoped reduction and an independent `ACCEPT` bound to an exact candidate revision. These are fixed-weight theorems only. A qualifying-weight theorem, arbitrary filtered termination, generic defect six, and `JC_2` remain outside this track's reviewed scope.

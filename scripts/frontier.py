@@ -28,6 +28,8 @@ def main() -> int:
     leaf_counts = Counter(item["priority"] for item in queue["leaves"])
     disposition_counts = Counter(item["status"] for item in queue.get("dispositions", []))
     storage_counts = Counter(item.get("storage_mode", "unknown") for item in manifest["exports"])
+    claim_by_id = {item["id"]: item for item in claims["claims"]}
+    defect_five_reviewed = claim_by_id.get("CLM-073", {}).get("status") == "reviewed_scoped"
 
     print("PLANAR JACOBIAN RESEARCH FRONTIER")
     print(f"claims={len(claims['claims'])} ({counts_text(claim_counts)})")
@@ -63,7 +65,9 @@ def main() -> int:
 
     print()
     print("reviewed_defect_at_most_four_scope=primitive_positive_weight_only")
-    print("defect_five_covered=false")
+    print(f"defect_five_covered={str(defect_five_reviewed).lower()}")
+    if defect_five_reviewed:
+        print("reviewed_defect_five_scope=fixed_primitive_positive_weight_actual_defect_five_only")
     print("qualifying_weight_existence_proved=false")
     print("structural_validation_is_not_mathematical_review=true")
     return 0

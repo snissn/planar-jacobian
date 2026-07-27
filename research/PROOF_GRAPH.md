@@ -7,9 +7,9 @@
 
 - Nodes: **37**
 - Directed edges: **61**
-- Open leaf nodes: **13**
+- Open leaf nodes: **12**
 - Node types: `branch` 10, `context` 1, `control` 2, `foundation` 1, `goal` 1, `leaf` 15, `reduction` 4, `terminal` 3
-- Node statuses: `active` 6, `blocked` 4, `disposed` 1, `literature_bound` 1, `open` 23, `reviewed` 1, `speculative` 1
+- Node statuses: `active` 6, `blocked` 4, `disposed` 1, `literature_bound` 1, `open` 22, `reviewed` 2, `speculative` 1
 
 ## Nodes
 
@@ -51,7 +51,7 @@
 | `TERM-DEGREE-ONE` | Show the function-field degree is one | `terminal` | `blocked` | — | — |
 | `TERM-AUTOMORPHISM` | Apply the birational/finite Keller conclusion | `terminal` | `blocked` | — | — |
 | `RED-ONE-BOUNDARY-LOG` | One-boundary logarithmic semisimple obstruction | `reduction` | `active` | [issues/one-boundary-logarithmic-field/README.md](issues/one-boundary-logarithmic-field/README.md) | Candidate packet excludes torus-invariant generically ramified and purely unramified one-boundary models; the general non-toric fixed-type system remains open. |
-| `OPEN-DEFECT-5` | Independently review the fixed-weight defect-five closure | `leaf` | `open` | [leaf-packets/L15-defect-5-staircase.md](leaf-packets/L15-defect-5-staircase.md) | Issue #29 banks CLM-073 at candidate_proved after local-adversarial-review ACCEPT. Independent review is issue #38; no qualifying-weight existence, defect-six, or JC_2 inference is licensed. |
+| `OPEN-DEFECT-5` | Fixed-weight defect-five theorem at independently reviewed scope | `leaf` | `reviewed` | [leaf-packets/L15-defect-5-staircase.md](leaf-packets/L15-defect-5-staircase.md) | [review](issues/defect-5-independent-review/REVIEW.md); Independent ACCEPT binds exactly to candidate 2eeb36d232366d124b5a66774b29769ec1eba43d for a fixed primitive positive weight with actual defect five. No qualifying-weight existence, arbitrary filtered termination, generic defect-six theorem, or JC_2 inference is licensed. |
 
 ## Edges
 

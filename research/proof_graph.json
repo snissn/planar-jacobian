@@ -262,11 +262,12 @@
     },
     {
       "id": "OPEN-DEFECT-5",
-      "title": "Independently review the fixed-weight defect-five closure",
+      "title": "Fixed-weight defect-five theorem at independently reviewed scope",
       "type": "leaf",
-      "status": "open",
+      "status": "reviewed",
       "artifact": "leaf-packets/L15-defect-5-staircase.md",
-      "note": "Issue #29 banks CLM-073 at candidate_proved after local-adversarial-review ACCEPT. Independent review is issue #38; no qualifying-weight existence, defect-six, or JC_2 inference is licensed."
+      "note": "Independent ACCEPT binds exactly to candidate 2eeb36d232366d124b5a66774b29769ec1eba43d for a fixed primitive positive weight with actual defect five. No qualifying-weight existence, arbitrary filtered termination, generic defect-six theorem, or JC_2 inference is licensed.",
+      "review_artifact": "research/issues/defect-5-independent-review/REVIEW.md"
     }
   ],
   "edges": [
