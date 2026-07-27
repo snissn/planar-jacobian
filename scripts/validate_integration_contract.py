@@ -124,9 +124,24 @@ def validate_pr(manifests: list[dict[str, Any]], context: PullRequestContext, fi
             or (path.startswith("research/issues/") and name.startswith("sync_") and name.endswith(".py"))
         )
     governance = all(governance_path(f) for f in files)
-    touched = [] if governance else [m for m in manifests if any(owned(f, m.get("owned_paths", [])) for f in files)]
-    role = "governance-maintainer" if governance else (touched[0].get("role") if touched else None)
-    if not governance and (not touched or len({m.get("role") for m in touched}) != 1): result.error("PR lacks one manifest-declared role"); return
+    body_issue = marker(context.body, "Task-Issue")
+    body_owned = marker(context.body, "Owned-Path")
+    matching = [
+        m for m in manifests
+        if body_issue == f"#{m.get('issue_number')}"
+        and body_owned == (m.get("owned_paths") or [None])[0]
+    ]
+    if governance:
+        touched: list[dict[str, Any]] = []
+        role = "governance-maintainer"
+    else:
+        if len(matching) != 1:
+            result.error("PR body must identify exactly one manifest by Task-Issue and Owned-Path")
+            return
+        touched = matching
+        role = touched[0].get("role")
+    if not governance and role not in {"research-worker", "reviewer", "integration-maintainer"}:
+        result.error("PR lacks one manifest-declared role"); return
     roots = [r for m in touched for r in m.get("owned_paths", [])]
     if role in {"research-worker", "reviewer"}:
         for f in files:
@@ -136,8 +151,8 @@ def validate_pr(manifests: list[dict[str, Any]], context: PullRequestContext, fi
             for claim in m.get("proposed_global_claims", []):
                 if isinstance(claim, dict) and str(claim.get("id", "")).startswith("CLM-"): result.error("workers/reviewers must use issue-local claim labels")
     if role == "integration-maintainer":
-        for m in touched:
-            if m.get("base_sha") != context.base_sha: result.error("integration manifest base_sha does not match current PR base")
+        manifest = touched[0]
+        if manifest.get("base_sha") != context.base_sha: result.error("integration manifest base_sha does not match current PR base")
     if role == "governance-maintainer":
         bad = [f for f in files if f.startswith("research/") and not governance_path(f)]
         if bad: result.error("governance PR changes scientific content: " + ", ".join(bad))
@@ -145,8 +160,8 @@ def validate_pr(manifests: list[dict[str, Any]], context: PullRequestContext, fi
     if body_role != role: result.error(f"PR body Role must be {role}")
     for m in touched:
         expected_issue, expected_owned = f"#{m.get('issue_number')}", m.get("owned_paths", [None])[0]
-        if marker(context.body, "Task-Issue") != expected_issue: result.error(f"PR body Task-Issue must be {expected_issue}")
-        if marker(context.body, "Owned-Path") != expected_owned: result.error(f"PR body Owned-Path must be {expected_owned}")
+        if body_issue != expected_issue: result.error(f"PR body Task-Issue must be {expected_issue}")
+        if body_owned != expected_owned: result.error(f"PR body Owned-Path must be {expected_owned}")
         for other in remote:
             if int(other.get("number", 0)) == context.number: continue
             body = str(other.get("body") or "")
