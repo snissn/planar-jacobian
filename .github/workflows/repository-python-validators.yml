@@ -185,6 +185,17 @@ jobs:
             defect5-candidate.log
             defect5-adversarial.log
             defect5-independent.log
+            research/claim_ledger.json
+            research/proof_graph.json
+            research/work_queue.json
+            scripts/render_views.py
+            scripts/frontier.py
+            README.md
+            STATUS.md
+            research/CLAIM_LEDGER.md
+            research/PROOF_GRAPH.md
+            research/WORK_QUEUE.md
+            research/ISSUE_INDEX.md
           if-no-files-found: warn
           retention-days: 30
 
