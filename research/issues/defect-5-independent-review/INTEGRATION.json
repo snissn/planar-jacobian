@@ -22,7 +22,7 @@
     "scripts/validate_repository.py",
     ".github/workflows/repository-python-validators.yml"
   ],
-  "base_sha": "652a5e252626fa5816445651245e8a8946cee53e",
+  "base_sha": "f2399d8634521edf220d412a3e14d42eb56d89be",
   "candidate_sha": "2eeb36d232366d124b5a66774b29769ec1eba43d",
   "scientific_status": "independent-review ACCEPT synchronized as reviewed_scoped / MUTABLE_NONAUTHORITATIVE outside exact scope",
   "review_mode": "independent-review",
