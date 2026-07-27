@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "issue_number": 3,
+  "leaf_id": "L14",
+  "role": "research-worker",
+  "owned_paths": [
+    "research/issues/rank-three-boundary-cube-unit/"
+  ],
+  "base_sha": "652a5e252626fa5816445651245e8a8946cee53e",
+  "candidate_sha": "4c5d1e1bb8042b046af8af9d2fd764a61e2275e8",
+  "scientific_status": "LITERATURE_BOUND_RANK_THREE_EXCLUSION_WITH_CANDIDATE_INTERNAL_REFINEMENTS / MUTABLE_NONAUTHORITATIVE",
+  "review_mode": "local-adversarial-review",
+  "reviewed_revision": "4c5d1e1bb8042b046af8af9d2fd764a61e2275e8",
+  "proposed_global_claims": [
+    {
+      "id": "R3BC-01",
+      "status": "literature_bound",
+      "statement": "A planar polynomial Keller map cannot have function-field degree three: degree three is generically three-sheeted, while Orevkov's 1987 primary theorem excludes constant Jacobian for a three-sheeted polynomial map C2 to C2.",
+      "dependencies": [
+        "CLM-001",
+        "CLM-002"
+      ]
+    },
+    {
+      "id": "R3BC-02",
+      "status": "candidate_proved",
+      "statement": "After strict henselization and passage to the geometric special fiber, the trace-zero binary index cubic of a finite locally free normal rank-three algebra over a characteristic-zero DVR is GL2-equivalent to L1 L2 L3, L M^2, or L^3 according to ramification partition 1+1+1, 2+1, or 3.",
+      "dependencies": [
+        "CLM-062"
+      ]
+    },
+    {
+      "id": "R3BC-03",
+      "status": "candidate_proved",
+      "statement": "Boundary-primitive sections decompose into classes in E/H E. Within any chosen class theta+H E, every affine pencil theta+H T eta remains primitive at all boundary primes and has index D+H C T+H^2 B_2 T^2+H^3 A T^3; every factor created in the pencil is a nonboundary scalar collision. Finite-prime adaptation proves at least one primitive class exists but does not select a class containing a unit-index section.",
+      "dependencies": [
+        "CLM-029",
+        "CLM-062",
+        "CLM-064",
+        "CLM-066"
+      ]
+    },
+    {
+      "id": "R3BC-04",
+      "status": "candidate_proved",
+      "statement": "No nonconstant fixed divisor in C[P,Q] is invariant under both target translations, but the exact Keller differential congruence does not make a named fixed-section index ideal translation-stable; moving scalar collisions are not ramification.",
+      "dependencies": [
+        "CLM-010",
+        "CLM-012",
+        "CLM-065",
+        "CLM-066"
+      ]
+    },
+    {
+      "id": "R3BC-05",
+      "status": "candidate_proved",
+      "statement": "Under the audited finite-normalization/source-open factorization, the issue #3 no-unit countermodel reaches the finite-flat, normal, connected, rational, open-A2 stages; if the relative different has no support on that specified displayed source open, the induced degree-three polynomial map has constant nonzero Jacobian and is excluded by Orevkov.",
+      "dependencies": [
+        "CLM-058",
+        "CLM-066",
+        "R3BC-01"
+      ]
+    }
+  ],
+  "proposed_graph_nodes": [
+    {
+      "id": "R3BC-TERMINAL-DEGREE-THREE",
+      "type": "terminal",
+      "status": "literature_bound",
+      "statement": "Exclude planar Keller function-field degree three by Orevkov's three-sheeted theorem."
+    },
+    {
+      "id": "R3BC-CONDITIONAL-MOVING-COLLISION",
+      "type": "reduction",
+      "status": "candidate_proved",
+      "statement": "Decompose the conditional unit search over boundary-primitive classes in E/H E; inside each chosen class, use the exact pencil D+HCT+H^2B_2T^2+H^3AT^3=lambda, whose factors are nonboundary scalar collisions."
+    }
+  ],
+  "shared_surfaces_requested": [
+    "README.md",
+    "STATUS.md",
+    "research/claim_ledger.json",
+    "research/CLAIM_LEDGER.md",
+    "research/proof_graph.json",
+    "research/PROOF_GRAPH.md",
+    "research/work_queue.json",
+    "research/WORK_QUEUE.md",
+    "research/ISSUE_INDEX.md",
+    "research/leaf-packets/L14-keller-index-form-unit.md",
+    "research/tracks/c-monogenicity-index-divisor.md",
+    "research/tracks/monogenicity-index-divisor.md"
+  ],
+  "supersedes_prs": [],
+  "temporary_artifacts_absent": true,
+  "integration_state": "integration-ready"
+}
