@@ -1,1 +1,580 @@
-{"schema_version":2,"nodes":[{"id":"ROOT-JC2","title":"Prove every planar Keller map is an automorphism","type":"goal","status":"blocked","artifact":null},{"id":"BASE-KELLER","title":"Fix F=(P,Q) with J(P,Q)=1","type":"foundation","status":"active","artifact":null},{"id":"RED-NORMALIZATION","title":"Construct the finite normalization Y over A2","type":"reduction","status":"literature_bound","artifact":"tracks/a-normalization-boundary.md"},{"id":"RED-BOUNDARY","title":"Classify and control Y\\A2 and its ramification","type":"reduction","status":"open","artifact":"tracks/a-normalization-boundary.md"},{"id":"RED-DERIVATIONS","title":"Use the canonical commuting translation frame","type":"reduction","status":"active","artifact":"tracks/b-canonical-derivations.md"},{"id":"RED-SYMPLECTIC","title":"Exploit exact symplectic/Lagrangian structure","type":"control","status":"active","artifact":"tracks/i-exact-symplectic.md"},{"id":"BR-MONOGENIC","title":"Global primitive element route","type":"branch","status":"open","artifact":"tracks/c-monogenicity-index-divisor.md"},{"id":"OPEN-UNRAMIFIED-INDEX","title":"Dispose generic unramified-index elimination by scoped countermodel","type":"leaf","status":"disposed","artifact":"leaf-packets/L01-unramified-index-elimination.md","note":"Issue #3 proves ramified adaptation and conditional globalization at mutable scope, but CLM-058 falsifies the purely algebraic unramified-elimination bridge."},{"id":"OPEN-KELLER-INDEX-UNIT","title":"Eliminate the rank-three Keller boundary-cube index obstruction","type":"leaf","status":"open","artifact":"leaf-packets/L14-keller-index-form-unit.md","note":"The rank-three issue #3 successor proves trace/index foundations, a finite source/boundary gcd-one certificate, and an exact cubic differential congruence. One unit index value remains open; universal content one is insufficient. Packet: research/issues/rank-three-index-form-unit/README.md."},{"id":"BR-STABLE-LATTICE","title":"Finite differential order route","type":"branch","status":"open","artifact":"tracks/d-stable-differential-lattice.md"},{"id":"OPEN-STABLE-ORDER","title":"Construct a finite full B-lattice stable under D_P,D_Q","type":"leaf","status":"open","artifact":"leaf-packets/L02-stable-order.md","note":"CLM-011 and CLM-013 record the conditional implication. The source-reflexive-lattice successor proves the reflexive multiplier-ring bridge and excludes every finite divisorial pole stage at ramification. CLM-061 remains open at finite pair-stable lattice existence."},{"id":"BR-RADIAL","title":"Canonical radial/logarithmic field completion","type":"branch","status":"open","artifact":"tracks/b-canonical-derivations.md"},{"id":"OPEN-BOUNDARY-POLE","title":"Solve the non-toric one-boundary Laurent-conductor bridge","type":"leaf","status":"open","artifact":"leaf-packets/L03-radial-pole-elimination.md","note":"Issue #5 classifies logarithmic lifting, excludes G_m-invariant and purely unramified one-boundary subclasses at candidate scope, and leaves CLM-072: a fixed-type non-toric Laurent/conductor system."},{"id":"BR-QUASI-ALBANESE","title":"Intrinsic torus-complement route","type":"branch","status":"open","artifact":"tracks/e-quasi-albanese-log-geometry.md"},{"id":"OPEN-QA-FINITE","title":"Prove the intrinsic quasi-Albanese map is finite","type":"leaf","status":"open","artifact":"leaf-packets/L04-quasi-albanese-finiteness.md"},{"id":"BR-GAUSS-MANIN","title":"Generic-fiber puncture and connection route","type":"branch","status":"open","artifact":"tracks/f-gauss-manin-generic-fibers.md"},{"id":"OPEN-PUNCTURE","title":"Force the puncture module to vanish","type":"leaf","status":"open","artifact":"leaf-packets/L05-gauss-manin-punctures.md"},{"id":"BR-WRIGHT","title":"One-boundary graded/Poisson route","type":"branch","status":"open","artifact":"tracks/g-wright-graded-single-tree.md"},{"id":"OPEN-GRADED-REDUCTION","title":"Retain a nonzero constant bracket under graded reduction","type":"leaf","status":"open","artifact":"leaf-packets/L06-graded-reduction.md"},{"id":"BR-MONODROMY","title":"Boundary monodromy/Galois closure route","type":"branch","status":"open","artifact":"tracks/h-monodromy-galois-braid.md"},{"id":"OPEN-CUSP-BRAID","title":"Eliminate nonabelian cusp/tangency braid monodromy","type":"leaf","status":"open","artifact":"leaf-packets/L07-cusp-braid.md"},{"id":"BR-DEGENERATION","title":"Equivariant degeneration and closed-orbit route","type":"branch","status":"open","artifact":"tracks/j-equivariant-degeneration.md"},{"id":"OPEN-CLOSED-ORBIT","title":"Prove a minimal counterexample has a closed torus orbit in a fixed boundary stratum","type":"leaf","status":"open","artifact":"leaf-packets/L08-equivariant-closed-orbit.md"},{"id":"BR-FILTERED-EQUIVARIANCE","title":"Weighted Rees staircase toward exact graded rigidity","type":"branch","status":"open","artifact":"tracks/m-filtered-equivariance.md"},{"id":"OPEN-DEFECT-4","title":"Positive-weight defect-at-most-four theorem at reviewed scope","type":"leaf","status":"reviewed","artifact":"leaf-packets/L13-defect-4-staircase.md","note":"Independent ACCEPT bound to candidate 96fc7ec34bd3b685a0edeae7ecd4404abab7e2f1. This node does not connect directly to a terminal theorem and does not cover defect five or JC_2.","review_artifact":"governance/reviews/issue-17-defect4-independent-gpt56.md"},{"id":"BR-CHAR-P","title":"Characteristic-p and p-curvature route","type":"branch","status":"speculative","artifact":"tracks/k-characteristic-p.md"},{"id":"OPEN-PCURVATURE","title":"Turn reductions mod p into a finite-monodromy contradiction","type":"leaf","status":"open","artifact":"leaf-packets/L09-characteristic-p.md"},{"id":"CTL-LITERATURE","title":"Primary-source and low-degree audit","type":"control","status":"active","artifact":"tracks/l-literature-low-degree.md"},{"id":"OPEN-LITERATURE","title":"Resolve conflicting theorem statements and exact hypotheses","type":"leaf","status":"open","artifact":"leaf-packets/L10-literature-audit.md"},{"id":"CTL-3D","title":"Use the three-dimensional marked-root construction only as idea input","type":"context","status":"active","artifact":"tracks/0-three-dimensional-context.md"},{"id":"OPEN-SYMPLECTIC","title":"Derive a boundary theorem from exact symplectic principal parts","type":"leaf","status":"open","artifact":"leaf-packets/L11-exact-symplectic-boundary.md"},{"id":"OPEN-BOUNDARY-BASELINE","title":"Audit boundary/class-group/canonical-divisor foundations","type":"leaf","status":"open","artifact":"leaf-packets/L12-normalization-baseline.md"},{"id":"TERM-FINITE-ETALE","title":"Show the finite normalization is finite étale","type":"terminal","status":"blocked","artifact":null},{"id":"TERM-DEGREE-ONE","title":"Show the function-field degree is one","type":"terminal","status":"blocked","artifact":null},{"id":"TERM-AUTOMORPHISM","title":"Apply the birational/finite Keller conclusion","type":"terminal","status":"blocked","artifact":null},{"id":"RED-ONE-BOUNDARY-LOG","title":"One-boundary logarithmic semisimple obstruction","type":"reduction","status":"active","artifact":"issues/one-boundary-logarithmic-field/README.md","note":"Candidate packet excludes torus-invariant generically ramified and purely unramified one-boundary models; the general non-toric fixed-type system remains open."},{"id":"OPEN-DEFECT-5","title":"Fixed-weight defect-five theorem at independently reviewed scope","type":"leaf","status":"reviewed","artifact":"leaf-packets/L15-defect-5-staircase.md","note":"Independent ACCEPT binds exactly to candidate 2eeb36d232366d124b5a66774b29769ec1eba43d for a fixed primitive positive weight with actual defect five. No qualifying-weight existence, arbitrary filtered termination, generic defect-six theorem, or JC_2 inference is licensed.","review_artifact":"research/issues/defect-5-independent-review/REVIEW.md"}],"edges":[{"from":"BASE-KELLER","to":"RED-NORMALIZATION","kind":"requires"},{"from":"BASE-KELLER","to":"RED-DERIVATIONS","kind":"requires"},{"from":"BASE-KELLER","to":"RED-SYMPLECTIC","kind":"requires"},{"from":"BASE-KELLER","to":"BR-FILTERED-EQUIVARIANCE","kind":"requires"},{"from":"RED-NORMALIZATION","to":"RED-BOUNDARY","kind":"requires"},{"from":"RED-BOUNDARY","to":"OPEN-BOUNDARY-BASELINE","kind":"requires"},{"from":"RED-NORMALIZATION","to":"BR-MONOGENIC","kind":"requires"},{"from":"RED-NORMALIZATION","to":"BR-STABLE-LATTICE","kind":"requires"},{"from":"RED-NORMALIZATION","to":"BR-RADIAL","kind":"requires"},{"from":"RED-NORMALIZATION","to":"BR-QUASI-ALBANESE","kind":"requires"},{"from":"RED-NORMALIZATION","to":"BR-GAUSS-MANIN","kind":"requires"},{"from":"RED-NORMALIZATION","to":"BR-WRIGHT","kind":"requires"},{"from":"RED-NORMALIZATION","to":"BR-MONODROMY","kind":"requires"},{"from":"RED-NORMALIZATION","to":"BR-DEGENERATION","kind":"requires"},{"from":"RED-NORMALIZATION","to":"BR-CHAR-P","kind":"requires"},{"from":"RED-DERIVATIONS","to":"BR-STABLE-LATTICE","kind":"requires"},{"from":"RED-DERIVATIONS","to":"BR-RADIAL","kind":"requires"},{"from":"RED-DERIVATIONS","to":"BR-GAUSS-MANIN","kind":"requires"},{"from":"RED-SYMPLECTIC","to":"OPEN-SYMPLECTIC","kind":"requires"},{"from":"BR-MONOGENIC","to":"OPEN-UNRAMIFIED-INDEX","kind":"requires"},{"from":"BR-STABLE-LATTICE","to":"OPEN-STABLE-ORDER","kind":"requires"},{"from":"BR-RADIAL","to":"OPEN-BOUNDARY-POLE","kind":"requires"},{"from":"BR-QUASI-ALBANESE","to":"OPEN-QA-FINITE","kind":"requires"},{"from":"BR-GAUSS-MANIN","to":"OPEN-PUNCTURE","kind":"requires"},{"from":"BR-WRIGHT","to":"OPEN-GRADED-REDUCTION","kind":"requires"},{"from":"BR-MONODROMY","to":"OPEN-CUSP-BRAID","kind":"requires"},{"from":"BR-DEGENERATION","to":"OPEN-CLOSED-ORBIT","kind":"requires"},{"from":"BR-FILTERED-EQUIVARIANCE","to":"OPEN-DEFECT-4","kind":"requires"},{"from":"OPEN-DEFECT-4","to":"OPEN-GRADED-REDUCTION","kind":"supports"},{"from":"BR-FILTERED-EQUIVARIANCE","to":"BR-DEGENERATION","kind":"supports"},{"from":"BR-CHAR-P","to":"OPEN-PCURVATURE","kind":"requires"},{"from":"CTL-LITERATURE","to":"OPEN-LITERATURE","kind":"requires"},{"from":"CTL-LITERATURE","to":"BR-FILTERED-EQUIVARIANCE","kind":"supports"},{"from":"OPEN-STABLE-ORDER","to":"TERM-DEGREE-ONE","kind":"sufficient-if-closed"},{"from":"OPEN-QA-FINITE","to":"TERM-DEGREE-ONE","kind":"sufficient-if-closed"},{"from":"OPEN-PUNCTURE","to":"TERM-DEGREE-ONE","kind":"sufficient-if-closed"},{"from":"OPEN-GRADED-REDUCTION","to":"TERM-DEGREE-ONE","kind":"sufficient-if-closed"},{"from":"OPEN-CUSP-BRAID","to":"TERM-DEGREE-ONE","kind":"sufficient-if-closed"},{"from":"OPEN-CLOSED-ORBIT","to":"TERM-DEGREE-ONE","kind":"sufficient-if-closed"},{"from":"OPEN-PCURVATURE","to":"TERM-DEGREE-ONE","kind":"sufficient-if-closed"},{"from":"OPEN-SYMPLECTIC","to":"TERM-DEGREE-ONE","kind":"sufficient-if-closed"},{"from":"OPEN-BOUNDARY-BASELINE","to":"TERM-FINITE-ETALE","kind":"supports"},{"from":"TERM-FINITE-ETALE","to":"TERM-DEGREE-ONE","kind":"requires"},{"from":"TERM-DEGREE-ONE","to":"TERM-AUTOMORPHISM","kind":"requires"},{"from":"TERM-AUTOMORPHISM","to":"ROOT-JC2","kind":"requires"},{"from":"CTL-3D","to":"BR-MONODROMY","kind":"idea-input"},{"from":"CTL-3D","to":"BR-DEGENERATION","kind":"idea-input"},{"from":"OPEN-LITERATURE","to":"CTL-LITERATURE","kind":"updates"},{"from":"OPEN-UNRAMIFIED-INDEX","to":"OPEN-KELLER-INDEX-UNIT","kind":"narrows-to"},{"from":"BR-MONOGENIC","to":"OPEN-KELLER-INDEX-UNIT","kind":"requires"},{"from":"OPEN-KELLER-INDEX-UNIT","to":"TERM-DEGREE-ONE","kind":"sufficient-if-closed"},{"from":"OPEN-SYMPLECTIC","to":"OPEN-BOUNDARY-POLE","kind":"supports"},{"from":"OPEN-BOUNDARY-POLE","to":"TERM-DEGREE-ONE","kind":"supports"},{"from":"RED-NORMALIZATION","to":"RED-ONE-BOUNDARY-LOG","kind":"requires"},{"from":"RED-DERIVATIONS","to":"RED-ONE-BOUNDARY-LOG","kind":"requires"},{"from":"RED-SYMPLECTIC","to":"RED-ONE-BOUNDARY-LOG","kind":"requires"},{"from":"BR-WRIGHT","to":"RED-ONE-BOUNDARY-LOG","kind":"supports"},{"from":"RED-ONE-BOUNDARY-LOG","to":"OPEN-BOUNDARY-POLE","kind":"supports"},{"from":"BR-FILTERED-EQUIVARIANCE","to":"OPEN-DEFECT-5","kind":"requires"},{"from":"OPEN-DEFECT-4","to":"OPEN-DEFECT-5","kind":"supports"},{"from":"OPEN-DEFECT-5","to":"OPEN-GRADED-REDUCTION","kind":"supports"}]}
+{
+  "schema_version": 2,
+  "nodes": [
+    {
+      "id": "ROOT-JC2",
+      "title": "Prove every planar Keller map is an automorphism",
+      "type": "goal",
+      "status": "blocked",
+      "artifact": null
+    },
+    {
+      "id": "BASE-KELLER",
+      "title": "Fix F=(P,Q) with J(P,Q)=1",
+      "type": "foundation",
+      "status": "active",
+      "artifact": null
+    },
+    {
+      "id": "RED-NORMALIZATION",
+      "title": "Construct the finite normalization Y over A2",
+      "type": "reduction",
+      "status": "literature_bound",
+      "artifact": "tracks/a-normalization-boundary.md"
+    },
+    {
+      "id": "RED-BOUNDARY",
+      "title": "Classify and control Y\\A2 and its ramification",
+      "type": "reduction",
+      "status": "open",
+      "artifact": "tracks/a-normalization-boundary.md"
+    },
+    {
+      "id": "RED-DERIVATIONS",
+      "title": "Use the canonical commuting translation frame",
+      "type": "reduction",
+      "status": "active",
+      "artifact": "tracks/b-canonical-derivations.md"
+    },
+    {
+      "id": "RED-SYMPLECTIC",
+      "title": "Exploit exact symplectic/Lagrangian structure",
+      "type": "control",
+      "status": "active",
+      "artifact": "tracks/i-exact-symplectic.md"
+    },
+    {
+      "id": "BR-MONOGENIC",
+      "title": "Global primitive element route",
+      "type": "branch",
+      "status": "open",
+      "artifact": "tracks/c-monogenicity-index-divisor.md"
+    },
+    {
+      "id": "OPEN-UNRAMIFIED-INDEX",
+      "title": "Dispose generic unramified-index elimination by scoped countermodel",
+      "type": "leaf",
+      "status": "disposed",
+      "artifact": "leaf-packets/L01-unramified-index-elimination.md",
+      "note": "Issue #3 proves ramified adaptation and conditional globalization at mutable scope, but CLM-058 falsifies the purely algebraic unramified-elimination bridge."
+    },
+    {
+      "id": "OPEN-KELLER-INDEX-UNIT",
+      "title": "Eliminate the rank-three Keller boundary-cube index obstruction",
+      "type": "leaf",
+      "status": "open",
+      "artifact": "leaf-packets/L14-keller-index-form-unit.md",
+      "note": "The rank-three issue #3 successor proves trace/index foundations, a finite source/boundary gcd-one certificate, and an exact cubic differential congruence. One unit index value remains open; universal content one is insufficient. Packet: research/issues/rank-three-index-form-unit/README.md."
+    },
+    {
+      "id": "BR-STABLE-LATTICE",
+      "title": "Finite differential order route",
+      "type": "branch",
+      "status": "open",
+      "artifact": "tracks/d-stable-differential-lattice.md"
+    },
+    {
+      "id": "OPEN-STABLE-ORDER",
+      "title": "Construct a finite full B-lattice stable under D_P,D_Q",
+      "type": "leaf",
+      "status": "open",
+      "artifact": "leaf-packets/L02-stable-order.md",
+      "note": "CLM-011 and CLM-013 record the conditional implication. The source-reflexive-lattice successor proves the reflexive multiplier-ring bridge and excludes every finite divisorial pole stage at ramification. CLM-061 remains open at finite pair-stable lattice existence."
+    },
+    {
+      "id": "BR-RADIAL",
+      "title": "Canonical radial/logarithmic field completion",
+      "type": "branch",
+      "status": "open",
+      "artifact": "tracks/b-canonical-derivations.md"
+    },
+    {
+      "id": "OPEN-BOUNDARY-POLE",
+      "title": "Solve the non-toric one-boundary Laurent-conductor bridge",
+      "type": "leaf",
+      "status": "open",
+      "artifact": "leaf-packets/L03-radial-pole-elimination.md",
+      "note": "Issue #5 classifies logarithmic lifting, excludes G_m-invariant and purely unramified one-boundary subclasses at candidate scope, and leaves CLM-072: a fixed-type non-toric Laurent/conductor system."
+    },
+    {
+      "id": "BR-QUASI-ALBANESE",
+      "title": "Intrinsic torus-complement route",
+      "type": "branch",
+      "status": "open",
+      "artifact": "tracks/e-quasi-albanese-log-geometry.md"
+    },
+    {
+      "id": "OPEN-QA-FINITE",
+      "title": "Prove the intrinsic quasi-Albanese map is finite",
+      "type": "leaf",
+      "status": "open",
+      "artifact": "leaf-packets/L04-quasi-albanese-finiteness.md"
+    },
+    {
+      "id": "BR-GAUSS-MANIN",
+      "title": "Generic-fiber puncture and connection route",
+      "type": "branch",
+      "status": "open",
+      "artifact": "tracks/f-gauss-manin-generic-fibers.md"
+    },
+    {
+      "id": "OPEN-PUNCTURE",
+      "title": "Force the puncture module to vanish",
+      "type": "leaf",
+      "status": "open",
+      "artifact": "leaf-packets/L05-gauss-manin-punctures.md"
+    },
+    {
+      "id": "BR-WRIGHT",
+      "title": "One-boundary graded/Poisson route",
+      "type": "branch",
+      "status": "open",
+      "artifact": "tracks/g-wright-graded-single-tree.md"
+    },
+    {
+      "id": "OPEN-GRADED-REDUCTION",
+      "title": "Retain a nonzero constant bracket under graded reduction",
+      "type": "leaf",
+      "status": "open",
+      "artifact": "leaf-packets/L06-graded-reduction.md"
+    },
+    {
+      "id": "BR-MONODROMY",
+      "title": "Boundary monodromy/Galois closure route",
+      "type": "branch",
+      "status": "open",
+      "artifact": "tracks/h-monodromy-galois-braid.md"
+    },
+    {
+      "id": "OPEN-CUSP-BRAID",
+      "title": "Eliminate nonabelian cusp/tangency braid monodromy",
+      "type": "leaf",
+      "status": "open",
+      "artifact": "leaf-packets/L07-cusp-braid.md"
+    },
+    {
+      "id": "BR-DEGENERATION",
+      "title": "Equivariant degeneration and closed-orbit route",
+      "type": "branch",
+      "status": "open",
+      "artifact": "tracks/j-equivariant-degeneration.md"
+    },
+    {
+      "id": "OPEN-CLOSED-ORBIT",
+      "title": "Prove a minimal counterexample has a closed torus orbit in a fixed boundary stratum",
+      "type": "leaf",
+      "status": "open",
+      "artifact": "leaf-packets/L08-equivariant-closed-orbit.md"
+    },
+    {
+      "id": "BR-FILTERED-EQUIVARIANCE",
+      "title": "Weighted Rees staircase toward exact graded rigidity",
+      "type": "branch",
+      "status": "open",
+      "artifact": "tracks/m-filtered-equivariance.md"
+    },
+    {
+      "id": "OPEN-DEFECT-4",
+      "title": "Positive-weight defect-at-most-four theorem at reviewed scope",
+      "type": "leaf",
+      "status": "reviewed",
+      "artifact": "leaf-packets/L13-defect-4-staircase.md",
+      "note": "Independent ACCEPT bound to candidate 96fc7ec34bd3b685a0edeae7ecd4404abab7e2f1. This node does not connect directly to a terminal theorem and does not cover defect five or JC_2.",
+      "review_artifact": "governance/reviews/issue-17-defect4-independent-gpt56.md"
+    },
+    {
+      "id": "BR-CHAR-P",
+      "title": "Characteristic-p and p-curvature route",
+      "type": "branch",
+      "status": "speculative",
+      "artifact": "tracks/k-characteristic-p.md"
+    },
+    {
+      "id": "OPEN-PCURVATURE",
+      "title": "Turn reductions mod p into a finite-monodromy contradiction",
+      "type": "leaf",
+      "status": "open",
+      "artifact": "leaf-packets/L09-characteristic-p.md"
+    },
+    {
+      "id": "CTL-LITERATURE",
+      "title": "Primary-source and low-degree audit",
+      "type": "control",
+      "status": "active",
+      "artifact": "tracks/l-literature-low-degree.md"
+    },
+    {
+      "id": "OPEN-LITERATURE",
+      "title": "Resolve conflicting theorem statements and exact hypotheses",
+      "type": "leaf",
+      "status": "open",
+      "artifact": "leaf-packets/L10-literature-audit.md"
+    },
+    {
+      "id": "CTL-3D",
+      "title": "Use the three-dimensional marked-root construction only as idea input",
+      "type": "context",
+      "status": "active",
+      "artifact": "tracks/0-three-dimensional-context.md"
+    },
+    {
+      "id": "OPEN-SYMPLECTIC",
+      "title": "Derive a boundary theorem from exact symplectic principal parts",
+      "type": "leaf",
+      "status": "open",
+      "artifact": "leaf-packets/L11-exact-symplectic-boundary.md"
+    },
+    {
+      "id": "OPEN-BOUNDARY-BASELINE",
+      "title": "Audit boundary/class-group/canonical-divisor foundations",
+      "type": "leaf",
+      "status": "open",
+      "artifact": "leaf-packets/L12-normalization-baseline.md"
+    },
+    {
+      "id": "TERM-FINITE-ETALE",
+      "title": "Show the finite normalization is finite étale",
+      "type": "terminal",
+      "status": "blocked",
+      "artifact": null
+    },
+    {
+      "id": "TERM-DEGREE-ONE",
+      "title": "Show the function-field degree is one",
+      "type": "terminal",
+      "status": "blocked",
+      "artifact": null
+    },
+    {
+      "id": "TERM-AUTOMORPHISM",
+      "title": "Apply the birational/finite Keller conclusion",
+      "type": "terminal",
+      "status": "blocked",
+      "artifact": null
+    },
+    {
+      "id": "RED-ONE-BOUNDARY-LOG",
+      "title": "One-boundary logarithmic semisimple obstruction",
+      "type": "reduction",
+      "status": "active",
+      "artifact": "issues/one-boundary-logarithmic-field/README.md",
+      "note": "Candidate packet excludes torus-invariant generically ramified and purely unramified one-boundary models; the general non-toric fixed-type system remains open."
+    },
+    {
+      "id": "OPEN-DEFECT-5",
+      "title": "Fixed-weight defect-five theorem at independently reviewed scope",
+      "type": "leaf",
+      "status": "reviewed",
+      "artifact": "leaf-packets/L15-defect-5-staircase.md",
+      "note": "Independent ACCEPT binds exactly to candidate 2eeb36d232366d124b5a66774b29769ec1eba43d for a fixed primitive positive weight with actual defect five. No qualifying-weight existence, arbitrary filtered termination, generic defect-six theorem, or JC_2 inference is licensed.",
+      "review_artifact": "research/issues/defect-5-independent-review/REVIEW.md"
+    }
+  ],
+  "edges": [
+    {
+      "from": "BASE-KELLER",
+      "to": "RED-NORMALIZATION",
+      "kind": "requires"
+    },
+    {
+      "from": "BASE-KELLER",
+      "to": "RED-DERIVATIONS",
+      "kind": "requires"
+    },
+    {
+      "from": "BASE-KELLER",
+      "to": "RED-SYMPLECTIC",
+      "kind": "requires"
+    },
+    {
+      "from": "BASE-KELLER",
+      "to": "BR-FILTERED-EQUIVARIANCE",
+      "kind": "requires"
+    },
+    {
+      "from": "RED-NORMALIZATION",
+      "to": "RED-BOUNDARY",
+      "kind": "requires"
+    },
+    {
+      "from": "RED-BOUNDARY",
+      "to": "OPEN-BOUNDARY-BASELINE",
+      "kind": "requires"
+    },
+    {
+      "from": "RED-NORMALIZATION",
+      "to": "BR-MONOGENIC",
+      "kind": "requires"
+    },
+    {
+      "from": "RED-NORMALIZATION",
+      "to": "BR-STABLE-LATTICE",
+      "kind": "requires"
+    },
+    {
+      "from": "RED-NORMALIZATION",
+      "to": "BR-RADIAL",
+      "kind": "requires"
+    },
+    {
+      "from": "RED-NORMALIZATION",
+      "to": "BR-QUASI-ALBANESE",
+      "kind": "requires"
+    },
+    {
+      "from": "RED-NORMALIZATION",
+      "to": "BR-GAUSS-MANIN",
+      "kind": "requires"
+    },
+    {
+      "from": "RED-NORMALIZATION",
+      "to": "BR-WRIGHT",
+      "kind": "requires"
+    },
+    {
+      "from": "RED-NORMALIZATION",
+      "to": "BR-MONODROMY",
+      "kind": "requires"
+    },
+    {
+      "from": "RED-NORMALIZATION",
+      "to": "BR-DEGENERATION",
+      "kind": "requires"
+    },
+    {
+      "from": "RED-NORMALIZATION",
+      "to": "BR-CHAR-P",
+      "kind": "requires"
+    },
+    {
+      "from": "RED-DERIVATIONS",
+      "to": "BR-STABLE-LATTICE",
+      "kind": "requires"
+    },
+    {
+      "from": "RED-DERIVATIONS",
+      "to": "BR-RADIAL",
+      "kind": "requires"
+    },
+    {
+      "from": "RED-DERIVATIONS",
+      "to": "BR-GAUSS-MANIN",
+      "kind": "requires"
+    },
+    {
+      "from": "RED-SYMPLECTIC",
+      "to": "OPEN-SYMPLECTIC",
+      "kind": "requires"
+    },
+    {
+      "from": "BR-MONOGENIC",
+      "to": "OPEN-UNRAMIFIED-INDEX",
+      "kind": "requires"
+    },
+    {
+      "from": "BR-STABLE-LATTICE",
+      "to": "OPEN-STABLE-ORDER",
+      "kind": "requires"
+    },
+    {
+      "from": "BR-RADIAL",
+      "to": "OPEN-BOUNDARY-POLE",
+      "kind": "requires"
+    },
+    {
+      "from": "BR-QUASI-ALBANESE",
+      "to": "OPEN-QA-FINITE",
+      "kind": "requires"
+    },
+    {
+      "from": "BR-GAUSS-MANIN",
+      "to": "OPEN-PUNCTURE",
+      "kind": "requires"
+    },
+    {
+      "from": "BR-WRIGHT",
+      "to": "OPEN-GRADED-REDUCTION",
+      "kind": "requires"
+    },
+    {
+      "from": "BR-MONODROMY",
+      "to": "OPEN-CUSP-BRAID",
+      "kind": "requires"
+    },
+    {
+      "from": "BR-DEGENERATION",
+      "to": "OPEN-CLOSED-ORBIT",
+      "kind": "requires"
+    },
+    {
+      "from": "BR-FILTERED-EQUIVARIANCE",
+      "to": "OPEN-DEFECT-4",
+      "kind": "requires"
+    },
+    {
+      "from": "OPEN-DEFECT-4",
+      "to": "OPEN-GRADED-REDUCTION",
+      "kind": "supports"
+    },
+    {
+      "from": "BR-FILTERED-EQUIVARIANCE",
+      "to": "BR-DEGENERATION",
+      "kind": "supports"
+    },
+    {
+      "from": "BR-CHAR-P",
+      "to": "OPEN-PCURVATURE",
+      "kind": "requires"
+    },
+    {
+      "from": "CTL-LITERATURE",
+      "to": "OPEN-LITERATURE",
+      "kind": "requires"
+    },
+    {
+      "from": "CTL-LITERATURE",
+      "to": "BR-FILTERED-EQUIVARIANCE",
+      "kind": "supports"
+    },
+    {
+      "from": "OPEN-STABLE-ORDER",
+      "to": "TERM-DEGREE-ONE",
+      "kind": "sufficient-if-closed"
+    },
+    {
+      "from": "OPEN-QA-FINITE",
+      "to": "TERM-DEGREE-ONE",
+      "kind": "sufficient-if-closed"
+    },
+    {
+      "from": "OPEN-PUNCTURE",
+      "to": "TERM-DEGREE-ONE",
+      "kind": "sufficient-if-closed"
+    },
+    {
+      "from": "OPEN-GRADED-REDUCTION",
+      "to": "TERM-DEGREE-ONE",
+      "kind": "sufficient-if-closed"
+    },
+    {
+      "from": "OPEN-CUSP-BRAID",
+      "to": "TERM-DEGREE-ONE",
+      "kind": "sufficient-if-closed"
+    },
+    {
+      "from": "OPEN-CLOSED-ORBIT",
+      "to": "TERM-DEGREE-ONE",
+      "kind": "sufficient-if-closed"
+    },
+    {
+      "from": "OPEN-PCURVATURE",
+      "to": "TERM-DEGREE-ONE",
+      "kind": "sufficient-if-closed"
+    },
+    {
+      "from": "OPEN-SYMPLECTIC",
+      "to": "TERM-DEGREE-ONE",
+      "kind": "sufficient-if-closed"
+    },
+    {
+      "from": "OPEN-BOUNDARY-BASELINE",
+      "to": "TERM-FINITE-ETALE",
+      "kind": "supports"
+    },
+    {
+      "from": "TERM-FINITE-ETALE",
+      "to": "TERM-DEGREE-ONE",
+      "kind": "requires"
+    },
+    {
+      "from": "TERM-DEGREE-ONE",
+      "to": "TERM-AUTOMORPHISM",
+      "kind": "requires"
+    },
+    {
+      "from": "TERM-AUTOMORPHISM",
+      "to": "ROOT-JC2",
+      "kind": "requires"
+    },
+    {
+      "from": "CTL-3D",
+      "to": "BR-MONODROMY",
+      "kind": "idea-input"
+    },
+    {
+      "from": "CTL-3D",
+      "to": "BR-DEGENERATION",
+      "kind": "idea-input"
+    },
+    {
+      "from": "OPEN-LITERATURE",
+      "to": "CTL-LITERATURE",
+      "kind": "updates"
+    },
+    {
+      "from": "OPEN-UNRAMIFIED-INDEX",
+      "to": "OPEN-KELLER-INDEX-UNIT",
+      "kind": "narrows-to"
+    },
+    {
+      "from": "BR-MONOGENIC",
+      "to": "OPEN-KELLER-INDEX-UNIT",
+      "kind": "requires"
+    },
+    {
+      "from": "OPEN-KELLER-INDEX-UNIT",
+      "to": "TERM-DEGREE-ONE",
+      "kind": "sufficient-if-closed"
+    },
+    {
+      "from": "OPEN-SYMPLECTIC",
+      "to": "OPEN-BOUNDARY-POLE",
+      "kind": "supports"
+    },
+    {
+      "from": "OPEN-BOUNDARY-POLE",
+      "to": "TERM-DEGREE-ONE",
+      "kind": "supports"
+    },
+    {
+      "from": "RED-NORMALIZATION",
+      "to": "RED-ONE-BOUNDARY-LOG",
+      "kind": "requires"
+    },
+    {
+      "from": "RED-DERIVATIONS",
+      "to": "RED-ONE-BOUNDARY-LOG",
+      "kind": "requires"
+    },
+    {
+      "from": "RED-SYMPLECTIC",
+      "to": "RED-ONE-BOUNDARY-LOG",
+      "kind": "requires"
+    },
+    {
+      "from": "BR-WRIGHT",
+      "to": "RED-ONE-BOUNDARY-LOG",
+      "kind": "supports"
+    },
+    {
+      "from": "RED-ONE-BOUNDARY-LOG",
+      "to": "OPEN-BOUNDARY-POLE",
+      "kind": "supports"
+    },
+    {
+      "from": "BR-FILTERED-EQUIVARIANCE",
+      "to": "OPEN-DEFECT-5",
+      "kind": "requires"
+    },
+    {
+      "from": "OPEN-DEFECT-4",
+      "to": "OPEN-DEFECT-5",
+      "kind": "supports"
+    },
+    {
+      "from": "OPEN-DEFECT-5",
+      "to": "OPEN-GRADED-REDUCTION",
+      "kind": "supports"
+    }
+  ]
+}
