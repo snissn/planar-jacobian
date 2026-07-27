@@ -2,13 +2,29 @@
   "schema_version": 1,
   "issue_number": 38,
   "leaf_id": "L15",
-  "role": "reviewer",
+  "role": "integration-maintainer",
   "owned_paths": [
-    "research/issues/defect-5-independent-review/"
+    "research/issues/defect-5-independent-review/",
+    "README.md",
+    "STATUS.md",
+    "governance/reviews/issue-38-defect5-mainline-freeze.md",
+    "research/claim_ledger.json",
+    "research/CLAIM_LEDGER.md",
+    "research/proof_graph.json",
+    "research/PROOF_GRAPH.md",
+    "research/work_queue.json",
+    "research/WORK_QUEUE.md",
+    "research/ISSUE_INDEX.md",
+    "research/leaf-packets/L15-defect-5-staircase.md",
+    "research/tracks/m-filtered-equivariance.md",
+    "research/issues/defect-5-rees/review_validate_defect5_adversarial.py",
+    "scripts/render_views.py",
+    "scripts/validate_repository.py",
+    ".github/workflows/repository-python-validators.yml"
   ],
   "base_sha": "652a5e252626fa5816445651245e8a8946cee53e",
   "candidate_sha": "2eeb36d232366d124b5a66774b29769ec1eba43d",
-  "scientific_status": "independent-review ACCEPT / MUTABLE_NONAUTHORITATIVE until integration",
+  "scientific_status": "independent-review ACCEPT synchronized as reviewed_scoped / MUTABLE_NONAUTHORITATIVE outside exact scope",
   "review_mode": "independent-review",
   "reviewed_revision": "2eeb36d232366d124b5a66774b29769ec1eba43d",
   "proposed_global_claims": [
@@ -29,13 +45,21 @@
     "README.md",
     "STATUS.md",
     "research/claim_ledger.json",
+    "research/CLAIM_LEDGER.md",
     "research/proof_graph.json",
+    "research/PROOF_GRAPH.md",
     "research/work_queue.json",
+    "research/WORK_QUEUE.md",
     "research/ISSUE_INDEX.md",
     "research/leaf-packets/L15-defect-5-staircase.md",
-    "research/tracks/m-filtered-equivariance.md"
+    "research/tracks/m-filtered-equivariance.md",
+    "governance/reviews/issue-38-defect5-mainline-freeze.md",
+    "scripts/validate_repository.py",
+    ".github/workflows/repository-python-validators.yml"
   ],
-  "supersedes_prs": [],
+  "supersedes_prs": [
+    43
+  ],
   "temporary_artifacts_absent": true,
   "integration_state": "integration-ready"
 }
