@@ -21,7 +21,7 @@ Set
 g(P,Q)=P Q^2(Q-1)^2+(Q-1)^2+Q^2
 ```
 
-and let `C=V(g)` in the target affine plane. There is no generically finite
+and let `C=V(g)` in the target affine plane. There is no dominant quasi-finite
 polynomial map
 
 ```text
@@ -37,8 +37,8 @@ The contradiction occurs exactly at the `L3 -> L4` step:
 1. `C[C]=C[z,z^(-1),(z-1)^(-1)]` with `Q=z`;
 2. every morphism `A1 -> C` is constant, since `z` and `z-1` pull back to
    units of `C[t]`;
-3. for a generically finite polynomial map, the image of the omitted divisor
-   in the finite normalization is an irreducible component of its
+3. for a dominant quasi-finite polynomial map, the image of the omitted
+   divisor in the finite normalization is an irreducible component of its
    nonproperness set `S_F`;
 4. Jelonek--Lasoń, Theorem 3.2, makes every irreducible component of `S_F`
    polynomially uniruled, hence covered by nonconstant polynomial maps from
@@ -106,9 +106,10 @@ residue or conductor failure.
 
 ## Scientific nonclaims
 
-This packet does not prove a general one-boundary theorem, exclude all
-Liouville-exact branches, produce a qualifying weight, identify a nonmonomial
-boundary valuation with a Newton weight, bound ramification or conductor,
-classify all nonproperness curves, or establish `JC_2`. Passing symbolic and
-repository checks establishes exact identities and process consistency, not
-independent mathematical acceptance.
+This packet does not prove a general one-boundary theorem and does not treat
+merely generically finite maps with positive-dimensional exceptional fibers.
+It does not exclude all Liouville-exact branches, produce a qualifying weight,
+identify a nonmonomial boundary valuation with a Newton weight, bound
+ramification or conductor, classify all nonproperness curves, or establish
+`JC_2`. Passing symbolic and repository checks establishes exact identities
+and process consistency, not independent mathematical acceptance.

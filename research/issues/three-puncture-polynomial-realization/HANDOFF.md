@@ -19,8 +19,9 @@ P Q^2(Q-1)^2+(Q-1)^2+Q^2=0
 ```
 
 is impossible as the image of an omitted divisor in the finite-normalization
-factorization of any generically finite polynomial map `C^2->C^2`.
-Consequently it is impossible for a polynomial Keller map.
+factorization of any dominant quasi-finite polynomial map `C^2->C^2`.
+Consequently it is impossible for a polynomial Keller map, which is étale and
+therefore quasi-finite.
 
 The proof is:
 

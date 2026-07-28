@@ -53,6 +53,7 @@ def main() -> int:
         for phrase in (
             "Jelonek--Lasoń",
             "generically finite",
+            "quasi-finite",
             "nonproperness",
             "no nonconstant polynomial",
             "MUTABLE_NONAUTHORITATIVE",

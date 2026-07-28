@@ -26,11 +26,11 @@
       "id": "TPPR-02",
       "status": "candidate_proved",
       "track": "normalization",
-      "statement": "For the finite-normalization factorization of a generically finite polynomial map, the image of the omitted source boundary equals the nonproperness set; a divisor mapping onto the displayed branch makes that branch an irreducible component.",
+      "statement": "For the finite-normalization factorization of a dominant quasi-finite polynomial map, the image of the omitted source boundary equals the nonproperness set; a divisor mapping onto the displayed branch makes that branch an irreducible component.",
       "dependencies": [
         "CLM-003"
       ],
-      "nonclaims": "No classification of all source-boundary divisors."
+      "nonclaims": "No classification of all source-boundary divisors and no assertion for merely generically finite maps with positive-dimensional exceptional fibers."
     },
     {
       "id": "TPPR-03",

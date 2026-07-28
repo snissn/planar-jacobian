@@ -13,7 +13,7 @@ T=Spec C[P,Q]=A2,
 F=(P,Q):X->T
 ```
 
-be a dominant, generically finite polynomial map. Put
+be a dominant, quasi-finite polynomial map. Put
 
 ```text
 K=C(P,Q),
@@ -22,10 +22,8 @@ O=integral closure of C[P,Q] in L,
 Y=Spec O.
 ```
 
-When `F` is Keller, its constant nonzero Jacobian makes it étale, hence
-quasi-finite; equality of source and target dimensions also makes it dominant
-and generically finite. Since `X` is normal, Zariski Main gives the canonical
-factorization
+Quasi-finiteness is load-bearing here. Since `X` is normal, Zariski Main gives
+the canonical factorization
 
 ```text
 X --j--> Y --pi--> T,                                  (1.1)
@@ -36,6 +34,10 @@ where `j` is an open immersion and `pi` is finite. Set
 ```text
 D=Y-j(X).
 ```
+
+When `F` is Keller, its constant nonzero Jacobian makes it étale, hence
+quasi-finite. Its image is a nonempty open subset of the irreducible
+two-dimensional target, so it is also dominant and generically finite.
 
 A normal projective completion `Ybar` may be obtained by taking a projective
 completion of `Y` and normalizing. The closure of every divisorial component
@@ -105,8 +107,10 @@ source theorem must lie in `C`.
 ## 4. Exact scope
 
 This argument identifies the requested actual source-boundary divisor and uses
-only finite normalization, global polynomiality, and generic finiteness. It
-does not assume:
+finite normalization, global polynomiality, quasi-finiteness for the open
+immersion, and generic finiteness for the nonproperness theorem. It does not
+apply to a merely generically finite map with a positive-dimensional
+exceptional fiber, and it does not assume:
 
 - that `D` has one component;
 - that `E` is smooth;
@@ -115,3 +119,15 @@ does not assume:
 - a monomial source valuation;
 - a ramification index;
 - or a positive Newton weight.
+
+The mutation
+
+```text
+G(x,y)=(x,xy)
+```
+
+shows why the qualifier cannot be removed. It is dominant and generically
+finite, but `G^(-1)(0,0)` is the line `x=0`; hence `G` is not quasi-finite.
+Its function-field extension has degree one, so the finite normalization of
+the target is the target itself and cannot contain the source as the open
+subscheme used above.

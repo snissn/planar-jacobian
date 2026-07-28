@@ -59,7 +59,8 @@ No hidden singular target gluing remains.
 |---|---|
 | fill two punctures | curve becomes `A1` and has polynomial curves |
 | allow denominators in `P` or `Q` | map is rational, not polynomial |
-| drop generic finiteness | primary-source theorem does not apply |
+| retain generic finiteness but drop quasi-finiteness | the finite-normalization map need not contain the source as an open subset |
+| drop generic finiteness | primary-source theorem also does not apply |
 | replace the branch by a polynomially parametric exact curve | `TPPR-04` fails |
 | use only an all-orders formal neighborhood | no global `S_F` exists |
 | identify the boundary valuation with a weight | unsupported; not used |

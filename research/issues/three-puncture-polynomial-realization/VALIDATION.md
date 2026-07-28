@@ -31,7 +31,8 @@ campaign mutates the exact general unit argument.
 - rational constant-Jacobian controls for several ramification indices;
 - exact primitive identity in those controls;
 - detection of hidden denominators;
-- puncture, nonexact-form, conductor, and generic-finiteness mutations;
+- puncture, nonexact-form, conductor, quasi-finiteness, and
+  generic-finiteness mutations;
 - required artifact and nonclaim guards.
 
 ## Complete repository suite

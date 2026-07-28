@@ -57,14 +57,16 @@ degree of `C`-uniruledness at most `d-1`.
 | source `C^n` | `n=2`, actual source `A2_(x,y)` |
 | target `C^m` | `m=2`, target `A2_(P,Q)` |
 | polynomial coordinate map | exactly the `L4` hypothesis |
-| generically finite | assumed in theorem; automatic for a Keller pair |
+| generically finite | follows from the packet's quasi-finite hypothesis; automatic for a Keller pair |
 | finite algebraic degree `d` | every polynomial map has finite degree |
 | componentwise conclusion | Definition 2.3 |
 | nonconstant polynomial `A1` curves | Definition 2.1 |
 
 No part of the proof uses the real theorem, positive-characteristic
 generalization, an asymptotic sequence as a substitute for algebraic
-nonproperness, or projective rational uniruledness.
+nonproperness, or projective rational uniruledness. The primary theorem itself
+requires only generic finiteness; the stronger quasi-finite hypothesis enters
+separately in the Zariski-main boundary factorization.
 
 ## Cross-checks, not additional dependencies
 

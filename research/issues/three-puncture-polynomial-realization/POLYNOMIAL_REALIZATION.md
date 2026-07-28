@@ -11,7 +11,7 @@ Let
 F=(P,Q):C^2->C^2
 ```
 
-be a generically finite polynomial map. In the finite-normalization
+be a dominant quasi-finite polynomial map. In the finite-normalization
 factorization of `F`, no omitted source-boundary divisor can map onto
 
 ```text
@@ -50,9 +50,10 @@ point of each irreducible component passes the image of a nonconstant
 polynomial map `C->component`.
 
 All hypotheses hold for `F`: the source and target are affine spaces over
-`C`, the coordinate functions are polynomials, and generic finiteness is
-assumed. For a Keller pair, constant nonzero Jacobian supplies dominance and
-generic finiteness.
+`C`, the coordinate functions are polynomials, and quasi-finiteness implies
+generic finiteness. For a Keller pair, constant nonzero Jacobian makes the map
+étale, hence quasi-finite; its nonempty open image in the irreducible target
+also supplies dominance.
 
 ### Step 3: isolate the displayed component
 
@@ -94,7 +95,9 @@ controls. The controls show the hypotheses are sharp:
 
 ## Scope
 
-The theorem excludes exactly (0.1), even with multiple source-boundary
-components and arbitrary finite cover data. It does not say that every
-Liouville-exact branch lacks polynomial parametrizations, and it proves no
+The theorem excludes exactly (0.1) for the quasi-finite class, even with
+multiple source-boundary components and arbitrary finite cover data. It does
+not cover a merely generically finite polynomial map with a
+positive-dimensional exceptional fiber, does not say that every
+Liouville-exact branch lacks polynomial parametrizations, and proves no
 general one-boundary theorem.
