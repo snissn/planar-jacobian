@@ -2,7 +2,7 @@
 
 ```text
 review_mode: local-adversarial-review
-reviewed_revision: 087fd32a1994a666f6e9d3aea445e1c0ba7bd687
+reviewed_revision: 20f34c4c2ccf7289d436aad41e25f374ea40d1f3
 reviewer_identity: same assistant as constructor
 independent_review: false
 disposition: ACCEPT_SCOPED_DISPLAYED_BRANCH_EXCLUSION; BLOCK_BROADER_PROMOTION
@@ -10,9 +10,17 @@ disposition: ACCEPT_SCOPED_DISPLAYED_BRANCH_EXCLUSION; BLOCK_BROADER_PROMOTION
 
 ## Reviewed candidate
 
-The review is pinned to `087fd32a1994a666f6e9d3aea445e1c0ba7bd687` and covers the exact scientific files and
-symbolic checkers named in `INTEGRATION.json`. Metadata-only follow-up commits
-do not alter the reviewed proof.
+The renewed review is pinned to
+`20f34c4c2ccf7289d436aad41e25f374ea40d1f3` and covers the exact scientific
+files and symbolic checkers named in `INTEGRATION.json`. Metadata-only
+follow-up commits do not alter the reviewed proof.
+
+The prior review at `087fd32a1994a666f6e9d3aea445e1c0ba7bd687` did not
+separate generic finiteness from the quasi-finiteness needed for the
+Zariski-main open immersion. Exact-head Codex review exposed that scope defect.
+The renewed candidate restricts the boundary-factorization theorem to
+dominant quasi-finite polynomial maps while preserving the Keller corollary,
+because a Keller map is étale and therefore quasi-finite.
 
 ## Reconstruction
 
@@ -21,7 +29,8 @@ The review separately recomputed:
 1. the two Bézout identities making `Q` and `Q-1` units;
 2. the isomorphism with `C[z,z^(-1),(z-1)^(-1)]`;
 3. the polynomial representative of `R` and `P dQ=dR`;
-4. the equality `S_F=pi(Y-X)` by uniqueness of normalization;
+4. Zariski-main factorization for a dominant quasi-finite source map and the
+   equality `S_F=pi(Y-X)` by uniqueness of normalization;
 5. the component argument for the displayed curve;
 6. every hypothesis of Jelonek--Lasoń Theorem 3.2;
 7. the exhaustive unit proof that every `A1->C` is constant;
@@ -43,7 +52,8 @@ infinity, or a conductor bound.
 | call formal algebraization global polynomial realization | rejected by explicit denominators |
 | assume conductor trivial | rejected in general by cusp mutation; proved here |
 | infer a Newton weight | rejected; no simultaneous monomialization is proved |
-| drop generic finiteness | source theorem no longer applies |
+| keep generic finiteness but drop quasi-finiteness | `G(x,y)=(x,xy)` has a line fiber over the origin, and its degree-one finite normalization cannot contain the source as the required open subset |
+| drop generic finiteness | the primary uniruledness theorem also no longer applies |
 
 ## Adversarial points checked
 
@@ -52,20 +62,26 @@ infinity, or a conductor bound.
 - The displayed curve is a component of the **nonproperness set**, not merely
   of a finite branch locus, because its source divisor is omitted from the
   source open.
+- Generic finiteness is sufficient for Jelonek--Lasoń Theorem 3.2 but not for
+  the open-immersion boundary factorization. The latter is invoked only under
+  the packet's stronger quasi-finite hypothesis.
 - The primitive lies in the affine branch ring, so no conductor obstruction is
   smuggled into the global argument.
 - Polynomial affine uniruledness is not replaced by rational projective
   uniruledness.
 - The stronger global theorem is not mislabeled as a Laurent or
   exact-symplectic contradiction.
-- Keller generic finiteness is used only after dominance and equality of
-  dimensions are made explicit.
+- Keller étaleness supplies quasi-finiteness, and the nonempty open image in
+  the irreducible target supplies dominance and generic finiteness.
 
 ## Validation
 
 The checker covers branch, unit, primitive, divisor, polynomial-curve,
-source-pole, rational-control, and mutation identities. The complete repository
-suite is delegated to the permanent read-only workflow at the final PR head.
+source-pole, rational-control, and mutation identities. The renewed review ran
+the default and enlarged Python 3.12 campaigns (117 and 137 exact assertions),
+the repository validators, and the explicit `G(x,y)=(x,xy)` mutation. The
+complete repository suite is delegated to the permanent read-only workflow at
+the final PR head.
 
 ## Disposition
 

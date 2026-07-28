@@ -6,7 +6,7 @@ task_issue: 5
 coordinating_issue: 13
 owned_path: research/issues/three-puncture-polynomial-realization/
 base_sha: b4545bd9ca395c023b0d452feee29b5e6f77f83e
-scientific_candidate: 087fd32a1994a666f6e9d3aea445e1c0ba7bd687
+scientific_candidate: 20f34c4c2ccf7289d436aad41e25f374ea40d1f3
 integration_state: integration-ready
 ```
 
