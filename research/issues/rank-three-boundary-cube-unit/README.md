@@ -61,8 +61,9 @@ construction would have to be performed.
 ### R3BC-02 — boundary-cubic trichotomy (`candidate_proved`)
 
 Conditionally retaining the predecessor's finite-flat rank-three algebra, pass
-to the strict henselization of a height-one DVR and then to its geometric special
-fiber. In a trace-zero frame, the reduced index cubic is exactly one of
+to the strict henselization of a height-one DVR with residue field of
+characteristic zero and then to its geometric special fiber. In a trace-zero
+frame, the reduced index cubic is exactly one of
 
 ```text
 unramified split:       L1 L2 L3,

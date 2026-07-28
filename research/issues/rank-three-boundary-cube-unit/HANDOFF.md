@@ -41,8 +41,8 @@ Retaining a finite locally free normal rank-three algebra only as a conditional
 algebraic model, the packet proves:
 
 1. **Boundary-cubic trichotomy (`R3BC-02`).** After strict henselization of a
-   height-one DVR and passage to the geometric special fiber, the trace-zero
-   index cubic is
+   height-one DVR with residue field of characteristic zero and passage to the
+   geometric special fiber, the trace-zero index cubic is
 
    ```text
    L1 L2 L3,   L M^2,   or   L^3
@@ -122,8 +122,9 @@ nonclaims: no constructive unit-index section, no higher-degree result, no JC_2
 status: candidate_proved
 statement: After strict henselization and passage to the geometric special
 fiber, the trace-zero binary index cubic of a finite locally free normal
-rank-three algebra over a characteristic-zero DVR is GL2-equivalent to L1L2L3,
-LM^2, or L^3 according to ramification partition 1+1+1, 2+1, or 3.
+rank-three algebra over a DVR with residue field of characteristic zero is
+GL2-equivalent to L1L2L3, LM^2, or L^3 according to ramification partition
+1+1+1, 2+1, or 3.
 dependencies: CLM-062
 ```
 

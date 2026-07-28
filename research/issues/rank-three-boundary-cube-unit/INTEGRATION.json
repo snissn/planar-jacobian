@@ -24,7 +24,7 @@
     {
       "id": "CLM-075",
       "status": "candidate_proved",
-      "statement": "After strict henselization and passage to the geometric special fiber, the trace-zero binary index cubic of a finite locally free normal rank-three algebra over a characteristic-zero DVR is GL2-equivalent to L1 L2 L3, L M^2, or L^3 according to ramification partition 1+1+1, 2+1, or 3.",
+      "statement": "After strict henselization and passage to the geometric special fiber, the trace-zero binary index cubic of a finite locally free normal rank-three algebra over a DVR with residue field of characteristic zero is GL2-equivalent to L1 L2 L3, L M^2, or L^3 according to ramification partition 1+1+1, 2+1, or 3.",
       "dependencies": [
         "CLM-062"
       ]
