@@ -109,6 +109,14 @@ The issue-local statements and final canonical mappings are recorded in
 
 ## 6. Review and validation
 
+An exact-head Codex review identified one stale transport-time status sentence
+in `FOUNDATIONS.md`: the worker candidate correctly described defect five on
+its pinned construction base, but that wording would conflict with the
+independently reviewed fixed-weight status on the integration base. The
+integration maintainer corrected only that historical-status distinction; no
+formula, theorem statement, dependency, disposition, or scientific inference
+changed.
+
 Review mode: `local-adversarial-review`.
 
 ```text

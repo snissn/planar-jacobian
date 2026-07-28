@@ -123,9 +123,11 @@ The reviewed theorem available to this packet is exactly:
 primitive positive w and kappa_w<=4 => automorphism.
 ```
 
-No step below produces such a weight. The defect-five result on current
-`main` is `candidate_proved` after local adversarial review; issue #38 remains
-open. This packet neither consumes nor rederives defect five.
+No step below produces such a weight. On the packet's pinned construction base,
+the defect-five result was `candidate_proved` after local adversarial review and
+issue #38 remained open. The integration base now records the fixed-weight
+result as `reviewed_scoped` after independent review. This packet neither
+consumes nor rederives defect five.
 
 ## 6. Issue-local authority
 
