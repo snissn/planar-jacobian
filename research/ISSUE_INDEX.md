@@ -9,7 +9,7 @@ Issue [#2](https://github.com/snissn/planar-jacobian/issues/2) is the durable co
 | Leaf | Graph node | Issue |
 |---|---|---|
 | [L02-stable-order.md](leaf-packets/L02-stable-order.md) | `OPEN-STABLE-ORDER` | [#4](https://github.com/snissn/planar-jacobian/issues/4) |
-| [L03-radial-pole-elimination.md](leaf-packets/L03-radial-pole-elimination.md) | `OPEN-BOUNDARY-POLE` | [#5](https://github.com/snissn/planar-jacobian/issues/5) |
+| [L03-radial-pole-elimination.md](leaf-packets/L03-radial-pole-elimination.md) | `OPEN-ONE-BOUNDARY-POLYNOMIALIZATION` | [#5](https://github.com/snissn/planar-jacobian/issues/5) |
 | [L04-quasi-albanese-finiteness.md](leaf-packets/L04-quasi-albanese-finiteness.md) | `OPEN-QA-FINITE` | [#6](https://github.com/snissn/planar-jacobian/issues/6) |
 | [L05-gauss-manin-punctures.md](leaf-packets/L05-gauss-manin-punctures.md) | `OPEN-PUNCTURE` | [#7](https://github.com/snissn/planar-jacobian/issues/7) |
 | [L06-graded-reduction.md](leaf-packets/L06-graded-reduction.md) | `OPEN-GRADED-REDUCTION` | [#8](https://github.com/snissn/planar-jacobian/issues/8) |

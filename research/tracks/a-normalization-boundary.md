@@ -21,3 +21,15 @@ Let `B=C[P,Q]`, `L=C(x,y)`, and `C` be the integral closure of `B` in `L`. The p
 ### Exit
 
 Show the finite map is unramified in codimension one and has no codimension-two nonproperness; purity and finite-étale triviality then finish.
+
+## Liouville-exact boundary reduction (2026-07-27)
+
+The issue #5 Laurent-conductor packet adds the divisor-safe leading
+common-power theorem `CLM-087` and the finite normalized-primitive descent
+class `CLM-090`. These are normalization statements at mutable candidate
+scope. They do not trivialize the conormal line, force the primitive into a
+singular target coordinate ring, or algebraize a formal boundary model.
+
+The surviving normalization bridge is `CLM-094`: for the Liouville-exact
+non-toric pole-supported class, rule out polynomial realization or derive a
+higher conductor/differential obstruction from the actual global Keller data.

@@ -106,11 +106,11 @@
     },
     {
       "id": "OPEN-BOUNDARY-POLE",
-      "title": "Solve the non-toric one-boundary Laurent-conductor bridge",
-      "type": "leaf",
+      "title": "Reduce the non-toric one-boundary Laurent-conductor bridge",
+      "type": "reduction",
       "status": "open",
       "artifact": "leaf-packets/L03-radial-pole-elimination.md",
-      "note": "Issue #5 classifies logarithmic lifting, excludes G_m-invariant and purely unramified one-boundary subclasses at candidate scope, and leaves CLM-072: a fixed-type non-toric Laurent/conductor system."
+      "note": "Issue #5 classifies logarithmic lifting, excludes G_m-invariant and purely unramified one-boundary subclasses, and the Liouville successor further excludes the Liouville-nonexact ramified pole-supported subclass. The current leaf is the Liouville-exact polynomial-realization bridge."
     },
     {
       "id": "BR-QUASI-ALBANESE",
@@ -275,6 +275,22 @@
       "status": "active",
       "artifact": "issues/one-boundary-logarithmic-field/README.md",
       "note": "Candidate packet excludes torus-invariant generically ramified and purely unramified one-boundary models; the general non-toric fixed-type system remains open."
+    },
+    {
+      "id": "RED-ONE-BOUNDARY-LIOUVILLE",
+      "title": "Normalized Liouville exactness for ramified pole-supported boundary",
+      "type": "reduction",
+      "status": "active",
+      "artifact": "issues/non-toric-one-boundary-closure/README.md",
+      "note": "Issue #5 packet labels NTLC-01 through NTLC-08 are synchronized as CLM-086 through CLM-093. The packet proves normalized Liouville exactness and excludes the Liouville-nonexact subclass at mutable candidate scope; it does not prove algebraization or a general one-boundary theorem."
+    },
+    {
+      "id": "OPEN-ONE-BOUNDARY-POLYNOMIALIZATION",
+      "title": "Eliminate or polynomially realize the Liouville-exact non-toric survivor",
+      "type": "leaf",
+      "status": "open",
+      "artifact": "leaf-packets/L03-radial-pole-elimination.md",
+      "note": "CLM-094 is the surviving bridge: force a higher differential or conductor obstruction, rule out polynomial algebraization, or control every global Newton/Rees layer strongly enough to obtain a qualifying weight."
     },
     {
       "id": "OPEN-DEFECT-5",
@@ -564,8 +580,8 @@
     },
     {
       "from": "OPEN-BOUNDARY-POLE",
-      "to": "TERM-DEGREE-ONE",
-      "kind": "supports"
+      "to": "RED-ONE-BOUNDARY-LIOUVILLE",
+      "kind": "narrows-to"
     },
     {
       "from": "RED-NORMALIZATION",
@@ -590,6 +606,16 @@
     {
       "from": "RED-ONE-BOUNDARY-LOG",
       "to": "OPEN-BOUNDARY-POLE",
+      "kind": "supports"
+    },
+    {
+      "from": "RED-ONE-BOUNDARY-LIOUVILLE",
+      "to": "OPEN-ONE-BOUNDARY-POLYNOMIALIZATION",
+      "kind": "narrows-to"
+    },
+    {
+      "from": "OPEN-ONE-BOUNDARY-POLYNOMIALIZATION",
+      "to": "TERM-DEGREE-ONE",
       "kind": "supports"
     },
     {

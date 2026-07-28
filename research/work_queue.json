@@ -28,8 +28,8 @@
     },
     {
       "id": "L03",
-      "graph_node": "OPEN-BOUNDARY-POLE",
-      "title": "Non-Toric One-Boundary Laurent-Conductor Bridge",
+      "graph_node": "OPEN-ONE-BOUNDARY-POLYNOMIALIZATION",
+      "title": "Liouville-Exact Non-Toric Polynomialization Bridge",
       "priority": "P0",
       "status": "open",
       "artifact": "research/leaf-packets/L03-radial-pole-elimination.md",
@@ -50,7 +50,16 @@
         "CLM-069",
         "CLM-070",
         "CLM-071",
-        "CLM-072"
+        "CLM-072",
+        "CLM-086",
+        "CLM-087",
+        "CLM-088",
+        "CLM-089",
+        "CLM-090",
+        "CLM-091",
+        "CLM-092",
+        "CLM-093",
+        "CLM-094"
       ]
     },
     {
@@ -163,7 +172,16 @@
         "CLM-023",
         "CLM-070",
         "CLM-071",
-        "CLM-072"
+        "CLM-072",
+        "CLM-086",
+        "CLM-087",
+        "CLM-088",
+        "CLM-089",
+        "CLM-090",
+        "CLM-091",
+        "CLM-092",
+        "CLM-093",
+        "CLM-094"
       ]
     },
     {

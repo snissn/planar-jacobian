@@ -4,12 +4,15 @@
 authority: MUTABLE_NONAUTHORITATIVE
 scientific_status: SUBCLASS_EXCLUSION_WITH_LIOUVILLE_EXACTNESS_REDUCTION
 review_mode: local-adversarial-review
-role: research-worker
+role: integration-maintainer
+construction_role: research-worker
 task_issue: 5
 supporting_issue: 13
 owned_path: research/issues/non-toric-one-boundary-closure/
-base_commit: 652a5e252626fa5816445651245e8a8946cee53e
+integration_base: 72e09753d1a1523ff22b44093cc65e21384613fc
+reviewed_candidate: 02321cf2a78989f8d3cc57872c1e76961d3cd0d1
 issue_local_labels: NTLC-*
+canonical_labels: CLM-086..CLM-094
 ```
 
 ## Disposition
@@ -102,8 +105,8 @@ polynomial realization remain essential.
 - [`validate_laurent_conductor.py`](validate_laurent_conductor.py) — exact
   symbolic identities and mutations.
 - [`verify_all.py`](verify_all.py) — packet and manifest checks.
-- [`INTEGRATION.json`](INTEGRATION.json) — worker integration contract and
-  proposed shared deltas.
+- [`INTEGRATION.json`](INTEGRATION.json) — maintainer integration contract,
+  final canonical mappings, and proposed shared deltas.
 
 ## Scientific nonclaims
 

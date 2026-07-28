@@ -52,9 +52,9 @@ def check_manifest() -> None:
         "schema_version": 1,
         "issue_number": 5,
         "leaf_id": "L03",
-        "role": "research-worker",
+        "role": "integration-maintainer",
         "owned_paths": ["research/issues/non-toric-one-boundary-closure/"],
-        "base_sha": "652a5e252626fa5816445651245e8a8946cee53e",
+        "base_sha": "72e09753d1a1523ff22b44093cc65e21384613fc",
         "review_mode": "local-adversarial-review",
         "integration_state": "integration-ready",
         "temporary_artifacts_absent": True,
@@ -68,8 +68,14 @@ def check_manifest() -> None:
             fail(f"manifest {field} is not a 40-character lowercase SHA")
     if manifest["candidate_sha"] != manifest["reviewed_revision"]:
         fail("review must bind the exact candidate SHA")
-    if any(str(item.get("id", "")).startswith("CLM-") for item in manifest.get("proposed_global_claims", []) if isinstance(item, dict)):
-        fail("worker manifest uses a global CLM identifier")
+    expected_ids = [f"CLM-{number:03d}" for number in range(86, 95)]
+    actual_ids = [
+        str(item.get("id", ""))
+        for item in manifest.get("proposed_global_claims", [])
+        if isinstance(item, dict)
+    ]
+    if actual_ids != expected_ids:
+        fail(f"canonical claim mapping: expected {expected_ids!r}, got {actual_ids!r}")
 
 
 def check_markers() -> None:
@@ -79,7 +85,7 @@ def check_markers() -> None:
     required_markers = {
         "README.md": ["NTLC-04", "Liouville-nonexact", "does **not** exclude every"],
         "REVIEW.md": ["local-adversarial-review", "BLOCK_PROMOTION", "candidate_revision"],
-        "HANDOFF.md": ["issue #13", "not yet on `main`", "NTLC-09"],
+        "HANDOFF.md": ["issue #13", "Mainline completion", "CLM-094"],
     }
     texts = {"README.md": readme, "REVIEW.md": review, "HANDOFF.md": handoff}
     for name, markers in required_markers.items():

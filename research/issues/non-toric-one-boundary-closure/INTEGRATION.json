@@ -2,77 +2,129 @@
   "schema_version": 1,
   "issue_number": 5,
   "leaf_id": "L03",
-  "role": "research-worker",
+  "role": "integration-maintainer",
   "owned_paths": [
     "research/issues/non-toric-one-boundary-closure/"
   ],
-  "base_sha": "652a5e252626fa5816445651245e8a8946cee53e",
+  "base_sha": "72e09753d1a1523ff22b44093cc65e21384613fc",
   "candidate_sha": "02321cf2a78989f8d3cc57872c1e76961d3cd0d1",
   "scientific_status": "SUBCLASS_EXCLUSION_WITH_LIOUVILLE_EXACTNESS_REDUCTION / MUTABLE_NONAUTHORITATIVE",
   "review_mode": "local-adversarial-review",
   "reviewed_revision": "02321cf2a78989f8d3cc57872c1e76961d3cd0d1",
   "proposed_global_claims": [
     {
-      "id": "NTLC-04",
+      "id": "CLM-086",
+      "status": "candidate_proved",
+      "track": "exact-symplectic",
+      "statement": "At a generically ramified boundary divisor where a source coordinate has pole order m>0, a finite coefficient-field extension and formal uniformizer change put that coordinate in the form x=s^(-m); the coefficients c_j of y with j<m+e are constant, and the exact primitive equation forces the resonant coefficient c_m to vanish.",
+      "dependencies": [
+        "CLM-003",
+        "CLM-023"
+      ],
+      "nonclaims": "No formal parameter or Laurent coefficient is globally algebraized."
+    },
+    {
+      "id": "CLM-087",
+      "status": "candidate_proved",
+      "track": "normalization",
+      "statement": "If positive pole orders m,n and leading coefficients a,b satisfy n a' b-m a b'=0, then after gcd reduction there is a rational conormal section h and constants alpha,beta with a=alpha h^(m/d) and b=beta h^(n/d), including the corresponding divisor proportionality.",
+      "dependencies": [
+        "CLM-072"
+      ],
+      "nonclaims": "The rational conormal section is not asserted to be an affine unit or a global trivialization."
+    },
+    {
+      "id": "CLM-088",
+      "status": "candidate_proved",
+      "track": "exact-symplectic",
+      "statement": "In the normalized parameter s, the complete Jacobian Laurent recursion is d c_(m+r)=-beta_r/m: every higher coefficient exists exactly when its rational differential beta_r is exact, while the primitive recursion determines all nonresonant radial coefficients and leaves only the order-zero resonance.",
+      "dependencies": [
+        "CLM-023",
+        "CLM-086"
+      ],
+      "nonclaims": "No finite global algebraization or uniform valuation bound is proved."
+    },
+    {
+      "id": "CLM-089",
       "status": "candidate_proved",
       "track": "exact-symplectic",
       "statement": "For a generically ramified boundary divisor at which at least one source coordinate has a pole, the pullback of P dQ to the normalization of the reduced target branch is an exact rational differential.",
       "dependencies": [
         "CLM-003",
         "CLM-023",
-        "CLM-057",
-        "CLM-067",
-        "CLM-072"
+        "CLM-086",
+        "CLM-088"
       ],
       "nonclaims": "No general one-boundary exclusion, conductor descent, algebraization, polynomial realization, or bounded-weight conclusion."
     },
     {
-      "id": "NTLC-06",
+      "id": "CLM-090",
+      "status": "candidate_proved",
+      "track": "normalization",
+      "statement": "The normalized primitive R with dR=P dQ is regular on the affine normalized target branch, and its possible descent to a singular target coordinate ring is measured by the finite class [R] in Abar/A_C.",
+      "dependencies": [
+        "CLM-089"
+      ],
+      "nonclaims": "A nonzero conductor class is not automatically a contradiction without a separate target-descent requirement."
+    },
+    {
+      "id": "CLM-091",
       "status": "candidate_proved",
       "track": "exact-symplectic",
-      "statement": "A ramified pole-supported one-boundary Keller normalization cannot have a reduced target branch whose normalized Liouville class [P dQ] is nonzero; in particular the smooth non-toric branch P(P-1)Q-1=0 is excluded.",
+      "statement": "A ramified pole-supported one-boundary Keller normalization cannot have a reduced target branch whose normalized Liouville class [P dQ] is nonzero; in particular, the smooth non-toric branch P(P-1)Q-1=0 is excluded.",
       "dependencies": [
-        "NTLC-04"
+        "CLM-089"
       ],
       "nonclaims": "Liouville-exact non-toric branches remain open."
     },
     {
-      "id": "NTLC-07",
-      "status": "verified_negative_scope",
+      "id": "CLM-092",
+      "status": "candidate_proved",
       "track": "filtered-equivariance",
       "statement": "The present pole-order, leading common-power, Laurent, and conductor data do not determine a bound on the grading defect of the primitive pole weight because global polynomial support and leading-layer cancellations remain uncontrolled.",
       "dependencies": [
-        "NTLC-02",
-        "NTLC-03"
+        "CLM-087",
+        "CLM-088"
       ],
-      "nonclaims": "This is not a counterexample to a qualifying-weight theorem and does not use defect five."
+      "nonclaims": "This is not a counterexample to a qualifying-weight theorem and does not consume defect five."
     },
     {
-      "id": "NTLC-09",
+      "id": "CLM-093",
+      "status": "candidate_proved",
+      "track": "exact-symplectic",
+      "statement": "Explicit arbitrary-index toric controls and a non-toric Liouville-exact near-model satisfy the displayed all-order Jacobian and primitive identities, but their first failed Keller condition is polynomial realization.",
+      "dependencies": [
+        "CLM-088",
+        "CLM-089"
+      ],
+      "nonclaims": "The controls are not polynomial Keller pairs or counterexamples."
+    },
+    {
+      "id": "CLM-094",
       "status": "open_bridge",
       "track": "normalization",
       "statement": "For the Liouville-exact non-toric pole-supported class, prove a higher differential or conductor obstruction, rule out polynomial algebraization, or control all global Newton/Rees layers strongly enough to obtain a qualifying weight.",
       "dependencies": [
-        "NTLC-04",
-        "NTLC-05",
-        "NTLC-07",
-        "NTLC-08"
+        "CLM-089",
+        "CLM-090",
+        "CLM-092",
+        "CLM-093"
       ],
       "nonclaims": "No finite list or uniform bound on ramification, poles, conductor, punctures, genus, or branch multiplicity is proved."
     }
   ],
   "proposed_graph_nodes": [
     {
-      "id": "RED-ONE-BOUNDARY-LIOUVILLE-LOCAL",
+      "id": "RED-ONE-BOUNDARY-LIOUVILLE",
       "type": "reduction",
-      "status": "candidate",
+      "status": "active",
       "statement": "Ramified pole-supported one-boundary data force normalized branch Liouville exactness and exclude the Liouville-nonexact subclass."
     },
     {
-      "id": "OPEN-ONE-BOUNDARY-POLYNOMIALIZATION-LOCAL",
+      "id": "OPEN-ONE-BOUNDARY-POLYNOMIALIZATION",
       "type": "leaf",
       "status": "open",
-      "statement": "Eliminate or algebraize the Liouville-exact non-toric formal survivor and control its global polynomial support."
+      "statement": "Eliminate or polynomially realize the Liouville-exact non-toric formal survivor and control its global polynomial support."
     }
   ],
   "shared_surfaces_requested": [
@@ -80,9 +132,16 @@
     "research/proof_graph.json",
     "research/work_queue.json",
     "research/leaf-packets/L03-radial-pole-elimination.md",
-    "research/leaf-packets/L11-exact-symplectic-boundary.md"
+    "research/leaf-packets/L11-exact-symplectic-boundary.md",
+    "research/tracks/a-normalization-boundary.md",
+    "research/tracks/b-canonical-derivations.md",
+    "research/tracks/i-exact-symplectic.md",
+    "research/tracks/m-filtered-equivariance.md"
   ],
-  "supersedes_prs": [],
+  "supersedes_prs": [
+    44
+  ],
   "temporary_artifacts_absent": true,
-  "integration_state": "integration-ready"
+  "integration_state": "integration-ready",
+  "completion_receipt": null
 }

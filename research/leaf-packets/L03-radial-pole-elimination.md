@@ -1,8 +1,8 @@
 # Radial Pole Elimination
 
 - **Priority:** `P0`
-- **Status:** `OPEN — NARROWED_TO_NON_TORIC_COMPATIBILITY`
-- **Dependencies:** CLM-003, CLM-007, CLM-014, CLM-015, CLM-022, CLM-023, CLM-052–CLM-057, CLM-067–CLM-072
+- **Status:** `OPEN — NARROWED_TO_LIOUVILLE_EXACT_POLYNOMIALIZATION`
+- **Dependencies:** CLM-003, CLM-007, CLM-014, CLM-015, CLM-022, CLM-023, CLM-052–CLM-057, CLM-067–CLM-072, CLM-086–CLM-094
 - **Authority:** `MUTABLE_NONAUTHORITATIVE`
 - **Historical construction baseline:** `agent/bootstrap-proof-graph@296867d82d09d51ef2386de2a62067408b7f949c`
 - **Historical source branch:** `issue-5/radial-pole-elimination-gpt56`
@@ -10,9 +10,10 @@
 
 ## Load-bearing question
 
-Show one lifted radial field extends regularly across every normalization boundary
-divisor and singular point, and justify every subsequent integration and
-degree-one implication.
+For the ramified pole-supported non-toric class surviving normalized Liouville
+exactness, either derive a higher differential or conductor obstruction, rule
+out polynomial realization, or control every global Newton/Rees layer strongly
+enough to obtain a qualifying weight.
 
 ## Scientific disposition
 
@@ -127,7 +128,7 @@ Completed in the issue-scoped packet:
 
 ## Stop rule
 
-Stop at the exact scoped obstruction:
+The predecessor radial-field calculation stops at the exact scoped obstruction:
 
 \[
 \text{regular radial lift}
@@ -135,8 +136,19 @@ Stop at the exact scoped obstruction:
 \text{every reduced ramified branch component is radial}.
 \]
 
-The Keller and exact-symplectic identities do not presently prove the right-hand
-side. Regularity by itself also does not prove algebraic integration. This is the first exact scientific disposition of the proposed radial-pole bridge. The leaf remains open for the tangency and integration steps and must not silently broaden into a classification of all boundary divisors or all algebraic actions.
+The integrated Liouville successor proves a different, strictly scoped
+consequence for a ramified pole-supported divisor:
+
+\[
+\text{Keller boundary data with a source pole}
+\Longrightarrow
+[P\,dQ]=0
+\text{ on the normalized target branch}.
+\]
+
+Stop there for the Liouville-nonexact subclass. Do not infer conductor descent,
+algebraization, polynomial realization, a bounded qualifying weight, or a
+general one-boundary exclusion. The leaf remains open as `CLM-094`.
 
 ## Handoff
 
@@ -202,4 +214,31 @@ coefficient obstruction if it does not.
 
 The successor packet [`../issues/one-boundary-logarithmic-field/README.md`](../issues/one-boundary-logarithmic-field/README.md) proves, at mutable candidate scope, that a nontrivial one-boundary Keller normalization cannot have a reduced branch preserved by a nontrivial target `G_m` action. It also excludes a unique generically unramified boundary by purity. Thus coordinate-line, weighted-homogeneous, weighted-cusp, and hyperbolic monomial branch subclasses are disposed under the exact one-boundary hypotheses.
 
-The leaf remains open as `CLM-072`: for a branch with no target torus symmetry, solve the fixed valuation/conductor system beginning with `n a' b-m a b'=0`. No uniform bound on valuation or conductor types, and no general smooth one-boundary theorem, is claimed.
+The predecessor leaf remained open as `CLM-072`: for a branch with no target
+torus symmetry, solve the fixed valuation/conductor system beginning with
+`n a' b-m a b'=0`. No uniform bound on valuation or conductor types, and no
+general smooth one-boundary theorem, was claimed.
+
+## Integrated Liouville successor (2026-07-27)
+
+[`../issues/non-toric-one-boundary-closure/README.md`](../issues/non-toric-one-boundary-closure/README.md)
+records `CLM-086` through `CLM-094` under a declared
+`local-adversarial-review`.
+
+At mutable candidate scope it:
+
+1. normalizes a source pole to `x=s^(-m)` and solves the complete Laurent
+   recursion (`CLM-086`, `CLM-088`);
+2. preserves the divisor-safe common-power relation (`CLM-087`);
+3. proves normalized branch Liouville exactness and records its finite
+   conductor-descent class (`CLM-089`, `CLM-090`);
+4. excludes the Liouville-nonexact non-toric subclass (`CLM-091`);
+5. shows why the current local data do not determine a grading-defect bound and
+   records formal/rational controls whose first failed Keller condition is
+   polynomial realization (`CLM-092`, `CLM-093`).
+
+The exact smooth three-puncture survivor is not a Keller example. The smallest
+next action is `CLM-094`: prove that this normalized branch cannot occur in a
+polynomial Keller realization, or identify the first higher
+`beta_r`/conductor obstruction forced by such a realization. Promotion of the
+packet remains blocked pending independent review.

@@ -25,3 +25,17 @@ The complete candidate packet is [`../issue-5/PRINCIPAL_PARTS.md`](../issue-5/PR
 ## Integrated one-boundary successor (2026-07-24)
 
 [`../issues/one-boundary-logarithmic-field/README.md`](../issues/one-boundary-logarithmic-field/README.md) records `CLM-067`–`CLM-070`: freeness of the one-curve logarithmic module, Jordan-part stability, a finite-isogeny action lift, and exclusion of a `G_m`-invariant reduced branch in the unique generically ramified boundary class. All remain mutable candidates; `CLM-072` is the non-toric successor.
+
+## Integrated Liouville successor (2026-07-27)
+
+[`../issues/non-toric-one-boundary-closure/README.md`](../issues/non-toric-one-boundary-closure/README.md)
+records `CLM-086`–`CLM-094`. Under a generically ramified
+pole-supported boundary hypothesis, it proves normalized branch Liouville
+exactness and excludes the Liouville-nonexact non-toric subclass at mutable
+candidate scope. This does not construct a locally finite logarithmic field or
+an algebraic action, so `CLM-057` is not promoted.
+
+The active L03 handoff is now the smaller `CLM-094` polynomial-realization
+bridge for the Liouville-exact survivor. No general one-boundary
+classification, source-open action, or terminal equivariant implication is
+claimed.

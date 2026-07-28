@@ -1,11 +1,12 @@
 # Handoff
 
 > Authority: `MUTABLE_NONAUTHORITATIVE`  
-> Role: `research-worker`  
+> Role: `integration-maintainer`
+> Construction role: `research-worker`
 > Task issue: issue #5  
 > Exact-symplectic coordination: issue #13  
 > Owned path: `research/issues/non-toric-one-boundary-closure/`  
-> Base: `652a5e252626fa5816445651245e8a8946cee53e`  
+> Integration base: `72e09753d1a1523ff22b44093cc65e21384613fc`
 > Candidate reviewed locally: `02321cf2a78989f8d3cc57872c1e76961d3cd0d1`
 
 ## 1. Exact result banked
@@ -88,20 +89,23 @@ A future `kappa_w<=4` result may consume the independently reviewed defect-four
 theorem. A future `kappa_w=5` result remains conditional: issue #38 was open on
 the pinned base, and this packet does not rederive defect five.
 
-## 5. Proposed shared deltas for an integration maintainer
+## 5. Serialized shared deltas
 
-No shared surface was edited. Suggested serialized integration changes are:
+The integration maintainer allocated the complete issue-local dependency chain
+as `CLM-086` through `CLM-094` and serialized these shared changes:
 
-- add one candidate claim for normalized branch Liouville exactness;
-- add one candidate subclass-exclusion claim for Liouville-nonexact branches;
-- retain an open bridge for polynomial algebraization and global support control;
-- update the L03 handoff and issue #13 exact-symplectic successor pointer;
-- leave the general one-boundary leaf open;
+- preserve the formal normal form, divisor-safe leading theorem, all-order
+  recursion, Liouville exactness, conductor class, subclass exclusion,
+  negative weight extraction, and realization controls;
+- retain `CLM-094` as the open polynomial-algebraization and global-support
+  bridge;
+- advance L03 to `OPEN-ONE-BOUNDARY-POLYNOMIALIZATION` and update the issue #13
+  exact-symplectic successor pointer;
+- leave the general one-boundary program open;
 - make no terminal edge to a qualifying-weight theorem or `JC_2`.
 
-Exact issue-local statements and proposed node metadata are in
-`INTEGRATION.json`; final global identifiers must be allocated only by the
-integration maintainer against live `main`.
+The issue-local statements and final canonical mappings are recorded in
+`INTEGRATION.json`.
 
 ## 6. Review and validation
 
@@ -128,5 +132,6 @@ python3 -m unittest discover -s scripts/tests -p 'test_*.py'
 python3 scripts/frontier.py
 ```
 
-The pull request is intentionally not merged in this parallel round. This packet
-is not yet on `main`.
+Mainline completion is recorded only by a remote completion receipt after the
+pull request reports `merged=true`, live `main` contains the intended revision,
+critical files are refetched, and exact-main validation passes.
