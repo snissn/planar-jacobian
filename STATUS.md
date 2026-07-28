@@ -13,10 +13,10 @@
 
 ## Machine-derived inventory
 
-- Claims: **78** across **10** statuses.
+- Claims: **85** across **10** statuses.
 - Reviewed-scoped claims: **7**.
-- Proof graph: **38** nodes and **62** directed edges.
-- Graph node statuses: `active` 6, `blocked` 4, `disposed` 2, `literature_bound` 2, `open` 21, `reviewed` 2, `speculative` 1.
+- Proof graph: **39** nodes and **64** directed edges.
+- Graph node statuses: `active` 6, `blocked` 4, `disposed` 2, `literature_bound` 2, `open` 22, `reviewed` 2, `speculative` 1.
 - Open canonical leaves: **11**; recorded dispositions: **4**.
 - Metadata-only conversation exports: **2**; completion remains issue [#22](https://github.com/snissn/planar-jacobian/issues/22).
 

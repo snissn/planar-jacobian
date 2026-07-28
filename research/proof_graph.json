@@ -87,7 +87,15 @@
       "type": "leaf",
       "status": "open",
       "artifact": "leaf-packets/L02-stable-order.md",
-      "note": "CLM-011 and CLM-013 record the conditional implication. The source-reflexive-lattice successor proves the reflexive multiplier-ring bridge and excludes every finite divisorial pole stage at ramification. CLM-061 remains open at finite pair-stable lattice existence."
+      "note": "CLM-011 and CLM-013 record the conditional implication. CLM-079 through CLM-085 preserve the finite-full-seed obstruction, reduce normalization saturation and generic ordinary coherence to trivial height-one inertia, exclude divisorial pole and categorical shortcuts, and leave CLM-084 open. No finite pair-stable lattice is constructed."
+    },
+    {
+      "id": "RED-CDS-COHERENCE-WALL",
+      "title": "Reduce differential saturation and ordinary coherence to trivial height-one inertia",
+      "type": "reduction",
+      "status": "open",
+      "artifact": "issues/canonical-differential-saturation/README.md",
+      "note": "Issue #4 packet label CDS-001 binds existing CLM-010; labels CDS-002 through CDS-008 are synchronized as CLM-079 through CLM-085. The normalization route leaves source-character exclusion open; a direct global D-module route additionally needs ordinary coherence, both unscaled translations, and a torsion-free meromorphic embedding."
     },
     {
       "id": "BR-RADIAL",
@@ -383,6 +391,16 @@
       "from": "BR-STABLE-LATTICE",
       "to": "OPEN-STABLE-ORDER",
       "kind": "requires"
+    },
+    {
+      "from": "BR-STABLE-LATTICE",
+      "to": "RED-CDS-COHERENCE-WALL",
+      "kind": "narrows-to"
+    },
+    {
+      "from": "RED-CDS-COHERENCE-WALL",
+      "to": "OPEN-STABLE-ORDER",
+      "kind": "supports"
     },
     {
       "from": "BR-RADIAL",

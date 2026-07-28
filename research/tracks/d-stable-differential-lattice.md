@@ -48,6 +48,34 @@ finite full pair-stable B-lattice
 
 The right side is the full unramified DVR condition, including separable residue extension, not merely the numerical equation `e=1`.
 
+## Canonical saturation and ordinary-coherence wall
+
+The canonical-differential-saturation successor records `CLM-079` through
+`CLM-085`. It first preserves the general finite-full-seed obstruction and
+then proves at mutable candidate scope that
+
+```text
+Sat_D(O) finite
+  <=> no height-one ramification,
+```
+
+and that every divisorial source boundary maps onto a height-one target
+divisor. Ramified pole stages escape; an unramified stage also escapes when
+it contains an actual positive pole. The latter statement does not infer an
+element from a formal pole bound.
+
+For the full finite-cover permutation connection at a generic height-one
+point, an embedded ordinary coherent lattice exists exactly when local
+inertia is trivial. Regular holonomicity and logarithmic coherence are weaker
+and do not imply ordinary structure-sheaf finiteness. A direct global
+D-module route would additionally need global ordinary coherence, a
+compatible connection preserving both unscaled translations, and a
+torsion-free meromorphic embedding with generic fiber `L`.
+
+The surviving exact bridge is `CLM-084`: derive trivial height-one inertia
+from the actual polynomial Keller source. This is a reduction, not an
+unramifiedness theorem or a stable-lattice construction.
+
 ## Fractional-residue spectrum
 
 At a valuation of ramification index `e`, the intrinsic semisimplified tame spectrum is
@@ -99,8 +127,12 @@ The surviving route must therefore construct a finite non-divisorial source-deri
 
 - predecessor: `research/issue-4/stable-differential-order/`;
 - successor: `research/issues/source-reflexive-lattice/`.
+- canonical saturation successor:
+  `research/issues/canonical-differential-saturation/`.
 
-The successor's declared `local-adversarial-review` passes mutable integration but blocks promotion. No finite pair-stable lattice is constructed.
+The successors' declared `local-adversarial-review` records pass mutable
+integration but block reviewed promotion. No finite pair-stable lattice is
+constructed.
 
 ## Exit
 
