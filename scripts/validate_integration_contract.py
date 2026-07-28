@@ -111,9 +111,15 @@ def event_context() -> PullRequestContext | None:
     if not isinstance(pr, dict): return None
     return PullRequestContext(int(pr["number"]), bool(pr.get("draft")), str(pr["base"]["ref"]), str(pr["base"]["sha"]), str(pr["head"]["sha"]), str(pr.get("body") or ""), str(data.get("repository", {}).get("full_name") or os.getenv("GITHUB_REPOSITORY", "")))
 
+def marker_values(body: str, label: str) -> list[str]:
+    return [
+        found.strip().strip("`")
+        for found in re.findall(rf"(?mi)^\s*-?\s*{re.escape(label)}\s*:\s*(.+?)\s*$", body)
+    ]
+
 def marker(body: str, label: str) -> str | None:
-    found = re.search(rf"(?mi)^\s*-?\s*{re.escape(label)}\s*:\s*(.+?)\s*$", body)
-    return found.group(1).strip().strip("`") if found else None
+    found = marker_values(body, label)
+    return found[0] if found else None
 
 def changed_files(root: Path, context: PullRequestContext, result: Result) -> list[str]:
     try: return [x for x in subprocess.check_output(["git", "diff", "--name-only", f"{context.base_sha}...{context.head_sha}"], cwd=root, text=True).splitlines() if x]
@@ -131,16 +137,30 @@ def validate_pr(manifests: list[dict[str, Any]], context: PullRequestContext, fi
     if context.draft: result.error("integration pull requests must not be draft")
     if context.base_ref != "main": result.error("pull request must target main")
     if not files: result.error("pull request changed-file set is empty"); return
-    body_role = marker(context.body, "Role")
+    body_markers = {
+        label: marker_values(context.body, label)
+        for label in ("Role", "Task-Issue", "Owned-Path")
+    }
+    invalid_markers = [label for label, values in body_markers.items() if len(values) != 1]
+    if invalid_markers:
+        for label in invalid_markers:
+            result.error(f"PR body must contain exactly one {label} marker")
+        return
+    body_role = body_markers["Role"][0]
+    issue_marker = body_markers["Task-Issue"][0]
+    owned_marker = body_markers["Owned-Path"][0]
     governance = body_role == "governance-maintainer"
     if governance:
         bad = [f for f in files if not governance_path(f)]
         if bad:
             result.error("governance PR changes scientific content: " + ", ".join(bad))
+        for other in remote:
+            if int(other.get("number", 0)) == context.number: continue
+            body = str(other.get("body") or "")
+            if marker(body, "Task-Issue") == issue_marker or marker(body, "Owned-Path") == owned_marker:
+                result.error(f"duplicate open PR #{other.get('number')} for {issue_marker} / {owned_marker}")
         return
 
-    issue_marker = marker(context.body, "Task-Issue")
-    owned_marker = marker(context.body, "Owned-Path")
     selected = [
         m for m in manifests
         if issue_marker == f"#{m.get('issue_number')}"

@@ -93,6 +93,37 @@ class IntegrationContractTests(unittest.TestCase):
         result = validate_root(root, context=context, changed_files=["governance/EXECUTION-LIFECYCLE.md", "research/issues/example/INTEGRATION.json", "scripts/validate_integration_contract.py"], remote_prs=[])
         self.assertEqual([], result.errors)
 
+    def test_governance_pr_requires_exactly_one_metadata_marker(self) -> None:
+        root = self.make_repo()
+        context = PullRequestContext(
+            2,
+            False,
+            "main",
+            VALID_SHA_A,
+            VALID_SHA_B,
+            "- Role: governance-maintainer\n- Task-Issue: #99\n",
+            "o/r",
+        )
+        result = validate_root(
+            root,
+            context=context,
+            changed_files=["scripts/validate_integration_contract.py"],
+            remote_prs=[],
+        )
+        self.assertTrue(any("exactly one Owned-Path" in e for e in result.errors))
+
+    def test_duplicate_governance_pr_is_rejected(self) -> None:
+        root = self.make_repo()
+        body = "- Role: governance-maintainer\n- Task-Issue: #99\n- Owned-Path: governance/\n"
+        context = PullRequestContext(2, False, "main", VALID_SHA_A, VALID_SHA_B, body, "o/r")
+        result = validate_root(
+            root,
+            context=context,
+            changed_files=["scripts/validate_integration_contract.py"],
+            remote_prs=[{"number": 3, "body": body}],
+        )
+        self.assertTrue(any("duplicate open PR" in e for e in result.errors))
+
     def test_integration_maintainer_must_use_current_base(self) -> None:
         data = manifest(role="integration-maintainer"); data["base_sha"] = "c" * 40
         root = self.make_repo(data); body = "- Role: integration-maintainer\n- Task-Issue: #99\n- Owned-Path: research/issues/example/\n"
