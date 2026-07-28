@@ -128,6 +128,11 @@
     }
   ],
   "shared_surfaces_requested": [
+    "STATUS.md",
+    "research/CLAIM_LEDGER.md",
+    "research/ISSUE_INDEX.md",
+    "research/PROOF_GRAPH.md",
+    "research/WORK_QUEUE.md",
     "research/claim_ledger.json",
     "research/proof_graph.json",
     "research/work_queue.json",
