@@ -644,9 +644,9 @@
     },
     {
       "id": "CLM-059",
-      "status": "open_bridge",
+      "status": "retired",
       "track": "monogenicity",
-      "statement": "For the Keller normalization, construct one integral trace-free section s with fixed-section index Fitt_0(O/B[s])=B, equivalently Phi(s) in C*; proving only that the universal coefficient/content ideal is B is insufficient.",
+      "statement": "For a rank-three Keller normalization, construct one integral trace-free section s with fixed-section index Fitt_0(O/B[s])=B, equivalently Phi(s) in C*; proving only that the universal coefficient/content ideal is B is insufficient.",
       "depends_on": [
         "CLM-001",
         "CLM-003",
@@ -657,9 +657,10 @@
         "CLM-063",
         "CLM-064",
         "CLM-065",
-        "CLM-066"
+        "CLM-066",
+        "CLM-074"
       ],
-      "note": "The rank-three issue #3 successor reduces this to a boundary-cube valuation identity constrained by an exact primitive-coordinate differential congruence. Moving unramified scalar collisions remain."
+      "note": "Retired only as the rank-three Keller construction target: CLM-074 makes the simultaneous Keller and degree-three hypotheses inconsistent. No unit-index section was constructed, the universal-content correction remains valid, and the unresolved higher-rank monogenicity problem is neither encoded in nor retired by this claim."
     },
     {
       "id": "CLM-060",
@@ -847,6 +848,65 @@
         "review_record": "research/issues/defect-5-independent-review/REVIEW.md",
         "freeze_record": "governance/reviews/issue-38-defect5-mainline-freeze.md"
       }
+    },
+    {
+      "id": "CLM-074",
+      "status": "literature_bound",
+      "track": "low-degree-literature",
+      "statement": "A planar polynomial Keller map cannot have function-field degree three: degree three gives generic sheet number three, while Orevkov's 1987 primary theorem excludes nonzero constant Jacobian for a three-sheeted polynomial map C2 to C2.",
+      "depends_on": [
+        "CLM-001",
+        "CLM-002"
+      ],
+      "note": "Issue #3 rank-three terminal, packet label R3BC-01. The primary proof was audited rather than reproduced, so the claim remains literature_bound. This disposes only the degree-three Keller case; it constructs no unit-index section and proves nothing for degree four or higher or for JC_2."
+    },
+    {
+      "id": "CLM-075",
+      "status": "candidate_proved",
+      "track": "monogenicity",
+      "statement": "After strict henselization and passage to the geometric special fiber, the trace-zero binary index cubic of a finite locally free normal rank-three algebra over a DVR with residue field of characteristic zero is GL2-equivalent to L1 L2 L3, L M^2, or L^3 according to ramification partition 1+1+1, 2+1, or 3.",
+      "depends_on": [
+        "CLM-062"
+      ],
+      "note": "Issue #3 packet label R3BC-02. This is a geometric local trichotomy, not one simultaneous global normal form; boundary cube occurs only at total ramification."
+    },
+    {
+      "id": "CLM-076",
+      "status": "candidate_proved",
+      "track": "monogenicity",
+      "statement": "Boundary-primitive sections decompose into classes in E/H E. Within any chosen class theta+H E, every affine pencil theta+H T eta remains primitive at all boundary primes and has index D+H C T+H^2 B_2 T^2+H^3 A T^3; every factor created in the pencil is a nonboundary scalar collision.",
+      "depends_on": [
+        "CLM-029",
+        "CLM-062",
+        "CLM-064",
+        "CLM-066"
+      ],
+      "note": "Issue #3 packet label R3BC-03. Finite-prime adaptation proves that at least one primitive class exists but does not select a class containing a unit-index section; one chosen class is not exhaustive."
+    },
+    {
+      "id": "CLM-077",
+      "status": "candidate_proved",
+      "track": "exact-symplectic",
+      "statement": "No nonconstant fixed divisor in C[P,Q] is invariant under both target translations, but the exact Keller differential congruence does not make a named fixed-section index ideal translation-stable; moving scalar collisions are not ramification.",
+      "depends_on": [
+        "CLM-010",
+        "CLM-012",
+        "CLM-065",
+        "CLM-066"
+      ],
+      "note": "Issue #3 packet label R3BC-04. The statement blocks the translation-stability shortcut and does not eliminate scalar collision divisors."
+    },
+    {
+      "id": "CLM-078",
+      "status": "literature_bound",
+      "track": "monogenicity",
+      "statement": "Under the audited finite-normalization and specified-source-open factorization, the issue #3 no-unit countermodel reaches the finite-flat, normal, connected, rational, open-A2 stages; if the relative different has no support on that displayed source open, the induced degree-three polynomial map has constant nonzero Jacobian and is excluded by Orevkov.",
+      "depends_on": [
+        "CLM-058",
+        "CLM-066",
+        "CLM-074"
+      ],
+      "note": "Issue #3 packet label R3BC-05. This remains literature_bound because its terminal step imports CLM-074; it is terminal only at the specified Keller source-etale wall, and an arbitrary abstract open A2 is insufficient."
     }
   ]
 }

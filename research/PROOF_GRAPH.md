@@ -5,11 +5,11 @@
 
 ## Summary
 
-- Nodes: **37**
-- Directed edges: **61**
-- Open leaf nodes: **12**
-- Node types: `branch` 10, `context` 1, `control` 2, `foundation` 1, `goal` 1, `leaf` 15, `reduction` 4, `terminal` 3
-- Node statuses: `active` 6, `blocked` 4, `disposed` 1, `literature_bound` 1, `open` 22, `reviewed` 2, `speculative` 1
+- Nodes: **38**
+- Directed edges: **62**
+- Open leaf nodes: **11**
+- Node types: `branch` 10, `context` 1, `control` 2, `foundation` 1, `goal` 1, `leaf` 15, `reduction` 4, `terminal` 4
+- Node statuses: `active` 6, `blocked` 4, `disposed` 2, `literature_bound` 2, `open` 21, `reviewed` 2, `speculative` 1
 
 ## Nodes
 
@@ -23,7 +23,8 @@
 | `RED-SYMPLECTIC` | Exploit exact symplectic/Lagrangian structure | `control` | `active` | [tracks/i-exact-symplectic.md](tracks/i-exact-symplectic.md) | — |
 | `BR-MONOGENIC` | Global primitive element route | `branch` | `open` | [tracks/c-monogenicity-index-divisor.md](tracks/c-monogenicity-index-divisor.md) | — |
 | `OPEN-UNRAMIFIED-INDEX` | Dispose generic unramified-index elimination by scoped countermodel | `leaf` | `disposed` | [leaf-packets/L01-unramified-index-elimination.md](leaf-packets/L01-unramified-index-elimination.md) | Issue #3 proves ramified adaptation and conditional globalization at mutable scope, but CLM-058 falsifies the purely algebraic unramified-elimination bridge. |
-| `OPEN-KELLER-INDEX-UNIT` | Eliminate the rank-three Keller boundary-cube index obstruction | `leaf` | `open` | [leaf-packets/L14-keller-index-form-unit.md](leaf-packets/L14-keller-index-form-unit.md) | The rank-three issue #3 successor proves trace/index foundations, a finite source/boundary gcd-one certificate, and an exact cubic differential congruence. One unit index value remains open; universal content one is insufficient. Packet: research/issues/rank-three-index-form-unit/README.md. |
+| `OPEN-KELLER-INDEX-UNIT` | Dispose the rank-three Keller index-unit construction target | `leaf` | `disposed` | [leaf-packets/L14-keller-index-form-unit.md](leaf-packets/L14-keller-index-form-unit.md) | CLM-074 disposes this construction target only at rank three because a degree-three planar Keller map is excluded by Orevkov's primary theorem. No unit-index section was constructed, and no higher-degree or JC_2 implication is recorded. |
+| `TERM-RANK-THREE-EXCLUSION` | Exclude planar Keller function-field degree three | `terminal` | `literature_bound` | [issues/rank-three-boundary-cube-unit/README.md](issues/rank-three-boundary-cube-unit/README.md) | CLM-074, literature-bound to Orevkov's 1987 primary theorem. This bounded terminal has no edge to degree one, automorphism, or JC_2. |
 | `BR-STABLE-LATTICE` | Finite differential order route | `branch` | `open` | [tracks/d-stable-differential-lattice.md](tracks/d-stable-differential-lattice.md) | — |
 | `OPEN-STABLE-ORDER` | Construct a finite full B-lattice stable under D_P,D_Q | `leaf` | `open` | [leaf-packets/L02-stable-order.md](leaf-packets/L02-stable-order.md) | CLM-011 and CLM-013 record the conditional implication. The source-reflexive-lattice successor proves the reflexive multiplier-ring bridge and excludes every finite divisorial pole stage at ramification. CLM-061 remains open at finite pair-stable lattice existence. |
 | `BR-RADIAL` | Canonical radial/logarithmic field completion | `branch` | `open` | [tracks/b-canonical-derivations.md](tracks/b-canonical-derivations.md) | — |
@@ -90,6 +91,7 @@
 | `BR-CHAR-P` | `requires` | `OPEN-PCURVATURE` |
 | `CTL-LITERATURE` | `requires` | `OPEN-LITERATURE` |
 | `CTL-LITERATURE` | `supports` | `BR-FILTERED-EQUIVARIANCE` |
+| `CTL-LITERATURE` | `supports` | `TERM-RANK-THREE-EXCLUSION` |
 | `OPEN-STABLE-ORDER` | `sufficient-if-closed` | `TERM-DEGREE-ONE` |
 | `OPEN-QA-FINITE` | `sufficient-if-closed` | `TERM-DEGREE-ONE` |
 | `OPEN-PUNCTURE` | `sufficient-if-closed` | `TERM-DEGREE-ONE` |
@@ -107,7 +109,7 @@
 | `OPEN-LITERATURE` | `updates` | `CTL-LITERATURE` |
 | `OPEN-UNRAMIFIED-INDEX` | `narrows-to` | `OPEN-KELLER-INDEX-UNIT` |
 | `BR-MONOGENIC` | `requires` | `OPEN-KELLER-INDEX-UNIT` |
-| `OPEN-KELLER-INDEX-UNIT` | `sufficient-if-closed` | `TERM-DEGREE-ONE` |
+| `OPEN-KELLER-INDEX-UNIT` | `narrows-to` | `TERM-RANK-THREE-EXCLUSION` |
 | `OPEN-SYMPLECTIC` | `supports` | `OPEN-BOUNDARY-POLE` |
 | `OPEN-BOUNDARY-POLE` | `supports` | `TERM-DEGREE-ONE` |
 | `RED-NORMALIZATION` | `requires` | `RED-ONE-BOUNDARY-LOG` |

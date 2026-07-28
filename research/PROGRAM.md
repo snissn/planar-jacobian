@@ -19,11 +19,19 @@ The maintained program separates:
 9. primary-source and low-degree controls; and
 10. characteristic-p experiments.
 
+## Recent bounded disposition
+
+### `L14` — rank-three Keller exclusion, issue #3
+
+The generic unramified-index bridge is false by `CLM-058`. At rank three,
+`CLM-074` now gives a separate `literature_bound` terminal: field degree three
+is generic multiplicity three, which Orevkov's audited primary theorem excludes
+for polynomial Keller maps. `L14` is disposed without constructing a unit-index
+section. `CLM-075`–`CLM-077` retain conditional rank-three refinements, while
+the source-open terminal `CLM-078` remains `literature_bound`; nothing here
+treats degree four or higher or establishes `JC_2`.
+
 ## Current high-priority frontier
-
-### `L14` — Keller index-form unit, issue #3
-
-The generic unramified-index bridge is false. `CLM-058` gives a scoped smooth rational finite-flat countermodel, while `CLM-029`, `CLM-031`, and `CLM-034` bank ramified adaptation and conditional globalization. The successor must consume source étaleness and the specified open immersion `A2_source -> Y` to force the universal index form to represent a unit.
 
 ### `L02` — finite stable differential order, issue #4
 
