@@ -211,6 +211,27 @@ class IntegrationContractTests(unittest.TestCase):
         )
         self.assertEqual([], result.errors)
 
+    def test_integration_maintainer_can_add_declared_freeze_record(self) -> None:
+        data = manifest(role="integration-maintainer")
+        freeze = "governance/reviews/issue-99-freeze.md"
+        data["shared_surfaces_requested"] = [freeze]
+        root = self.make_repo(data)
+        body = "- Role: integration-maintainer\n- Task-Issue: #99\n- Owned-Path: research/issues/example/\n"
+        context = PullRequestContext(2, False, "main", VALID_SHA_A, VALID_SHA_B, body, "o/r")
+        result = validate_root(
+            root,
+            context=context,
+            changed_files=["research/issues/example/README.md", freeze],
+            remote_prs=[],
+        )
+        self.assertEqual([], result.errors)
+
+    def test_integration_maintainer_cannot_request_another_packet(self) -> None:
+        data = manifest(role="integration-maintainer")
+        data["shared_surfaces_requested"] = ["research/issues/other/PROOF.md"]
+        result = validate_root(self.make_repo(data))
+        self.assertTrue(any("noncanonical shared surfaces" in e for e in result.errors))
+
 
 if __name__ == "__main__":
     unittest.main()

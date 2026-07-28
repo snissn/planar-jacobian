@@ -11,7 +11,13 @@ SHA = re.compile(r"^[0-9a-f]{40}$")
 ROLES = {"research-worker", "reviewer", "integration-maintainer", "governance-maintainer"}
 REVIEWS = {"none", "independent-review", "local-adversarial-review"}
 STATES = {"construction", "review", "integration-ready", "merged", "blocked"}
-SHARED = {"README.md", "STATUS.md", "research/claim_ledger.json", "research/CLAIM_LEDGER.md", "research/proof_graph.json", "research/PROOF_GRAPH.md", "research/work_queue.json", "research/WORK_QUEUE.md", "research/ISSUE_INDEX.md"}
+SHARED = {
+    "README.md", "STATUS.md", "research/PROGRAM.md",
+    "research/claim_ledger.json", "research/CLAIM_LEDGER.md",
+    "research/proof_graph.json", "research/PROOF_GRAPH.md",
+    "research/work_queue.json", "research/WORK_QUEUE.md", "research/ISSUE_INDEX.md",
+}
+SHARED_PREFIXES = ("research/leaf-packets/", "research/tracks/", "governance/reviews/")
 FIELDS = {"schema_version", "issue_number", "leaf_id", "role", "owned_paths", "base_sha", "candidate_sha", "scientific_status", "review_mode", "reviewed_revision", "proposed_global_claims", "proposed_graph_nodes", "shared_surfaces_requested", "supersedes_prs", "temporary_artifacts_absent", "integration_state"}
 OPTIONAL = {"pr_number", "completion_receipt"}
 WORKFLOW = ".github/workflows/repository-python-validators.yml"
@@ -33,10 +39,14 @@ def packets(root: Path) -> list[Path]:
 def owned(path: str, roots: list[str]) -> bool:
     return any(path == r.rstrip("/") or path.startswith(r.rstrip("/") + "/") for r in roots)
 
+def shared_scientific_path(path: str) -> bool:
+    return path in SHARED or path.startswith(SHARED_PREFIXES)
+
 def governance_path(path: str) -> bool:
     name = Path(path).name
     return (
-        path.startswith(("governance/", "scripts/", ".github/"))
+        (path.startswith("governance/") and not path.startswith("governance/reviews/"))
+        or path.startswith(("scripts/", ".github/"))
         or path in {"AGENTS.md", "AGENT_PROMPT.md"}
         or path.endswith("/INTEGRATION.json")
         or (path.startswith("research/issues/") and name == "SYNC_REPORT.md")
@@ -72,9 +82,12 @@ def read_manifest(path: Path, root: Path, result: Result) -> dict[str, Any]:
         if not isinstance(value.get(field), list): result.error(f"{rel}: {field} must be an array")
     requested = value.get("shared_surfaces_requested")
     if isinstance(requested, list):
-        forbidden = [item for item in requested if isinstance(item, str) and governance_path(item)]
-        if forbidden:
-            result.error(f"{rel}: governance surfaces may not be requested for scientific integration: {forbidden}")
+        invalid = [
+            item for item in requested
+            if not isinstance(item, str) or not shared_scientific_path(item)
+        ]
+        if invalid:
+            result.error(f"{rel}: noncanonical shared surfaces requested: {invalid}")
     if value.get("temporary_artifacts_absent") is not True: result.error(f"{rel}: temporary_artifacts_absent must be true")
     if value.get("integration_state") == "merged" and value.get("role") not in {"integration-maintainer", "governance-maintainer"}: result.error(f"{rel}: merged packet needs maintainer role")
     value["_manifest_path"] = rel

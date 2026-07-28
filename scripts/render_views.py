@@ -21,11 +21,33 @@ def cell(value: Any) -> str:
 def code(value: str) -> str:
     return f'`{value}`'
 
+def rank_three_terminal_claims(claims: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    return [
+        item for item in claims
+        if item.get('track') == 'low-degree-literature'
+        and 'function-field degree three' in item.get('statement', '')
+        and 'Orevkov' in item.get('statement', '')
+    ]
+
+def rank_three_packet_claim(claims: list[dict[str, Any]], label: str) -> dict[str, Any] | None:
+    matches = [item for item in claims if label in item.get('note', '')]
+    return matches[0] if len(matches) == 1 else None
+
 def rank_three_status_line(claims: dict[str, Any]) -> str:
-    claim_ids = {item['id'] for item in claims['claims']}
-    if 'CLM-074' not in claim_ids:
+    items = claims['claims']
+    terminal_matches = rank_three_terminal_claims(items)
+    if len(terminal_matches) != 1:
         return '- **Issue #3:** rank-three trace/index foundations, a finite source/boundary gcd-one certificate, and an exact cubic differential congruence are banked at candidate scope. The universal-content shortcut is false; `L14` remains open at the boundary-cube/unit-value bridge.'
-    return '- **Issue #3:** `CLM-074` excludes planar Keller function-field degree three at `literature_bound` scope through Orevkov\'s audited primary theorem. `L14` and `CLM-059` are disposed only at rank-three scope without a constructed unit-index section. Internal refinements `CLM-075`–`CLM-077` remain `candidate_proved`; `CLM-078` is a `literature_bound` application. No degree-four-or-higher or `JC_2` result follows.'
+    terminal_id = terminal_matches[0]['id']
+    internal_ids = [
+        claim['id']
+        for label in ('R3BC-02', 'R3BC-03', 'R3BC-04')
+        if (claim := rank_three_packet_claim(items, label)) is not None
+    ]
+    application = rank_three_packet_claim(items, 'R3BC-05')
+    internal = ', '.join(code(claim_id) for claim_id in internal_ids) or 'the packet-local internal refinements'
+    application_id = code(application['id']) if application else 'the specified-source-open application'
+    return f'- **Issue #3:** {code(terminal_id)} excludes planar Keller function-field degree three at `literature_bound` scope through Orevkov\'s audited primary theorem. `L14` and `CLM-059` are disposed only at rank-three scope without a constructed unit-index section. Internal refinements {internal} remain `candidate_proved`; {application_id} is a `literature_bound` application. No degree-four-or-higher or `JC_2` result follows.'
 
 def relative_link(output_path: str, target: str, label: str | None=None) -> str:
     start = (ROOT / output_path).parent

@@ -36,7 +36,8 @@
     "research/WORK_QUEUE.md",
     "research/ISSUE_INDEX.md",
     "research/leaf-packets/L15-defect-5-staircase.md",
-    "research/tracks/m-filtered-equivariance.md"
+    "research/tracks/m-filtered-equivariance.md",
+    "governance/reviews/issue-38-defect5-mainline-freeze.md"
   ],
   "supersedes_prs": [
     43
