@@ -3,7 +3,7 @@
 ```text
 authority: MUTABLE_NONAUTHORITATIVE
 local_claims: R3BC-01, R3BC-02
-base_commit: 652a5e252626fa5816445651245e8a8946cee53e
+base_commit: def93d34174cb87a1d59573bcae395a79b635040
 ```
 
 ## 1. Exact Keller setup

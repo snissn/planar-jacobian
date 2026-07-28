@@ -320,3 +320,18 @@ BLOCK:
   independent or reviewed_scoped promotion;
   any terminal edge to JC_2.
 ```
+
+## 9. Post-review provenance correction
+
+After this review was recorded, Codex review of PR #54 found that the
+provenance header in `FOUNDATIONS.md` still named the superseded construction
+base `652a5e252626fa5816445651245e8a8946cee53e`. The header was corrected to
+the actual base
+`def93d34174cb87a1d59573bcae395a79b635040`, consistently with `README.md`,
+`HANDOFF.md`, `INTEGRATION.json`, and the commit graph.
+
+This post-review edit changes provenance metadata only. It changes no
+hypothesis, statement, proof step, computation, status assignment, dependency,
+or nonclaim, so the scoped review of scientific candidate
+`3a0ba94eecd723295a4148814300242dba8ddae1` remains applicable under the
+repository's editorial/transport renewal rule.
