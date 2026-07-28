@@ -348,3 +348,72 @@ typing.
 These changes alter neither the asserted identity nor any mathematical claim.
 The complete pinned suite was rerun afterward. No scientific review renewal is
 required for these documented editorial and exact-equivalence changes.
+
+## 10. Serialized integration-mapping review
+
+```text
+run_role: integration-maintainer
+review_mode: local-adversarial-review
+integration_base: def93d34174cb87a1d59573bcae395a79b635040
+reviewed_integration_candidate: 717afcfce30cc622b2bd64326c83c59d81c76101
+disposition: ACCEPT_FOR_SERIALIZED_INTEGRATION_AT_DECLARED_STATUSES;
+             BLOCK_BROADER_PROMOTION
+```
+
+The integration-maintainer run locally adversarially reviewed the exact
+candidate above. Shared constructor/reviewer identity means this is not an
+independent review and does not promote any claim to `reviewed_scoped`.
+
+The reviewed scope is the mapping
+
+```text
+R3BC-01 -> CLM-074  literature_bound
+R3BC-02 -> CLM-075  candidate_proved
+R3BC-03 -> CLM-076  candidate_proved
+R3BC-04 -> CLM-077  candidate_proved
+R3BC-05 -> CLM-078  literature_bound
+```
+
+together with the rank-three-only retirement of `CLM-059`, the disposition of
+`L14`, the new `TERM-RANK-THREE-EXCLUSION` node, the two incoming
+`supports`/`narrows-to` edges, the manual shared prose, the generated views, and
+the integration metadata in `README.md`, `HANDOFF.md`, and `INTEGRATION.json`.
+
+The review recomputed:
+
+1. the base ledger maximum is `CLM-073`, so `CLM-074` through `CLM-078` are the
+   next collision-free identifiers;
+2. every synchronized dependency is present, with `CLM-078` depending on
+   `CLM-074` and therefore remaining `literature_bound`;
+3. `CLM-059` depends on `CLM-074` and is retired only as the rank-three Keller
+   construction target, without claiming a unit-index section;
+4. the graph has 38 nodes and 62 edges, and
+   `TERM-RANK-THREE-EXCLUSION` reaches neither `TERM-DEGREE-ONE`,
+   `TERM-AUTOMORPHISM`, nor `ROOT-JC2`;
+5. `L14` occurs only in the dispositions array, while `L01` records that its
+   narrower successor was separately disposed;
+6. the worker scientific files are byte-identical to PR #54 except for the
+   three declared integration-metadata files.
+
+Adversarial mutations were rejected as follows:
+
+- marking `CLM-078` `candidate_proved` would overstate a result whose terminal
+  step imports the literature-bound Orevkov exclusion;
+- restoring the old `OPEN-KELLER-INDEX-UNIT -> TERM-DEGREE-ONE` edge would
+  broaden a degree-three exclusion into an unsupported global degree-one path;
+- retaining `L14` as open would contradict its bounded terminal disposition;
+- treating one boundary-primitive residue class as exhaustive would contradict
+  the reviewed `E/H E` decomposition;
+- retiring `CLM-059` without its explicit rank-three limitation would erase an
+  unresolved higher-rank construction problem.
+
+The exact packet and predecessor symbolic checks, generated-view check,
+repository validator, integration-contract validator, 20 unit tests, frontier,
+and diff check all passed in Python 3.12 with SymPy 1.14.0. The only repository
+warnings were the two pre-existing metadata-only archive notices.
+
+Surviving risks are explicit: Orevkov's proof is imported from the audited
+primary source rather than reproduced; the review is local rather than
+independent; no unit-index section is constructed; and no degree-four-or-higher
+or `JC_2` conclusion follows. Subject to exact-head CI and review, the pinned
+candidate is accepted for serialized integration only at those scopes.
