@@ -45,10 +45,7 @@ def main() -> int:
     A = sp.expand(f.subs({U: u1, V: v1}))
     expected = D + H * T * C + H**2 * T**2 * B2 + H**3 * T**3 * A
     assert_zero(family - expected, "boundary-adapted cubic expansion")
-    assert_zero(
-        sp.rem(sp.Poly(family - D, H), sp.Poly(H, H)).as_expr(),
-        "congruence modulo H",
-    )
+    assert_zero(sp.rem(family - D, H), "congruence modulo H")
 
     # On a split etale chart, the same family is the product of three affine sheet differences.
     z1, z2, z3, w1, w2, w3 = sp.symbols("z1 z2 z3 w1 w2 w3")

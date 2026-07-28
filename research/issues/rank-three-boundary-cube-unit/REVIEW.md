@@ -321,7 +321,7 @@ BLOCK:
   any terminal edge to JC_2.
 ```
 
-## 9. Post-review provenance correction
+## 9. Post-review non-scientific corrections
 
 After this review was recorded, Codex review of PR #54 found that the
 provenance header in `FOUNDATIONS.md` still named the superseded construction
@@ -335,3 +335,16 @@ hypothesis, statement, proof step, computation, status assignment, dependency,
 or nonclaim, so the scoped review of scientific candidate
 `3a0ba94eecd723295a4148814300242dba8ddae1` remains applicable under the
 repository's editorial/transport renewal rule.
+
+CodeRabbit then identified two documentation inconsistencies and one
+equivalence-preserving SymPy cleanup. The README and handoff now show the
+canonical pinned Python 3.12 / SymPy 1.14.0 invocation and identify
+`verify_all.py` as the guarded packet entry point. The boundary-family
+congruence check now computes the same zero remainder directly on expressions
+rather than converting through `Poly` and back. Both forms return zero under
+the pinned environment; the latter removes representation-dependent return
+typing.
+
+These changes alter neither the asserted identity nor any mathematical claim.
+The complete pinned suite was rerun afterward. No scientific review renewal is
+required for these documented editorial and exact-equivalence changes.

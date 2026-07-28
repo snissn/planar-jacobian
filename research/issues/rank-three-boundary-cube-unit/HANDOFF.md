@@ -228,7 +228,8 @@ independent review, and creates no `reviewed_scoped` authority.
 Packet-local command:
 
 ```bash
-python3 research/issues/rank-three-boundary-cube-unit/verify_all.py
+uv run --python 3.12 --with sympy==1.14.0 -- \
+  python3 research/issues/rank-three-boundary-cube-unit/verify_all.py
 ```
 
 Expected final line:
@@ -237,7 +238,7 @@ Expected final line:
 rank-three boundary-cube packet verification: PASS
 ```
 
-Exact-head repository checks:
+Run the exact-head repository checks in the same pinned `uv` environment:
 
 ```bash
 python3 -m compileall -q scripts research/issues

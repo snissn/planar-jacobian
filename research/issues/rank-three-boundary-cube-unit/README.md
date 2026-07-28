@@ -176,7 +176,12 @@ Not claimed:
 
 ## Verification
 
+Canonical verification is performed in the declared `research-worker` context
+with Python 3.12 or newer and exact SymPy 1.14.0:
+
 ```bash
+uv run --python 3.12 --with sympy==1.14.0 -- bash -c '
+set -euo pipefail
 python3 -m compileall -q scripts research/issues
 python3 research/issues/rank-three-boundary-cube-unit/verify_all.py
 python3 research/issues/issue-3-unramified-index/verify_index_models.py
@@ -184,12 +189,14 @@ python3 research/issues/rank-three-index-form-unit/verify_all.py
 python3 scripts/render_views.py --check
 python3 scripts/validate_repository.py
 python3 scripts/validate_integration_contract.py
-python3 -m unittest discover -s scripts/tests -p 'test_*.py'
+python3 -m unittest discover -s scripts/tests -p "test_*.py"
 python3 scripts/frontier.py
 git diff --check
+'
 ```
 
-The guarded packet-local suite is run with SymPy 1.14.0. The renewed review
-record pins the exact candidate and records pass/fail results for this complete
-command set. Passing structural or symbolic validation does not evaluate
-mathematical truth.
+`verify_all.py` is the guarded canonical packet entry point. Direct execution
+of a child `verify_*.py` file is a diagnostic only and is not a substitute for
+the guarded suite. The renewed review record pins the exact candidate and
+records pass/fail results for this complete command set. Passing structural or
+symbolic validation does not evaluate mathematical truth.
