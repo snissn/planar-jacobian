@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "issue_number": 5,
+  "leaf_id": "L03",
+  "role": "research-worker",
+  "owned_paths": [
+    "research/issues/non-toric-one-boundary-closure/"
+  ],
+  "base_sha": "652a5e252626fa5816445651245e8a8946cee53e",
+  "candidate_sha": "02321cf2a78989f8d3cc57872c1e76961d3cd0d1",
+  "scientific_status": "SUBCLASS_EXCLUSION_WITH_LIOUVILLE_EXACTNESS_REDUCTION / MUTABLE_NONAUTHORITATIVE",
+  "review_mode": "local-adversarial-review",
+  "reviewed_revision": "02321cf2a78989f8d3cc57872c1e76961d3cd0d1",
+  "proposed_global_claims": [
+    {
+      "id": "NTLC-04",
+      "status": "candidate_proved",
+      "track": "exact-symplectic",
+      "statement": "For a generically ramified boundary divisor at which at least one source coordinate has a pole, the pullback of P dQ to the normalization of the reduced target branch is an exact rational differential.",
+      "dependencies": [
+        "CLM-003",
+        "CLM-023",
+        "CLM-057",
+        "CLM-067",
+        "CLM-072"
+      ],
+      "nonclaims": "No general one-boundary exclusion, conductor descent, algebraization, polynomial realization, or bounded-weight conclusion."
+    },
+    {
+      "id": "NTLC-06",
+      "status": "candidate_proved",
+      "track": "exact-symplectic",
+      "statement": "A ramified pole-supported one-boundary Keller normalization cannot have a reduced target branch whose normalized Liouville class [P dQ] is nonzero; in particular the smooth non-toric branch P(P-1)Q-1=0 is excluded.",
+      "dependencies": [
+        "NTLC-04"
+      ],
+      "nonclaims": "Liouville-exact non-toric branches remain open."
+    },
+    {
+      "id": "NTLC-07",
+      "status": "verified_negative_scope",
+      "track": "filtered-equivariance",
+      "statement": "The present pole-order, leading common-power, Laurent, and conductor data do not determine a bound on the grading defect of the primitive pole weight because global polynomial support and leading-layer cancellations remain uncontrolled.",
+      "dependencies": [
+        "NTLC-02",
+        "NTLC-03"
+      ],
+      "nonclaims": "This is not a counterexample to a qualifying-weight theorem and does not use defect five."
+    },
+    {
+      "id": "NTLC-09",
+      "status": "open_bridge",
+      "track": "normalization",
+      "statement": "For the Liouville-exact non-toric pole-supported class, prove a higher differential or conductor obstruction, rule out polynomial algebraization, or control all global Newton/Rees layers strongly enough to obtain a qualifying weight.",
+      "dependencies": [
+        "NTLC-04",
+        "NTLC-05",
+        "NTLC-07",
+        "NTLC-08"
+      ],
+      "nonclaims": "No finite list or uniform bound on ramification, poles, conductor, punctures, genus, or branch multiplicity is proved."
+    }
+  ],
+  "proposed_graph_nodes": [
+    {
+      "id": "RED-ONE-BOUNDARY-LIOUVILLE-LOCAL",
+      "type": "reduction",
+      "status": "candidate",
+      "statement": "Ramified pole-supported one-boundary data force normalized branch Liouville exactness and exclude the Liouville-nonexact subclass."
+    },
+    {
+      "id": "OPEN-ONE-BOUNDARY-POLYNOMIALIZATION-LOCAL",
+      "type": "leaf",
+      "status": "open",
+      "statement": "Eliminate or algebraize the Liouville-exact non-toric formal survivor and control its global polynomial support."
+    }
+  ],
+  "shared_surfaces_requested": [
+    "research/claim_ledger.json",
+    "research/proof_graph.json",
+    "research/work_queue.json",
+    "research/leaf-packets/L03-radial-pole-elimination.md",
+    "research/leaf-packets/L11-exact-symplectic-boundary.md"
+  ],
+  "supersedes_prs": [],
+  "temporary_artifacts_absent": true,
+  "integration_state": "integration-ready"
+}
