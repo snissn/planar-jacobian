@@ -5,10 +5,10 @@ role: research-worker
 task_issue: #3
 owned_path: research/issues/rank-three-boundary-cube-unit/
 base_main: def93d34174cb87a1d59573bcae395a79b635040
-scientific_candidate: PENDING_CORRECTED_CANDIDATE
-review_mode: none
-reviewed_revision: null
-integration_state: construction
+scientific_candidate: 3a0ba94eecd723295a4148814300242dba8ddae1
+review_mode: local-adversarial-review
+reviewed_revision: 3a0ba94eecd723295a4148814300242dba8ddae1
+integration_state: integration-ready; exact-head CI pending transport
 merge_authority: none; worker hands off a non-draft integration-ready PR
 ```
 
@@ -211,17 +211,19 @@ from governance PR #53; this worker does not edit that workflow.
 
 ## 6. Review and validation evidence
 
-Renewed local adversarial review is pending the corrected candidate:
+The corrected scientific candidate received a renewed local adversarial review:
 
 ```text
-reviewed_revision: null
-disposition: PENDING
+reviewed_revision: 3a0ba94eecd723295a4148814300242dba8ddae1
+disposition: ACCEPT_FOR_WORKER_HANDOFF_AT_DECLARED_STATUSES;
+             BLOCK_BROADER_PROMOTION
 ```
 
-The renewed review must pin the corrected candidate, re-audit Orevkov's primary
-source, recompute all load-bearing internal steps, test mutations, and record
-the full required command set. Shared constructor/reviewer identity is a local
-adversarial review, never an independent review.
+The review pins the corrected candidate, re-audits Orevkov's primary source,
+recomputes all load-bearing internal steps, tests mutations and edge cases, and
+records the full required command set in [`REVIEW.md`](REVIEW.md). Shared
+constructor/reviewer identity makes this a local adversarial review, never an
+independent review, and creates no `reviewed_scoped` authority.
 
 Packet-local command:
 

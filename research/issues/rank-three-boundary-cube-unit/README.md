@@ -7,7 +7,7 @@ task_issue: #3
 owned_path: research/issues/rank-three-boundary-cube-unit/
 base_commit: def93d34174cb87a1d59573bcae395a79b635040
 scientific_disposition: RANK_THREE_KELLER_CASE_EXCLUDED_BY_PRIMARY_LITERATURE
-review_state: pending renewed local-adversarial-review
+review_state: local-adversarial-review ACCEPT at 3a0ba94eecd723295a4148814300242dba8ddae1
 ```
 
 This worker packet uses issue-local labels `R3BC-01` through `R3BC-05`;
