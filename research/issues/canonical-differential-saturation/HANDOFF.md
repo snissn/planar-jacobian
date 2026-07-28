@@ -8,6 +8,7 @@
 > **Reviewed candidate:** `ab498bd9f40fdb36137fbe8a52658555a3eef004`
 > **Review:** `local-adversarial-review` / `ACCEPT_SCOPED`
 > **Worker pull request:** `#42`, superseded by serialized integration
+> **Integration pull request:** `#56`
 > **Integration state:** `serialized integration candidate`, not on `main`
 
 ## Exact result to carry forward

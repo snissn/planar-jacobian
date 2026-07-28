@@ -46,7 +46,7 @@ def validate_manifest() -> None:
     assert len(manifest["candidate_sha"]) == 40
     assert manifest["review_mode"] == "local-adversarial-review"
     assert manifest["reviewed_revision"] == manifest["candidate_sha"]
-    assert manifest["pr_number"] is None
+    assert manifest["pr_number"] == 56
     assert manifest["completion_receipt"] is None
     assert manifest["temporary_artifacts_absent"] is True
     assert manifest["integration_state"] == "integration-ready"
