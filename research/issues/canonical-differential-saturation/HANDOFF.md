@@ -131,12 +131,14 @@ The live-ID allocation for this serialized packet is:
 
 | Worker label | Canonical ID | Canonical status |
 |---|---|---|
-| `CDS-003` | `CLM-079` | `candidate_proved` |
-| `CDS-004` | `CLM-080` | `candidate_proved` |
-| `CDS-005` | `CLM-081` | `candidate_proved` |
-| `CDS-006` | `CLM-082` | `candidate_proved` |
-| `CDS-007` | `CLM-083` | `open_bridge` |
-| `CDS-008` | `CLM-084` | `candidate_proved` |
+| `CDS-001` | existing `CLM-010` | `verified_internal` |
+| `CDS-002` | `CLM-079` | `candidate_proved` |
+| `CDS-003` | `CLM-080` | `candidate_proved` |
+| `CDS-004` | `CLM-081` | `candidate_proved` |
+| `CDS-005` | `CLM-082` | `candidate_proved` |
+| `CDS-006` | `CLM-083` | `candidate_proved` |
+| `CDS-007` | `CLM-084` | `open_bridge` |
+| `CDS-008` | `CLM-085` | `candidate_proved` |
 
 The integration maintainer:
 
@@ -159,7 +161,7 @@ The integration maintainer:
      directly stable full multiplier is already the desired order;
    - no finite pair-stable lattice was constructed.
 2. adds proof-graph reduction node `RED-CDS-COHERENCE-WALL` for
-   `CDS-007` / `CLM-083`,
+   `CDS-007` / `CLM-084`,
    depending on `CLM-003`, `CLM-010`, `CLM-011`, `CLM-013`, and
    `CLM-061`.
 3. points `L02`, Track D, the work queue, and the issue index to this

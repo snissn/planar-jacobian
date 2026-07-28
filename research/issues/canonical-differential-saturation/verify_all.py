@@ -51,7 +51,7 @@ def validate_manifest() -> None:
     assert manifest["temporary_artifacts_absent"] is True
     assert manifest["integration_state"] == "integration-ready"
     assert [claim["id"] for claim in manifest["proposed_global_claims"]] == [
-        f"CLM-{number:03d}" for number in range(79, 85)
+        f"CLM-{number:03d}" for number in range(79, 86)
     ]
 
 

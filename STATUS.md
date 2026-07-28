@@ -13,7 +13,7 @@
 
 ## Machine-derived inventory
 
-- Claims: **84** across **10** statuses.
+- Claims: **85** across **10** statuses.
 - Reviewed-scoped claims: **7**.
 - Proof graph: **39** nodes and **64** directed edges.
 - Graph node statuses: `active` 6, `blocked` 4, `disposed` 2, `literature_bound` 2, `open` 22, `reviewed` 2, `speculative` 1.

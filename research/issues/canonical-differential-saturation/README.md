@@ -10,8 +10,9 @@
 > **Review mode:** `local-adversarial-review` — `ACCEPT_SCOPED` at `ab498bd9f40fdb36137fbe8a52658555a3eef004`
 
 The worker candidate uses issue-local labels `CDS-001` through `CDS-008`.
-This serialized integration preserves the reviewed scientific bytes and maps
-`CDS-003` through `CDS-008` to `CLM-079` through `CLM-084` against the
+This serialized integration preserves the reviewed scientific bytes, binds
+`CDS-001` to the existing canonical-frame claim `CLM-010`, and maps
+`CDS-002` through `CDS-008` to `CLM-079` through `CLM-085` against the
 recorded current integration base. Shared claim, graph, queue, track, leaf,
 and generated surfaces are changed only by this integration-maintainer run.
 

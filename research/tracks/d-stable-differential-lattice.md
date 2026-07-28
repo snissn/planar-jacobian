@@ -51,7 +51,8 @@ The right side is the full unramified DVR condition, including separable residue
 ## Canonical saturation and ordinary-coherence wall
 
 The canonical-differential-saturation successor records `CLM-079` through
-`CLM-084`. It proves at mutable candidate scope that
+`CLM-085`. It first preserves the general finite-full-seed obstruction and
+then proves at mutable candidate scope that
 
 ```text
 Sat_D(O) finite
@@ -71,7 +72,7 @@ D-module route would additionally need global ordinary coherence, a
 compatible connection preserving both unscaled translations, and a
 torsion-free meromorphic embedding with generic fiber `L`.
 
-The surviving exact bridge is `CLM-083`: derive trivial height-one inertia
+The surviving exact bridge is `CLM-084`: derive trivial height-one inertia
 from the actual polynomial Keller source. This is a reduction, not an
 unramifiedness theorem or a stable-lattice construction.
 

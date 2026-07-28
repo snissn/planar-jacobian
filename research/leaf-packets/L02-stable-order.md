@@ -42,19 +42,21 @@ The successor packet sharpens the existence boundary:
 The canonical-differential-saturation successor sharpens the same wall without
 claiming a construction:
 
-1. saturation of the normalization is finite exactly when the finite
-   normalization is unramified in codimension one (`CLM-079`);
-2. every divisorial source boundary lies over a height-one target divisor,
+1. finite differential saturation of any finite full seed excludes
+   height-one ramification (`CLM-079`);
+2. saturation of the normalization is finite exactly when the finite
+   normalization is unramified in codimension one (`CLM-080`);
+3. every divisorial source boundary lies over a height-one target divisor,
    ramified pole stages escape, and an unramified stage containing an actual
-   positive pole also escapes (`CLM-080`);
-3. generic height-one ordinary coherence of the full permutation connection
-   is equivalent to trivial local inertia (`CLM-081`);
-4. regular holonomicity and logarithmic coherence do not imply ordinary
-   structure-sheaf finiteness (`CLM-082`);
-5. the surviving source-character exclusion is `CLM-083`; and
-6. dual, canonical, full-intersection, jet, cohomological, and automatic
+   positive pole also escapes (`CLM-081`);
+4. generic height-one ordinary coherence of the full permutation connection
+   is equivalent to trivial local inertia (`CLM-082`);
+5. regular holonomicity and logarithmic coherence do not imply ordinary
+   structure-sheaf finiteness (`CLM-083`);
+6. the surviving source-character exclusion is `CLM-084`; and
+7. dual, canonical, full-intersection, jet, cohomological, and automatic
    multiplier shortcuts are disposed only at the declared construction-class
-   scope (`CLM-084`).
+   scope (`CLM-085`).
 
 Thus multiplicative closure is no longer the missing bridge. The unresolved step is finite-stage pair stability itself. No finite pair-stable lattice is constructed, and no planar Jacobian-conjecture conclusion is claimed.
 
@@ -127,7 +129,7 @@ The integrated packet reaches a class-level obstruction for divisorial source-po
 
 ## Handoff
 
-Prove the source-character exclusion in `CLM-083`: at every ramified
+Prove the source-character exclusion in `CLM-084`: at every ramified
 height-one boundary valuation, rule out nontrivial inertia characters using
 the actual polynomial source algebra and both canonical translations. A
 direct D-module substitute must separately provide global ordinary coherence,
