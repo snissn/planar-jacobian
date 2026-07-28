@@ -5,11 +5,11 @@
 
 ## Summary
 
-- Nodes: **39**
-- Directed edges: **64**
+- Nodes: **41**
+- Directed edges: **66**
 - Open leaf nodes: **11**
-- Node types: `branch` 10, `context` 1, `control` 2, `foundation` 1, `goal` 1, `leaf` 15, `reduction` 5, `terminal` 4
-- Node statuses: `active` 6, `blocked` 4, `disposed` 2, `literature_bound` 2, `open` 22, `reviewed` 2, `speculative` 1
+- Node types: `branch` 10, `context` 1, `control` 2, `foundation` 1, `goal` 1, `leaf` 15, `reduction` 7, `terminal` 4
+- Node statuses: `active` 7, `blocked` 4, `disposed` 2, `literature_bound` 2, `open` 23, `reviewed` 2, `speculative` 1
 
 ## Nodes
 
@@ -29,7 +29,7 @@
 | `OPEN-STABLE-ORDER` | Construct a finite full B-lattice stable under D_P,D_Q | `leaf` | `open` | [leaf-packets/L02-stable-order.md](leaf-packets/L02-stable-order.md) | CLM-011 and CLM-013 record the conditional implication. CLM-079 through CLM-085 preserve the finite-full-seed obstruction, reduce normalization saturation and generic ordinary coherence to trivial height-one inertia, exclude divisorial pole and categorical shortcuts, and leave CLM-084 open. No finite pair-stable lattice is constructed. |
 | `RED-CDS-COHERENCE-WALL` | Reduce differential saturation and ordinary coherence to trivial height-one inertia | `reduction` | `open` | [issues/canonical-differential-saturation/README.md](issues/canonical-differential-saturation/README.md) | Issue #4 packet label CDS-001 binds existing CLM-010; labels CDS-002 through CDS-008 are synchronized as CLM-079 through CLM-085. The normalization route leaves source-character exclusion open; a direct global D-module route additionally needs ordinary coherence, both unscaled translations, and a torsion-free meromorphic embedding. |
 | `BR-RADIAL` | Canonical radial/logarithmic field completion | `branch` | `open` | [tracks/b-canonical-derivations.md](tracks/b-canonical-derivations.md) | — |
-| `OPEN-BOUNDARY-POLE` | Solve the non-toric one-boundary Laurent-conductor bridge | `leaf` | `open` | [leaf-packets/L03-radial-pole-elimination.md](leaf-packets/L03-radial-pole-elimination.md) | Issue #5 classifies logarithmic lifting, excludes G_m-invariant and purely unramified one-boundary subclasses at candidate scope, and leaves CLM-072: a fixed-type non-toric Laurent/conductor system. |
+| `OPEN-BOUNDARY-POLE` | Reduce the non-toric one-boundary Laurent-conductor bridge | `reduction` | `open` | [leaf-packets/L03-radial-pole-elimination.md](leaf-packets/L03-radial-pole-elimination.md) | Issue #5 classifies logarithmic lifting, excludes G_m-invariant and purely unramified one-boundary subclasses, and the Liouville successor further excludes the Liouville-nonexact ramified pole-supported subclass. The current leaf is the Liouville-exact polynomial-realization bridge. |
 | `BR-QUASI-ALBANESE` | Intrinsic torus-complement route | `branch` | `open` | [tracks/e-quasi-albanese-log-geometry.md](tracks/e-quasi-albanese-log-geometry.md) | — |
 | `OPEN-QA-FINITE` | Prove the intrinsic quasi-Albanese map is finite | `leaf` | `open` | [leaf-packets/L04-quasi-albanese-finiteness.md](leaf-packets/L04-quasi-albanese-finiteness.md) | — |
 | `BR-GAUSS-MANIN` | Generic-fiber puncture and connection route | `branch` | `open` | [tracks/f-gauss-manin-generic-fibers.md](tracks/f-gauss-manin-generic-fibers.md) | — |
@@ -53,6 +53,8 @@
 | `TERM-DEGREE-ONE` | Show the function-field degree is one | `terminal` | `blocked` | — | — |
 | `TERM-AUTOMORPHISM` | Apply the birational/finite Keller conclusion | `terminal` | `blocked` | — | — |
 | `RED-ONE-BOUNDARY-LOG` | One-boundary logarithmic semisimple obstruction | `reduction` | `active` | [issues/one-boundary-logarithmic-field/README.md](issues/one-boundary-logarithmic-field/README.md) | Candidate packet excludes torus-invariant generically ramified and purely unramified one-boundary models; the general non-toric fixed-type system remains open. |
+| `RED-ONE-BOUNDARY-LIOUVILLE` | Normalized Liouville exactness for ramified pole-supported boundary | `reduction` | `active` | [issues/non-toric-one-boundary-closure/README.md](issues/non-toric-one-boundary-closure/README.md) | Issue #5 packet labels NTLC-01 through NTLC-08 are synchronized as CLM-086 through CLM-093. The packet proves normalized Liouville exactness and excludes the Liouville-nonexact subclass at mutable candidate scope; it does not prove algebraization or a general one-boundary theorem. |
+| `OPEN-ONE-BOUNDARY-POLYNOMIALIZATION` | Eliminate or polynomially realize the Liouville-exact non-toric survivor | `leaf` | `open` | [leaf-packets/L03-radial-pole-elimination.md](leaf-packets/L03-radial-pole-elimination.md) | CLM-094 is the surviving bridge: force a higher differential or conductor obstruction, rule out polynomial algebraization, or control every global Newton/Rees layer strongly enough to obtain a qualifying weight. |
 | `OPEN-DEFECT-5` | Fixed-weight defect-five theorem at independently reviewed scope | `leaf` | `reviewed` | [leaf-packets/L15-defect-5-staircase.md](leaf-packets/L15-defect-5-staircase.md) | [review](issues/defect-5-independent-review/REVIEW.md); Independent ACCEPT binds exactly to candidate 2eeb36d232366d124b5a66774b29769ec1eba43d for a fixed primitive positive weight with actual defect five. No qualifying-weight existence, arbitrary filtered termination, generic defect-six theorem, or JC_2 inference is licensed. |
 
 ## Edges
@@ -114,12 +116,14 @@
 | `BR-MONOGENIC` | `requires` | `OPEN-KELLER-INDEX-UNIT` |
 | `OPEN-KELLER-INDEX-UNIT` | `narrows-to` | `TERM-RANK-THREE-EXCLUSION` |
 | `OPEN-SYMPLECTIC` | `supports` | `OPEN-BOUNDARY-POLE` |
-| `OPEN-BOUNDARY-POLE` | `supports` | `TERM-DEGREE-ONE` |
+| `OPEN-BOUNDARY-POLE` | `narrows-to` | `RED-ONE-BOUNDARY-LIOUVILLE` |
 | `RED-NORMALIZATION` | `requires` | `RED-ONE-BOUNDARY-LOG` |
 | `RED-DERIVATIONS` | `requires` | `RED-ONE-BOUNDARY-LOG` |
 | `RED-SYMPLECTIC` | `requires` | `RED-ONE-BOUNDARY-LOG` |
 | `BR-WRIGHT` | `supports` | `RED-ONE-BOUNDARY-LOG` |
 | `RED-ONE-BOUNDARY-LOG` | `supports` | `OPEN-BOUNDARY-POLE` |
+| `RED-ONE-BOUNDARY-LIOUVILLE` | `narrows-to` | `OPEN-ONE-BOUNDARY-POLYNOMIALIZATION` |
+| `OPEN-ONE-BOUNDARY-POLYNOMIALIZATION` | `supports` | `TERM-DEGREE-ONE` |
 | `BR-FILTERED-EQUIVARIANCE` | `requires` | `OPEN-DEFECT-5` |
 | `OPEN-DEFECT-4` | `supports` | `OPEN-DEFECT-5` |
 | `OPEN-DEFECT-5` | `supports` | `OPEN-GRADED-REDUCTION` |

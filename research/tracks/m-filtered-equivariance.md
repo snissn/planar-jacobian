@@ -145,3 +145,17 @@ The completed review leaf is [`L15-defect-5-staircase.md`](../leaf-packets/L15-d
 ## Exit
 
 The mathematical stop rules for defect `4` and actual defect `5` have each been reached by a full scoped reduction and an independent `ACCEPT` bound to an exact candidate revision. These are fixed-weight theorems only. A qualifying-weight theorem, arbitrary filtered termination, generic defect six, and `JC_2` remain outside this track's reviewed scope.
+
+## Boundary-weight interface (2026-07-27)
+
+`CLM-092` records a separate negative extraction result from the issue #5
+Laurent-conductor packet: the current local pole-order, common-power,
+conductor, and formal-recursion data do not determine the global weighted
+degrees of `P` and `Q`, because top-layer polynomial cancellations remain
+uncontrolled.
+
+This does not weaken the reviewed fixed-weight defect-four or defect-five
+theorems. It identifies the missing input needed to invoke them: a global
+Newton/Rees support theorem producing a primitive positive qualifying weight
+with a controlled actual defect. That support problem remains one branch of
+`CLM-094`.
