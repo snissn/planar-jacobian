@@ -4,23 +4,7 @@
   "leaf_id": "L15",
   "role": "integration-maintainer",
   "owned_paths": [
-    "research/issues/defect-5-independent-review/",
-    "README.md",
-    "STATUS.md",
-    "governance/reviews/issue-38-defect5-mainline-freeze.md",
-    "research/claim_ledger.json",
-    "research/CLAIM_LEDGER.md",
-    "research/proof_graph.json",
-    "research/PROOF_GRAPH.md",
-    "research/work_queue.json",
-    "research/WORK_QUEUE.md",
-    "research/ISSUE_INDEX.md",
-    "research/leaf-packets/L15-defect-5-staircase.md",
-    "research/tracks/m-filtered-equivariance.md",
-    "research/issues/defect-5-rees/review_validate_defect5_adversarial.py",
-    "scripts/render_views.py",
-    "scripts/validate_repository.py",
-    ".github/workflows/repository-python-validators.yml"
+    "research/issues/defect-5-independent-review/"
   ],
   "base_sha": "f2399d8634521edf220d412a3e14d42eb56d89be",
   "candidate_sha": "2eeb36d232366d124b5a66774b29769ec1eba43d",
@@ -53,9 +37,7 @@
     "research/ISSUE_INDEX.md",
     "research/leaf-packets/L15-defect-5-staircase.md",
     "research/tracks/m-filtered-equivariance.md",
-    "governance/reviews/issue-38-defect5-mainline-freeze.md",
-    "scripts/validate_repository.py",
-    ".github/workflows/repository-python-validators.yml"
+    "governance/reviews/issue-38-defect5-mainline-freeze.md"
   ],
   "supersedes_prs": [
     43

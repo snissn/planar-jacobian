@@ -11,7 +11,13 @@ SHA = re.compile(r"^[0-9a-f]{40}$")
 ROLES = {"research-worker", "reviewer", "integration-maintainer", "governance-maintainer"}
 REVIEWS = {"none", "independent-review", "local-adversarial-review"}
 STATES = {"construction", "review", "integration-ready", "merged", "blocked"}
-SHARED = {"README.md", "STATUS.md", "research/claim_ledger.json", "research/CLAIM_LEDGER.md", "research/proof_graph.json", "research/PROOF_GRAPH.md", "research/work_queue.json", "research/WORK_QUEUE.md", "research/ISSUE_INDEX.md"}
+SHARED = {
+    "README.md", "STATUS.md", "research/PROGRAM.md",
+    "research/claim_ledger.json", "research/CLAIM_LEDGER.md",
+    "research/proof_graph.json", "research/PROOF_GRAPH.md",
+    "research/work_queue.json", "research/WORK_QUEUE.md", "research/ISSUE_INDEX.md",
+}
+SHARED_PREFIXES = ("research/leaf-packets/", "research/tracks/", "governance/reviews/")
 FIELDS = {"schema_version", "issue_number", "leaf_id", "role", "owned_paths", "base_sha", "candidate_sha", "scientific_status", "review_mode", "reviewed_revision", "proposed_global_claims", "proposed_graph_nodes", "shared_surfaces_requested", "supersedes_prs", "temporary_artifacts_absent", "integration_state"}
 OPTIONAL = {"pr_number", "completion_receipt"}
 WORKFLOW = ".github/workflows/repository-python-validators.yml"
@@ -33,6 +39,20 @@ def packets(root: Path) -> list[Path]:
 def owned(path: str, roots: list[str]) -> bool:
     return any(path == r.rstrip("/") or path.startswith(r.rstrip("/") + "/") for r in roots)
 
+def shared_scientific_path(path: str) -> bool:
+    return path in SHARED or path.startswith(SHARED_PREFIXES)
+
+def governance_path(path: str) -> bool:
+    name = Path(path).name
+    return (
+        (path.startswith("governance/") and not path.startswith("governance/reviews/"))
+        or path.startswith(("scripts/", ".github/"))
+        or path in {"AGENTS.md", "AGENT_PROMPT.md"}
+        or path.endswith("/INTEGRATION.json")
+        or (path.startswith("research/issues/") and name == "SYNC_REPORT.md")
+        or (path.startswith("research/issues/") and name.startswith("sync_") and name.endswith(".py"))
+    )
+
 def read_manifest(path: Path, root: Path, result: Result) -> dict[str, Any]:
     try: value = json.loads(path.read_text())
     except Exception as exc:
@@ -53,14 +73,24 @@ def read_manifest(path: Path, root: Path, result: Result) -> dict[str, Any]:
     if mode not in REVIEWS: result.error(f"{rel}: invalid review_mode")
     if mode == "none" and revision is not None: result.error(f"{rel}: reviewed_revision must be null")
     if mode != "none" and not SHA.fullmatch(str(revision or "")): result.error(f"{rel}: reviewed_revision required")
-    roots = value.get("owned_paths")
-    if not isinstance(roots, list) or not roots: result.error(f"{rel}: owned_paths must be nonempty"); roots = []
     packet_root = path.parent.relative_to(root).as_posix() + "/"
-    if packet_root not in roots: result.error(f"{rel}: owned_paths must include {packet_root}")
+    roots = value.get("owned_paths")
+    if not isinstance(roots, list) or roots != [packet_root]:
+        result.error(f"{rel}: owned_paths must contain exactly one issue-owned path: {packet_root}")
+        roots = roots if isinstance(roots, list) else []
     for field in ("proposed_global_claims", "proposed_graph_nodes", "shared_surfaces_requested", "supersedes_prs"):
         if not isinstance(value.get(field), list): result.error(f"{rel}: {field} must be an array")
+    requested = value.get("shared_surfaces_requested")
+    if isinstance(requested, list):
+        invalid = [
+            item for item in requested
+            if not isinstance(item, str) or not shared_scientific_path(item)
+        ]
+        if invalid:
+            result.error(f"{rel}: noncanonical shared surfaces requested: {invalid}")
     if value.get("temporary_artifacts_absent") is not True: result.error(f"{rel}: temporary_artifacts_absent must be true")
     if value.get("integration_state") == "merged" and value.get("role") not in {"integration-maintainer", "governance-maintainer"}: result.error(f"{rel}: merged packet needs maintainer role")
+    value["_manifest_path"] = rel
     return value
 
 def scan_tree(root: Path, result: Result) -> None:
@@ -94,9 +124,15 @@ def event_context() -> PullRequestContext | None:
     if not isinstance(pr, dict): return None
     return PullRequestContext(int(pr["number"]), bool(pr.get("draft")), str(pr["base"]["ref"]), str(pr["base"]["sha"]), str(pr["head"]["sha"]), str(pr.get("body") or ""), str(data.get("repository", {}).get("full_name") or os.getenv("GITHUB_REPOSITORY", "")))
 
+def marker_values(body: str, label: str) -> list[str]:
+    return [
+        found.strip().strip("`")
+        for found in re.findall(rf"(?mi)^\s*-?\s*{re.escape(label)}\s*:\s*(.+?)\s*$", body)
+    ]
+
 def marker(body: str, label: str) -> str | None:
-    found = re.search(rf"(?mi)^\s*-?\s*{re.escape(label)}\s*:\s*(.+?)\s*$", body)
-    return found.group(1).strip().strip("`") if found else None
+    found = marker_values(body, label)
+    return found[0] if found else None
 
 def changed_files(root: Path, context: PullRequestContext, result: Result) -> list[str]:
     try: return [x for x in subprocess.check_output(["git", "diff", "--name-only", f"{context.base_sha}...{context.head_sha}"], cwd=root, text=True).splitlines() if x]
@@ -114,43 +150,65 @@ def validate_pr(manifests: list[dict[str, Any]], context: PullRequestContext, fi
     if context.draft: result.error("integration pull requests must not be draft")
     if context.base_ref != "main": result.error("pull request must target main")
     if not files: result.error("pull request changed-file set is empty"); return
-    def governance_path(path: str) -> bool:
-        name = Path(path).name
-        return (
-            path.startswith(("governance/", "scripts/", ".github/"))
-            or path in {"AGENTS.md", "AGENT_PROMPT.md"}
-            or path.endswith("/INTEGRATION.json")
-            or (path.startswith("research/issues/") and name == "SYNC_REPORT.md")
-            or (path.startswith("research/issues/") and name.startswith("sync_") and name.endswith(".py"))
-        )
-    governance = all(governance_path(f) for f in files)
-    touched = [] if governance else [m for m in manifests if any(owned(f, m.get("owned_paths", [])) for f in files)]
-    role = "governance-maintainer" if governance else (touched[0].get("role") if touched else None)
-    if not governance and (not touched or len({m.get("role") for m in touched}) != 1): result.error("PR lacks one manifest-declared role"); return
-    roots = [r for m in touched for r in m.get("owned_paths", [])]
+    body_markers = {
+        label: marker_values(context.body, label)
+        for label in ("Role", "Task-Issue", "Owned-Path")
+    }
+    invalid_markers = [label for label, values in body_markers.items() if len(values) != 1]
+    if invalid_markers:
+        for label in invalid_markers:
+            result.error(f"PR body must contain exactly one {label} marker")
+        return
+    body_role = body_markers["Role"][0]
+    issue_marker = body_markers["Task-Issue"][0]
+    owned_marker = body_markers["Owned-Path"][0]
+    governance = body_role == "governance-maintainer"
+    if governance:
+        bad = [f for f in files if not governance_path(f)]
+        if bad:
+            result.error("governance PR changes scientific content: " + ", ".join(bad))
+        for other in remote:
+            if int(other.get("number", 0)) == context.number: continue
+            body = str(other.get("body") or "")
+            if marker(body, "Task-Issue") == issue_marker or marker(body, "Owned-Path") == owned_marker:
+                result.error(f"duplicate open PR #{other.get('number')} for {issue_marker} / {owned_marker}")
+        return
+
+    selected = [
+        m for m in manifests
+        if issue_marker == f"#{m.get('issue_number')}"
+        and owned_marker == (m.get("owned_paths") or [None])[0]
+    ]
+    if len(selected) != 1:
+        result.error("PR body must select exactly one manifest by Task-Issue and Owned-Path")
+        return
+    packet = selected[0]
+    role = packet.get("role")
+    roots = packet.get("owned_paths", [])
+    requested = packet.get("shared_surfaces_requested", [])
+    manifest_path = packet.get("_manifest_path")
+    if body_role != role: result.error(f"PR body Role must be {role}")
+    if not any(owned(f, roots) for f in files):
+        result.error("PR does not change its selected manifest ownership path")
     if role in {"research-worker", "reviewer"}:
         for f in files:
             if f in SHARED: result.error(f"{role} may not edit shared surface {f}")
             if not owned(f, roots): result.error(f"{role} changed path outside ownership: {f}")
-        for m in touched:
-            for claim in m.get("proposed_global_claims", []):
-                if isinstance(claim, dict) and str(claim.get("id", "")).startswith("CLM-"): result.error("workers/reviewers must use issue-local claim labels")
+        for claim in packet.get("proposed_global_claims", []):
+            if isinstance(claim, dict) and str(claim.get("id", "")).startswith("CLM-"): result.error("workers/reviewers must use issue-local claim labels")
     if role == "integration-maintainer":
-        for m in touched:
-            if m.get("base_sha") != context.base_sha: result.error("integration manifest base_sha does not match current PR base")
-    if role == "governance-maintainer":
-        bad = [f for f in files if f.startswith("research/") and not governance_path(f)]
-        if bad: result.error("governance PR changes scientific content: " + ", ".join(bad))
-    body_role = marker(context.body, "Role")
-    if body_role != role: result.error(f"PR body Role must be {role}")
-    for m in touched:
-        expected_issue, expected_owned = f"#{m.get('issue_number')}", m.get("owned_paths", [None])[0]
-        if marker(context.body, "Task-Issue") != expected_issue: result.error(f"PR body Task-Issue must be {expected_issue}")
-        if marker(context.body, "Owned-Path") != expected_owned: result.error(f"PR body Owned-Path must be {expected_owned}")
-        for other in remote:
-            if int(other.get("number", 0)) == context.number: continue
-            body = str(other.get("body") or "")
-            if marker(body, "Task-Issue") == expected_issue or marker(body, "Owned-Path") == expected_owned: result.error(f"duplicate open PR #{other.get('number')} for {expected_issue} / {expected_owned}")
+        if packet.get("base_sha") != context.base_sha: result.error("integration manifest base_sha does not match current PR base")
+        for f in files:
+            if governance_path(f) and f != manifest_path:
+                result.error(f"integration-maintainer may not edit governance surface: {f}")
+            elif not owned(f, roots) and f not in requested:
+                result.error(f"integration-maintainer changed path not requested by selected manifest: {f}")
+    expected_issue, expected_owned = f"#{packet.get('issue_number')}", roots[0]
+    for other in remote:
+        if int(other.get("number", 0)) == context.number: continue
+        body = str(other.get("body") or "")
+        if marker(body, "Task-Issue") == expected_issue or marker(body, "Owned-Path") == expected_owned:
+            result.error(f"duplicate open PR #{other.get('number')} for {expected_issue} / {expected_owned}")
 
 def validate_root(root: Path, *, context: PullRequestContext | None = None, changed_files: list[str] | None = None, remote_prs: list[dict[str, Any]] | None = None) -> Result:
     result, manifests = Result([], []), []

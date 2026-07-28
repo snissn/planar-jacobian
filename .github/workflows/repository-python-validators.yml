@@ -102,6 +102,16 @@ jobs:
           set -o pipefail
           python research/issues/rank-three-index-form-unit/verify_all.py | tee issue3-rank-three.log
 
+      - name: "Validate issue #3 rank-three terminal packet when present"
+        shell: bash
+        run: |
+          set -o pipefail
+          if [[ -f research/issues/rank-three-boundary-cube-unit/verify_all.py ]]; then
+            python research/issues/rank-three-boundary-cube-unit/verify_all.py | tee issue3-rank-three-terminal.log
+          else
+            echo "rank-three terminal packet is not present at this revision" | tee issue3-rank-three-terminal.log
+          fi
+
       - name: "Validate issue #4 stable-order identities"
         shell: bash
         run: |
@@ -178,6 +188,7 @@ jobs:
             defect4-independent.log
             issue3-models.log
             issue3-rank-three.log
+            issue3-rank-three-terminal.log
             issue4-stable-order.log
             issue4-source-reflexive-lattice.log
             issue5-principal-parts.log

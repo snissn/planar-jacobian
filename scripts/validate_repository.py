@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Run integration-policy checks, then the maintained structural validator.
 
-The legacy implementation is preserved byte-for-byte beside this wrapper. The
-only runtime source transformation removes its historical fixed upper claim-ID
-snapshot while retaining all named scientific invariants.
+The legacy implementation is preserved byte-for-byte beside this wrapper.
+Runtime source transformations replace historical snapshot invariants with
+transition-aware checks for canonical states already defined by the ledgers.
 """
 from __future__ import annotations
 
@@ -51,6 +51,37 @@ if old not in source:
     print("ERROR: legacy claim-sequence snapshot was not found")
     raise SystemExit(1)
 source = source.replace(old, new, 1)
+clm059_old = '''    if by_id.get("CLM-059", {}).get("status") != "open_bridge":
+        error("CLM-059: Keller-specific index-form unit theorem must remain open_bridge")
+'''
+clm059_new = '''    rank_three_terminal_claims = render_views.rank_three_terminal_claims(items)
+    if len(rank_three_terminal_claims) > 1:
+        error("rank-three terminal semantic identity is not unique")
+    rank_three_terminal_claim = (
+        rank_three_terminal_claims[0]
+        if len(rank_three_terminal_claims) == 1
+        else None
+    )
+    rank_three_terminal_id = (
+        rank_three_terminal_claim.get("id")
+        if rank_three_terminal_claim
+        else None
+    )
+    if rank_three_terminal_claim:
+        clm059 = by_id.get("CLM-059", {})
+        if clm059.get("status") != "retired":
+            error("CLM-059: rank-three construction target must remain retired")
+        if rank_three_terminal_id not in clm059.get("depends_on", []):
+            error("CLM-059: rank-three retirement must depend on the bounded terminal claim")
+        if "no unit-index section was constructed" not in clm059.get("note", "").lower():
+            error("CLM-059: retirement must retain the constructive nonclaim")
+    elif by_id.get("CLM-059", {}).get("status") != "open_bridge":
+        error("CLM-059: Keller-specific index-form unit theorem must remain open_bridge before a bounded terminal is synchronized")
+'''
+if clm059_old not in source:
+    print("ERROR: legacy CLM-059 status snapshot was not found")
+    raise SystemExit(1)
+source = source.replace(clm059_old, clm059_new, 1)
 claim_anchor = '    if "arXiv:2607.20210v1" not in by_id.get("CLM-070", {}).get("note", ""):\n        error("CLM-070: terminal subclass exclusion must retain exact external dependency")\n'
 claim_checks = claim_anchor + (
     '    clm073 = by_id.get("CLM-073", {})\n'
@@ -72,11 +103,51 @@ claim_checks = claim_anchor + (
     '    for phrase in ("arbitrary filtered termination", "generic defect six", "does not establish JC_2"):\n'
     '        if phrase not in clm073.get("note", ""):\n'
     '            error(f"CLM-073 lost nonclaim: {phrase}")\n'
+    '    if rank_three_terminal_claim:\n'
+    '        rank_three_statuses = {\n'
+    '            "R3BC-02": "candidate_proved",\n'
+    '            "R3BC-03": "candidate_proved",\n'
+    '            "R3BC-04": "candidate_proved",\n'
+    '            "R3BC-05": "literature_bound",\n'
+    '        }\n'
+    '        rank_three_by_label = {}\n'
+    '        for label, expected_status in rank_three_statuses.items():\n'
+    '            claim = render_views.rank_three_packet_claim(items, label)\n'
+    '            if claim is None:\n'
+    '                error(f"{label}: rank-three packet claim is missing or non-unique")\n'
+    '                continue\n'
+    '            rank_three_by_label[label] = claim\n'
+    '            if claim.get("status") != expected_status:\n'
+    '                error(f"{label}: rank-three synchronization status drifted")\n'
+    '        if rank_three_terminal_claim.get("status") != "literature_bound":\n'
+    '            error("rank-three bounded primary-source terminal status drifted")\n'
+    '        for phrase in ("constructs no unit-index section", "degree four or higher", "JC_2"):\n'
+    '            if phrase not in rank_three_terminal_claim.get("note", ""):\n'
+    '                error(f"{rank_three_terminal_id} lost nonclaim: {phrase}")\n'
+    '        application = rank_three_by_label.get("R3BC-05", {})\n'
+    '        if rank_three_terminal_id not in application.get("depends_on", []):\n'
+    '            error("R3BC-05: literature-bound application lost its terminal dependency")\n'
 )
 if claim_anchor not in source:
     print("ERROR: legacy CLM-070 invariant anchor was not found")
     raise SystemExit(1)
 source = source.replace(claim_anchor, claim_checks, 1)
+keller_node_old = '''    if node_by_id.get("OPEN-KELLER-INDEX-UNIT", {}).get("status") != "open":
+        error("OPEN-KELLER-INDEX-UNIT must remain open")
+'''
+keller_node_new = '''    rank_three_terminal = node_by_id.get("TERM-RANK-THREE-EXCLUSION")
+    if rank_three_terminal:
+        if node_by_id.get("OPEN-KELLER-INDEX-UNIT", {}).get("status") != "disposed":
+            error("OPEN-KELLER-INDEX-UNIT must retain disposed rank-three status")
+        if rank_three_terminal.get("type") != "terminal" or rank_three_terminal.get("status") != "literature_bound":
+            error("TERM-RANK-THREE-EXCLUSION must retain its literature-bound terminal scope")
+    elif node_by_id.get("OPEN-KELLER-INDEX-UNIT", {}).get("status") != "open":
+        error("OPEN-KELLER-INDEX-UNIT must remain open before a bounded terminal is synchronized")
+'''
+if keller_node_old not in source:
+    print("ERROR: legacy OPEN-KELLER-INDEX-UNIT snapshot was not found")
+    raise SystemExit(1)
+source = source.replace(keller_node_old, keller_node_new, 1)
 graph_anchor = '    if node_by_id.get("OPEN-DEFECT-4", {}).get("status") != "reviewed":\n        error("OPEN-DEFECT-4 must retain reviewed status")\n'
 graph_checks = graph_anchor + (
     '    defect5 = node_by_id.get("OPEN-DEFECT-5", {})\n'
@@ -89,5 +160,32 @@ if graph_anchor not in source:
     print("ERROR: legacy OPEN-DEFECT-4 invariant anchor was not found")
     raise SystemExit(1)
 source = source.replace(graph_anchor, graph_checks, 1)
+edge_anchor = '''    for edge in edges:
+        if edge.get("from") == "OPEN-DEFECT-4" and edge.get("to") in forbidden_targets:
+            error("OPEN-DEFECT-4 must not acquire a terminal or JC_2 edge")
+'''
+edge_checks = edge_anchor + '''    if rank_three_terminal:
+        required_rank_three_edges = {
+            ("OPEN-KELLER-INDEX-UNIT", "narrows-to", "TERM-RANK-THREE-EXCLUSION"),
+            ("CTL-LITERATURE", "supports", "TERM-RANK-THREE-EXCLUSION"),
+        }
+        present_edges = {
+            (edge.get("from"), edge.get("kind"), edge.get("to"))
+            for edge in edges
+        }
+        missing_edges = required_rank_three_edges - present_edges
+        if missing_edges:
+            error(f"rank-three literature-bound terminal lost required edges: {sorted(missing_edges)}")
+        for edge in edges:
+            if (
+                edge.get("from") in {"OPEN-KELLER-INDEX-UNIT", "TERM-RANK-THREE-EXCLUSION"}
+                and edge.get("to") in forbidden_targets
+            ):
+                error("rank-three disposition must not acquire a degree-one or JC_2 edge")
+'''
+if edge_anchor not in source:
+    print("ERROR: legacy terminal-edge invariant anchor was not found")
+    raise SystemExit(1)
+source = source.replace(edge_anchor, edge_checks, 1)
 namespace = {"__name__": "__main__", "__file__": str(legacy)}
 exec(compile(source, str(legacy), "exec"), namespace)

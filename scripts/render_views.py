@@ -21,6 +21,34 @@ def cell(value: Any) -> str:
 def code(value: str) -> str:
     return f'`{value}`'
 
+def rank_three_terminal_claims(claims: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    return [
+        item for item in claims
+        if item.get('track') == 'low-degree-literature'
+        and 'function-field degree three' in item.get('statement', '')
+        and 'Orevkov' in item.get('statement', '')
+    ]
+
+def rank_three_packet_claim(claims: list[dict[str, Any]], label: str) -> dict[str, Any] | None:
+    matches = [item for item in claims if label in item.get('note', '')]
+    return matches[0] if len(matches) == 1 else None
+
+def rank_three_status_line(claims: dict[str, Any]) -> str:
+    items = claims['claims']
+    terminal_matches = rank_three_terminal_claims(items)
+    if len(terminal_matches) != 1:
+        return '- **Issue #3:** rank-three trace/index foundations, a finite source/boundary gcd-one certificate, and an exact cubic differential congruence are banked at candidate scope. The universal-content shortcut is false; `L14` remains open at the boundary-cube/unit-value bridge.'
+    terminal_id = terminal_matches[0]['id']
+    internal_ids = [
+        claim['id']
+        for label in ('R3BC-02', 'R3BC-03', 'R3BC-04')
+        if (claim := rank_three_packet_claim(items, label)) is not None
+    ]
+    application = rank_three_packet_claim(items, 'R3BC-05')
+    internal = ', '.join(code(claim_id) for claim_id in internal_ids) or 'the packet-local internal refinements'
+    application_id = code(application['id']) if application else 'the specified-source-open application'
+    return f'- **Issue #3:** {code(terminal_id)} excludes planar Keller function-field degree three at `literature_bound` scope through Orevkov\'s audited primary theorem. `L14` and `CLM-059` are disposed only at rank-three scope without a constructed unit-index section. Internal refinements {internal} remain `candidate_proved`; {application_id} is a `literature_bound` application. No degree-four-or-higher or `JC_2` result follows.'
+
 def relative_link(output_path: str, target: str, label: str | None=None) -> str:
     start = (ROOT / output_path).parent
     rel = os.path.relpath(ROOT / target, start=start).replace(os.sep, '/')
@@ -119,6 +147,8 @@ def render_status(claims: dict[str, Any], graph: dict[str, Any], queue: dict[str
     metadata_exports = [item for item in manifest['exports'] if item.get('storage_mode') == 'metadata_only']
     p0 = [item for item in queue['leaves'] if item['priority'] == 'P0']
     lines = ['# Repository Status', '', '> Generated from maintained JSON ledgers by [`scripts/render_views.py`](scripts/render_views.py).', '', '## Authority and scientific boundary', '', '- **Canonical integration surface:** latest `main`; branches are short-lived transport surfaces.', '- **Main theorem:** open; `ROOT-JC2` remains `blocked`.', '- **Merge meaning:** preservation and transport, not scientific acceptance.', '- **Reviewed scope:** the primitive-positive-weight defect-at-most-four theorem is `reviewed_scoped` at candidate `96fc7ec34bd3b685a0edeae7ecd4404abab7e2f1`; the fixed primitive-positive-weight, actual-defect-five theorem is separately `reviewed_scoped` as `CLM-073` at candidate `2eeb36d232366d124b5a66774b29769ec1eba43d`.', '- **Review binding:** each filtered theorem has its own independent `ACCEPT` and freeze record; neither review produces a qualifying weight for arbitrary Keller pairs.', '- **Explicit nonclaims:** no theorem producing a qualifying weight for every Keller pair, no defect-six or arbitrary-termination theorem, and no proof of `JC_2`.', '', '## Machine-derived inventory', '', f"- Claims: **{len(claims['claims'])}** across **{len(claim_counts)}** statuses.", f"- Reviewed-scoped claims: **{claim_counts.get('reviewed_scoped', 0)}**.", f"- Proof graph: **{len(graph['nodes'])}** nodes and **{len(graph['edges'])}** directed edges.", '- Graph node statuses: ' + ', '.join((f'{code(k)} {v}' for k, v in sorted(node_counts.items()))) + '.', f"- Open canonical leaves: **{len(queue['leaves'])}**; recorded dispositions: **{len(queue.get('dispositions', []))}**.", f'- Metadata-only conversation exports: **{len(metadata_exports)}**; completion remains issue [#22](https://github.com/snissn/planar-jacobian/issues/22).', '', '## Integrated scientific packets', '', '- **Issue #3:** rank-three trace/index foundations, a finite source/boundary gcd-one certificate, and an exact cubic differential congruence are banked at candidate scope. The universal-content shortcut is false; `L14` remains open at the boundary-cube/unit-value bridge.', '- **Issue #4:** the source-reflexive-lattice successor proves at mutable candidate scope that a finite full pair-stable module yields a finite locally free stable multiplier order and that divisorial source-pole stages escape at ramification. No finite pair-stable lattice is constructed; issue #4 remains open.', '- **Issue #5:** the one-boundary successor excludes torus-invariant generically ramified and purely unramified one-boundary subclasses at mutable candidate scope. The general non-toric Laurent/conductor system remains open as `CLM-072`; exactness still permits higher principal parts.', '- **Issue #17:** the exact positive-weight defect-at-most-four theorem is reviewed only at the pinned revision. It creates no terminal edge to `JC_2`.', '- **Issues #29 and #38:** fixed primitive positive weight and actual defect five is `CLM-073` at `reviewed_scoped` status, bound to independent `ACCEPT` at candidate `2eeb36d232366d124b5a66774b29769ec1eba43d`. No qualifying-weight, arbitrary-termination, generic defect-six, or `JC_2` claim is introduced.', '', '## P0 resume order', '']
+    issue3_index = next(index for index, line in enumerate(lines) if line.startswith('- **Issue #3:**'))
+    lines[issue3_index] = rank_three_status_line(claims)
     for leaf in p0:
         rel = os.path.relpath(ROOT / leaf['artifact'], start=ROOT).replace(os.sep, '/')
         lines.append(f"- {code(leaf['id'])}: [{leaf['title']}]({rel}) — issue [#{leaf['issue_number']}](https://github.com/snissn/planar-jacobian/issues/{leaf['issue_number']}).")
