@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "issue_number": 5,
+  "leaf_id": "L03",
+  "role": "research-worker",
+  "owned_paths": [
+    "research/issues/three-puncture-polynomial-realization/"
+  ],
+  "base_sha": "b4545bd9ca395c023b0d452feee29b5e6f77f83e",
+  "candidate_sha": "20f34c4c2ccf7289d436aad41e25f374ea40d1f3",
+  "scientific_status": "DISPLAYED_BRANCH_POLYNOMIAL_REALIZATION_EXCLUDED / MUTABLE_NONAUTHORITATIVE",
+  "review_mode": "local-adversarial-review",
+  "reviewed_revision": "20f34c4c2ccf7289d436aad41e25f374ea40d1f3",
+  "proposed_global_claims": [
+    {
+      "id": "TPPR-01",
+      "status": "candidate_proved",
+      "track": "exact-symplectic",
+      "statement": "The displayed branch is smooth with coordinate ring C[z,z^-1,(z-1)^-1]; Q and Q-1 are units, and R=1/z+1/(z-1) descends to the affine branch ring.",
+      "dependencies": [
+        "CLM-023"
+      ],
+      "nonclaims": "No general conductor-descent theorem."
+    },
+    {
+      "id": "TPPR-02",
+      "status": "candidate_proved",
+      "track": "normalization",
+      "statement": "For the finite-normalization factorization of a dominant quasi-finite polynomial map, the image of the omitted source boundary equals the nonproperness set; a divisor mapping onto the displayed branch makes that branch an irreducible component.",
+      "dependencies": [
+        "CLM-003"
+      ],
+      "nonclaims": "No classification of all source-boundary divisors and no assertion for merely generically finite maps with positive-dimensional exceptional fibers."
+    },
+    {
+      "id": "TPPR-03",
+      "status": "literature_bound",
+      "track": "literature-low-degree",
+      "statement": "Jelonek--Lason Theorem 3.2 makes the nonproperness set of a generically finite polynomial map C^n to C^m componentwise covered by nonconstant polynomially parametric curves.",
+      "dependencies": [],
+      "nonclaims": "Bound only to the exact primary-source hypotheses."
+    },
+    {
+      "id": "TPPR-04",
+      "status": "candidate_proved",
+      "track": "normalization",
+      "statement": "Every morphism A1 to the displayed three-puncture branch is constant because Q and Q-1 pull back to units of C[t].",
+      "dependencies": [
+        "TPPR-01"
+      ],
+      "nonclaims": "No statement about rational maps from P1."
+    },
+    {
+      "id": "TPPR-05",
+      "status": "candidate_proved",
+      "track": "normalization",
+      "statement": "No polynomial Keller realization can have a finite-normalization source-boundary divisor mapping onto the displayed branch.",
+      "dependencies": [
+        "TPPR-02",
+        "TPPR-03",
+        "TPPR-04"
+      ],
+      "nonclaims": "No general one-boundary theorem, qualifying weight, ramification bound, or JC_2 conclusion."
+    }
+  ],
+  "proposed_graph_nodes": [
+    {
+      "id": "DISPOSE-THREE-PUNCTURE-POLYNOMIAL-LOCAL",
+      "type": "disposition",
+      "status": "candidate",
+      "statement": "The explicit three-puncture Liouville-exact branch is excluded at the global polynomial-realization step."
+    },
+    {
+      "id": "OPEN-LIOUVILLE-EXACT-POLYNOMIALLY-PARAMETRIC-LOCAL",
+      "type": "leaf",
+      "status": "open",
+      "statement": "Treat remaining Liouville-exact non-toric branches that admit polynomial A1 curves."
+    }
+  ],
+  "shared_surfaces_requested": [
+    "research/claim_ledger.json",
+    "research/proof_graph.json",
+    "research/work_queue.json",
+    "research/leaf-packets/L03-radial-pole-elimination.md",
+    "research/leaf-packets/L11-exact-symplectic-boundary.md"
+  ],
+  "supersedes_prs": [],
+  "temporary_artifacts_absent": true,
+  "integration_state": "integration-ready",
+  "pr_number": 58,
+  "completion_receipt": null
+}
