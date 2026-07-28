@@ -7,7 +7,7 @@
 
 | Priority | Leaf | Graph node | Issue | Claim dependencies | Track |
 |---|---|---|---|---|---|
-| `P0` | [Finite Stable Differential Order](leaf-packets/L02-stable-order.md) | `OPEN-STABLE-ORDER` | [#4](https://github.com/snissn/planar-jacobian/issues/4) | `CLM-010`, `CLM-011`, `CLM-012`, `CLM-013`, `CLM-061` | [d-stable-differential-lattice.md](tracks/d-stable-differential-lattice.md) |
+| `P0` | [Finite Stable Differential Order](leaf-packets/L02-stable-order.md) | `OPEN-STABLE-ORDER` | [#4](https://github.com/snissn/planar-jacobian/issues/4) | `CLM-010`, `CLM-011`, `CLM-012`, `CLM-013`, `CLM-061`, `CLM-079`, `CLM-080`, `CLM-081`, `CLM-082`, `CLM-083`, `CLM-084` | [d-stable-differential-lattice.md](tracks/d-stable-differential-lattice.md) |
 | `P0` | [Non-Toric One-Boundary Laurent-Conductor Bridge](leaf-packets/L03-radial-pole-elimination.md) | `OPEN-BOUNDARY-POLE` | [#5](https://github.com/snissn/planar-jacobian/issues/5) | `CLM-014`, `CLM-015`, `CLM-023`, `CLM-052`, `CLM-053`, `CLM-054`, `CLM-055`, `CLM-056`, `CLM-057`, `CLM-067`, `CLM-068`, `CLM-069`, `CLM-070`, `CLM-071`, `CLM-072` | [b-canonical-derivations.md](tracks/b-canonical-derivations.md) |
 | `P0` | [Wright Graded Reduction](leaf-packets/L06-graded-reduction.md) | `OPEN-GRADED-REDUCTION` | [#8](https://github.com/snissn/planar-jacobian/issues/8) | `CLM-024`, `CLM-025` | [g-wright-graded-single-tree.md](tracks/g-wright-graded-single-tree.md) |
 | `P0` | [Primary-Source Audit](leaf-packets/L10-literature-audit.md) | `OPEN-LITERATURE` | [#12](https://github.com/snissn/planar-jacobian/issues/12) | `CLM-003`, `CLM-004`, `CLM-005`, `CLM-015`, `CLM-016`, `CLM-017`, `CLM-021`, `CLM-044`, `CLM-048` | [l-literature-low-degree.md](tracks/l-literature-low-degree.md) |

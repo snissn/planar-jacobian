@@ -1,12 +1,19 @@
 # Canonical Differential Saturation, Coherent Lattices, and Height-One Ramification
 
-> **Role:** `research-worker`  
-> **Task issue:** `#4`  
-> **Owned path:** `research/issues/canonical-differential-saturation/`  
-> **Base revision:** `main@652a5e252626fa5816445651245e8a8946cee53e`  
-> **Authority:** `MUTABLE_NONAUTHORITATIVE`  
-> **Scientific disposition:** `SCOPED_EQUIVALENCE_COUNTEREXAMPLE_AND_REDUCTION`  
+> **Role:** `integration-maintainer`
+> **Task issue:** `#4`
+> **Owned path:** `research/issues/canonical-differential-saturation/`
+> **Integration base:** `main@c42f59d88305313a9b3f280650fb50c63717413c`
+> **Worker base:** `main@652a5e252626fa5816445651245e8a8946cee53e`
+> **Authority:** `MUTABLE_NONAUTHORITATIVE`
+> **Scientific disposition:** `SCOPED_EQUIVALENCE_COUNTEREXAMPLE_AND_REDUCTION`
 > **Review mode:** `local-adversarial-review` — `ACCEPT_SCOPED` at `ab498bd9f40fdb36137fbe8a52658555a3eef004`
+
+The worker candidate uses issue-local labels `CDS-001` through `CDS-008`.
+This serialized integration preserves the reviewed scientific bytes and maps
+`CDS-003` through `CDS-008` to `CLM-079` through `CLM-084` against the
+recorded current integration base. Shared claim, graph, queue, track, leaf,
+and generated surfaces are changed only by this integration-maintainer run.
 
 ## Question
 

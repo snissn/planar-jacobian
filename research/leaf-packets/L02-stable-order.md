@@ -39,6 +39,23 @@ The successor packet sharpens the existence boundary:
 5. the source algebra is the directed union of finite reflexive divisorial pole modules, but every ramified finite stage escapes, and every positive pole stage at an unramified omitted divisor escapes under a transverse member of the frame;
 6. the multiplier-ring construction converts any hypothetical stable module into the required stable order.
 
+The canonical-differential-saturation successor sharpens the same wall without
+claiming a construction:
+
+1. saturation of the normalization is finite exactly when the finite
+   normalization is unramified in codimension one (`CLM-079`);
+2. every divisorial source boundary lies over a height-one target divisor,
+   ramified pole stages escape, and an unramified stage containing an actual
+   positive pole also escapes (`CLM-080`);
+3. generic height-one ordinary coherence of the full permutation connection
+   is equivalent to trivial local inertia (`CLM-081`);
+4. regular holonomicity and logarithmic coherence do not imply ordinary
+   structure-sheaf finiteness (`CLM-082`);
+5. the surviving source-character exclusion is `CLM-083`; and
+6. dual, canonical, full-intersection, jet, cohomological, and automatic
+   multiplier shortcuts are disposed only at the declared construction-class
+   scope (`CLM-084`).
+
 Thus multiplicative closure is no longer the missing bridge. The unresolved step is finite-stage pair stability itself. No finite pair-stable lattice is constructed, and no planar Jacobian-conjecture conclusion is claimed.
 
 ## Accepted evidence
@@ -87,6 +104,16 @@ research/issues/source-reflexive-lattice/CANDIDATE_LATTICE_TABLE.md
 research/issues/source-reflexive-lattice/COUNTERMODELS.md
 research/issues/source-reflexive-lattice/REVIEW.md
 research/issues/source-reflexive-lattice/HANDOFF.md
+research/issues/canonical-differential-saturation/README.md
+research/issues/canonical-differential-saturation/DIFFERENTIAL_SATURATION.md
+research/issues/canonical-differential-saturation/DMODULE_ROUTE.md
+research/issues/canonical-differential-saturation/LOGARITHMIC_LATTICES.md
+research/issues/canonical-differential-saturation/LOCAL_RESIDUES.md
+research/issues/canonical-differential-saturation/CONSTRUCTION_TABLE.md
+research/issues/canonical-differential-saturation/COUNTERMODELS.md
+research/issues/canonical-differential-saturation/SOURCE_AUDIT.md
+research/issues/canonical-differential-saturation/REVIEW.md
+research/issues/canonical-differential-saturation/HANDOFF.md
 ```
 
 ## Stop rule
@@ -100,4 +127,11 @@ The integrated packet reaches a class-level obstruction for divisorial source-po
 
 ## Handoff
 
-Search for a finite **non-divisorial** source-derived module whose iterated canonical derivatives stay in one fixed finite ambient `B`-module. Before invoking Noetherianity, exhibit that ambient module and prove fullness. Any successful candidate automatically yields a stable order through the reflexive multiplier-ring construction; any divisorial bounded-pole candidate is already excluded by the fractional-residue theorem.
+Prove the source-character exclusion in `CLM-083`: at every ramified
+height-one boundary valuation, rule out nontrivial inertia characters using
+the actual polynomial source algebra and both canonical translations. A
+direct D-module substitute must separately provide global ordinary coherence,
+preservation by both unscaled translations, and a torsion-free meromorphic
+embedding with generic fiber `L`. A finite non-divisorial module remains a
+valid construction target only if all iterates stay in one exhibited finite
+full ambient `B`-module.

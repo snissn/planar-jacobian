@@ -1,13 +1,14 @@
 # Handoff
 
-> **Role:** `research-worker`  
-> **Task issue:** `#4`  
-> **Owned path:** `research/issues/canonical-differential-saturation/`  
-> **Base:** `652a5e252626fa5816445651245e8a8946cee53e`  
-> **Reviewed candidate:** `ab498bd9f40fdb36137fbe8a52658555a3eef004`  
-> **Review:** `local-adversarial-review` / `ACCEPT_SCOPED`  
-> **Pull request:** `#42`, non-draft, integration-ready, not merged  
-> **Integration state:** `integration-ready`, not on `main`
+> **Role:** `integration-maintainer`
+> **Task issue:** `#4`
+> **Owned path:** `research/issues/canonical-differential-saturation/`
+> **Integration base:** `c42f59d88305313a9b3f280650fb50c63717413c`
+> **Worker base:** `652a5e252626fa5816445651245e8a8946cee53e`
+> **Reviewed candidate:** `ab498bd9f40fdb36137fbe8a52658555a3eef004`
+> **Review:** `local-adversarial-review` / `ACCEPT_SCOPED`
+> **Worker pull request:** `#42`, superseded by serialized integration
+> **Integration state:** `serialized integration candidate`, not on `main`
 
 ## Exact result to carry forward
 
@@ -125,7 +126,20 @@ A serialized integration maintainer may, after re-resolving live
 `main` and reviewing the scoped mathematics, make only these global
 changes.
 
-1. Amend the note for `CLM-061` to record:
+The live-ID allocation for this serialized packet is:
+
+| Worker label | Canonical ID | Canonical status |
+|---|---|---|
+| `CDS-003` | `CLM-079` | `candidate_proved` |
+| `CDS-004` | `CLM-080` | `candidate_proved` |
+| `CDS-005` | `CLM-081` | `candidate_proved` |
+| `CDS-006` | `CLM-082` | `candidate_proved` |
+| `CDS-007` | `CLM-083` | `open_bridge` |
+| `CDS-008` | `CLM-084` | `candidate_proved` |
+
+The integration maintainer:
+
+1. amends the note for `CLM-061` to record:
    - normalization-seed differential saturation is coherent iff there
      is no height-one ramification;
    - every divisorial source boundary maps onto a height-one target
@@ -143,16 +157,47 @@ changes.
    - seed instability does not imply multiplier instability, while a
      directly stable full multiplier is already the desired order;
    - no finite pair-stable lattice was constructed.
-2. Add a proof-graph obstruction/reduction node for `CDS-007`,
+2. adds proof-graph reduction node `RED-CDS-COHERENCE-WALL` for
+   `CDS-007` / `CLM-083`,
    depending on `CLM-003`, `CLM-010`, `CLM-011`, `CLM-013`, and
    `CLM-061`.
-3. Point `L02`, Track D, the work queue, and the issue index to this
+3. points `L02`, Track D, the work queue, and the issue index to this
    packet as the current issue #4 successor.
-4. Allocate global claim or graph identifiers against the live ledgers
-   at integration time.  Packet-local `CDS-*` labels are not global
-   allocations.
+4. records that packet-local `CDS-*` labels remain construction labels;
+   the `CLM-*` and `RED-*` identifiers above are allocated only by this
+   serialized integration.
 
-No shared file has been edited by this branch.
+The worker branch edited no shared file. This integration-maintainer branch
+owns only the shared surfaces listed in `INTEGRATION.json`.
+
+## Serialized-transplant audit
+
+The integration branch was created from exact live
+`main@c42f59d88305313a9b3f280650fb50c63717413c` and added only the worker-owned
+packet before shared synchronization. The following reviewed mathematical
+files remain byte-identical to worker candidate
+`ab498bd9f40fdb36137fbe8a52658555a3eef004`:
+
+```text
+FOUNDATIONS.md
+DIFFERENTIAL_SATURATION.md
+DMODULE_ROUTE.md
+LOGARITHMIC_LATTICES.md
+LOCAL_RESIDUES.md
+CONSTRUCTION_TABLE.md
+COUNTERMODELS.md
+SOURCE_AUDIT.md
+verify_local_residues.py
+verify_global_bridges.py
+```
+
+The scientific body of `README.md` is unchanged. `README.md`, `HANDOFF.md`,
+and `INTEGRATION.json` carry only integration role, live-base, canonical-ID,
+shared-surface, and supersession metadata. In `verify_all.py`, the scientific
+validator invocations and bounds are unchanged; only its manifest assertions
+were updated from worker-local to serialized-integration metadata. Under the
+repository review policy these are transport-only changes and do not expand
+the accepted mathematics.
 
 ## Recommended next task
 
@@ -223,12 +268,13 @@ verify_global_bridges.py --max-degree 25 --max-n 50 --max-e 25
   PASS
 ```
 
-The permanent read-only repository workflow on the exact final PR head
+The permanent read-only repository workflow on the exact final integration
+PR head
 must confirm byte compilation of maintained Python, the integration
 contract, generated views, structural validation, frontier generation,
-and the complete maintained repository suite.  Its exact run locator
-and conclusion belong in PR #42 so that the tested head remains
-unchanged.  Passing validators records encoded identities and
+and the complete maintained repository suite. Its exact run locator and
+conclusion belong in the replacement integration PR so that the tested head
+remains unchanged. Passing validators records encoded identities and
 repository consistency only; it does not establish mathematical truth.
 
 ## Integration cautions

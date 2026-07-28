@@ -38,20 +38,21 @@ def validate_manifest() -> None:
     assert manifest["schema_version"] == 1
     assert manifest["issue_number"] == 4
     assert manifest["leaf_id"] == "L02"
-    assert manifest["role"] == "research-worker"
+    assert manifest["role"] == "integration-maintainer"
     assert manifest["owned_paths"] == [
         "research/issues/canonical-differential-saturation/"
     ]
-    assert manifest["base_sha"] == "652a5e252626fa5816445651245e8a8946cee53e"
+    assert manifest["base_sha"] == "c42f59d88305313a9b3f280650fb50c63717413c"
     assert len(manifest["candidate_sha"]) == 40
     assert manifest["review_mode"] == "local-adversarial-review"
     assert manifest["reviewed_revision"] == manifest["candidate_sha"]
-    assert manifest["pr_number"] == 42
+    assert manifest["pr_number"] is None
     assert manifest["completion_receipt"] is None
     assert manifest["temporary_artifacts_absent"] is True
     assert manifest["integration_state"] == "integration-ready"
-    for claim in manifest["proposed_global_claims"]:
-        assert not str(claim.get("id", "")).startswith("CLM-")
+    assert [claim["id"] for claim in manifest["proposed_global_claims"]] == [
+        f"CLM-{number:03d}" for number in range(79, 85)
+    ]
 
 
 def validate_prose() -> None:

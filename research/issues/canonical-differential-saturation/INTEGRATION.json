@@ -2,50 +2,80 @@
   "schema_version": 1,
   "issue_number": 4,
   "leaf_id": "L02",
-  "role": "research-worker",
+  "role": "integration-maintainer",
   "owned_paths": [
     "research/issues/canonical-differential-saturation/"
   ],
-  "base_sha": "652a5e252626fa5816445651245e8a8946cee53e",
+  "base_sha": "c42f59d88305313a9b3f280650fb50c63717413c",
   "candidate_sha": "ab498bd9f40fdb36137fbe8a52658555a3eef004",
   "scientific_status": "scoped equivalence, divisorial pole-stage theorem, counterexamples, corrected multiplier and intersection audit, and exact reduction / MUTABLE_NONAUTHORITATIVE",
   "review_mode": "local-adversarial-review",
   "reviewed_revision": "ab498bd9f40fdb36137fbe8a52658555a3eef004",
   "proposed_global_claims": [
     {
-      "id": "CDS-003",
+      "id": "CLM-079",
       "status": "candidate_proved",
-      "statement": "The normalization-seed differential saturation is finite if and only if the finite normalization is unramified in codimension one."
+      "statement": "The normalization-seed differential saturation is finite if and only if the finite normalization is unramified in codimension one.",
+      "dependencies": [
+        "CLM-003",
+        "CLM-010"
+      ]
     },
     {
-      "id": "CDS-004",
+      "id": "CLM-080",
       "status": "candidate_proved",
-      "statement": "Because the normalization is finite over the target, every divisorial source boundary maps onto a height-one base divisor; ramified pole stages and genuine positive unramified pole stages have nonfinite saturation."
+      "statement": "Because the normalization is finite over the target, every divisorial source boundary maps onto a height-one base divisor; ramified pole stages and genuine positive unramified pole stages have nonfinite saturation.",
+      "dependencies": [
+        "CLM-003",
+        "CLM-079"
+      ]
     },
     {
-      "id": "CDS-005",
+      "id": "CLM-081",
       "status": "candidate_proved",
-      "statement": "At a generic height-one point of the full finite-cover permutation connection, an embedded ordinary coherent lattice exists if and only if local inertia is trivial."
+      "statement": "At a generic height-one point of the full finite-cover permutation connection, an embedded ordinary coherent lattice exists if and only if local inertia is trivial.",
+      "dependencies": [
+        "CLM-003",
+        "CLM-079"
+      ]
     },
     {
-      "id": "CDS-006",
-      "status": "counterexample",
-      "statement": "Regular holonomicity and coherent logarithmic extension do not imply ordinary structure-sheaf finiteness or translation stability."
+      "id": "CLM-082",
+      "status": "candidate_proved",
+      "statement": "Regular holonomicity and coherent logarithmic extension do not imply ordinary structure-sheaf finiteness or translation stability.",
+      "dependencies": [
+        "CLM-081"
+      ]
     },
     {
-      "id": "CDS-007",
+      "id": "CLM-083",
       "status": "open_bridge",
-      "statement": "Derive trivial height-one inertia from the polynomial Keller source; a direct global D-module route additionally requires global ordinary coherence with a compatible connection preserving both unscaled translations, and a torsion-free meromorphic embedding with generic fiber L."
+      "statement": "Derive trivial height-one inertia from the polynomial Keller source; a direct global D-module route additionally requires global ordinary coherence with a compatible connection preserving both unscaled translations, and a torsion-free meromorphic embedding with generic fiber L.",
+      "dependencies": [
+        "CLM-010",
+        "CLM-011",
+        "CLM-013",
+        "CLM-061",
+        "CLM-079",
+        "CLM-081"
+      ]
     },
     {
-      "id": "CDS-008",
-      "status": "negative_audit",
-      "statement": "The audited dual, canonical, intersection, jet, and cohomological constructions do not bypass the inertia bridge; the finite-seed obstruction applies only to full intersections, and multiplier stability is a separate stable-order condition."
+      "id": "CLM-084",
+      "status": "candidate_proved",
+      "statement": "The audited dual, canonical, intersection, jet, and cohomological constructions do not bypass the inertia bridge; the finite-seed obstruction applies only to full intersections, and multiplier stability is a separate stable-order condition.",
+      "dependencies": [
+        "CLM-061",
+        "CLM-079",
+        "CLM-081",
+        "CLM-082"
+      ]
     }
   ],
   "proposed_graph_nodes": [
     {
-      "id": "ISSUE4-CDS-COHERENCE-WALL",
+      "id": "RED-CDS-COHERENCE-WALL",
+      "type": "reduction",
       "status": "open",
       "dependencies": [
         "CLM-003",
@@ -58,16 +88,22 @@
     }
   ],
   "shared_surfaces_requested": [
+    "STATUS.md",
     "research/claim_ledger.json",
+    "research/CLAIM_LEDGER.md",
     "research/proof_graph.json",
+    "research/PROOF_GRAPH.md",
     "research/work_queue.json",
+    "research/WORK_QUEUE.md",
     "research/ISSUE_INDEX.md",
     "research/leaf-packets/L02-stable-order.md",
     "research/tracks/d-stable-differential-lattice.md"
   ],
-  "supersedes_prs": [],
+  "supersedes_prs": [
+    42
+  ],
   "temporary_artifacts_absent": true,
   "integration_state": "integration-ready",
-  "pr_number": 42,
+  "pr_number": null,
   "completion_receipt": null
 }

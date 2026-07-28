@@ -5,11 +5,11 @@
 
 ## Summary
 
-- Nodes: **38**
-- Directed edges: **62**
+- Nodes: **39**
+- Directed edges: **64**
 - Open leaf nodes: **11**
-- Node types: `branch` 10, `context` 1, `control` 2, `foundation` 1, `goal` 1, `leaf` 15, `reduction` 4, `terminal` 4
-- Node statuses: `active` 6, `blocked` 4, `disposed` 2, `literature_bound` 2, `open` 21, `reviewed` 2, `speculative` 1
+- Node types: `branch` 10, `context` 1, `control` 2, `foundation` 1, `goal` 1, `leaf` 15, `reduction` 5, `terminal` 4
+- Node statuses: `active` 6, `blocked` 4, `disposed` 2, `literature_bound` 2, `open` 22, `reviewed` 2, `speculative` 1
 
 ## Nodes
 
@@ -26,7 +26,8 @@
 | `OPEN-KELLER-INDEX-UNIT` | Dispose the rank-three Keller index-unit construction target | `leaf` | `disposed` | [leaf-packets/L14-keller-index-form-unit.md](leaf-packets/L14-keller-index-form-unit.md) | CLM-074 disposes this construction target only at rank three because a degree-three planar Keller map is excluded by Orevkov's primary theorem. No unit-index section was constructed, and no higher-degree or JC_2 implication is recorded. |
 | `TERM-RANK-THREE-EXCLUSION` | Exclude planar Keller function-field degree three | `terminal` | `literature_bound` | [issues/rank-three-boundary-cube-unit/README.md](issues/rank-three-boundary-cube-unit/README.md) | CLM-074, literature-bound to Orevkov's 1987 primary theorem. This bounded terminal has no edge to degree one, automorphism, or JC_2. |
 | `BR-STABLE-LATTICE` | Finite differential order route | `branch` | `open` | [tracks/d-stable-differential-lattice.md](tracks/d-stable-differential-lattice.md) | — |
-| `OPEN-STABLE-ORDER` | Construct a finite full B-lattice stable under D_P,D_Q | `leaf` | `open` | [leaf-packets/L02-stable-order.md](leaf-packets/L02-stable-order.md) | CLM-011 and CLM-013 record the conditional implication. The source-reflexive-lattice successor proves the reflexive multiplier-ring bridge and excludes every finite divisorial pole stage at ramification. CLM-061 remains open at finite pair-stable lattice existence. |
+| `OPEN-STABLE-ORDER` | Construct a finite full B-lattice stable under D_P,D_Q | `leaf` | `open` | [leaf-packets/L02-stable-order.md](leaf-packets/L02-stable-order.md) | CLM-011 and CLM-013 record the conditional implication. CLM-079 through CLM-084 reduce normalization saturation and generic ordinary coherence to trivial height-one inertia, exclude divisorial pole and categorical shortcuts, and leave CLM-083 open. No finite pair-stable lattice is constructed. |
+| `RED-CDS-COHERENCE-WALL` | Reduce differential saturation and ordinary coherence to trivial height-one inertia | `reduction` | `open` | [issues/canonical-differential-saturation/README.md](issues/canonical-differential-saturation/README.md) | Issue #4 packet labels CDS-003 through CDS-008, synchronized as CLM-079 through CLM-084. The normalization route leaves source-character exclusion open; a direct global D-module route additionally needs ordinary coherence, both unscaled translations, and a torsion-free meromorphic embedding. |
 | `BR-RADIAL` | Canonical radial/logarithmic field completion | `branch` | `open` | [tracks/b-canonical-derivations.md](tracks/b-canonical-derivations.md) | — |
 | `OPEN-BOUNDARY-POLE` | Solve the non-toric one-boundary Laurent-conductor bridge | `leaf` | `open` | [leaf-packets/L03-radial-pole-elimination.md](leaf-packets/L03-radial-pole-elimination.md) | Issue #5 classifies logarithmic lifting, excludes G_m-invariant and purely unramified one-boundary subclasses at candidate scope, and leaves CLM-072: a fixed-type non-toric Laurent/conductor system. |
 | `BR-QUASI-ALBANESE` | Intrinsic torus-complement route | `branch` | `open` | [tracks/e-quasi-albanese-log-geometry.md](tracks/e-quasi-albanese-log-geometry.md) | — |
@@ -79,6 +80,8 @@
 | `RED-SYMPLECTIC` | `requires` | `OPEN-SYMPLECTIC` |
 | `BR-MONOGENIC` | `requires` | `OPEN-UNRAMIFIED-INDEX` |
 | `BR-STABLE-LATTICE` | `requires` | `OPEN-STABLE-ORDER` |
+| `BR-STABLE-LATTICE` | `narrows-to` | `RED-CDS-COHERENCE-WALL` |
+| `RED-CDS-COHERENCE-WALL` | `supports` | `OPEN-STABLE-ORDER` |
 | `BR-RADIAL` | `requires` | `OPEN-BOUNDARY-POLE` |
 | `BR-QUASI-ALBANESE` | `requires` | `OPEN-QA-FINITE` |
 | `BR-GAUSS-MANIN` | `requires` | `OPEN-PUNCTURE` |

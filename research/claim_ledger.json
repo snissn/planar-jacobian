@@ -692,7 +692,7 @@
         "CLM-011",
         "CLM-013"
       ],
-      "note": "Issue #4 remains open. The source-reflexive-lattice packet proves that pair-stability is equivalent to height-one unramifiedness, that every finite divisorial source-pole stage escapes at ramification, and that multiplier closure is automatic. No finite pair-stable lattice is constructed."
+      "note": "Issue #4 remains open. The canonical-differential-saturation successor proves that normalization saturation is finite exactly at height-one unramifiedness, excludes ramified and genuine positive unramified pole stages, and identifies trivial local inertia as the ordinary-coherence wall. Holonomic or logarithmic coherence is insufficient. No finite pair-stable lattice is constructed."
     },
     {
       "id": "CLM-062",
@@ -907,6 +907,77 @@
         "CLM-074"
       ],
       "note": "Issue #3 packet label R3BC-05. This remains literature_bound because its terminal step imports CLM-074; it is terminal only at the specified Keller source-etale wall, and an arbitrary abstract open A2 is insufficient."
+    },
+    {
+      "id": "CLM-079",
+      "status": "candidate_proved",
+      "track": "differential-lattice",
+      "statement": "The normalization-seed differential saturation is finite if and only if the finite normalization is unramified in codimension one.",
+      "depends_on": [
+        "CLM-003",
+        "CLM-010"
+      ],
+      "note": "Issue #4 packet label CDS-003. The proof is a height-one valuation statement at mutable candidate scope; it does not derive unramifiedness for an arbitrary polynomial Keller source."
+    },
+    {
+      "id": "CLM-080",
+      "status": "candidate_proved",
+      "track": "differential-lattice",
+      "statement": "Because the normalization is finite over the target, every divisorial source boundary maps onto a height-one base divisor; ramified pole stages and genuine positive unramified pole stages have nonfinite differential saturation.",
+      "depends_on": [
+        "CLM-003",
+        "CLM-079"
+      ],
+      "note": "Issue #4 packet label CDS-004. The unramified assertion begins with an actual pole-bearing section; it is not inferred from a formal positive bound whose module need not realize that pole."
+    },
+    {
+      "id": "CLM-081",
+      "status": "candidate_proved",
+      "track": "differential-lattice",
+      "statement": "At a generic height-one point of the full finite-cover permutation connection, an embedded ordinary coherent lattice exists if and only if local inertia is trivial.",
+      "depends_on": [
+        "CLM-003",
+        "CLM-079"
+      ],
+      "note": "Issue #4 packet label CDS-005. This is a generic height-one criterion; it does not supply global ordinary coherence, codimension-two control, pair-stability, or a meromorphic embedding with generic fiber L."
+    },
+    {
+      "id": "CLM-082",
+      "status": "candidate_proved",
+      "track": "differential-lattice",
+      "statement": "Regular holonomicity and coherent logarithmic extension do not imply ordinary structure-sheaf finiteness or translation stability.",
+      "depends_on": [
+        "CLM-081"
+      ],
+      "note": "Issue #4 packet label CDS-006. Explicit Kummer and localization controls falsify the categorical shortcuts; they are not polynomial Keller counterexamples on the full affine plane."
+    },
+    {
+      "id": "CLM-083",
+      "status": "open_bridge",
+      "track": "differential-lattice",
+      "statement": "Derive trivial height-one inertia from the polynomial Keller source; a direct global D-module route additionally requires global ordinary coherence with a compatible connection preserving both unscaled translations, and a torsion-free meromorphic embedding with generic fiber L.",
+      "depends_on": [
+        "CLM-010",
+        "CLM-011",
+        "CLM-013",
+        "CLM-061",
+        "CLM-079",
+        "CLM-081"
+      ],
+      "note": "Issue #4 packet label CDS-007. This is the surviving source-character exclusion problem, not a constructed stable lattice, an unramifiedness theorem, a degree-one theorem, or JC_2."
+    },
+    {
+      "id": "CLM-084",
+      "status": "candidate_proved",
+      "track": "differential-lattice",
+      "statement": "The audited dual, canonical, intersection, jet, and cohomological constructions do not bypass the inertia bridge; the finite-seed obstruction applies only to full intersections, and multiplier stability is a separate stable-order condition.",
+      "depends_on": [
+        "CLM-061",
+        "CLM-079",
+        "CLM-081",
+        "CLM-082"
+      ],
+      "note": "Issue #4 packet label CDS-008. The negative audit is construction-class scoped and preserves the distinction between seed instability and multiplier-ring stability."
     }
   ]
 }
