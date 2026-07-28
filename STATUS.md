@@ -13,16 +13,16 @@
 
 ## Machine-derived inventory
 
-- Claims: **73** across **10** statuses.
+- Claims: **78** across **10** statuses.
 - Reviewed-scoped claims: **7**.
-- Proof graph: **37** nodes and **61** directed edges.
-- Graph node statuses: `active` 6, `blocked` 4, `disposed` 1, `literature_bound` 1, `open` 22, `reviewed` 2, `speculative` 1.
-- Open canonical leaves: **12**; recorded dispositions: **3**.
+- Proof graph: **38** nodes and **62** directed edges.
+- Graph node statuses: `active` 6, `blocked` 4, `disposed` 2, `literature_bound` 2, `open` 21, `reviewed` 2, `speculative` 1.
+- Open canonical leaves: **11**; recorded dispositions: **4**.
 - Metadata-only conversation exports: **2**; completion remains issue [#22](https://github.com/snissn/planar-jacobian/issues/22).
 
 ## Integrated scientific packets
 
-- **Issue #3:** rank-three trace/index foundations, a finite source/boundary gcd-one certificate, and an exact cubic differential congruence are banked at candidate scope. The universal-content shortcut is false; `L14` remains open at the boundary-cube/unit-value bridge.
+- **Issue #3:** `CLM-074` excludes planar Keller function-field degree three at `literature_bound` scope through Orevkov's audited primary theorem. `L14` and `CLM-059` are disposed only at rank-three scope without a constructed unit-index section. Internal refinements `CLM-075`, `CLM-076`, `CLM-077` remain `candidate_proved`; `CLM-078` is a `literature_bound` application. No degree-four-or-higher or `JC_2` result follows.
 - **Issue #4:** the source-reflexive-lattice successor proves at mutable candidate scope that a finite full pair-stable module yields a finite locally free stable multiplier order and that divisorial source-pole stages escape at ramification. No finite pair-stable lattice is constructed; issue #4 remains open.
 - **Issue #5:** the one-boundary successor excludes torus-invariant generically ramified and purely unramified one-boundary subclasses at mutable candidate scope. The general non-toric Laurent/conductor system remains open as `CLM-072`; exactness still permits higher principal parts.
 - **Issue #17:** the exact positive-weight defect-at-most-four theorem is reviewed only at the pinned revision. It creates no terminal edge to `JC_2`.
@@ -30,7 +30,6 @@
 
 ## P0 resume order
 
-- `L14`: [Rank-Three Keller Boundary-Cube Unit](research/leaf-packets/L14-keller-index-form-unit.md) — issue [#3](https://github.com/snissn/planar-jacobian/issues/3).
 - `L02`: [Finite Stable Differential Order](research/leaf-packets/L02-stable-order.md) — issue [#4](https://github.com/snissn/planar-jacobian/issues/4).
 - `L03`: [Non-Toric One-Boundary Laurent-Conductor Bridge](research/leaf-packets/L03-radial-pole-elimination.md) — issue [#5](https://github.com/snissn/planar-jacobian/issues/5).
 - `L06`: [Wright Graded Reduction](research/leaf-packets/L06-graded-reduction.md) — issue [#8](https://github.com/snissn/planar-jacobian/issues/8).

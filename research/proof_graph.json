@@ -60,11 +60,19 @@
     },
     {
       "id": "OPEN-KELLER-INDEX-UNIT",
-      "title": "Eliminate the rank-three Keller boundary-cube index obstruction",
+      "title": "Dispose the rank-three Keller index-unit construction target",
       "type": "leaf",
-      "status": "open",
+      "status": "disposed",
       "artifact": "leaf-packets/L14-keller-index-form-unit.md",
-      "note": "The rank-three issue #3 successor proves trace/index foundations, a finite source/boundary gcd-one certificate, and an exact cubic differential congruence. One unit index value remains open; universal content one is insufficient. Packet: research/issues/rank-three-index-form-unit/README.md."
+      "note": "CLM-074 disposes this construction target only at rank three because a degree-three planar Keller map is excluded by Orevkov's primary theorem. No unit-index section was constructed, and no higher-degree or JC_2 implication is recorded."
+    },
+    {
+      "id": "TERM-RANK-THREE-EXCLUSION",
+      "title": "Exclude planar Keller function-field degree three",
+      "type": "terminal",
+      "status": "literature_bound",
+      "artifact": "issues/rank-three-boundary-cube-unit/README.md",
+      "note": "CLM-074, literature-bound to Orevkov's 1987 primary theorem. This bounded terminal has no edge to degree one, automorphism, or JC_2."
     },
     {
       "id": "BR-STABLE-LATTICE",
@@ -437,6 +445,11 @@
       "kind": "supports"
     },
     {
+      "from": "CTL-LITERATURE",
+      "to": "TERM-RANK-THREE-EXCLUSION",
+      "kind": "supports"
+    },
+    {
       "from": "OPEN-STABLE-ORDER",
       "to": "TERM-DEGREE-ONE",
       "kind": "sufficient-if-closed"
@@ -523,8 +536,8 @@
     },
     {
       "from": "OPEN-KELLER-INDEX-UNIT",
-      "to": "TERM-DEGREE-ONE",
-      "kind": "sufficient-if-closed"
+      "to": "TERM-RANK-THREE-EXCLUSION",
+      "kind": "narrows-to"
     },
     {
       "from": "OPEN-SYMPLECTIC",

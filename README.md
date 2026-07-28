@@ -22,7 +22,7 @@ A merge to `main` is transport and preservation. It does not promote a candidate
 ## Current synchronized scientific boundary
 
 - **Filtered defects:** `CLM-047–051` and `CLM-060` are `reviewed_scoped` through defect four at candidate `96fc7ec34bd3b685a0edeae7ecd4404abab7e2f1`. `CLM-073` is separately `reviewed_scoped` for a fixed primitive positive weight with actual defect five at candidate `2eeb36d232366d124b5a66774b29769ec1eba43d`, under the independent issue #38 `ACCEPT`. Neither review proves that an arbitrary Keller pair has a qualifying weight, proves arbitrary filtered termination, treats generic defect six, or establishes `JC_2`.
-- **Issue #3 / rank-three index form:** the generic unramified-index bridge is disposed by `CLM-058`. The [rank-three successor packet](research/issues/rank-three-index-form-unit/README.md) records `CLM-062`–`CLM-066`: intrinsic index foundations, a finite source/boundary gcd-one certificate, an exact cubic differential congruence, and exclusion of the countermodel's interior different. `CLM-059` remains open at the one-section boundary-cube/unit-value step; universal content one is insufficient.
+- **Issue #3 / rank-three index form:** the generic unramified-index bridge is disposed by `CLM-058`. The [rank-three terminal packet](research/issues/rank-three-boundary-cube-unit/README.md) records `CLM-074` at `literature_bound` scope: function-field degree three gives generic sheet number three, while Orevkov's audited primary theorem excludes that multiplicity for a polynomial Keller map. `L14` and the rank-three construction target `CLM-059` are therefore disposed without constructing a unit-index section. Conditional refinements `CLM-075`–`CLM-077` remain `candidate_proved`, while the source-open terminal `CLM-078` remains `literature_bound`; no degree-four-or-higher or `JC_2` conclusion follows.
 - **Issue #4 / stable lattice:** the [source-reflexive-lattice packet](research/issues/source-reflexive-lattice/README.md) proves at mutable candidate scope that a finite full module stable under both canonical translations has a finite locally free stable multiplier order, and that every finite divisorial source-pole stage escapes at ramification. `CLM-061` remains open at existence of one finite pair-stable lattice; no such lattice is constructed.
 - **Issue #5 / one-boundary logarithmic field:** the predecessor packet classifies logarithmic lifting. The [one-boundary successor](research/issues/one-boundary-logarithmic-field/README.md) excludes, at mutable candidate scope, every generically ramified one-boundary model with a `G_m`-invariant reduced branch and every purely unramified one-boundary sheet-loss model. The general non-toric class remains open as `CLM-072`; exactness still permits higher principal parts.
 
@@ -69,6 +69,7 @@ python3 scripts/validate_defect4_staircase.py
 python3 scripts/review_validate_defect4_independent.py
 python3 research/issues/issue-3-unramified-index/verify_index_models.py
 python3 research/issues/rank-three-index-form-unit/verify_all.py
+python3 research/issues/rank-three-boundary-cube-unit/verify_all.py
 python3 scripts/validate_issue4_stable_order.py
 python3 research/issues/source-reflexive-lattice/verify_all.py
 python3 scripts/validate_issue5_principal_parts.py

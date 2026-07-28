@@ -12,6 +12,8 @@ The issue #3 countermodel `CLM-058` shows that local monogenicity, tame squarefr
 
 ## Disposition and successor
 
-The old generic leaf [`L01-unramified-index-elimination.md`](../leaf-packets/L01-unramified-index-elimination.md) is disposed. The active successor is [`L14-keller-index-form-unit.md`](../leaf-packets/L14-keller-index-form-unit.md), which must use the specified étale Keller source and its open immersion in the normalization.
+The old generic leaf [`L01-unramified-index-elimination.md`](../leaf-packets/L01-unramified-index-elimination.md) is disposed by the scoped countermodel. Its rank-three Keller successor [`L14-keller-index-form-unit.md`](../leaf-packets/L14-keller-index-form-unit.md) is now separately disposed at `literature_bound` scope: `CLM-074` binds function-field degree three to generic sheet number three and Orevkov's primary theorem excludes that case.
 
-The complete maintained issue packet is [`monogenicity-index-divisor.md`](monogenicity-index-divisor.md) together with [`../issues/issue-3-unramified-index/`](../issues/issue-3-unramified-index/README.md).
+This bounded terminal does not construct a unit-index section. `CLM-075`–`CLM-077` preserve the conditional boundary-cubic, residue-class, and differential refinements; `CLM-078` remains `literature_bound` at the specified source-open terminal. No result for degree four or higher and no `JC_2` edge is introduced.
+
+The complete maintained issue record is [`monogenicity-index-divisor.md`](monogenicity-index-divisor.md), the predecessor packet under [`../issues/issue-3-unramified-index/`](../issues/issue-3-unramified-index/README.md), and the terminal packet under [`../issues/rank-three-boundary-cube-unit/`](../issues/rank-three-boundary-cube-unit/README.md).
