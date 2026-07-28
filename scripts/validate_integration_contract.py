@@ -33,6 +33,16 @@ def packets(root: Path) -> list[Path]:
 def owned(path: str, roots: list[str]) -> bool:
     return any(path == r.rstrip("/") or path.startswith(r.rstrip("/") + "/") for r in roots)
 
+def governance_path(path: str) -> bool:
+    name = Path(path).name
+    return (
+        path.startswith(("governance/", "scripts/", ".github/"))
+        or path in {"AGENTS.md", "AGENT_PROMPT.md"}
+        or path.endswith("/INTEGRATION.json")
+        or (path.startswith("research/issues/") and name == "SYNC_REPORT.md")
+        or (path.startswith("research/issues/") and name.startswith("sync_") and name.endswith(".py"))
+    )
+
 def read_manifest(path: Path, root: Path, result: Result) -> dict[str, Any]:
     try: value = json.loads(path.read_text())
     except Exception as exc:
@@ -53,14 +63,21 @@ def read_manifest(path: Path, root: Path, result: Result) -> dict[str, Any]:
     if mode not in REVIEWS: result.error(f"{rel}: invalid review_mode")
     if mode == "none" and revision is not None: result.error(f"{rel}: reviewed_revision must be null")
     if mode != "none" and not SHA.fullmatch(str(revision or "")): result.error(f"{rel}: reviewed_revision required")
-    roots = value.get("owned_paths")
-    if not isinstance(roots, list) or not roots: result.error(f"{rel}: owned_paths must be nonempty"); roots = []
     packet_root = path.parent.relative_to(root).as_posix() + "/"
-    if packet_root not in roots: result.error(f"{rel}: owned_paths must include {packet_root}")
+    roots = value.get("owned_paths")
+    if not isinstance(roots, list) or roots != [packet_root]:
+        result.error(f"{rel}: owned_paths must contain exactly one issue-owned path: {packet_root}")
+        roots = roots if isinstance(roots, list) else []
     for field in ("proposed_global_claims", "proposed_graph_nodes", "shared_surfaces_requested", "supersedes_prs"):
         if not isinstance(value.get(field), list): result.error(f"{rel}: {field} must be an array")
+    requested = value.get("shared_surfaces_requested")
+    if isinstance(requested, list):
+        forbidden = [item for item in requested if isinstance(item, str) and governance_path(item)]
+        if forbidden:
+            result.error(f"{rel}: governance surfaces may not be requested for scientific integration: {forbidden}")
     if value.get("temporary_artifacts_absent") is not True: result.error(f"{rel}: temporary_artifacts_absent must be true")
     if value.get("integration_state") == "merged" and value.get("role") not in {"integration-maintainer", "governance-maintainer"}: result.error(f"{rel}: merged packet needs maintainer role")
+    value["_manifest_path"] = rel
     return value
 
 def scan_tree(root: Path, result: Result) -> None:
@@ -114,43 +131,51 @@ def validate_pr(manifests: list[dict[str, Any]], context: PullRequestContext, fi
     if context.draft: result.error("integration pull requests must not be draft")
     if context.base_ref != "main": result.error("pull request must target main")
     if not files: result.error("pull request changed-file set is empty"); return
-    def governance_path(path: str) -> bool:
-        name = Path(path).name
-        return (
-            path.startswith(("governance/", "scripts/", ".github/"))
-            or path in {"AGENTS.md", "AGENT_PROMPT.md"}
-            or path.endswith("/INTEGRATION.json")
-            or (path.startswith("research/issues/") and name == "SYNC_REPORT.md")
-            or (path.startswith("research/issues/") and name.startswith("sync_") and name.endswith(".py"))
-        )
-    governance = all(governance_path(f) for f in files)
-    touched = [] if governance else [m for m in manifests if any(owned(f, m.get("owned_paths", [])) for f in files)]
-    role = "governance-maintainer" if governance else (touched[0].get("role") if touched else None)
-    if not governance and (not touched or len({m.get("role") for m in touched}) != 1): result.error("PR lacks one manifest-declared role"); return
-    roots = [r for m in touched for r in m.get("owned_paths", [])]
+    body_role = marker(context.body, "Role")
+    governance = body_role == "governance-maintainer"
+    if governance:
+        bad = [f for f in files if not governance_path(f)]
+        if bad:
+            result.error("governance PR changes scientific content: " + ", ".join(bad))
+        return
+
+    issue_marker = marker(context.body, "Task-Issue")
+    owned_marker = marker(context.body, "Owned-Path")
+    selected = [
+        m for m in manifests
+        if issue_marker == f"#{m.get('issue_number')}"
+        and owned_marker == (m.get("owned_paths") or [None])[0]
+    ]
+    if len(selected) != 1:
+        result.error("PR body must select exactly one manifest by Task-Issue and Owned-Path")
+        return
+    packet = selected[0]
+    role = packet.get("role")
+    roots = packet.get("owned_paths", [])
+    requested = packet.get("shared_surfaces_requested", [])
+    manifest_path = packet.get("_manifest_path")
+    if body_role != role: result.error(f"PR body Role must be {role}")
+    if not any(owned(f, roots) for f in files):
+        result.error("PR does not change its selected manifest ownership path")
     if role in {"research-worker", "reviewer"}:
         for f in files:
             if f in SHARED: result.error(f"{role} may not edit shared surface {f}")
             if not owned(f, roots): result.error(f"{role} changed path outside ownership: {f}")
-        for m in touched:
-            for claim in m.get("proposed_global_claims", []):
-                if isinstance(claim, dict) and str(claim.get("id", "")).startswith("CLM-"): result.error("workers/reviewers must use issue-local claim labels")
+        for claim in packet.get("proposed_global_claims", []):
+            if isinstance(claim, dict) and str(claim.get("id", "")).startswith("CLM-"): result.error("workers/reviewers must use issue-local claim labels")
     if role == "integration-maintainer":
-        for m in touched:
-            if m.get("base_sha") != context.base_sha: result.error("integration manifest base_sha does not match current PR base")
-    if role == "governance-maintainer":
-        bad = [f for f in files if f.startswith("research/") and not governance_path(f)]
-        if bad: result.error("governance PR changes scientific content: " + ", ".join(bad))
-    body_role = marker(context.body, "Role")
-    if body_role != role: result.error(f"PR body Role must be {role}")
-    for m in touched:
-        expected_issue, expected_owned = f"#{m.get('issue_number')}", m.get("owned_paths", [None])[0]
-        if marker(context.body, "Task-Issue") != expected_issue: result.error(f"PR body Task-Issue must be {expected_issue}")
-        if marker(context.body, "Owned-Path") != expected_owned: result.error(f"PR body Owned-Path must be {expected_owned}")
-        for other in remote:
-            if int(other.get("number", 0)) == context.number: continue
-            body = str(other.get("body") or "")
-            if marker(body, "Task-Issue") == expected_issue or marker(body, "Owned-Path") == expected_owned: result.error(f"duplicate open PR #{other.get('number')} for {expected_issue} / {expected_owned}")
+        if packet.get("base_sha") != context.base_sha: result.error("integration manifest base_sha does not match current PR base")
+        for f in files:
+            if governance_path(f) and f != manifest_path:
+                result.error(f"integration-maintainer may not edit governance surface: {f}")
+            elif not owned(f, roots) and f not in requested:
+                result.error(f"integration-maintainer changed path not requested by selected manifest: {f}")
+    expected_issue, expected_owned = f"#{packet.get('issue_number')}", roots[0]
+    for other in remote:
+        if int(other.get("number", 0)) == context.number: continue
+        body = str(other.get("body") or "")
+        if marker(body, "Task-Issue") == expected_issue or marker(body, "Owned-Path") == expected_owned:
+            result.error(f"duplicate open PR #{other.get('number')} for {expected_issue} / {expected_owned}")
 
 def validate_root(root: Path, *, context: PullRequestContext | None = None, changed_files: list[str] | None = None, remote_prs: list[dict[str, Any]] | None = None) -> Result:
     result, manifests = Result([], []), []

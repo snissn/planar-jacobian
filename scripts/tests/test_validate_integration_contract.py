@@ -21,13 +21,20 @@ def write(path: Path, content: str = "x\n") -> None:
     path.write_text(content, encoding="utf-8")
 
 
-def manifest(role: str = "research-worker", review_mode: str = "none") -> dict:
+def manifest(
+    role: str = "research-worker",
+    review_mode: str = "none",
+    *,
+    issue_number: int = 99,
+    leaf_id: str = "L99",
+    owned_path: str = "research/issues/example/",
+) -> dict:
     return {
         "schema_version": 1,
-        "issue_number": 99,
-        "leaf_id": "L99",
+        "issue_number": issue_number,
+        "leaf_id": leaf_id,
         "role": role,
-        "owned_paths": ["research/issues/example/"],
+        "owned_paths": [owned_path],
         "base_sha": VALID_SHA_A,
         "candidate_sha": VALID_SHA_B,
         "scientific_status": "MUTABLE_NONAUTHORITATIVE",
@@ -92,6 +99,86 @@ class IntegrationContractTests(unittest.TestCase):
         context = PullRequestContext(2, False, "main", VALID_SHA_A, VALID_SHA_B, body, "o/r")
         result = validate_root(root, context=context, changed_files=["research/issues/example/README.md"], remote_prs=[])
         self.assertTrue(any("does not match current PR base" in e for e in result.errors))
+
+    def test_manifest_requires_exactly_one_owned_packet_root(self) -> None:
+        data = manifest()
+        data["owned_paths"].append("research/claim_ledger.json")
+        result = validate_root(self.make_repo(data))
+        self.assertTrue(any("exactly one issue-owned path" in e for e in result.errors))
+
+    def test_unselected_manifest_cannot_authorize_changed_files(self) -> None:
+        selected = manifest(role="integration-maintainer")
+        root = self.make_repo(selected)
+        other = manifest(
+            role="integration-maintainer",
+            issue_number=100,
+            leaf_id="L100",
+            owned_path="research/issues/other/",
+        )
+        write(root / "research/issues/other/README.md")
+        write(root / "research/issues/other/INTEGRATION.json", json.dumps(other, indent=2) + "\n")
+        body = "- Role: integration-maintainer\n- Task-Issue: #99\n- Owned-Path: research/issues/example/\n"
+        context = PullRequestContext(2, False, "main", VALID_SHA_A, VALID_SHA_B, body, "o/r")
+        result = validate_root(
+            root,
+            context=context,
+            changed_files=[
+                "research/issues/example/README.md",
+                "research/issues/other/README.md",
+            ],
+            remote_prs=[],
+        )
+        self.assertTrue(any("selected manifest" in e for e in result.errors))
+
+    def test_integration_maintainer_must_declare_shared_surface(self) -> None:
+        data = manifest(role="integration-maintainer")
+        root = self.make_repo(data)
+        body = "- Role: integration-maintainer\n- Task-Issue: #99\n- Owned-Path: research/issues/example/\n"
+        context = PullRequestContext(2, False, "main", VALID_SHA_A, VALID_SHA_B, body, "o/r")
+        result = validate_root(
+            root,
+            context=context,
+            changed_files=[
+                "research/issues/example/README.md",
+                "research/claim_ledger.json",
+            ],
+            remote_prs=[],
+        )
+        self.assertTrue(any("not requested by selected manifest" in e for e in result.errors))
+
+    def test_integration_maintainer_cannot_change_governance_surface(self) -> None:
+        data = manifest(role="integration-maintainer")
+        data["shared_surfaces_requested"] = ["scripts/validate_repository.py"]
+        root = self.make_repo(data)
+        body = "- Role: integration-maintainer\n- Task-Issue: #99\n- Owned-Path: research/issues/example/\n"
+        context = PullRequestContext(2, False, "main", VALID_SHA_A, VALID_SHA_B, body, "o/r")
+        result = validate_root(
+            root,
+            context=context,
+            changed_files=[
+                "research/issues/example/README.md",
+                "scripts/validate_repository.py",
+            ],
+            remote_prs=[],
+        )
+        self.assertTrue(any("may not edit governance surface" in e for e in result.errors))
+
+    def test_integration_maintainer_can_change_declared_shared_surface(self) -> None:
+        data = manifest(role="integration-maintainer")
+        data["shared_surfaces_requested"] = ["research/claim_ledger.json"]
+        root = self.make_repo(data)
+        body = "- Role: integration-maintainer\n- Task-Issue: #99\n- Owned-Path: research/issues/example/\n"
+        context = PullRequestContext(2, False, "main", VALID_SHA_A, VALID_SHA_B, body, "o/r")
+        result = validate_root(
+            root,
+            context=context,
+            changed_files=[
+                "research/issues/example/README.md",
+                "research/claim_ledger.json",
+            ],
+            remote_prs=[],
+        )
+        self.assertEqual([], result.errors)
 
 
 if __name__ == "__main__":
