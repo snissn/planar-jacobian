@@ -143,5 +143,6 @@
   ],
   "temporary_artifacts_absent": true,
   "integration_state": "integration-ready",
+  "pr_number": 57,
   "completion_receipt": null
 }

@@ -57,6 +57,7 @@ def check_manifest() -> None:
         "base_sha": "72e09753d1a1523ff22b44093cc65e21384613fc",
         "review_mode": "local-adversarial-review",
         "integration_state": "integration-ready",
+        "pr_number": 57,
         "temporary_artifacts_absent": True,
     }
     for key, value in expected.items():
