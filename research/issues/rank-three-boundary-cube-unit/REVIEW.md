@@ -417,3 +417,45 @@ primary source rather than reproduced; the review is local rather than
 independent; no unit-index section is constructed; and no degree-four-or-higher
 or `JC_2` conclusion follows. Subject to exact-head CI and review, the pinned
 candidate is accepted for serialized integration only at those scopes.
+
+## 11. Review renewal after exact-head scope corrections
+
+```text
+run_role: integration-maintainer
+review_mode: local-adversarial-review
+reviewed_integration_candidate: a08018b8634f9588c5bb8e71f2cc4df393439fc9
+trigger: exact-head Codex review on PR #55
+disposition: ACCEPT_CORRECTED_SCOPE_FOR_SERIALIZED_INTEGRATION;
+             BLOCK_UNRESTRICTED_OR_MIXED_RESIDUE_CHARACTERISTIC_READING
+```
+
+Codex exact-head review correctly identified two material ambiguities in the
+serialized statements. The integration candidate now narrows, rather than
+strengthens, both claims:
+
+1. `CLM-059` now says **rank-three Keller normalization** in its statement, not
+   only in its note. Its `retired` status therefore disposes exactly the
+   rank-three construction target reached by `CLM-074`. The unresolved
+   higher-rank monogenicity problem is neither represented by nor retired with
+   `CLM-059`.
+2. `CLM-075` now assumes a DVR whose **residue field has characteristic zero**.
+   This is the actual height-one `C[P,Q]` setting used in
+   `BOUNDARY_VALUATIONS.md`. A mixed-characteristic-three DVR is outside the
+   claim; the degeneration of the three trace-zero Vandermonde factors in
+   residue characteristic three is therefore not suppressed or contradicted.
+
+The renewed review covers `research/claim_ledger.json`, its generated Markdown
+view, and the synchronized `README.md`, `HANDOFF.md`, and `INTEGRATION.json`
+inside the owned packet. It checked that no dependency, status, graph edge,
+queue disposition, or other proof statement changed. The packet proof already
+declared residue characteristic zero, so no proof step was edited.
+
+Adversarially widening either corrected phrase recreates the reported defect:
+an unrestricted `CLM-059` would erase an open higher-rank problem, while
+“characteristic-zero DVR” without a residue-field condition admits
+mixed-characteristic-three counterbehavior. Both widenings are blocked.
+
+The guarded packet checks, predecessor regressions, generated-view check,
+repository and integration validators, 20 unit tests, frontier, and diff check
+all passed on the exact corrected candidate. This renewal is local rather than
+independent and changes no claim to `reviewed_scoped`.
