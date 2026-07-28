@@ -3,29 +3,6 @@
   "authority_note": "This file is the machine-readable queue. Claim status remains authoritative in research/claim_ledger.json and proof-node status remains authoritative in research/proof_graph.json.",
   "leaves": [
     {
-      "id": "L14",
-      "graph_node": "OPEN-KELLER-INDEX-UNIT",
-      "title": "Rank-Three Keller Boundary-Cube Unit",
-      "priority": "P0",
-      "status": "open",
-      "artifact": "research/leaf-packets/L14-keller-index-form-unit.md",
-      "track_artifact": "research/tracks/monogenicity-index-divisor.md",
-      "issue_number": 3,
-      "claim_dependencies": [
-        "CLM-029",
-        "CLM-030",
-        "CLM-031",
-        "CLM-034",
-        "CLM-058",
-        "CLM-059",
-        "CLM-062",
-        "CLM-063",
-        "CLM-064",
-        "CLM-065",
-        "CLM-066"
-      ]
-    },
-    {
       "id": "L02",
       "graph_node": "OPEN-STABLE-ORDER",
       "title": "Finite Stable Differential Order",
@@ -227,7 +204,39 @@
         "CLM-058"
       ],
       "successor_graph_node": "OPEN-KELLER-INDEX-UNIT",
-      "note": "The generic bridge is false; issue #3 continues through L14 using Keller-source étaleness."
+      "note": "The generic bridge is false; issue #3 continued through the narrower Keller-specific L14, which is separately disposed at rank-three scope."
+    },
+    {
+      "id": "L14",
+      "graph_node": "OPEN-KELLER-INDEX-UNIT",
+      "title": "Rank-Three Keller Boundary-Cube Unit",
+      "status": "disposed",
+      "disposition": "LITERATURE_BOUND_RANK_THREE_EXCLUSION",
+      "artifact": "research/leaf-packets/L14-keller-index-form-unit.md",
+      "track_artifact": "research/tracks/monogenicity-index-divisor.md",
+      "issue_number": 3,
+      "claim_dependencies": [
+        "CLM-001",
+        "CLM-002",
+        "CLM-029",
+        "CLM-030",
+        "CLM-031",
+        "CLM-034",
+        "CLM-058",
+        "CLM-059",
+        "CLM-062",
+        "CLM-063",
+        "CLM-064",
+        "CLM-065",
+        "CLM-066",
+        "CLM-074",
+        "CLM-075",
+        "CLM-076",
+        "CLM-077",
+        "CLM-078"
+      ],
+      "review_artifact": "research/issues/rank-three-boundary-cube-unit/REVIEW.md",
+      "note": "Orevkov's audited primary theorem excludes generic multiplicity three for a polynomial Keller map. The leaf is disposed only at function-field degree three; no unit-index section, degree-four-or-higher result, or JC_2 theorem follows."
     },
     {
       "id": "L13",

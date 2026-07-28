@@ -2,13 +2,18 @@
 
 ```text
 authority: MUTABLE_NONAUTHORITATIVE
-role: research-worker
+role: integration-maintainer
 task_issue: #3
 owned_path: research/issues/rank-three-boundary-cube-unit/
-base_commit: 652a5e252626fa5816445651245e8a8946cee53e
+base_commit: b4545bd9ca395c023b0d452feee29b5e6f77f83e
 scientific_disposition: RANK_THREE_KELLER_CASE_EXCLUDED_BY_PRIMARY_LITERATURE
 review_state: local-adversarial-review ACCEPT at 4c5d1e1bb8042b046af8af9d2fd764a61e2275e8
 ```
+
+The reviewed scientific candidate retains issue-local labels. Serialized
+integration allocates `R3BC-01` through `R3BC-05` as `CLM-074` through
+`CLM-078`; `R3BC-07` remains packet-local. These allocation and transport
+metadata changes do not renew or broaden the pinned scientific review.
 
 ## Exact disposition
 

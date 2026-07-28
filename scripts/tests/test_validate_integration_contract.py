@@ -93,6 +93,39 @@ class IntegrationContractTests(unittest.TestCase):
         result = validate_root(root, context=context, changed_files=["research/issues/example/README.md"], remote_prs=[])
         self.assertTrue(any("does not match current PR base" in e for e in result.errors))
 
+    def test_integration_maintainer_cannot_use_an_unselected_packet_path(self) -> None:
+        root = self.make_repo(manifest(role="integration-maintainer"))
+        other = manifest()
+        other.update(
+            issue_number=100,
+            leaf_id="L100",
+            owned_paths=["research/issues/other/"],
+        )
+        write(root / "research/issues/other/README.md")
+        write(root / "research/issues/other/proof.md")
+        write(root / "research/issues/other/INTEGRATION.json", json.dumps(other, indent=2) + "\n")
+        body = "- Role: integration-maintainer\n- Task-Issue: #99\n- Owned-Path: research/issues/example/\n"
+        context = PullRequestContext(2, False, "main", VALID_SHA_A, VALID_SHA_B, body, "o/r")
+        result = validate_root(
+            root,
+            context=context,
+            changed_files=["research/issues/other/proof.md"],
+            remote_prs=[],
+        )
+        self.assertTrue(any("outside ownership" in e for e in result.errors))
+
+    def test_integration_maintainer_must_declare_shared_surface(self) -> None:
+        root = self.make_repo(manifest(role="integration-maintainer"))
+        body = "- Role: integration-maintainer\n- Task-Issue: #99\n- Owned-Path: research/issues/example/\n"
+        context = PullRequestContext(2, False, "main", VALID_SHA_A, VALID_SHA_B, body, "o/r")
+        result = validate_root(
+            root,
+            context=context,
+            changed_files=["research/claim_ledger.json"],
+            remote_prs=[],
+        )
+        self.assertTrue(any("undeclared shared surface" in e for e in result.errors))
+
 
 if __name__ == "__main__":
     unittest.main()

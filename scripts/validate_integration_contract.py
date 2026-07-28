@@ -153,6 +153,17 @@ def validate_pr(manifests: list[dict[str, Any]], context: PullRequestContext, fi
     if role == "integration-maintainer":
         manifest = touched[0]
         if manifest.get("base_sha") != context.base_sha: result.error("integration manifest base_sha does not match current PR base")
+        requested = {
+            path
+            for path in manifest.get("shared_surfaces_requested", [])
+            if isinstance(path, str)
+        }
+        for path in files:
+            if path in SHARED:
+                if path not in requested:
+                    result.error(f"integration-maintainer changed undeclared shared surface: {path}")
+            elif not owned(path, roots):
+                result.error(f"integration-maintainer changed path outside ownership: {path}")
     if role == "governance-maintainer":
         bad = [f for f in files if f.startswith("research/") and not governance_path(f)]
         if bad: result.error("governance PR changes scientific content: " + ", ".join(bad))

@@ -2,7 +2,7 @@
 
 > **Authority:** `MUTABLE_NONAUTHORITATIVE`  
 > **Issue:** [#3](https://github.com/snissn/planar-jacobian/issues/3)  
-> **Leaf:** [`../leaf-packets/unramified-index-elimination.md`](../leaf-packets/unramified-index-elimination.md)
+> **Leaves:** [`L01`](../leaf-packets/L01-unramified-index-elimination.md) and [`L14`](../leaf-packets/L14-keller-index-form-unit.md), both disposed at distinct scopes
 
 Let
 
@@ -83,17 +83,21 @@ u+lambda+lambda^3 v=0
 without eliminating it. The open affine plane in this model is not etale over
 the base, isolating the precise missing Keller property.
 
-## Surviving bridge
+## Rank-three terminal
 
-The only surviving load-bearing statement is:
+For a planar Keller map, function-field degree three gives generic sheet number
+three. `CLM-074`, bound at `literature_bound` scope to Orevkov's audited 1987
+primary theorem, excludes that case. Therefore the rank-three Keller
+normalization assumed by `L14` does not exist.
 
-> Use etaleness of the specified open Keller source, together with its open
-> immersion in `Y`, to construct an integral primitive element whose index
-> ideal is a unit.
+This disposition does not construct a primitive element whose index ideal is a
+unit. The conditional rank-three algebra still yields `CLM-075`–`CLM-078`:
+the geometric special-fiber cubic trichotomy, the exact union over
+boundary-primitive residue classes and its within-class pencil identity, the
+differential movement limitation, and the specified-source-open countermodel
+terminal.
 
-Equivalently, the universal index form on the trace-zero bundle must represent
-an element of `C*`. The first exact successor is rank three, where this is a
-binary cubic unit-representation problem.
+No degree-four-or-higher monogenicity theorem and no `JC_2` conclusion follows.
 
 ## Forbidden shortcuts
 
@@ -112,11 +116,13 @@ binary cubic unit-representation problem.
 
 The complete theorem packet, collision formulas, countermodels, source audit,
 adversarial review, and handoff are in
-[`../issues/issue-3-unramified-index/`](../issues/issue-3-unramified-index/README.md).
+[`../issues/issue-3-unramified-index/`](../issues/issue-3-unramified-index/README.md)
+and
+[`../issues/rank-three-boundary-cube-unit/`](../issues/rank-three-boundary-cube-unit/README.md).
 
 ## Exit condition
 
-This track closes only when the Keller-specific unit-index statement is proved
-at exact scope, or when a still stronger Keller-near countermodel identifies an
-even smaller missing hypothesis. The algebraic genericity bridge is already
-disposed as false.
+Issue #3 and `L14` exit at rank-three scope through the literature-bound
+incompatibility result. The broader monogenicity route remains nonterminal:
+reusing it for degree four or higher requires a new bounded leaf, and the
+algebraic genericity bridge remains disposed as false.
