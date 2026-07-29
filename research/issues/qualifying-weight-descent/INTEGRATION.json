@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "issue_number": 41,
+  "leaf_id": "QWD-41",
+  "role": "research-worker",
+  "owned_paths": [
+    "research/issues/qualifying-weight-descent/"
+  ],
+  "base_sha": "652a5e252626fa5816445651245e8a8946cee53e",
+  "candidate_sha": "574a42de10d3927dd76ad5c6e8b3aa4fcd1f114b",
+  "scientific_status": "candidate_proved_scoped_with_open_bridge / MUTABLE_NONAUTHORITATIVE",
+  "review_mode": "local-adversarial-review",
+  "reviewed_revision": "574a42de10d3927dd76ad5c6e8b3aa4fcd1f114b",
+  "proposed_global_claims": [
+    {
+      "id": "QWD-MIN",
+      "status": "candidate_proved_scoped"
+    },
+    {
+      "id": "QWD-AFFINE",
+      "status": "candidate_proved_scoped"
+    },
+    {
+      "id": "QWD-ORBIT-DIAGNOSIS",
+      "status": "candidate_proved_scoped"
+    },
+    {
+      "id": "QWD-FAN",
+      "status": "candidate_proved_scoped"
+    },
+    {
+      "id": "QWD-BINOMIAL",
+      "status": "candidate_proved_scoped"
+    },
+    {
+      "id": "QWD-EDGE",
+      "status": "candidate_proved_scoped"
+    },
+    {
+      "id": "QWD-DIRECTED-CORE",
+      "status": "candidate_proved_scoped"
+    },
+    {
+      "id": "QWD-CORE",
+      "status": "open_bridge"
+    }
+  ],
+  "proposed_graph_nodes": [
+    {
+      "id": "QWD-QUALIFYING-WEIGHT",
+      "status": "open"
+    },
+    {
+      "id": "QWD-BINOMIAL-CLASS",
+      "status": "candidate_proved_scoped"
+    },
+    {
+      "id": "QWD-FULL-ORBIT-DIAGNOSIS",
+      "status": "candidate_proved_scoped"
+    },
+    {
+      "id": "QWD-TERMINAL-COMMON-POWER-CORE",
+      "status": "open"
+    }
+  ],
+  "shared_surfaces_requested": [
+    "research/tracks/m-filtered-equivariance.md",
+    "research/claim_ledger.json",
+    "research/proof_graph.json",
+    "research/work_queue.json",
+    "research/ISSUE_INDEX.md"
+  ],
+  "supersedes_prs": [],
+  "temporary_artifacts_absent": true,
+  "integration_state": "integration-ready"
+}
